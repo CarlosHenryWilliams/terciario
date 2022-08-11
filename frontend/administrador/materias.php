@@ -1,79 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
+  <!-- CONEXION DATABASE -->
+  <?php include('modulos/conexion.php'); ?>
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Administrador - Terciario 89</title>
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+  <!DOCTYPE html>
+  <html lang="en">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-</head>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <title>Administrador - Terciario 89</title>
+      <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+      <link href="css/styles.css" rel="stylesheet" />
+      <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
-<body class="sb-nav-fixed">
-    <!-- HEADER/NAVBAR  -->
-    <?php include('modulos/header.php'); ?>
-    <!-- HEADER/NAVBAR  -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <div id="layoutSidenav">
+      <!-- JQUERY CDN -->
 
+      <script src="https://code.jquery.com/jquery-3.6.0.js"
+          integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  </head>
 
-        <!-- BARRA LATERAL -->
-        <?php include('modulos/barralateral.php'); ?>
-        <!-- BARRA LATERAL -->
+  <body class="sb-nav-fixed">
+      <!-- HEADER/NAVBAR  -->
+      <?php include('modulos/header.php'); ?>
+      <!-- HEADER/NAVBAR  -->
 
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center ">
+      <div id="layoutSidenav">
 
 
-                        <h1 class="mt-4 mb-4">ADMINISTRADOR</h1>
-                        <!-- <p><img class="mb-4 mt-4 col-6" src="assets/img/logo.png" style="width: 200px; "></p> -->
-                        <!-- <ol class="breadcrumb mb-4">
+          <!-- BARRA LATERAL -->
+          <?php include('modulos/barralateral.php'); ?>
+          <!-- BARRA LATERAL -->
+
+          <div id="layoutSidenav_content">
+              <main>
+                  <div class="container-fluid px-4">
+                      <div class="d-flex align-items-center ">
+
+
+                          <h1 class="mt-4 mb-4">MATERIAS</h1>
+                          <!-- <p><img class="mb-4 mt-4 col-6" src="assets/img/logo.png" style="width: 200px; "></p> -->
+                          <!-- <ol class="breadcrumb mb-4">
                            <li class="breadcrumb-item active">Dashboard</li>
                         </ol>  -->
 
-                    </div>
+                      </div>
 
 
-                    <div class="acciones">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Agregar materia nueva
-                        </button>
+                      <div class="acciones">
+                          <!-- Button trigger modal -->
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                              Agregar materia nueva
+                          </button>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        ...
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                          <!-- Modal -->
+                          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                              aria-hidden="true">
+                              <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Cargar Materia</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                          </button>
+                                      </div>
+                                      <div class="modal-body">
 
-                    </div>
-                    <!-- <div class="row">
+                                          <form method="POST">
+                                              <div class="form-group">
+                                                  <label for="inputnombremateria">Nombre de la materia</label>
+                                                  <input type="text" class="form-control" id="inputnombremateria"
+                                                      aria-describedby="emailHelp">
+                                                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share
+                                                    your email with anyone else.</small> -->
+                                              </div>
+                                              <div class="form-group">
+                                                  <label for="inputabreviaturamateria">Abreviatura</label>
+                                                  <input type="text" class="form-control" id="inputabreviaturamateria">
+                                              </div>
+
+                                          </form>
+                                      </div>
+                                      <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary"
+                                              data-dismiss="modal">Cerrar</button>
+                                          <button type="button" id="boton_cargarmateria"
+                                              class="btn btn-primary">Cargar</button>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                      </div>
+                      <!-- <div class="row">
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-primary text-white mb-4">
                                 <div class="card-body">Primary Card</div>
@@ -111,7 +134,7 @@
                             </div>
                         </div>
                     </div> -->
-                    <!-- <div class="row">
+                      <!-- <div class="row">
                         <div class="col-xl-12">
                             <div class="card mb-4">
                                 <div class="card-header">
@@ -131,159 +154,173 @@
                             </div>
                         </div>
                     </div> -->
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            DataTable Example
-                        </div>
-                        <div class="card-body">
-                            <table id="datatablesSimple">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
-                                    </tr>
-                                </tfoot>
-                                <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>$320,800</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>66</td>
-                                        <td>2009/01/12</td>
-                                        <td>$86,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cedric Kelly</td>
-                                        <td>Senior Javascript Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td>2012/03/29</td>
-                                        <td>$433,060</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Airi Satou</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>33</td>
-                                        <td>2008/11/28</td>
-                                        <td>$162,700</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Brielle Williamson</td>
-                                        <td>Integration Specialist</td>
-                                        <td>New York</td>
-                                        <td>61</td>
-                                        <td>2012/12/02</td>
-                                        <td>$372,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Herrod Chandler</td>
-                                        <td>Sales Assistant</td>
-                                        <td>San Francisco</td>
-                                        <td>59</td>
-                                        <td>2012/08/06</td>
-                                        <td>$137,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rhona Davidson</td>
-                                        <td>Integration Specialist</td>
-                                        <td>Tokyo</td>
-                                        <td>55</td>
-                                        <td>2010/10/14</td>
-                                        <td>$327,900</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Colleen Hurst</td>
-                                        <td>Javascript Developer</td>
-                                        <td>San Francisco</td>
-                                        <td>39</td>
-                                        <td>2009/09/15</td>
-                                        <td>$205,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Sonya Frost</td>
-                                        <td>Software Engineer</td>
-                                        <td>Edinburgh</td>
-                                        <td>23</td>
-                                        <td>2008/12/13</td>
-                                        <td>$103,600</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jena Gaines</td>
-                                        <td>Office Manager</td>
-                                        <td>London</td>
-                                        <td>30</td>
-                                        <td>2008/12/19</td>
-                                        <td>$90,560</td>
-                                    </tr>
+                      <div class="card mb-4">
+                          <div class="card-header">
+                              <i class="fas fa-table me-1"></i>
+                              Materias
+                          </div>
+                          <div class="card-body">
+                              <table id="datatablesSimple">
+                                  <thead>
+                                      <tr>
+                                          <th>Name</th>
+                                          <th>Position</th>
+                                          <th>Office</th>
+                                          <th>Age</th>
+                                          <th>Start date</th>
+                                          <th>Salary</th>
+                                      </tr>
+                                  </thead>
+                                  <tfoot>
+                                      <tr>
+                                          <th>Name</th>
+                                          <th>Position</th>
+                                          <th>Office</th>
+                                          <th>Age</th>
+                                          <th>Start date</th>
+                                          <th>Salary</th>
+                                      </tr>
+                                  </tfoot>
+                                  <tbody>
+                                      <tr>
+                                          <td>Tiger Nixon</td>
+                                          <td>System Architect</td>
+                                          <td>Edinburgh</td>
+                                          <td>61</td>
+                                          <td>2011/04/25</td>
+                                          <td>$320,800</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Garrett Winters</td>
+                                          <td>Accountant</td>
+                                          <td>Tokyo</td>
+                                          <td>63</td>
+                                          <td>2011/07/25</td>
+                                          <td>$170,750</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Ashton Cox</td>
+                                          <td>Junior Technical Author</td>
+                                          <td>San Francisco</td>
+                                          <td>66</td>
+                                          <td>2009/01/12</td>
+                                          <td>$86,000</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Cedric Kelly</td>
+                                          <td>Senior Javascript Developer</td>
+                                          <td>Edinburgh</td>
+                                          <td>22</td>
+                                          <td>2012/03/29</td>
+                                          <td>$433,060</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Airi Satou</td>
+                                          <td>Accountant</td>
+                                          <td>Tokyo</td>
+                                          <td>33</td>
+                                          <td>2008/11/28</td>
+                                          <td>$162,700</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Brielle Williamson</td>
+                                          <td>Integration Specialist</td>
+                                          <td>New York</td>
+                                          <td>61</td>
+                                          <td>2012/12/02</td>
+                                          <td>$372,000</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Herrod Chandler</td>
+                                          <td>Sales Assistant</td>
+                                          <td>San Francisco</td>
+                                          <td>59</td>
+                                          <td>2012/08/06</td>
+                                          <td>$137,500</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Rhona Davidson</td>
+                                          <td>Integration Specialist</td>
+                                          <td>Tokyo</td>
+                                          <td>55</td>
+                                          <td>2010/10/14</td>
+                                          <td>$327,900</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Colleen Hurst</td>
+                                          <td>Javascript Developer</td>
+                                          <td>San Francisco</td>
+                                          <td>39</td>
+                                          <td>2009/09/15</td>
+                                          <td>$205,500</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Sonya Frost</td>
+                                          <td>Software Engineer</td>
+                                          <td>Edinburgh</td>
+                                          <td>23</td>
+                                          <td>2008/12/13</td>
+                                          <td>$103,600</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Jena Gaines</td>
+                                          <td>Office Manager</td>
+                                          <td>London</td>
+                                          <td>30</td>
+                                          <td>2008/12/19</td>
+                                          <td>$90,560</td>
+                                      </tr>
 
 
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Sitio Web 2022</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
-    <script src="js/scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <script src="js/datatables-simple-demo.js"></script>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </main>
+              <footer class="py-4 bg-light mt-auto">
+                  <div class="container-fluid px-4">
+                      <div class="d-flex align-items-center justify-content-between small">
+                          <div class="text-muted">Copyright &copy; Sitio Web 2022</div>
+                          <div>
+                              <a href="#">Privacy Policy</a>
+                              &middot;
+                              <a href="#">Terms &amp; Conditions</a>
+                          </div>
+                      </div>
+                  </div>
+              </footer>
+          </div>
+      </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
-    </script>
-</body>
 
-</html>
+      <script>
+      $('#boton_cargarmateria').click(function() {
+          let nombre_materia = $('inputnombremateria').val();
+          let abreviatura_materia = $('inputabreviaturamateria').val();
+
+          console.log(nombre_materia, abreviatura_materia);
+
+      });
+      </script>
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+          crossorigin="anonymous">
+      </script>
+      <script src="js/scripts.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+      <script src="assets/demo/chart-area-demo.js"></script>
+      <script src="assets/demo/chart-bar-demo.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+      <script src="js/datatables-simple-demo.js"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+          integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+      </script>
+  </body>
+
+  </html>
