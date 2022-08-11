@@ -27,6 +27,10 @@
 
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+     <!-- SWEET ALERT 2 -->
+     <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+     <script src='sweetalert2.min.js'></script>
+     <link rel='stylesheet' href='sweetalert2.min.css'>
 
 
 
@@ -79,19 +83,21 @@
                                              <span aria-hidden="true">&times;</span>
                                          </button>
                                      </div>
-                                     <div class="modal-body">
+                                     <form method="POST">
+                                         <div class="modal-body">
 
-                                         <form method="POST">
+
                                              <div class="form-group">
                                                  <label for="inputnombremateria">Nombre de la materia</label>
-                                                 <input type="text" class="form-control" id="inputnombremateria"
-                                                     aria-describedby="emailHelp">
+                                                 <input type="text" class="form-control" required
+                                                     id="inputnombremateria" aria-describedby="emailHelp">
                                                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share
                                                     your email with anyone else.</small> -->
                                              </div>
                                              <div class="form-group">
                                                  <label for="inputabreviaturamateria">Abreviatura</label>
-                                                 <input type="text" class="form-control" id="inputabreviaturamateria">
+                                                 <input type="text" class="form-control" required
+                                                     id="inputabreviaturamateria">
                                              </div>
                                              <div class="form-group">
                                                  <!-- <label for="inputabreviaturamateria">Estado</label> -->
@@ -100,16 +106,14 @@
                                              </div>
 
 
-
-
-                                         </form>
-                                     </div>
-                                     <div class="modal-footer">
-                                         <button type="button" class="btn btn-secondary"
-                                             data-dismiss="modal">Cerrar</button>
-                                         <button type="button" id="boton_cargarmateria"
-                                             class="btn btn-primary">Cargar</button>
-                                     </div>
+                                         </div>
+                                         <div class="modal-footer">
+                                             <button type="button" class="btn btn-secondary"
+                                                 data-dismiss="modal">Cerrar</button>
+                                             <button type="button" id="boton_cargarmateria"
+                                                 class="btn btn-primary">Cargar</button>
+                                         </div>
+                                     </form>
                                  </div>
                              </div>
                          </div>
@@ -325,11 +329,36 @@
 
          console.log(nombre_materia, abreviatura_materia, estado_materia);
 
-         $.post('../../backend/materias/cargarmateria.php', {
-             var_nombre_materia: nombre_materia,
-             var_abreviatura_materia: abreviatura_materia,
-             var_estado_materia: estado_materia
-         });
+         if (nombre_materia == '' || abreviatura_materia == '' || estado_materia == '') {
+             Swal.fire({
+                 icon: 'error',
+                 title: 'Oops...',
+                 text: 'Por favor no deje ningun campo vacio',
+                 //  footer: '<a href="">Why do I have this issue?</a>'
+             })
+         } else {
+
+             $.post('../../backend/materias/cargarmateria.php', {
+                 var_nombre_materia: nombre_materia,
+                 var_abreviatura_materia: abreviatura_materia,
+                 var_estado_materia: estado_materia
+             }, function(data) {
+                 if (data == '1') {
+                     Swal.fire(
+                         'Good job!',
+                         'You clicked the button!',
+                         'success'
+                     )
+                 } else {
+                     Swal.fire({
+                         icon: 'error',
+                         title: 'Oops...',
+                         text: 'Revisa los campos nuevamente',
+                         //  footer: '<a href="">Why do I have this issue?</a>'
+                     })
+                 }
+             });
+         }
 
      });
      </script>
