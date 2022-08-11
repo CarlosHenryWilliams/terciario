@@ -126,6 +126,9 @@
                                         <th>Salary</th>
                                     </tr>
                                 </tfoot> -->
+
+                                <?php include('../../backend/rutas/materias/mostrarmaterias.php'); ?>
+
                                 <tbody>
                                     <tr>
                                         <td>Tiger Nixon</td>
