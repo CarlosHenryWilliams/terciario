@@ -1,4 +1,3 @@
-<?php include('modulos/conexion.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +14,6 @@
 </head>
 
 <body class="sb-nav-fixed">
-
     <!-- HEADER/NAVBAR  -->
     <?php include('modulos/header.php'); ?>
     <!-- HEADER/NAVBAR  -->
@@ -33,7 +31,7 @@
                     <div class="d-flex align-items-center ">
 
 
-                        <h1 class="mt-4 mb-4">MATERIAS</h1>
+                        <h1 class="mt-4 mb-4">ADMINISTRADOR</h1>
                         <!-- <p><img class="mb-4 mt-4 col-6" src="assets/img/logo.png" style="width: 200px; "></p> -->
                         <!-- <ol class="breadcrumb mb-4">
                            <li class="breadcrumb-item active">Dashboard</li>
@@ -90,33 +88,23 @@
                             </div>
                         </div>
                         <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Bar Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar me-1"></i>
+                                    Bar Chart Example
                                 </div>
+                                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
                             </div>
+                        </div>
                     </div> -->
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
-                            Materias
+                            DataTable Example
                         </div>
                         <div class="card-body">
                             <table id="datatablesSimple">
                                 <thead>
-                                    <tr>
-                                        <th>id</th>
-                                        <th>Nombre</th>
-                                        <th>Abreviatura</th>
-                                        <th>Estado</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
-                                    </tr>
-                                </thead>
-                                <!-- <tfoot>
                                     <tr>
                                         <th>Name</th>
                                         <th>Position</th>
@@ -125,10 +113,17 @@
                                         <th>Start date</th>
                                         <th>Salary</th>
                                     </tr>
-                                </tfoot> -->
-
-                                <?php include('../../backend/rutas/materias/mostrarmaterias.php'); ?>
-
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Position</th>
+                                        <th>Office</th>
+                                        <th>Age</th>
+                                        <th>Start date</th>
+                                        <th>Salary</th>
+                                    </tr>
+                                </tfoot>
                                 <tbody>
                                     <tr>
                                         <td>Tiger Nixon</td>
