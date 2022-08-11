@@ -24,10 +24,10 @@
 
         <div id="layoutSidenav_content">
 
-            <div class="titulo_boton_modal col-12 d-flex">
-                <h1 class="h1 col-lg-6 col-12 mx-auto">ADMINISTRADOR</h1>
+            <div class="titulo_boton_modal d-flex justify-content-around">
+                <h1 class="h1 col-lg-9 col-12">ADMINISTRADOR</h1>
                 <!-- Button modal -->
-                <button type="button" class="btn btn-outline-dark col-lg-6" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-outline-dark my-auto" data-toggle="modal" data-target="#exampleModal">
                     Agregar Plan de Estudio
                 </button>
             </div>

@@ -109,6 +109,9 @@ body {
     font-size: 25px;
   }
 }
+.titulo_boton_modal button{
+  height: 40px;
+}
 
 
 hr {
