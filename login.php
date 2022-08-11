@@ -10,15 +10,15 @@
         <link href="frontend/administrador/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-dark">
+    <body class="bg-light">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
                     <div class="container align-items-center">
                         <div class="row justify-content-center align-items-center">
                             <div class="col-lg-4">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-3">Iniciar Sesion</h3></div>
+                                <div class="card shadow-lg border-0 rounded-lg mt-5 bg-dark">
+                                    <div class="card-header"><h3 class="text-center font-weight-light text-light my-3">Iniciar Sesion</h3></div>
                                     <div class="card-body">
                                         <form>
                                             <div class="form-floating mb-3">
@@ -31,11 +31,11 @@
                                             </div>
                                             <div class="form-check mb-3">
                                                 <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
-                                                <label class="form-check-label" for="inputRememberPassword">Recordar Contraseña</label>
+                                                <label class="form-check-label text-light" for="inputRememberPassword">Recordar Contraseña</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small" href="password.html">Olvide mi Contraseña</a>
-                                                <a class="btn btn-outline-dark" href="index.html">Entrar</a>
+                                                <a class="btn btn-outline-light" href="index.html">Entrar</a>
                                             </div>
                                         </form>
                                     </div>
