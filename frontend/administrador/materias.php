@@ -338,26 +338,52 @@
              })
          } else {
 
-             $.post('../../backend/materias/cargarmateria.php', {
-                 var_nombre_materia: nombre_materia,
-                 var_abreviatura_materia: abreviatura_materia,
-                 var_estado_materia: estado_materia
-             }, function(data) {
-                 if (data == '1') {
-                     Swal.fire(
-                         'Good job!',
-                         'You clicked the button!',
-                         'success'
-                     )
-                 } else {
-                     Swal.fire({
-                         icon: 'error',
-                         title: 'Oops...',
-                         text: 'Revisa los campos nuevamente',
-                         //  footer: '<a href="">Why do I have this issue?</a>'
-                     })
+             Swal.fire({
+                 title: 'Los datos son correctos?',
+                 text: "La materia se cargara al sistema",
+                 icon: 'warning',
+                 showCancelButton: true,
+                 confirmButtonColor: '#3085d6',
+                 cancelButtonColor: '#d33',
+                 confirmButtonText: 'Si, estoy seguro',
+                 cancelButtonText: 'Cancelar',
+             }).then((result) => {
+                 if (result.isConfirmed) {
+                     /**
+                      * Si confirma el formulario lo envia por post mediante Jquery
+                      */
+
+                     $.post('../../backend/materias/cargarmateria.php', {
+                         var_nombre_materia: nombre_materia,
+                         var_abreviatura_materia: abreviatura_materia,
+                         var_estado_materia: estado_materia
+                     }, function(data) {
+                         if (data == '1') {
+                             Swal.fire(
+                                 'Good job!',
+                                 'You clicked the button!',
+                                 'success'
+                             )
+                         } else {
+                             Swal.fire({
+                                 icon: 'error',
+                                 title: 'Oops...',
+                                 text: 'Revisa los campos nuevamente',
+                                 //  footer: '<a href="">Why do I have this issue?</a>'
+                             })
+                         }
+                     });
+
+
                  }
-             });
+             })
+
+
+
+
+
+
+
          }
 
      });
