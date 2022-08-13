@@ -1,5 +1,4 @@
 <?php
-
 function conectame()
 {
     $server = "localhost";
