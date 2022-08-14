@@ -190,6 +190,7 @@
                                          <th>Nombre</th>
                                          <th>Abreviatura</th>
                                          <th>Estado</th>
+                                         <th>Acciones</th>
                                      </tr>
                                  </thead>
                                  <!-- <tfoot>
@@ -225,6 +226,8 @@
                                          <td><?php echo $materia['nombre'] ?></td>
                                          <td><?php echo $materia['abreviatura'] ?> </td>
                                          <td><?php echo $materia['estado_m'] ?> </td>
+                                         <td><button id="botoneditarmateria">Editar</button> <button
+                                                 id="botondeshabilitarmateria">Deshabilitar</button></td>
                                          <!-- <a href="<?php  ?>" target="_blank">
                                                  <?php
                                                     // if ($material['tipo_archivo'] === 'application/pdf') {
