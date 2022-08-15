@@ -68,7 +68,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Guardar</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -78,7 +78,7 @@
                                             <fieldset>
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <label for="" class="d-flex justify-content-start">Fecha de inscripcion</label>
+                                                        <label for="" class="d-flex justify-content-start">Fecha</label>
                                                         <input name="fecha" class="form-control bg-transparent" placeholder="Fecha" type="date" required="">
                                                     </div>
                                                 </div>
@@ -220,7 +220,7 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
-                            Alumnos
+                            docentes
                         </div>
                         <div class="card-body">
                             <table id="datatablesSimple">
@@ -241,39 +241,45 @@
                                         <th>Partido</th>
                                         <th>Cod postal</th>
                                         <th>telefono</th>
+                                        <th>telefono alt</th>
+                                        <th>telefono alt persona</th>
+                                        <th>Correo</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
 
 
-                                <?php include('../../backend/alumnos/buscaralumnos.php'); //BUSCAR 
+                                <?php include('../../backend/docentes/buscardocentes.php'); //BUSCAR 
                                 ?> <tbody>
 
 
                                     <?php
 
-                                    foreach ($resultado as $alumnos) {
+                                    foreach ($resultado as $docentes) {
 
                                     ?>
                                         <tr>
-                                            <td><?php echo $alumnos['id'] ?></td>
-                                            <td><?php echo $alumnos['nombre'] ?></td>
-                                            <td><?php echo $alumnos['apellido'] ?> </td>
-                                            <td><?php echo $alumnos['dni'] ?> </td>
-                                            <td><?php echo $alumnos['sexo'] ?> </td>
-                                            <td><?php echo $alumnos['fecha_nacimiento'] ?> </td>
-                                            <td><?php echo $alumnos['lugar_nacimiento'] ?> </td>
-                                            <td><?php echo $alumnos['estado_civil'] ?> </td>
-                                            <td><?php echo $alumnos['domicilio'] ?> </td>
-                                            <td><?php echo $alumnos['domicilio_numero'] ?> </td>
-                                            <td><?php echo $alumnos['piso'] ?> </td>
-                                            <td><?php echo $alumnos['depto'] ?> </td>
-                                            <td><?php echo $alumnos['localidad'] ?> </td>
-                                            <td><?php echo $alumnos['partido'] ?> </td>
-                                            <td><?php echo $alumnos['codigo_postal'] ?> </td>
-                                            <td><?php echo $alumnos['telefono'] ?> </td>
+                                            <td><?php echo $docentes['id'] ?></td>
+                                            <td><?php echo $docentes['nombre'] ?></td>
+                                            <td><?php echo $docentes['apellido'] ?> </td>
+                                            <td><?php echo $docentes['dni'] ?> </td>
+                                            <td><?php echo $docentes['sexo'] ?> </td>
+                                            <td><?php echo $docentes['fecha_nacimiento'] ?> </td>
+                                            <td><?php echo $docentes['lugar_nacimiento'] ?> </td>
+                                            <td><?php echo $docentes['estado_civil'] ?> </td>
+                                            <td><?php echo $docentes['domicilio'] ?> </td>
+                                            <td><?php echo $docentes['domicilio_numero'] ?> </td>
+                                            <td><?php echo $docentes['piso'] ?> </td>
+                                            <td><?php echo $docentes['depto'] ?> </td>
+                                            <td><?php echo $docentes['localidad'] ?> </td>
+                                            <td><?php echo $docentes['partido'] ?> </td>
+                                            <td><?php echo $docentes['codigo_postal'] ?> </td>
+                                            <td><?php echo $docentes['telefono'] ?> </td>
+                                            <td><?php echo $docentes['telefono_alternativo'] ?> </td>
+                                            <td><?php echo $docentes['telefono_alternativo_persona'] ?> </td>
+                                            <td><?php echo $docentes['email'] ?> </td>
 
-                                            <td><button id="botoneditaralumno" class="btn btn-info ">Editar</button></td>
+                                            <td><button id="botoneditardocente" class="btn btn-info ">Editar</button></td>
                                             <!-- <a href="<?php  ?>" target="_blank">
                                                  <?php
 
