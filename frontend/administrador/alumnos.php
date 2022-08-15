@@ -85,28 +85,25 @@
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <label for="inputNombre"></label>
-                                                        <input id="inputNombre" name="nombre" class="form-control bg-transparent" placeholder="Nombre" type="text" required="">
+                                                        <input name="nombre" class="form-control bg-transparent" placeholder="Nombre" type="text" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <label for="inputApellido"></label>
-                                                        <input id="inputApellido" name="apellido" class="form-control bg-transparent" placeholder="Apellido" type="text" required="">
+                                                        <input name="apellido" class="form-control bg-transparent" placeholder="Apellido" type="text" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <label for="inputDni"></label>
-                                                        <input id="inputDni" name="dni" class="form-control bg-transparent" placeholder="Dni" type="text" required="">
+                                                        <input  name="dni" class="form-control bg-transparent" placeholder="Dni" type="text" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <label for="inputSexo" class="d-flex justify-content-start">Genero</label>
+                                                        <label class="d-flex justify-content-start">Género</label>
                                                         <select class="form-control" name="sexo">
                                                             <option>Femenino</option>
                                                             <option>Masculino</option>
@@ -117,81 +114,87 @@
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <label for="inputFechaNacimiento" class="d-flex justify-content-start">Fecha de nacimiento</label>
-                                                        <input id="inputFechaNacimiento" name="fecha_nacimiento" class="form-control bg-transparent" placeholder="Fecha de nacimiento" type="date" required="">
+                                                        <label for="" class="d-flex justify-content-start">Fecha de nacimiento</label>
+                                                        <input id="" name="fecha_nacimiento" class="form-control bg-transparent" placeholder="Fecha de nacimiento" type="date" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <label for="inputLugarNacimiento"></label>
-                                                        <input id="inputLugarNacimiento" name="lugar_nacimiento" class="form-control bg-transparent" placeholder="Lugar de nacimiento" type="text" required="">
+                                                        <input  name="lugar_nacimiento" class="form-control bg-transparent" placeholder="Lugar de nacimiento" type="text" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <label for="inputEstadoCivil"></label>
-                                                        <input id="inputEstadoCivil" name="estado_civil" class="form-control bg-transparent" placeholder="Estado civil" type="text" required="">
+                                                        <input name="estado_civil" class="form-control bg-transparent" placeholder="Estado civil" type="text" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <label for="inputDomicilio"></label>
-                                                        <input id="inputDomicilio" name="domicilio" class="form-control bg-transparent" placeholder="Domicilio" type="text" required="">
+                                                        <input  name="domicilio" class="form-control bg-transparent" placeholder="Domicilio" type="text" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <label for="inputDomicilioNumero"></label>
-                                                        <input id="inputDomicilioNumero" name="domicilio_numero" class="form-control bg-transparent" placeholder="Número de domicilio" type="text" required="">
+                                                        <input  name="domicilio_numero" class="form-control bg-transparent" placeholder="Número de domicilio" type="text" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <label for="inputPiso"></label>
-                                                        <input id="inputPiso" name="piso" class="form-control bg-transparent" placeholder="Piso" type="text" required="">
+                                                        <input  name="piso" class="form-control bg-transparent" placeholder="Piso" type="text" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <label for="inputDepto"></label>
-                                                        <input id="inputDepto" name="depto" class="form-control bg-transparent" placeholder="depto" type="text" required="">
+                                                        <input  name="depto" class="form-control bg-transparent" placeholder="depto" type="text" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <label for="inputLocalidad"></label>
-                                                        <input id="inputLocalidad" name="localidad" class="form-control bg-transparent" placeholder="Localidad" type="text" required="">
+                                                        <input name="localidad" class="form-control bg-transparent" placeholder="Localidad" type="text" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <label for="inputPartido"></label>
-                                                        <input id="inputPartido" name="partido" class="form-control bg-transparent" placeholder="Partido" type="text" required="">
+                                                        <input  name="partido" class="form-control bg-transparent" placeholder="Partido" type="text" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <label for="inputCodigoPostal"></label>
-                                                        <input id="inputCodigoPostal" name="codigo_postal" class="form-control bg-transparent" placeholder="Codigo postal" type="text" required="">
+                                                        <input  name="codigo_postal" class="form-control bg-transparent" placeholder="Codigo postal" type="text" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <label for="inputTelefono"></label>
-                                                        <input id="inputTelefono" name="telefono" class="form-control bg-transparent" placeholder="Telefono" type="text" required="">
+                                                        <input  name="telefono" class="form-control bg-transparent" placeholder="Telefono" type="text" required="">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="">
+                                                        <input name="telefono_alternativo" class="form-control bg-transparent" placeholder="Telefono alternativo" type="text" required="">
                                                     </div>
                                                 </div>
 
+                                                <div class="form-group">
+                                                    <div class="">
+                                                        <input name="telefono_alternativo_persona" class="form-control bg-transparent" placeholder="Telefono alternativo persona" type="text" required="">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="">
+                                                        <input name="email" class="form-control bg-transparent" placeholder="Correo electronico" type="text" required="">
+                                                    </div>
+                                                </div>
                                                 <div class="form-group">
                                                     <div class="modal-footer">
                                                         <button type="submit" class="btn btn-info btn-lg btn-block" id="boton_guardarAlumno">Guardar</button>
