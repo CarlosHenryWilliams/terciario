@@ -226,8 +226,11 @@
                                          <td><?php echo $materia['nombre'] ?></td>
                                          <td><?php echo $materia['abreviatura'] ?> </td>
                                          <td><?php echo $materia['estado_m'] ?> </td>
-                                         <td><button id="botoneditarmateria">Editar</button> <button
-                                                 id="botondeshabilitarmateria">Deshabilitar</button></td>
+                                         <td><button id="botoneditarmateria">Editar</button>
+                                             <button id="botondeshabilitar" value='<?php echo $materia['id'] ?>'
+                                                 class="botondeshabilitar"
+                                                 onClick="get_id_materia(this.value)">Deshabilitar</button>
+                                         </td>
                                          <!-- <a href="<?php  ?>" target="_blank">
                                                  <?php
                                                     // if ($material['tipo_archivo'] === 'application/pdf') {
@@ -271,6 +274,101 @@
 
 
      <script>
+     /**Deshabilitar Materia 
+      * 
+      */
+
+     //  $(window).on("load", function() {
+     //      $('.botondeshabilitar').click(function() {
+     //          console.log('NISMAN');
+     //          let idmateria = $(this).attr("id");
+     //          let nisman = $(this).attr("value");
+     //          console.log(idmateria, nisman);
+     //      });
+     //  });
+
+
+     /**Deshabilitar materia
+      * 
+      * Obtiene el id de de la materia
+      * */
+
+     function get_id_materia(id) {
+
+         console.log(id)
+         let id_materia = id;
+
+         Swal.fire({
+             title: 'Deshabilitar Materia',
+             text: "Esta seguro que desea dar de baja la materia?",
+             icon: 'warning',
+             showCancelButton: true,
+             confirmButtonColor: '#3085d6',
+             cancelButtonColor: '#d33',
+             confirmButtonText: 'Si, estoy seguro',
+             cancelButtonText: 'Cancelar',
+         }).then((result) => {
+             if (result.isConfirmed) {
+                 /**
+                  * Si confirma el formulario lo envia por post mediante Jquery
+                  */
+                 $.post('../../backend/materias/deshabilitarmateria.php', {
+                     var_id_materia: id_materia
+                 }, function(data) {
+                     if (data == '1') {
+                         Swal.fire(
+                             'Perfecto!',
+                             'La materia ha sido dada de baja!',
+                             'success'
+                         )
+                     } else {
+                         Swal.fire({
+                             icon: 'error',
+                             title: 'Oops...',
+                             text: 'Ha ocurrido un error inesperado',
+                             //  footer: '<a href="">Why do I have this issue?</a>'
+                         })
+                     }
+                 });
+
+             }
+         })
+     }
+
+     // Delete a Single Task
+     // Get a Single Task by Id 
+     //escuchamos cuando demos click en cualquier boton "delete" ".task-delete"
+     //  $(document).on('click', '.botondeshabilitar', () => {
+
+     //  console.log('NISMAAAAAAAAAAAAAAAAAAAAAAAN');
+     //  alert(this.value);
+     //  const element = this.id;
+
+     //  console.log(element);
+
+     //  //se ejecuta la siguiente funcion solo si se confirma el alert
+     //  if (confirm('Esta seguro de querer eliminar este elemento?')) {
+     //      //selecionamos todo lo que contenga la fila de ese boton con parentElement doble para acceder a su <tr>(fila) para obtener su id
+     //      const element = document.getElementsByClassName('botondeshabilitar').id;
+     //      //  $(this)[0].activeElement.parentElement.parentElement;
+     //      //guardamos el id como una constante que contiene el atributo que contiene la clase que contiene el id de dicha fila
+     //      //  const id = $(element).attr('id');
+
+     //      console.log(element);
+     //      //ejecutamos la funcion por metodo post para eliminar la fila, damos la direccion, la variable que contiene el identificador (id) y la funcion de respuesta
+     //      $.post('task-delete.php', {
+     //          id
+     //      }, (response) => {
+     //          //llamamos a la funcion fetchTasks para reordenar la tabla luego de la eliminacion exitosa
+     //          fetchTasks();
+     //      });
+     //  }
+     //  });
+     </script>
+
+
+
+     <script>
      $('#boton_cargarmateria').click(function() {
 
          let nombre_materia = document.getElementById('inputnombremateria').value;
@@ -310,8 +408,8 @@
                      }, function(data) {
                          if (data == '1') {
                              Swal.fire(
-                                 'Good job!',
-                                 'You clicked the button!',
+                                 'Buen Trabajo!',
+                                 'La materia ha sido cargada!',
                                  'success'
                              )
                          } else {
