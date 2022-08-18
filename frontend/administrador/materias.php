@@ -27,6 +27,8 @@
 
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+     <script src="https://kit.fontawesome.com/3318b77524.js" crossorigin="anonymous"></script>
+
      <!-- SWEET ALERT 2 -->
      <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
      <script src='sweetalert2.min.js'></script>
@@ -183,80 +185,64 @@
                              Materias
                          </div>
                          <div class="card-body">
-                             <table id="datatablesSimple">
-                                 <thead>
-                                     <tr>
-                                         <th>id</th>
-                                         <th>Nombre</th>
-                                         <th>Abreviatura</th>
-                                         <th>Estado</th>
-                                         <th>Acciones</th>
-                                     </tr>
-                                 </thead>
-                                 <!-- <tfoot>
-                                     <tr>
-                                         <th>Name</th>
-                                         <th>Position</th>
-                                         <th>Office</th>
-                                         <th>Age</th>
-                                         <th>Start date</th>
-                                         <th>Salary</th>
-                                     </tr>
-                                 </tfoot> -->
+                             <div id="tabla_materias">
+                                 <table id="datatablesSimple">
+                                     <thead>
+                                         <tr>
+                                             <th>id</th>
+                                             <th>Nombre</th>
+                                             <th>Abreviatura</th>
+                                             <th>Estado</th>
+                                             <th>Acciones</th>
+                                         </tr>
+                                     </thead>
 
-                                 <?php include('../../backend/materias/buscarmaterias.php'); //BUSCAR MATERIAL
-                                    ?> <tbody>
-                                     <!-- 
-                                     <tr>
-                                         <td>Tiger Nixon</td>
-                                         <td>System Architect</td>
-                                         <td>Edinburgh</td>
-                                         <td>61</td>
-                                         <td>2011/04/25</td>
-                                         <td>$320,800</td>
-                                     </tr> -->
-
-                                     <?php
-
-                                        foreach ($resultado as $materia) {
-
-                                        ?>
-                                     <tr>
-                                         <td><?php echo $materia['id'] ?></td>
-                                         <td><?php echo $materia['nombre'] ?></td>
-                                         <td><?php echo $materia['abreviatura'] ?> </td>
-                                         <td><?php echo $materia['estado_m'] ?> </td>
-                                         <td><button id="botoneditarmateria">Editar</button>
-                                             <button id="botondeshabilitar" value='<?php echo $materia['id'] ?>'
-                                                 class="botondeshabilitar"
-                                                 onClick="get_id_materia(this.value)">Deshabilitar</button>
-                                         </td>
-                                         <!-- <a href="<?php  ?>" target="_blank">
-                                                 <?php
-                                                    // if ($material['tipo_archivo'] === 'application/pdf') {
-                                                    //     $archivo = '<i class="fa-solid fa-file-pdf pdf"></i>';
-                                                    // } else if ($material['tipo_archivo'] === 'video/mp4') {
-                                                    //     $archivo = '<i class="fa-brands fa-youtube youtube"></i>';
-                                                    // }
-                                                    // echo $archivo;
-                                                    ?>
-                                             </a> -->
-
-                                     </tr>
-
-                                     <?php
-                                        }
-
+                                     <?php include('../../backend/materias/buscarmaterias.php'); //BUSCAR MATERIAL
                                         ?>
 
+                                     <tbody>
+
+                                         <?php foreach ($resultado as $materia) {
+
+                                            ?>
+                                         <tr>
+                                             <td><?php echo $materia['id'] ?></td>
+                                             <td><?php echo $materia['nombre'] ?></td>
+                                             <td><?php echo $materia['abreviatura'] ?> </td>
+                                             <td><?php echo $materia['estado_m'] ?> </td>
+                                             <td>
+                                                 <button id="botoneditarmateria" class="btn btn-secondary">Editar <i
+                                                         class="fa-solid fa-pen-to-square"></i></button>
+                                                 <button id="botondeshabilitar" value='<?php echo $materia['id'] ?>'
+                                                     class="botondeshabilitar btn btn-danger"
+                                                     onClick="get_id_materia(this.value)"><i
+                                                         class="fa-solid fa-trash-can"></i></button>
+                                             </td>
 
 
-                                 </tbody>
-                             </table>
+                                         </tr>
+
+                                         <?php
+                                            }
+
+                                            ?>
+
+
+
+                                     </tbody>
+                                 </table>
+                             </div>
                          </div>
                      </div>
+
+
+
+
+
                  </div>
              </main>
+
+
              <footer class="py-4 bg-light mt-auto">
                  <div class="container-fluid px-4">
                      <div class="d-flex align-items-center justify-content-between small">
@@ -274,20 +260,6 @@
 
 
      <script>
-     /**Deshabilitar Materia 
-      * 
-      */
-
-     //  $(window).on("load", function() {
-     //      $('.botondeshabilitar').click(function() {
-     //          console.log('NISMAN');
-     //          let idmateria = $(this).attr("id");
-     //          let nisman = $(this).attr("value");
-     //          console.log(idmateria, nisman);
-     //      });
-     //  });
-
-
      /**Deshabilitar materia
       * 
       * Obtiene el id de de la materia
@@ -316,11 +288,11 @@
                      var_id_materia: id_materia
                  }, function(data) {
                      if (data == '1') {
-                         Swal.fire(
-                             'Perfecto!',
-                             'La materia ha sido dada de baja!',
-                             'success'
-                         )
+                         Swal.fire('Perfecto!', 'La materia ha sido dada de baja!', 'success').then(
+                             () => {
+                                 $('#tabla_materias').load('#tabla_materias');
+                             });
+
                      } else {
                          Swal.fire({
                              icon: 'error',
@@ -334,36 +306,6 @@
              }
          })
      }
-
-     // Delete a Single Task
-     // Get a Single Task by Id 
-     //escuchamos cuando demos click en cualquier boton "delete" ".task-delete"
-     //  $(document).on('click', '.botondeshabilitar', () => {
-
-     //  console.log('NISMAAAAAAAAAAAAAAAAAAAAAAAN');
-     //  alert(this.value);
-     //  const element = this.id;
-
-     //  console.log(element);
-
-     //  //se ejecuta la siguiente funcion solo si se confirma el alert
-     //  if (confirm('Esta seguro de querer eliminar este elemento?')) {
-     //      //selecionamos todo lo que contenga la fila de ese boton con parentElement doble para acceder a su <tr>(fila) para obtener su id
-     //      const element = document.getElementsByClassName('botondeshabilitar').id;
-     //      //  $(this)[0].activeElement.parentElement.parentElement;
-     //      //guardamos el id como una constante que contiene el atributo que contiene la clase que contiene el id de dicha fila
-     //      //  const id = $(element).attr('id');
-
-     //      console.log(element);
-     //      //ejecutamos la funcion por metodo post para eliminar la fila, damos la direccion, la variable que contiene el identificador (id) y la funcion de respuesta
-     //      $.post('task-delete.php', {
-     //          id
-     //      }, (response) => {
-     //          //llamamos a la funcion fetchTasks para reordenar la tabla luego de la eliminacion exitosa
-     //          fetchTasks();
-     //      });
-     //  }
-     //  });
      </script>
 
 
@@ -411,7 +353,13 @@
                                  'Buen Trabajo!',
                                  'La materia ha sido cargada!',
                                  'success'
-                             )
+                             ).then(
+                                 () => {
+                                     $('#inputnombremateria').val('');
+                                     $('#inputabreviaturamateria').val('');
+                                     $('#inputestadomateria').val('');
+                                     $('#tabla_materias').load('#tabla_materias');
+                                 });
                          } else {
                              Swal.fire({
                                  icon: 'error',
