@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 18-08-2022 a las 13:19:12
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Host: 127.0.0.1
+-- Generation Time: Aug 24, 2022 at 06:53 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `terciario`
+-- Database: `terciario`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cursada`
+-- Table structure for table `cursada`
 --
 
 CREATE TABLE `cursada` (
@@ -37,7 +37,7 @@ CREATE TABLE `cursada` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `materias`
+-- Table structure for table `materias`
 --
 
 CREATE TABLE `materias` (
@@ -47,10 +47,31 @@ CREATE TABLE `materias` (
   `estado_m` int(50) NOT NULL COMMENT '0 deshabilitado -- 1 habilitado'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `materias`
+--
+
+INSERT INTO `materias` (`id`, `nombre`, `abreviatura`, `estado_m`) VALUES
+(1, 'Sociales', 'Ss', 0),
+(2, 'Nisman', 'Nisman', 0),
+(3, 'jose', 'jose', 0),
+(4, 'NISMAN', 'jose', 0),
+(5, 'Jose', 'Jose', 0),
+(6, 'fsafsa', 'fsafsaf', 0),
+(7, 'Javier', 'dasdaad', 0),
+(8, 'fsafsa', 'fsafasf', 0),
+(9, 'fsafsa', 'dadada', 0),
+(10, 'FSAFSA', 'FSADSA', 0),
+(11, 'raraa', 'ESKERE', 0),
+(12, 'New', 'Titan', 0),
+(13, 'FSAFSA', 'FAFA', 0),
+(14, 'Eskere', 'gualeguaycu', 0),
+(15, 'jose', 'lopez', 1);
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `notas`
+-- Table structure for table `notas`
 --
 
 CREATE TABLE `notas` (
@@ -63,7 +84,7 @@ CREATE TABLE `notas` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `planestudio_materia`
+-- Table structure for table `planestudio_materia`
 --
 
 CREATE TABLE `planestudio_materia` (
@@ -75,7 +96,7 @@ CREATE TABLE `planestudio_materia` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `plan_estudio`
+-- Table structure for table `plan_estudio`
 --
 
 CREATE TABLE `plan_estudio` (
@@ -88,7 +109,7 @@ CREATE TABLE `plan_estudio` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipo_notas`
+-- Table structure for table `tipo_notas`
 --
 
 CREATE TABLE `tipo_notas` (
@@ -99,7 +120,7 @@ CREATE TABLE `tipo_notas` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -125,93 +146,93 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `cursada`
+-- Indexes for table `cursada`
 --
 ALTER TABLE `cursada`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `materias`
+-- Indexes for table `materias`
 --
 ALTER TABLE `materias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `notas`
+-- Indexes for table `notas`
 --
 ALTER TABLE `notas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `planestudio_materia`
+-- Indexes for table `planestudio_materia`
 --
 ALTER TABLE `planestudio_materia`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `plan_estudio`
+-- Indexes for table `plan_estudio`
 --
 ALTER TABLE `plan_estudio`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `tipo_notas`
+-- Indexes for table `tipo_notas`
 --
 ALTER TABLE `tipo_notas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `cursada`
+-- AUTO_INCREMENT for table `cursada`
 --
 ALTER TABLE `cursada`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `materias`
+-- AUTO_INCREMENT for table `materias`
 --
 ALTER TABLE `materias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT de la tabla `notas`
+-- AUTO_INCREMENT for table `notas`
 --
 ALTER TABLE `notas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `planestudio_materia`
+-- AUTO_INCREMENT for table `planestudio_materia`
 --
 ALTER TABLE `planestudio_materia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `plan_estudio`
+-- AUTO_INCREMENT for table `plan_estudio`
 --
 ALTER TABLE `plan_estudio`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tipo_notas`
+-- AUTO_INCREMENT for table `tipo_notas`
 --
 ALTER TABLE `tipo_notas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
