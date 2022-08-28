@@ -22,6 +22,8 @@
     <!-- CDN DATATABLES -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap.css">
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -125,9 +127,10 @@
                             Materias
                         </div>
                         <div class="card-body">
-                            <table id="tabla_completa_materias">
-                                <thead>
-                                    <tr>
+                            <table id="tabla_completa_materias" class="table table-bordered display responsive nowrap"
+                                width="100%">
+                                <thead class="">
+                                    <tr class="">
                                         <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Abreviatura</th>
@@ -160,6 +163,8 @@
             </footer>
         </div>
     </div>
+
+
 
     <!-- cierre footer -->
 
@@ -204,6 +209,7 @@
     });
     var listar = function() {
         var tableMaterias = $("#tabla_completa_materias").DataTable({
+
             "destroy": true,
             "ajax": {
                 "method": "POST",
@@ -222,7 +228,7 @@
                     "data": "estado_m"
                 },
                 {
-                    "defaultContent": "<div ><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>edit</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>delete</i></button></div></div>"
+                    "defaultContent": "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-info btnEditar'>Editar</button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Dar de baja</i></button></div></div>"
                 }
             ]
 
@@ -319,6 +325,35 @@
 
         }
 
+    });
+    </script>
+
+
+    <script>
+    //Editar
+    $(document).on("click", ".btnEditar", function() {
+
+        opcion = 2; //editar
+        fila = $(this).closest("tr");
+        id = parseInt(fila.find("td:eq(0)").text()); //capturo el ID
+        console.log(id);
+        nombre = fila.find("td:eq(1)").text();
+        console.log(nombre);
+        abreviatura = fila.find("td:eq(2)").text();
+        console.log(abreviatura);
+        estado_m = fila.find("td:eq(3)").text();
+        console.log(estado_m);
+
+        $("#username").val(nombre); //DEBERIA IR EL INPUT DEL NOMBRE DEL MODAL
+        $("#first_name").val(abreviatura);
+        $("#last_name").val(estado_m);
+        // $("#gender").val(gender);
+        // $("#password").val(password);
+        // $("#status").val(status);
+        $(".modal-header").css("background-color", "#007bff");
+        $(".modal-header").css("color", "white");
+        $(".modal-title").text("Editar Usuario");
+        $("#modalCRUD").modal("show");
     });
     </script>
 </body>
