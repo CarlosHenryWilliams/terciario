@@ -46,6 +46,7 @@
                      data-bs-parent="#sidenavAccordion">
                      <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                          <a class="nav-link" href="materias.php">Ver Materias</a>
+                         <a class="nav-link" href="materiasrial.php">Materias RIAL</a>
                          <a class="nav-link" href="">Cargar Nuevo</a>
                      </nav>
                  </div>

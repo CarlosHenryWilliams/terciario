@@ -11,9 +11,14 @@
      <meta name="description" content="" />
      <meta name="author" content="" />
      <title>Administrador - Terciario 89</title>
+
      <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
      <link href="css/styles.css" rel="stylesheet" />
+
      <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
+     <!-- CDN DATATABLES -->
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -129,7 +134,7 @@
                          </div>
                          <div class="card-body">
                              <div id="tabla_materias">
-                                 <table id="datatablesSimple">
+                                 <table id="tabla_completa_materias">
                                      <thead>
                                          <tr>
                                              <th>id</th>
@@ -140,38 +145,9 @@
                                          </tr>
                                      </thead>
 
-                                     <?php include('../../backend/materias/buscarmaterias.php'); //BUSCAR MATERIAL
-                                        ?>
-                                     <tbody>
-
-                                         <?php foreach ($resultado as $materia) {
-
-                                            ?>
-                                         <tr>
-                                             <td><?php echo $materia['id'] ?></td>
-                                             <td><?php echo $materia['nombre'] ?></td>
-                                             <td><?php echo $materia['abreviatura'] ?> </td>
-                                             <td><?php echo $materia['estado_m'] ?> </td>
-                                             <td>
-                                                 <button id="botoneditarmateria" class="btn btn-secondary">Editar <i
-                                                         class="fa-solid fa-pen-to-square"></i></button>
-                                                 <button id="botondeshabilitar" value='<?php echo $materia['id'] ?>'
-                                                     class="btn btn-danger" onClick="get_id_materia(this.value)"><i
-                                                         class="fa-solid fa-trash-can"></i></button>
-                                             </td>
-
-
-                                         </tr>
-
-                                         <?php
-                                            }
-
-                                            ?>
-
 
 
                                      </tbody>
-
                                  </table>
                              </div>
                          </div>
@@ -201,151 +177,369 @@
      </div>
 
 
-     <script>
-     /**Deshabilitar materia
-      * 
-      * Obtiene el id de de la materia
-      * */
 
-     function get_id_materia(id) {
+ </body>
 
-         console.log(id)
-         let id_materia = id;
-
-         Swal.fire({
-             title: 'Deshabilitar Materia',
-             text: "Esta seguro que desea dar de baja la materia?",
-             icon: 'warning',
-             showCancelButton: true,
-             confirmButtonColor: '#3085d6',
-             cancelButtonColor: '#d33',
-             confirmButtonText: 'Si, estoy seguro',
-             cancelButtonText: 'Cancelar',
-         }).then((result) => {
-             if (result.isConfirmed) {
-                 /**
-                  * Si confirma el formulario lo envia por post mediante Jquery
-                  */
-                 $.post('../../backend/materias/deshabilitarmateria.php', {
-                     var_id_materia: id_materia
-                 }, function(data) {
-                     if (data == '1') {
-                         Swal.fire('Perfecto!', 'La materia ha sido dada de baja!', 'success').then(
-                             () => {
-
-                                 //  setInterval(function() {
-                                 //      $('#tabla_materias').load('#tabla_materias');
-                                 //  }, 1000);
-
-                                 $('#').load('#tabla_materias');
-                             });
-                         tabla_materias
-
-                     } else {
-                         Swal.fire({
-                             icon: 'error',
-                             title: 'Oops...',
-                             text: 'Ha ocurrido un error inesperado',
-                             //  footer: '<a href="">Why do I have this issue?</a>'
-                         })
-                     }
-                 });
-
-             }
-         })
-     }
-     </script>
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+ </script>
+ <script src="js/scripts.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+ <script src="assets/demo/chart-area-demo.js"></script>
+ <script src="assets/demo/chart-bar-demo.js"></script>
 
-     <script>
-     $('#boton_cargarmateria').click(function() {
+ <!-- SCRIPT DATATABLES -->
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">
+ </script>
 
-         let nombre_materia = document.getElementById('inputnombremateria').value;
-         let abreviatura_materia = document.getElementById('inputabreviaturamateria').value;
-         let estado_materia = document.getElementById('inputestadomateria').value;
+ <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous" defer></script>
 
-         console.log(nombre_materia, abreviatura_materia, estado_materia);
+ <script src="js/datatables-simple-demo.js"></script>
 
-         if (nombre_materia == '' || abreviatura_materia == '' || estado_materia == '') {
-             Swal.fire({
-                 icon: 'error',
-                 title: 'Oops...',
-                 text: 'Por favor no deje ningun campo vacio',
-                 //  footer: '<a href="">Why do I have this issue?</a>'
-             })
-         } else {
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">
+ </script>
 
-             Swal.fire({
-                 title: 'Los datos son correctos?',
-                 text: "La materia se cargara al sistema",
-                 icon: 'warning',
-                 showCancelButton: true,
-                 confirmButtonColor: '#3085d6',
-                 cancelButtonColor: '#d33',
-                 confirmButtonText: 'Si, estoy seguro',
-                 cancelButtonText: 'Cancelar',
-             }).then((result) => {
-                 if (result.isConfirmed) {
-                     /**
-                      * Si confirma el formulario lo envia por post mediante Jquery
-                      */
+ <!-- <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> -->
 
-                     $.post('../../backend/materias/cargarmateria.php', {
-                         var_nombre_materia: nombre_materia,
-                         var_abreviatura_materia: abreviatura_materia,
-                         var_estado_materia: estado_materia
-                     }, function(data) {
-                         if (data == '1') {
-                             Swal.fire(
-                                 'Buen Trabajo!',
-                                 'La materia ha sido cargada!',
-                                 'success'
-                             ).then(
-                                 () => {
-                                     $('#inputnombremateria').val('');
-                                     $('#inputabreviaturamateria').val('');
-                                     $('#inputestadomateria').val('');
-                                     $('#tabla_materias').load('#tabla_materias');
-                                 });
-                         } else {
-                             Swal.fire({
-                                 icon: 'error',
-                                 title: 'Oops...',
-                                 text: 'Revisa los campos nuevamente',
-                                 //  footer: '<a href="">Why do I have this issue?</a>'
-                             })
-                         }
-                     });
-
-                 }
-             })
-
-
-         }
-
-     });
-     </script>
-
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-     </script>
-     <script src="js/scripts.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-     <script src="assets/demo/chart-area-demo.js"></script>
-     <script src="assets/demo/chart-bar-demo.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-     <script src="js/datatables-simple-demo.js"></script>
-
-     <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+ <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
          integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
      </script> -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
-     </script>
- </body>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+     integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+ </script>
+
+
+
+
+
+
+
+
+
+ <script>
+/**Deshabilitar materia
+ * 
+ * Obtiene el id de de la materia
+ * */
+
+function get_id_materia(id) {
+
+    console.log(id)
+    let id_materia = id;
+
+    Swal.fire({
+        title: 'Deshabilitar Materia',
+        text: "Esta seguro que desea dar de baja la materia?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, estoy seguro',
+        cancelButtonText: 'Cancelar',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            /**
+             * Si confirma el formulario lo envia por post mediante Jquery
+             */
+            $.post('../../backend/materias/deshabilitarmateria.php', {
+                var_id_materia: id_materia
+            }, function(data) {
+                if (data == '1') {
+                    Swal.fire('Perfecto!', 'La materia ha sido dada de baja!', 'success').then(
+                        () => {
+
+                            //  setInterval(function() {
+                            //      $('#tabla_materias').load('#tabla_materias');
+                            //  }, 1000);
+
+                            $('#').load('#tabla_materias');
+                        });
+                    tabla_materias
+
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Ha ocurrido un error inesperado',
+                        //  footer: '<a href="">Why do I have this issue?</a>'
+                    })
+                }
+            });
+
+        }
+    })
+}
+ </script>
+
+
+
+ <script>
+$(document).ready(function() {
+    listar();
+
+});
+var listar = function() {
+    var tableMaterias = $("#tabla_completa_materias").DataTable({
+        "destroy": true,
+        "ajax": {
+            "method": "POST",
+            "url": "../../backend/materias/buscarmaterias2.php"
+        },
+        "columns": [{
+                "data": "id"
+            },
+            {
+                "data": "nombre"
+            },
+            {
+                "data": "abreviatura"
+            },
+            {
+                "data": "estado_m"
+            }, {
+                "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>edit</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>delete</i></button></div></div>"
+            }
+        ]
+
+    });
+}
+ </script>
+
+
+
+ <script>
+$(document).ready(function() {
+
+    // tablaMaterias = $("#tabla_completa_materias").DataTable({
+
+    //     "columnDefs": [{
+    //         "targets": -1,
+    //         "data": null,
+    //         "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>edit</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>delete</i></button></div></div>"
+    //     }],
+
+    // });
+
+
+
+
+
+
+
+    //  MODAL AGREGAR
+    $('#boton_cargarmateria').click(function() {
+
+        let nombre_materia = document.getElementById('inputnombremateria').value;
+        let abreviatura_materia = document.getElementById('inputabreviaturamateria').value;
+        let estado_materia = document.getElementById('inputestadomateria').value;
+
+        console.log(nombre_materia, abreviatura_materia, estado_materia);
+
+        if (nombre_materia == '' || abreviatura_materia == '' || estado_materia == '') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Por favor no deje ningun campo vacio',
+                //  footer: '<a href="">Why do I have this issue?</a>'
+            })
+        } else {
+
+            Swal.fire({
+                title: 'Los datos son correctos?',
+                text: "La materia se cargara al sistema",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, estoy seguro',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    /**
+                     * Si confirma el formulario lo envia por post mediante Jquery
+                     */
+
+                    $.post('../../backend/materias/cargarmateria.php', {
+                        var_nombre_materia: nombre_materia,
+                        var_abreviatura_materia: abreviatura_materia,
+                        var_estado_materia: estado_materia
+                    }, function(data) {
+                        if (data == '1') {
+                            Swal.fire(
+                                'Buen Trabajo!',
+                                'La materia ha sido cargada!',
+                                'success'
+                            ).then(
+                                () => {
+
+                                    listar();
+                                    //  tablaMaterias.ajax.reload();
+                                    // tablaMaterias.row.add([var_nombre_materia,
+                                    //     var_abreviatura_materia,
+                                    //     var_estado_materia
+                                    // ]).draw();
+                                    // //  $('#inputnombremateria').val('');
+                                    // //  $('#inputabreviaturamateria').val('');
+                                    // //  $('#inputestadomateria').val('');
+                                    // //  $('#tabla_materias').load('#tabla_materias');
+
+                                    // tablaMaterias.fnDestroy();
+                                    // $("#tabla_completa_materias").DataTable()
+                                    //     .fnDestroy();
+
+                                    //  table = $("#table_data").datatable()
+                                    //  $("#my-button").click(function() {
+                                    //      table.fnDestroy();
+                                    //      table = $("#table_data")
+                                    //          .dataTable();
+                                    //  });
+
+                                });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Revisa los campos nuevamente',
+                                //  footer: '<a href="">Why do I have this issue?</a>'
+                            })
+                        }
+                    });
+
+                }
+            })
+
+
+        }
+
+    });
+});
+ </script>
+
+ <!-- <script>
+$(document).ready(function() {
+
+
+
+    //  const datatablesSimple = document.getElementById("tabla_completa_materias");
+    //  if (datatablesSimple) {
+    //      new simpleDatatables.DataTable(datatablesSimple);
+    //  }
+    console.log('si funciona');
+
+    console.log('LLEGO HASTA ACA');
+
+    //  fetchTasks();
+    // Fetching Tasks para mostrarlos en la tabla fetch=buscar
+    function fetchTasks() {
+
+        $.ajax({
+            url: "../../backend/materias/buscarmaterias.php", //direccion donde pedis
+            type: "GET",
+            success: function(response) {
+
+                const datos = JSON.parse(response); // lo pasas a json
+
+                let tbodydatos = "";
+                datos.forEach((dato) => {
+                    //hace el foreach con la variable de arriba tasks
+                    tbodydatos += `
+                  <tr taskId="${dato.id}">
+                  <td>${dato.id}</td>
+                  <td>${dato.nombre} </td>
+                  <td>${dato.abreviatura}</td>
+                   <td>${dato.estado_m}</td>
+
+                   
+                  <td>
+                    <button class="task-delete btn btn-danger">  
+                     Delete 
+                    </button>
+                  </td>
+                  </tr>
+                `;
+                }); // se le agrega una clase task-delete y no un id porque un id no puede repetirse entonces se va a buguear
+                $("#tablaMaterias").html(
+                    tbodydatos); // llamas al tbody y le insertas el template que creaste
+            },
+        });
+
+    }
+
+
+});
+ </script> -->
+ <script>
+
+ </script>
+
+
+
+
+
+ <script>
+//  $(document).ready(function() {
+//      var user_id, opcion;
+//      opcion = 4;
+
+//      tablaUsuarios = $('#tabla_completa_materias').DataTable({
+//          "ajax": {
+//              "url": "../../backend/materias/buscarmaterias.php",
+//              "method": 'POST', //usamos el metodo POST
+//              "data": {
+//                  opcion: opcion
+//              }, //enviamos opcion 4 para que haga un SELECT
+//              "dataSrc": ""
+//          },
+//          "columns": [{
+//                  "data": "id"
+//              },
+//              {
+//                  "data": "username"
+//              },
+//              {
+//                  "data": "nombre"
+//              },
+//              {
+//                  "data": "abreviatura"
+//              },
+//              {
+//                  "data": "estado_m"
+//              },
+//              {
+//                  "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>edit</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>delete</i></button></div></div>"
+//              }
+//          ]
+//      });
+//  });
+ </script>
+
+ <script>
+//  $(document).ready(function() {
+//      console.log('nidiea');
+//      $('#tabla_completa_materias').DataTable({
+//          "ajax": {
+//              "method": "POST",
+//              "url": "../../backend/materias/buscarmaterias.php",
+//          },
+//          "columns": [{
+//                  "data": "id"
+//              },
+//              {
+//                  "data": "nombre"
+//              },
+//              {
+//                  "data": "abreviatura"
+//              },
+//              {
+//                  "data": "estado_m"
+//              }
+
+//          ]
+//      });
+//  });
+ </script>
 
  </html>
