@@ -68,7 +68,8 @@
 
                     <div class="acciones">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" class="btn btn-primary btnAgregar" data-toggle="modal"
+                            data-target="#exampleModal">
                             Agregar materia nueva
                         </button>
 
@@ -100,8 +101,9 @@
                                                     id="inputabreviaturamateria">
                                             </div>
                                             <div class="form-group">
-                                                <!-- <label for="inputabreviaturamateria">Estado</label> -->
-                                                <input type="hidden" value="1" class="form-control"
+                                                <label for="inputabreviaturamateria"
+                                                    id="labelestadomateria">Estado</label>
+                                                <input type="text" value="1" class="form-control"
                                                     id="inputestadomateria">
                                             </div>
 
@@ -228,7 +230,7 @@
                     "data": "estado_m"
                 },
                 {
-                    "defaultContent": "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-info btnEditar'>Editar</button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Dar de baja</i></button></div></div>"
+                    "defaultContent": "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-info btnEditar' data-toggle='modal' data-target='#exampleModal'>Editar</button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Dar de baja</i></button></div></div>"
                 }
             ]
 
@@ -344,15 +346,48 @@
         estado_m = fila.find("td:eq(3)").text();
         console.log(estado_m);
 
-        $("#username").val(nombre); //DEBERIA IR EL INPUT DEL NOMBRE DEL MODAL
-        $("#first_name").val(abreviatura);
-        $("#last_name").val(estado_m);
+        $("#inputnombremateria").val(nombre); //DEBERIA IR EL INPUT DEL NOMBRE DEL MODAL
+        $("#inputabreviaturamateria").val(abreviatura);
+        $("#inputestadomateria").val(estado_m);
+        $("#inputestadomateria").show();
+        $("#labelestadomateria").show();
         // $("#gender").val(gender);
         // $("#password").val(password);
         // $("#status").val(status);
         $(".modal-header").css("background-color", "#007bff");
         $(".modal-header").css("color", "white");
-        $(".modal-title").text("Editar Usuario");
+        $(".modal-title").text("Editar Materia");
+        $("#modalCRUD").modal("show");
+    });
+
+
+
+    //Editar
+    $(document).on("click", ".btnAgregar", function() {
+
+        opcion = 1; //Agregar
+
+        $("#inputestadomateria").hide();
+        $("#labelestadomateria").hide();
+        // fila = $(this).closest("tr");
+        // id = parseInt(fila.find("td:eq(0)").text()); //capturo el ID
+        // console.log(id);
+        // nombre = fila.find("td:eq(1)").text();
+        // console.log(nombre);
+        // abreviatura = fila.find("td:eq(2)").text();
+        // console.log(abreviatura);
+        // estado_m = fila.find("td:eq(3)").text();
+        // console.log(estado_m);
+
+        // $("#username").val(nombre); //DEBERIA IR EL INPUT DEL NOMBRE DEL MODAL
+        // $("#first_name").val(abreviatura);
+        // $("#last_name").val(estado_m);
+        // // $("#gender").val(gender);
+        // // $("#password").val(password);
+        // // $("#status").val(status);
+        $(".modal-header").css("background-color", "#007bff");
+        $(".modal-header").css("color", "white");
+        $(".modal-title").text("Agregar Materia");
         $("#modalCRUD").modal("show");
     });
     </script>
