@@ -211,6 +211,9 @@
     var listar = function() {
         var tableMaterias = $("#tabla_completa_materias").DataTable({
 
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            },
             "destroy": true,
             "ajax": {
                 "method": "POST",
@@ -369,12 +372,26 @@
 
         opcion = 1; //Agregar
 
+        /**
+         * MODIFICACIONES MODAL
+         */
         $("#inputestadomateria").hide();
         $("#labelestadomateria").hide();
 
         $("#inputnombremateria").val(""); //DEBERIA IR EL INPUT DEL NOMBRE DEL MODAL
         $("#inputabreviaturamateria").val("");
         $("#inputestadomateria").val(1);
+
+
+        /**
+         * CSS MODAL
+         */
+        $(".modal-header").css("background-color", "#007bff");
+        $(".modal-header").css("color", "white");
+        $("#boton_cargarmateria").css("background-color", "#007bff");
+        $("#boton_cargarmateria").css("color", "white");
+        $(".modal-title").text("Agregar Materia");
+        $("#modalCRUD").modal("show");
 
         // fila = $(this).closest("tr");
         // id = parseInt(fila.find("td:eq(0)").text()); //capturo el ID
@@ -393,12 +410,7 @@
         // // $("#password").val(password);
         // // $("#status").val(status);
 
-        $(".modal-header").css("background-color", "#007bff");
-        $(".modal-header").css("color", "white");
-        $("#boton_cargarmateria").css("background-color", "#007bff");
-        $("#boton_cargarmateria").css("color", "white");
-        $(".modal-title").text("Agregar Materia");
-        $("#modalCRUD").modal("show");
+
     });
     </script>
 </body>
