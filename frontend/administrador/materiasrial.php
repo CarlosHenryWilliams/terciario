@@ -112,8 +112,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-dismiss="modal">Cerrar</button>
-                                            <button type="button" id="boton_cargarmateria"
-                                                class="btn btn-primary">Cargar</button>
+                                            <button type="button" id="boton_cargarmateria" class="btn ">Cargar</button>
                                         </div>
                                     </form>
                                 </div>
@@ -337,7 +336,8 @@
 
         opcion = 2; //editar
         fila = $(this).closest("tr");
-        id = parseInt(fila.find("td:eq(0)").text()); //capturo el ID
+        id = parseInt(fila.find("td:eq(0)").text());
+        //capturo el ID   el td:eq() , es un selector de indices, por ende si hay 4 <td>, para seleccionar el 4to td tendrias que poner td:eq(3) y con el .text agarras el texto obvio
         console.log(id);
         nombre = fila.find("td:eq(1)").text();
         console.log(nombre);
@@ -354,8 +354,10 @@
         // $("#gender").val(gender);
         // $("#password").val(password);
         // $("#status").val(status);
-        $(".modal-header").css("background-color", "#007bff");
+        $(".modal-header").css("background-color", "#00aeae");
         $(".modal-header").css("color", "white");
+        $("#boton_cargarmateria").css("background-color", "#00aeae");
+        $("#boton_cargarmateria").css("color", "white");
         $(".modal-title").text("Editar Materia");
         $("#modalCRUD").modal("show");
     });
@@ -369,6 +371,11 @@
 
         $("#inputestadomateria").hide();
         $("#labelestadomateria").hide();
+
+        $("#inputnombremateria").val(""); //DEBERIA IR EL INPUT DEL NOMBRE DEL MODAL
+        $("#inputabreviaturamateria").val("");
+        $("#inputestadomateria").val(1);
+
         // fila = $(this).closest("tr");
         // id = parseInt(fila.find("td:eq(0)").text()); //capturo el ID
         // console.log(id);
@@ -385,8 +392,11 @@
         // // $("#gender").val(gender);
         // // $("#password").val(password);
         // // $("#status").val(status);
+
         $(".modal-header").css("background-color", "#007bff");
         $(".modal-header").css("color", "white");
+        $("#boton_cargarmateria").css("background-color", "#007bff");
+        $("#boton_cargarmateria").css("color", "white");
         $(".modal-title").text("Agregar Materia");
         $("#modalCRUD").modal("show");
     });
