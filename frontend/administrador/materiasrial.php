@@ -127,9 +127,10 @@
                             <i class="fas fa-table me-1"></i>
                             Materias
                         </div>
-                        <div class="card-body">
-                            <table id="tabla_completa_materias" class="table table-bordered display responsive nowrap"
-                                width="100%">
+                        <div class="card-body ">
+                            <table id="tabla_completa_materias"
+                                class="table table-bordered display responsive nowrap table-responsive "
+                                style="width:100%">
                                 <thead class="">
                                     <tr class="">
                                         <th>ID</th>
@@ -211,6 +212,7 @@
     var listar = function() {
         var tableMaterias = $("#tabla_completa_materias").DataTable({
 
+
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
             },
@@ -234,7 +236,12 @@
                 {
                     "defaultContent": "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-info btnEditar' data-toggle='modal' data-target='#exampleModal'>Editar</button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Dar de baja</i></button></div></div>"
                 }
-            ]
+            ],
+
+            "columnDefs": [{
+                "width": "30%",
+                "targets": [0, 1, 2, 3, 4]
+            }]
 
         });
     }
