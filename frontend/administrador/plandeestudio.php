@@ -1,96 +1,564 @@
-<?php include("../../backend/conexion.php"); ?>
+<?php include('modulos/conexion.php');  ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Administrador - Terciario 89</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <!-- JQUERY CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <title>Plan de Estudio</title>
+
+
+
+    <!-- CDN DATATABLES -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- SWEET ALERT 2 -->
+    <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+    <script src='sweetalert2.min.js'></script>
+    <link rel='stylesheet' href='sweetalert2.min.css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
 </head>
 
-<body>
-    <?php include("modulos/header.php"); ?>
+
+<body class="sb-nav-fixed">
+    <!-- HEADER/NAVBAR  -->
+    <?php include('modulos/header.php'); ?>
+    <!-- HEADER/NAVBAR  -->
+
+
 
     <div id="layoutSidenav">
-        <?php include("modulos/barralateral.php"); ?>
+
+
+        <!-- BARRA LATERAL -->
+        <?php include('modulos/barralateral.php'); ?>
+        <!-- BARRA LATERAL -->
 
         <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <div class="titulo_boton_modal d-flex justify-content-around">
+                        <h1 class="h1 col-lg-9 col-12">ADMINISTRADOR</h1>
+                        <!-- Button modal -->
+                        <button type="button" class="btn btn-outline-dark my-auto" data-toggle="modal" data-target="#exampleModal">
+                            Agregar Plan de Estudio
+                        </button>
+                    </div>
 
-            <div class="titulo_boton_modal d-flex justify-content-around">
-                <h1 class="h1 col-lg-9 col-12">ADMINISTRADOR</h1>
-                <!-- Button modal -->
-                <button type="button" class="btn btn-outline-dark my-auto" data-toggle="modal" data-target="#exampleModal">
-                    Agregar Plan de Estudio
-                </button>
-            </div>
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Cargue los datos del Plan de Estudio</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                    <div class="acciones">
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Cargue los datos del Plan de Estudio</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="POST" class="mt-2">
+                                            <div>
+                                                <label for=""> Titulo del Plan</label>
+                                                <input type="text" id="titulo" class="form-control ">
+                                            </div>
+
+                                            <div>
+                                                <label for="">Nombre</label>
+                                                <input type="text" id="nombre" class="form-control ">
+                                            </div>
+
+                                            <div>
+                                                <label for="">Resolución</label>
+                                                <input type="text" id="resolucion" class="form-control ">
+                                            </div>
+
+                                            <div>
+                                                <!-- ESTADO: Activo/Inactivo -->
+                                                <input type="hidden" id="estado" class="form-control" value="1">
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" id="cargar" class="btn btn-outline-success w-25">Cargar</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <form action="" class="mt-2">
-                                <div>
-                                    <label for=""> Titulo del Plan</label>
-                                    <input type="text" class="form-control ">
-                                </div>
+                        <!--Fin Modal -->
+                    </div>
 
-                                <div>
-                                    <label for="">Nombre</label>
-                                    <input type="text" class="form-control ">
-                                </div>
-
-                                <div>
-                                    <label for="">Resolución</label>
-                                    <input type="text" class="form-control ">
-                                </div>
-
-                                <div>
-                                    <!-- ESTADO: Activo/Inactivo -->
-                                    <input type="hidden" class="form-control ">
-                                </div>
-                            </form>
+                    <!-- TABLA -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Materias
                         </div>
+                        <div class="card-body ">
+                            <table id="tabla_completa_plan_estudio" class="table table-bordered display responsive nowrap table-responsive " style="width:100%">
+                                <thead class="">
+                                    <tr class="">
+                                        <th>ID</th>
+                                        <th>Titulo</th>
+                                        <th>Nombre</th>
+                                        <th>Resolución</th>
+                                        <th>Estado_p</th>
+                                        <th>Acciones</th>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-success w-25">Cargar</button>
+                                    </tr>
+                                </thead>
+
+
+
+                            </table>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--Fin Modal -->
+            </main>
+            <!-- Footer -->
 
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Sitio Web 2022</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
 
 
+
+    <!-- cierre footer -->
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    </script>
+
+
+
+
+    <!-- SCRIPT DATATABLES -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous" defer></script>
+    <script src="js/datatables-simple-demo.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">
+    </script>
+
+
+
+    <script>
+        $('#cargar').click(function() {
+
+
+
+            let titulo = document.getElementById('titulo').value;
+            let nombre = document.getElementById('nombre').value;
+            let resolucion = document.getElementById('resolucion').value;
+            let estado = document.getElementById('estado').value;
+
+
+            console.log(titulo, nombre, resolucion);
+
+            if (titulo == '' || nombre == '' || resolucion == '' || estado == '') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Por favor no deje ningun campo vacio',
+                    //  footer: '<a href="">Why do I have this issue?</a>'
+                })
+            } else {
+
+                Swal.fire({
+                    title: 'Los datos son correctos?',
+                    text: "La materia se cargara al sistema",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, estoy seguro',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        /**
+                         * Si confirma el formulario lo envia por post mediante Jquery
+                         */
+
+                        $.post('../../backend/plandeestudio/agregarplan.php', {
+                            var_titulo: titulo,
+                            var_nombre: nombre,
+                            var_resolucion: resolucion,
+                            var_estado: estado
+                        }, function(data) {
+                            if (data == '1') {
+                                Swal.fire(
+                                    'Good job!',
+                                    'You clicked the button!',
+                                    'success'
+                                )
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Revisa los campos nuevamente',
+                                    //  footer: '<a href="">Why do I have this issue?</a>'
+                                })
+                            }
+                        });
+
+
+                    }
+                })
+
+            }
+
+        });
+    </script>
+
+
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            listar();
+        });
+
+        // window.addEventListener('DOMContentLoaded', (event) => {
+        //     value = $(".btnBorrar").closest("tr");
+
+        //     id = parseInt(value.find("td:eq(0)").text());
+
+        //     alert(id);
+        // });
+        var listar = function() {
+            var tableMaterias = $("#tabla_completa_plan_estudio").DataTable({
+
+
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json" // spanish version
+                },
+                "destroy": true, //para que no se buguee cuando agregas o editas etc
+                "ajax": {
+                    "method": "POST",
+                    "url": "../../backend/plandeestudio/buscarplan.php"
+                },
+                "columns": [{
+                        "data": "id" //con "data" vas cargando los campos que tenes en tu bd, data es una funcion nativa de datatables.
+                    },
+                    {
+                        "data": "titulo"
+                    },
+                    {
+                        "data": "nombre"
+                    },
+                    {
+                        "data": "resolucion"
+                    },
+                    {
+                        "data": "estado_p"
+                    },
+                    {
+                        "defaultContent": "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-info btnEditar' data-toggle='modal' data-target='#exampleModal'>Editar</button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Dar de baja</i></button></div></div>"
+                    }
+                ],
+
+                "columnDefs": [{
+                    "width": "30%",
+                    "targets": [0, 1, 2, 3, 4] //aclarar el ancho y a cuales columnas
+                }]
+
+            });
+        }
+    </script>
+
+
+
+    <script>
+        //AGREGAR
+
+
+        $(document).on("click", ".btnAgregar", function() {
+
+
+        });
+    </script>
+
+    <script>
+        //Editar
+        $(document).on("click", ".btnEditar", function() {
+
+            opcion = 2; //Editar
+
+
+            //fila seria seleccionar la fila, la selecionas con el this, que this seria agarrar el elemento que pusiste en el click de arriba o sea el btn editar, closest lo mas cerca el TR obvio y despues abajo ya esta explicado el find.
+            fila = $(this).closest("tr");
+            //capturo el ID   el td:eq() , es un selector de indices, por ende si hay 4 <td>, para seleccionar el 4to td tendrias que poner td:eq(3) y con el .text agarras el texto obvio
+            id = parseInt(fila.find("td:eq(0)").text());
+            nombre = fila.find("td:eq(1)").text();
+            abreviatura = fila.find("td:eq(2)").text();
+            estado_m = fila.find("td:eq(3)").text();
+
+            // console.log(id);
+            // console.log(nombre);
+            // console.log(abreviatura);
+            // console.log(estado_m);
+
+
+            /**Configuraciones del MODAL */
+            $("#inputnombremateria").val(nombre); //insertando valores a un input
+            $("#inputabreviaturamateria").val(abreviatura);
+            $("#inputestadomateria").val(estado_m);
+            $("#inputestadomateria").show();
+            $("#labelestadomateria").show();
+            $(".modal-header").css("background-color", "#00aeae");
+            $(".modal-header").css("color", "white");
+            $("#boton_enviarform").css("background-color", "#00aeae");
+            $("#boton_enviarform").css("color", "white");
+            $(".modal-title").text("Editar Materia");
+            //
+            /**Configuraciones del MODAL */
+
+
+            // Si opcion es igual a 2 o sea Editar
+            if (opcion === 2) {
+                $('#boton_enviarform').click(function() {
+                    console.log('ENTRO NOMAS PERRO')
+                    // console.log(id);
+                    // console.log(nombre);
+                    // console.log(abreviatura);
+                    // console.log(estado_m);
+
+
+                    valor_input_nombremateria = $('#inputnombremateria').val();
+                    valor_input_abreviaturamateria = $('#inputabreviaturamateria').val();
+                    valor_input_estadomateria = $('#inputestadomateria').val();
+
+                    console.log(valor_input_nombremateria);
+                    console.log(valor_input_abreviaturamateria);
+                    console.log(valor_input_estadomateria);
+
+                    if ($('#inputnombremateria').val().length === 0 ||
+                        $('#inputabreviaturamateria').val().length === 0 ||
+                        $('#inputestadomateria').val().length === 0) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Por favor no deje ningun campo vacio',
+                            //  footer: '<a href="">Why do I have this issue?</a>'
+                        })
+                    } else {
+                        Swal.fire({
+                            title: 'Los datos son correctos?',
+                            text: "Esta seguro de editar esta materia?",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Si, estoy seguro',
+                            cancelButtonText: 'Cancelar',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                /**
+                                 * Si confirma el formulario lo envia por post mediante Jquery
+                                 */
+
+                                $.post('../../backend/materias/crudmaterias.php', {
+                                    opcion: opcion,
+                                    id: id,
+                                    nombre_materia: valor_input_nombremateria,
+                                    abreviatura_materia: valor_input_abreviaturamateria,
+                                    estado_materia: valor_input_estadomateria
+                                }, function(data) {
+                                    if (data == '1') {
+                                        Swal.fire(
+                                            'Buen Trabajo!',
+                                            'La materia ha sido cargada!',
+                                            'success'
+                                        ).then(
+                                            () => {
+                                                $('#form_agregar_materias').trigger(
+                                                    "reset"); //Reiniciar el formulario
+
+
+                                                // $('#exampleModal').hide();
+                                                $('#exampleModal').modal('hide')
+
+
+                                                listar(); //Listar la tabla de nuevo
+                                            });
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: 'Revisa los campos nuevamente',
+                                            //  footer: '<a href="">Why do I have this issue?</a>'
+                                        })
+                                    }
+                                });
+
+                            }
+                        })
+
+
+                    }
+
+
+
+                });
+
+            }
+
+
+
+
+        });
+
+
+
+        //Editar
+        $(document).on("click", ".btnAgregar", function() {
+
+            opcion = 1; //Agregar
+
+            /**
+             * MODIFICACIONES MODAL
+             */
+            $("#inputestadomateria").hide();
+            $("#labelestadomateria").hide();
+
+            $("#inputnombremateria").val(""); //DEBERIA IR EL INPUT DEL NOMBRE DEL MODAL
+            $("#inputabreviaturamateria").val("");
+            $("#inputestadomateria").val(1);
+
+            /**
+             * CSS MODAL
+             */
+            $(".modal-header").css("background-color", "#007bff");
+            $(".modal-header").css("color", "white");
+            $("#boton_enviarform").css("background-color", "#007bff");
+            $("#boton_enviarform").css("color", "white");
+            $(".modal-title").text("Agregar Materia");
+
+
+
+            if (opcion === 1) {
+
+                //  MODAL AGREGAR
+                $('#boton_enviarform').click(function() {
+
+                    let nombre_materia = document.getElementById('inputnombremateria').value;
+                    let abreviatura_materia = document.getElementById('inputabreviaturamateria').value;
+                    let estado_materia = document.getElementById('inputestadomateria').value;
+
+                    console.log(nombre_materia, abreviatura_materia, estado_materia);
+
+                    if (nombre_materia == '' || abreviatura_materia == '' || estado_materia == '') {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Por favor no deje ningun campo vacio',
+                            //  footer: '<a href="">Why do I have this issue?</a>'
+                        })
+                    } else {
+                        Swal.fire({
+                            title: 'Los datos son correctos?',
+                            text: "La materia se cargara al sistema",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Si, estoy seguro',
+                            cancelButtonText: 'Cancelar',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                /**
+                                 * Si confirma el formulario lo envia por post mediante Jquery
+                                 */
+
+                                $.post('../../backend/materias/cargarmateria.php', {
+                                    var_nombre_materia: nombre_materia,
+                                    var_abreviatura_materia: abreviatura_materia,
+                                    var_estado_materia: estado_materia
+                                }, function(data) {
+                                    if (data == '1') {
+                                        Swal.fire(
+                                            'Buen Trabajo!',
+                                            'La materia ha sido cargada!',
+                                            'success'
+                                        ).then(
+                                            () => {
+
+                                                $('#form_agregar_materias').trigger(
+                                                    "reset"); //Reiniciar el formulario
+                                                listar(); //Listar la tabla de nuevo
+                                            });
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: 'Revisa los campos nuevamente',
+                                            //  footer: '<a href="">Why do I have this issue?</a>'
+                                        })
+                                    }
+                                });
+
+                            }
+                        })
+
+
+                    }
+
+                });
+
+            }
+
+
+
+
+        });
+    </script>
 </body>
 
 </html>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-</script>
-<script src="js/scripts.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="assets/demo/chart-area-demo.js"></script>
-<script src="assets/demo/chart-bar-demo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-<script src="js/datatables-simple-demo.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
-</script>
