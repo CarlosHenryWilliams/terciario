@@ -361,8 +361,9 @@
                                         () => {
                                             $('#form_agregar_materias').trigger(
                                                 "reset"); //Reiniciar el formulario
-                                            $('#exampleModal').hide();
-                                            // $("#modalCRUD").modal("hide");
+
+
+                                            // $('#exampleModal').hide();
                                             $('#exampleModal').modal('hide')
 
 
