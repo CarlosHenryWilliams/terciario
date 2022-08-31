@@ -241,7 +241,7 @@
                     "data": "estado_m"
                 },
                 {
-                    "defaultContent": "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-info btnEditar' data-toggle='modal' data-target='#exampleModal'>Editar</button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Dar de baja</i></button></div></div>"
+                    "defaultContent": "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-info btnEditar' data-toggle='modal' data-target='#exampleModal'>Editar</button><button class='btn btn-danger btn-sm btnEstado'><i class='material-icons'>Dar de baja</i></button></div></div>"
                 }
             ],
 
@@ -257,10 +257,58 @@
 
 
     <script>
-    //AGREGAR
+    //ESTADO HABILITADO/DESHABILITADO
+
+    $(document).on("click", ".btnEstado", function() {
+
+        opcion = 3; //Editar
+
+        fila = $(this).closest("tr");
+        id = parseInt(fila.find("td:eq(0)").text());
 
 
-    $(document).on("click", ".btnAgregar", function() {
+
+        Swal.fire({
+            title: 'Deshabilitar Materia',
+            text: "Esta seguro que desea dar de baja la materia?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, estoy seguro',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                /**
+                 * Si confirma el formulario lo envia por post mediante Jquery
+                 */
+                $.post('../../backend/materias/crudmaterias.php', {
+                    opcion: opcion,
+                    id: id
+                }, function(data) {
+
+                    if (data == 1) {
+                        Swal.fire('Perfecto!', 'La materia ha sido dada de baja!', 'success')
+                            .then(
+                                () => {
+                                    listar();
+
+                                });
+                    } else {
+                        // alert(data);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Ha ocurrido un error inesperado',
+                            footer: '<a href="">Why do I have this issue?</a>'
+                        })
+                    }
+                });
+
+            }
+        })
+
+
 
 
     });
@@ -364,7 +412,7 @@
 
 
                                             // $('#exampleModal').hide();
-                                            $('#exampleModal').modal('hide')
+                                            $('#exampleModal').modal('hide');
 
 
                                             listar(); //Listar la tabla de nuevo
@@ -398,7 +446,7 @@
 
 
 
-    //Editar
+    //AGREGAR
     $(document).on("click", ".btnAgregar", function() {
 
         opcion = 1; //Agregar
