@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 24, 2022 at 06:53 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 01-09-2022 a las 18:41:57
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `terciario`
+-- Base de datos: `terciario`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cursada`
+-- Estructura de tabla para la tabla `cursada`
 --
 
 CREATE TABLE `cursada` (
@@ -37,7 +37,7 @@ CREATE TABLE `cursada` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `materias`
+-- Estructura de tabla para la tabla `materias`
 --
 
 CREATE TABLE `materias` (
@@ -48,30 +48,18 @@ CREATE TABLE `materias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `materias`
+-- Volcado de datos para la tabla `materias`
 --
 
 INSERT INTO `materias` (`id`, `nombre`, `abreviatura`, `estado_m`) VALUES
-(1, 'Sociales', 'Ss', 0),
-(2, 'Nisman', 'Nisman', 0),
-(3, 'jose', 'jose', 0),
-(4, 'NISMAN', 'jose', 0),
-(5, 'Jose', 'Jose', 0),
-(6, 'fsafsa', 'fsafsaf', 0),
-(7, 'Javier', 'dasdaad', 0),
-(8, 'fsafsa', 'fsafasf', 0),
-(9, 'fsafsa', 'dadada', 0),
-(10, 'FSAFSA', 'FSADSA', 0),
-(11, 'raraa', 'ESKERE', 0),
-(12, 'New', 'Titan', 0),
-(13, 'FSAFSA', 'FAFA', 0),
-(14, 'Eskere', 'gualeguaycu', 0),
-(15, 'jose', 'lopez', 1);
+(1, 'materia1', 'm1', 1),
+(2, 'dxdxdxdxdxdxx', 'xxxxxddddd', 1),
+(3, 'ofknkfoejkf', 'abreviatura', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notas`
+-- Estructura de tabla para la tabla `notas`
 --
 
 CREATE TABLE `notas` (
@@ -84,7 +72,7 @@ CREATE TABLE `notas` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `planestudio_materia`
+-- Estructura de tabla para la tabla `planestudio_materia`
 --
 
 CREATE TABLE `planestudio_materia` (
@@ -96,20 +84,31 @@ CREATE TABLE `planestudio_materia` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `plan_estudio`
+-- Estructura de tabla para la tabla `plan_estudio`
 --
 
 CREATE TABLE `plan_estudio` (
   `id` int(11) NOT NULL,
+  `titulo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `resolucion` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `estado_p` int(50) NOT NULL COMMENT '0 deshabilitado -- 1 habilitado'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `plan_estudio`
+--
+
+INSERT INTO `plan_estudio` (`id`, `titulo`, `nombre`, `resolucion`, `estado_p`) VALUES
+(1, 'titulo1', 'nombre1', 'resolucion1', 1),
+(2, 'plandeestudio1', 'Charly', 'resolucion11', 1),
+(3, 'titulo de plan', 'nombre del plan', 'resolucion del plan', 1),
+(4, 'plandeestudio1', 'Charly', 'resolucion12', 1);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tipo_notas`
+-- Estructura de tabla para la tabla `tipo_notas`
 --
 
 CREATE TABLE `tipo_notas` (
@@ -120,7 +119,7 @@ CREATE TABLE `tipo_notas` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -146,93 +145,93 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `cursada`
+-- Indices de la tabla `cursada`
 --
 ALTER TABLE `cursada`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `materias`
+-- Indices de la tabla `materias`
 --
 ALTER TABLE `materias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `notas`
+-- Indices de la tabla `notas`
 --
 ALTER TABLE `notas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `planestudio_materia`
+-- Indices de la tabla `planestudio_materia`
 --
 ALTER TABLE `planestudio_materia`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `plan_estudio`
+-- Indices de la tabla `plan_estudio`
 --
 ALTER TABLE `plan_estudio`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tipo_notas`
+-- Indices de la tabla `tipo_notas`
 --
 ALTER TABLE `tipo_notas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `usuarios`
+-- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `cursada`
+-- AUTO_INCREMENT de la tabla `cursada`
 --
 ALTER TABLE `cursada`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `materias`
+-- AUTO_INCREMENT de la tabla `materias`
 --
 ALTER TABLE `materias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `notas`
+-- AUTO_INCREMENT de la tabla `notas`
 --
 ALTER TABLE `notas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `planestudio_materia`
+-- AUTO_INCREMENT de la tabla `planestudio_materia`
 --
 ALTER TABLE `planestudio_materia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `plan_estudio`
+-- AUTO_INCREMENT de la tabla `plan_estudio`
 --
 ALTER TABLE `plan_estudio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tipo_notas`
+-- AUTO_INCREMENT de la tabla `tipo_notas`
 --
 ALTER TABLE `tipo_notas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
