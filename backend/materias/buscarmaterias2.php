@@ -7,10 +7,11 @@ $resultado = mysqli_query(conectame(), $query);
 if (!$resultado) {
     die('Query Failed' . mysqli_error(conectame()));
 } else {
+    $array["data"] = [];
     while ($data = mysqli_fetch_assoc($resultado)) {
-        $arreglo["data"][] = $data;
+        $array["data"][] = $data;
     }
-    echo json_encode($arreglo);
+    echo json_encode($array);
 }
 mysqli_free_result($resultado);
 mysqli_close(conectame());

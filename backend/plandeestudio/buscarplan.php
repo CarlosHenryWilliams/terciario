@@ -7,6 +7,7 @@ $resultado = mysqli_query(conectame(), $query);
 if (!$resultado) {
     die('Query Failed' . mysqli_error(conectame()));
 } else {
+    $arreglo["data"] = [];
     while ($data = mysqli_fetch_assoc($resultado)) {
         $arreglo["data"][] = $data;
     }

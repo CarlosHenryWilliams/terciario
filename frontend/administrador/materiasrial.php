@@ -40,7 +40,7 @@
 </head>
 
 
-<body class="sb-nav-fixed">
+<body class="sb-nav-fixed" id="body">
     <!-- HEADER/NAVBAR  -->
     <?php include('modulos/header.php'); ?>
     <!-- HEADER/NAVBAR  -->
@@ -411,8 +411,17 @@
                                                 "reset"); //Reiniciar el formulario
 
 
+
+                                            // $("#exampleModal").hide();
+
+                                            // var element = document.getElementById(
+                                            //     "body");
+                                            // element.classList.remove("modal-open");
+
+                                            // $('.modal-backdrop').removeAttr(
+                                            //     "class");
                                             // $('#exampleModal').hide();
-                                            $('#exampleModal').modal('hide');
+                                            // $('#exampleModal').modal('hide');
 
 
                                             listar(); //Listar la tabla de nuevo
