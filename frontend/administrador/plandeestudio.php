@@ -54,8 +54,8 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <div class="titulo_boton_modal d-flex justify-content-around">
-                        <h1 class="h1 col-lg-9 col-12">ADMINISTRADOR</h1>
+                    <div class="titulo_boton_modal d-flex justify-content-around my-2">
+                        <h1 class="h1 col-lg-9 col-12 my-auto">PLAN DE ESTUDIO</h1>
                         <!-- Button modal -->
                         <button type="button" class="btn btn-outline-dark my-auto" data-toggle="modal" data-target="#exampleModal">
                             Agregar Plan de Estudio
@@ -124,7 +124,6 @@
                                         <th>Resolución</th>
                                         <th>Estado_p</th>
                                         <th>Acciones</th>
-
                                     </tr>
                                 </thead>
 
@@ -154,14 +153,18 @@
     <!-- cierre footer -->
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/chart-area-demo.js"></script>
     <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
 
 
@@ -172,6 +175,7 @@
     <script src="js/datatables-simple-demo.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">
     </script>
+
 
     <!-- Agregar Plan de Estudio -->
     <script>
@@ -285,7 +289,7 @@
     </script>
 
 
-    <script>
+    <!-- <script>
         /**Deshabilitar plan
          * 
          * Obtiene el id de de la plan
@@ -338,20 +342,10 @@
                 }
             })
         }
-    </script>
-
-
-    <!-- <script>
-        //AGREGAR
-
-
-        $(document).on("click", ".btnAgregar", function() {
-
-
-        });
     </script> -->
 
-    <!-- <script>
+
+    <script>
         //Editar
         $(document).on("click", ".btnEditar", function() {
 
@@ -362,22 +356,26 @@
             fila = $(this).closest("tr");
             //capturo el ID   el td:eq() , es un selector de indices, por ende si hay 4 <td>, para seleccionar el 4to td tendrias que poner td:eq(3) y con el .text agarras el texto obvio
             id = parseInt(fila.find("td:eq(0)").text());
-            nombre = fila.find("td:eq(1)").text();
-            abreviatura = fila.find("td:eq(2)").text();
-            estado_m = fila.find("td:eq(3)").text();
+            titulo = fila.find("td:eq(1)").text();
+            nombre = fila.find("td:eq(2)").text();
+            resolucion = fila.find("td:eq(3)").text();
+            estado_p = fila.find("td:eq(4)").text();
 
             // console.log(id);
+            // console.log(titulo);
             // console.log(nombre);
-            // console.log(abreviatura);
-            // console.log(estado_m);
+            // console.log(resolucion);
+            // console.log(estado_p);
 
 
             /**Configuraciones del MODAL */
-            $("#inputnombremateria").val(nombre); //insertando valores a un input
-            $("#inputabreviaturamateria").val(abreviatura);
-            $("#inputestadomateria").val(estado_m);
-            $("#inputestadomateria").show();
-            $("#labelestadomateria").show();
+            $("#titulo").val(titulo); //insertando valores a un input
+            $("#nombre").val(nombre);
+            $("#resolucion").val(resolucion);
+            $("#estado").show();
+            $("#estado").val(estado_p);
+            
+            // $("#labelestadomateria").show();
             $(".modal-header").css("background-color", "#00aeae");
             $(".modal-header").css("color", "white");
             $("#boton_enviarform").css("background-color", "#00aeae");
@@ -584,7 +582,7 @@
 
 
         });
-    </script> -->
+    </script>
 </body>
 
 </html>
