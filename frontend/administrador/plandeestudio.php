@@ -151,30 +151,18 @@
             </footer>
         </div>
     </div>
-
-
-
     <!-- cierre footer -->
 
 
-
-
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/chart-area-demo.js"></script>
     <script src="assets/demo/chart-bar-demo.js"></script>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
-
-
 
 
     <!-- SCRIPT DATATABLES -->
@@ -185,20 +173,16 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">
     </script>
 
-
-
+    <!-- Agregar Plan de Estudio -->
     <script>
         $('#cargar').click(function() {
-
-
 
             let titulo = document.getElementById('titulo').value;
             let nombre = document.getElementById('nombre').value;
             let resolucion = document.getElementById('resolucion').value;
             let estado = document.getElementById('estado').value;
 
-
-            console.log(titulo, nombre, resolucion);
+            // console.log(titulo, nombre, resolucion);
 
             if (titulo == '' || nombre == '' || resolucion == '' || estado == '') {
                 Swal.fire({
@@ -245,8 +229,6 @@
                                 })
                             }
                         });
-
-
                     }
                 })
 
@@ -256,25 +238,14 @@
     </script>
 
 
-
-
-
-
+    <!-- Cargar datos en la tabla -->
     <script>
         $(document).ready(function() {
             listar();
         });
 
-        // window.addEventListener('DOMContentLoaded', (event) => {
-        //     value = $(".btnBorrar").closest("tr");
-
-        //     id = parseInt(value.find("td:eq(0)").text());
-
-        //     alert(id);
-        // });
         var listar = function() {
             var tableMaterias = $("#tabla_completa_plan_estudio").DataTable({
-
 
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json" // spanish version
@@ -314,8 +285,63 @@
     </script>
 
 
-
     <script>
+        /**Deshabilitar plan
+         * 
+         * Obtiene el id de de la plan
+         * */
+
+        function get_id_plan(id) {
+
+            console.log(id)
+            let id_plan = id;
+
+            Swal.fire({
+                title: 'Deshabilitar Plan de Estudio',
+                text: "Esta seguro que desea dar de baja el Plan?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, estoy seguro',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    /**
+                     * Si confirma el formulario lo envia por post mediante Jquery
+                     */
+                    $.post('../../backend/plandeestudio/deshabilitarplan.php', {
+                        var_id_plan: id_plan
+                    }, function(data) {
+                        if (data == '1') {
+                            Swal.fire('Perfecto!', 'El Plan de Estudio ha sido dada de baja!', 'success').then(
+                                () => {
+
+                                    //  setInterval(function() {
+                                    //      $('#tabla_materias').load('#tabla_materias');
+                                    //  }, 1000);
+
+                                    $('#').load('#tabla_plan_estudio');
+                                });
+                            tabla_plan
+
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Ha ocurrido un error inesperado',
+                                //  footer: '<a href="">Why do I have this issue?</a>'
+                            })
+                        }
+                    });
+
+                }
+            })
+        }
+    </script>
+
+
+    <!-- <script>
         //AGREGAR
 
 
@@ -323,9 +349,9 @@
 
 
         });
-    </script>
+    </script> -->
 
-    <script>
+    <!-- <script>
         //Editar
         $(document).on("click", ".btnEditar", function() {
 
@@ -558,7 +584,7 @@
 
 
         });
-    </script>
+    </script> -->
 </body>
 
 </html>

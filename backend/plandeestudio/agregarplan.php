@@ -1,5 +1,5 @@
 <?php
-// include ('../conexion.php');
+include ('../conexion.php');
 
 $titulo = $_POST['var_titulo'];
 $nombre = $_POST['var_nombre'];
