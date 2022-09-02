@@ -67,48 +67,8 @@ switch ($opcion) {
         break;
     case 4:  //LISTAR TABLA
 
-        $query = "SELECT * FROM `materias`";
-
-        $resultado = mysqli_query(conectame(), $query);
-
-        if (!$resultado) {
-            die('Query Failed' . mysqli_error(conectame()));
-        } else {
-            $array["data"] = []; // declaras un array
-            while ($data = mysqli_fetch_assoc($resultado)) {
-                $array["data"][] = $data;
-            }
-            echo json_encode($array); //el json encode te devuelve el json pero en formato string asi lo puede procesar el frontend
-        }
-        mysqli_free_result($resultado);
-        mysqli_close(conectame());
+        //EL READ ESTA EN buscarmaterias.php
 
 
         break;
 }
-
-
-
-
-
-
-
-
-// $nombre_materia = $_POST['var_nombre_materia'];
-// $abreviatura_materia = $_POST['var_abreviatura_materia'];
-// $estadohabilitado = $_POST['var_estado_materia'];
-
-// $query = "INSERT INTO `materias`( `nombre`, `abreviatura`, `estado_m`) VALUES ('$nombre_materia','$abreviatura_materia','$estadohabilitado')";
-
-
-// $resultado  = mysqli_query(conectame(), $query);
-
-
-
-// $error = mysqli_error(conectame());
-
-// if ($error == '') {   //O sea si se ejecuto sin errores la consulta.
-//     echo "1";
-// } else {
-//     echo '0';
-// }
