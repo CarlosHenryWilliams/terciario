@@ -252,24 +252,28 @@
                             Alumnos
                         </div>
                         <div class="card-body">
-                            <table id="datatablesSimple">
+                            <table id="tabla_completa_alumnos">
                                 <thead>
                                     <tr>
+                                        <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Apellido</th>
-                                        <th>Dni</th>
                                         <th>Sexo</th>
+                                        <th>Dni</th>
                                         <th>Fecha Nac</th>
                                         <th>Lugar Nac</th>
                                         <th>Estado civil</th>
                                         <th>Domicilio</th>
-                                        <th>N° domicilio</th>
+                                        <th>N° Domicilio</th>
                                         <th>Piso</th>
                                         <th>Depto</th>
                                         <th>Localidad</th>
                                         <th>Partido</th>
                                         <th>Cod postal</th>
-                                        <th>telefono</th>
+                                        <th>Telefono</th>
+                                        <th>Telefono_alt</th>
+                                        <th>Telefono_alt_pers</th>
+                                        <th>Email</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -324,6 +328,94 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous" defer></script>
     <script src="js/datatables-simple-demo.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">
+    </script>
+
+
+    <script>
+    $(document).ready(function() {
+        listar(); //MOSTRAR DATOS DE LA TABLA
+    });
+
+    //MOSTRAR DATOS DE LA TABLA
+    var listar = function() {
+        var tableMaterias = $("#tabla_completa_alumnos").DataTable({
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json", // spanish version
+            },
+            destroy: true, //para que no se buguee cuando agregas o editas etc
+            ajax: {
+                method: "POST",
+                url: "../../backend/alumnos/buscaralumnos.php",
+            },
+            columns: [{
+                    data: "id", //con "data" vas cargando los campos que tenes en tu bd, data es una funcion nativa de datatables.
+                },
+                {
+                    data: "nombre",
+                },
+                {
+                    data: "apellido",
+                },
+                {
+                    data: "sexo",
+                },
+                {
+                    data: "dni",
+                },
+                {
+                    data: "fecha_nacimiento",
+                },
+                {
+                    data: "lugar_nacimiento",
+                },
+                {
+                    data: "estado_civil",
+                },
+                {
+                    data: "domicilio",
+                },
+                {
+                    data: "domicilio_numero",
+                },
+                {
+                    data: "piso",
+                },
+                {
+                    data: "depto",
+                },
+                {
+                    data: "localidad",
+                },
+                {
+                    data: "partido",
+                },
+                {
+                    data: "codigo_postal",
+                },
+                {
+                    data: "telefono",
+                },
+                {
+                    data: "telefono_alternativo",
+                },
+                {
+                    data: "telefono_alternativo_persona",
+                },
+                {
+                    data: "email",
+                },
+                {
+                    defaultContent: "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-info btnEditar' data-toggle='modal' data-target='#modal_form_materias'>Editar</button><button class='btn btn-danger btn-sm btnEstado'><i class='material-icons'>Dar de baja</i></button></div></div>",
+                },
+            ],
+
+            columnDefs: [{
+                width: "30%",
+                targets: [0, 1, 2, 3, 4], //aclarar el ancho y a cuales columnas
+            }, ],
+        });
+    };
+    //MOSTRAR DATOS DE LA TABLA
     </script>
 
 </body>
