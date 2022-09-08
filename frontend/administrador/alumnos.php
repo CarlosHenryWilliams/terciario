@@ -67,8 +67,9 @@
 
                     <div class="acciones">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Agregar alumno nuevo
+                        <button type="button" class="btn btn-primary btnAgregarAlumno" data-toggle="modal"
+                            data-target="#exampleModal">
+                            Agregar Alumno
                         </button>
 
                         <!-- Modal -->
@@ -89,39 +90,44 @@
                                                     <div class="">
                                                         <label for="" class="d-flex justify-content-start">Fecha de
                                                             inscripcion</label>
-                                                        <input name="fecha" class="form-control bg-transparent"
-                                                            placeholder="Fecha" type="date" required="">
+                                                        <input id="input_fecha_inscripcion" name="fecha_inscripcion"
+                                                            class="form-control bg-transparent" placeholder="Fecha"
+                                                            type="date" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <input name="nombre" class="form-control bg-transparent"
-                                                            placeholder="Nombre" type="text" required="">
+                                                        <input id="input_nombre_alumno" name="nombre"
+                                                            class="form-control bg-transparent" placeholder="Nombre"
+                                                            type="text" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <input name="apellido" class="form-control bg-transparent"
-                                                            placeholder="Apellido" type="text" required="">
+                                                        <input id="input_apellido_alumno" name="apellido"
+                                                            class="form-control bg-transparent" placeholder="Apellido"
+                                                            type="text" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <input name="dni" class="form-control bg-transparent"
-                                                            placeholder="Dni" type="text" required="">
+                                                        <input id="input_dni_alumno" name="dni"
+                                                            class="form-control bg-transparent" placeholder="Dni"
+                                                            type="text" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
                                                         <label class="d-flex justify-content-start">Género</label>
-                                                        <select class="form-control" name="sexo">
-                                                            <option>Femenino</option>
-                                                            <option>Masculino</option>
-                                                            <option>Otros</option>
+                                                        <select id="select_sexo_alumno" class="form-control"
+                                                            name="sexo">
+                                                            <option value="F">Femenino</option>
+                                                            <option value="M">Masculino</option>
+                                                            <option value="X">Otros</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -130,16 +136,16 @@
                                                     <div class="">
                                                         <label for="" class="d-flex justify-content-start">Fecha de
                                                             nacimiento</label>
-                                                        <input id="" name="fecha_nacimiento"
-                                                            class="form-control bg-transparent"
+                                                        <input id="input_fecha_nacimiento_alumno"
+                                                            name="fecha_nacimiento" class="form-control bg-transparent"
                                                             placeholder="Fecha de nacimiento" type="date" required="">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="">
-                                                        <input name="lugar_nacimiento"
-                                                            class="form-control bg-transparent"
+                                                        <input id="input_lugar_nacimiento_alumno"
+                                                            name="lugar_nacimiento" class="form-control bg-transparent"
                                                             placeholder="Lugar de nacimiento" type="text" required="">
                                                     </div>
                                                 </div>
@@ -233,7 +239,7 @@
                                                 <div class="form-group">
                                                     <div class="modal-footer">
                                                         <button type="submit" class="btn btn-info btn-lg btn-block"
-                                                            id="boton_guardarAlumno">Guardar</button>
+                                                            id="btn_enviar_form_alumno">Agregar</button>
                                                     </div>
                                                 </div>
 
@@ -252,7 +258,9 @@
                             Alumnos
                         </div>
                         <div class="card-body">
-                            <table id="tabla_completa_alumnos">
+                            <table id="tabla_completa_alumnos"
+                                class="table table-bordered display responsive nowrap table-responsive"
+                                style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -416,6 +424,123 @@
         });
     };
     //MOSTRAR DATOS DE LA TABLA
+    </script>
+
+
+
+
+    <script>
+    //AGREGAR MATERIAAA
+    $(document).on("click", ".btnAgregarAlumno", function() {
+        opcion = 1; // OPCION 1 ES AGREGAR
+
+        console.log(opcion);
+
+        /**
+         * MODIFICACIONES MODAL
+         */
+        // $("#inputestadomateria").hide();
+        // $("#labelestadomateria").hide();
+
+        // $("#inputnombremateria").val(""); //DEBERIA IR EL INPUT DEL NOMBRE DEL MODAL
+        // $("#inputabreviaturamateria").val("");
+        // $("#inputestadomateria").val(1);
+
+        /**
+         * CSS MODAL
+         */
+        // $(".modal-header").css("background-color", "#007bff");
+        // $(".modal-header").css("color", "white");
+        // $("#boton_enviarform").css("background-color", "#007bff");
+        // $("#boton_enviarform").css("color", "white");
+        // $(".modal-title").text("Agregar Materia");
+
+        if (opcion === 1) {
+            //  MODAL AGREGAR
+            $("#btn_enviar_form_alumno").click(function() {
+
+                let fecha_inscripcion = document.getElementById("input_fecha_inscripcion").value;
+                let nombre_alumno = document.getElementById("input_nombre_alumno").value;
+                let apellido_alumno = document.getElementById("input_apellido_alumno").value;
+                let dni_alumno = document.getElementById("input_dni_alumno").value;
+                let sexo_alumno = document.getElementById("select_sexo_alumno").value;
+                let fecha_nacimiento_alumno = document.getElementById("input_fecha_nacimiento_alumno")
+                    .value;
+                let lugar_nacimiento_alumno = document.getElementById("input_lugar_nacimiento_alumno")
+                    .value;
+
+
+
+
+
+                console.log(nombre_materia, abreviatura_materia, estado_materia);
+
+                if (
+                    nombre_materia == "" ||
+                    abreviatura_materia == "" ||
+                    estado_materia == ""
+                ) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Por favor no deje ningun campo vacio",
+                        //  footer: '<a href="">Why do I have this issue?</a>'
+                    });
+                } else {
+                    Swal.fire({
+                        title: "Los datos son correctos?",
+                        text: "La materia se cargara al sistema",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Si, estoy seguro",
+                        cancelButtonText: "Cancelar",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            /**
+                             * Si confirma el formulario lo envia por post mediante Jquery
+                             */
+
+                            $.post(
+                                "../../backend/materias/crudmaterias.php", {
+                                    opcion: opcion,
+                                    var_nombre_materia: nombre_materia,
+                                    var_abreviatura_materia: abreviatura_materia,
+                                    var_estado_materia: estado_materia,
+                                },
+                                function(data) {
+                                    if (data == "1") {
+                                        Swal.fire(
+                                            "Buen Trabajo!",
+                                            "La materia ha sido cargada!",
+                                            "success"
+                                        ).then(() => {
+                                            $("#form_agregar_materias").trigger(
+                                                "reset"); //Reiniciar el formulario
+                                            $("#modal_form_materias .close")
+                                                .click(); //Cerrar el formulario
+                                            listar(); //Listar la tabla de nuevo
+                                        });
+                                    } else {
+                                        // alert(data);
+                                        Swal.fire({
+                                            icon: "error",
+                                            title: "Oops...",
+                                            text: "Revisa los campos nuevamente",
+                                            //  footer: '<a href="">Why do I have this issue?</a>'
+                                        });
+                                    }
+                                }
+                            );
+                        }
+                    });
+                }
+            });
+        }
+    });
+
+    //AGREGAR MATERIA
     </script>
 
 </body>

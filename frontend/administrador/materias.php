@@ -84,7 +84,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form method="POST" id="form_agregar_materias">
+                                    <form method="POST" id="form_agregar_alumno">
                                         <div class="modal-body">
 
 
@@ -129,7 +129,7 @@
                         </div>
                         <div class="card-body ">
                             <table id="tabla_completa_materias"
-                                class="table table-bordered display responsive nowrap table-responsive "
+                                class="table table-bordered display responsive nowrap table-responsive"
                                 style="width:100%">
                                 <thead class="">
                                     <tr class="">
