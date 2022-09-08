@@ -302,6 +302,7 @@
                                         <th>Telefono_alt</th>
                                         <th>Telefono_alt_pers</th>
                                         <th>Email</th>
+                                        <th>Estado</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -433,6 +434,9 @@
                     data: "email",
                 },
                 {
+                    data: "estado_u",
+                },
+                {
                     defaultContent: "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-info btnEditar' data-toggle='modal' data-target='#modal_form_materias'>Editar</button><button class='btn btn-danger btn-sm btnEstado'><i class='material-icons'>Dar de baja</i></button></div></div>",
                 },
             ],
@@ -480,7 +484,7 @@
             $("#btn_enviar_form_alumno").click(function() {
 
                 let fecha_inscripcion = document.getElementById("input_fecha_inscripcion")
-                .value; //ESTE NO TODAVIA PORQUE FALTA MOIFICAR LA BASE DE DATOS
+                    .value; //ESTE NO TODAVIA PORQUE FALTA MOIFICAR LA BASE DE DATOS
                 let nombre_alumno = document.getElementById("input_nombre_alumno").value;
                 let apellido_alumno = document.getElementById("input_apellido_alumno").value;
                 let dni_alumno = document.getElementById("input_dni_alumno").value;
@@ -582,6 +586,64 @@
     });
 
     //AGREGAR MATERIA
+    </script>
+
+
+
+
+    <script>
+    //ESTADO HABILITADO/DESHABILITADO
+
+    $(document).on("click", ".btnEstado", function() {
+        opcion = 3; //Editar
+
+        fila = $(this).closest("tr");
+        id = parseInt(fila.find("td:eq(0)").text());
+
+        Swal.fire({
+            title: "Dar de baja al Alumno",
+            text: "Esta seguro que desea dar de baja al Alumno?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, estoy seguro",
+            cancelButtonText: "Cancelar",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                /**
+                 * Si confirma el formulario lo envia por post mediante Jquery
+                 */
+                $.post(
+                    "../../backend/alumnos/crudalumnos.php", {
+                        opcion: opcion,
+                        id: id,
+                    },
+                    function(data) {
+                        if (data == 1) {
+                            Swal.fire(
+                                "Perfecto!",
+                                "La materia ha sido dada de baja!",
+                                "success"
+                            ).then(() => {
+                                listar();
+                            });
+                        } else {
+                            // alert(data);
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Ha ocurrido un error inesperado",
+                                footer: '<a href="">Why do I have this issue?</a>',
+                            });
+                        }
+                    }
+                );
+            }
+        });
+    });
+
+    //ESTADO HABILITADO/DESHABILITADO
     </script>
 
 </body>

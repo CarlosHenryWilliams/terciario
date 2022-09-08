@@ -52,9 +52,9 @@ switch ($opcion) {
 
     case 3: //CASO 3 DAR DE BAJA
 
-        $id_materia = $_POST['id'];
+        $id_alumno = $_POST['id'];
 
-        $query1 = "UPDATE `materias` SET `estado_m`='0' WHERE `id` =$id_materia";
+        $query1 = "UPDATE `usuarios` SET `estado_u`='0' WHERE `id` =$id_alumno";
         $resultado1  = mysqli_query(conectame(), $query1);
 
         $error1 = mysqli_error(conectame());
