@@ -31,12 +31,15 @@ switch ($opcion) {
         // $query = "UPDATE `materias` SET `nombre`= '' ,`abreviatura`= '' ,`estado_m`='' 
         //  WHERE `id`= ";
 
-        $id_materia = $_POST['id'];
-        $nombre_materia = $_POST['nombre_materia'];
-        $abreviatura_materia = $_POST['abreviatura_materia'];
-        $estado_materia = $_POST['estado_materia'];
+        $id_plan = $_POST['id'];
+        $titulo_plan = $_POST['titulo_plan'];
+        $nombre_plan = $_POST['nombre_plan'];
+        $resolucion_plan = $_POST['resolucion_plan'];
+        $estado_plan = $_POST['estado_plan'];
 
-        $query = "UPDATE `materias` SET `nombre`='$nombre_materia',`abreviatura`='$abreviatura_materia',`estado_m`='$estado_materia' WHERE `id`=$id_materia";
+
+        $query = "UPDATE `plan_estudio` SET `titulo`='$titulo_plan',`nombre`='$nombre_plan',`resolucion`='$resolucion_plan',`estado_p`='$estado_plan' WHERE `id`=$id_plan";
+
         $resultado  = mysqli_query(conectame(), $query);
         $error = mysqli_error(conectame());
         if ($error == '') {   //O sea si se ejecuto sin errores la consulta.

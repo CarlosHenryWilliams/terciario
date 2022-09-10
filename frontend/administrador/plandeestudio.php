@@ -222,8 +222,8 @@
         $(".modal-title").text("Agregar Plan de Estudio");
         $(".modal-header").css("background-color", "#007bff");
         $(".modal-header").css("color", "white");
-        $("#boton_enviarform").css("background-color", "#007bff");
-        $("#boton_enviarform").css("color", "white");
+        $("#cargar").css("background-color", "#007bff");
+        $("#cargar").css("color", "white");
 
 
 
@@ -426,6 +426,144 @@
     </script>
 
 
+    <script>
+    //Editar
+    $(document).on("click", ".btnEditar", function() {
+
+        opcion = 2; //Editar
+
+
+        //fila seria seleccionar la fila, la selecionas con el this, que this seria agarrar el elemento que pusiste en el click de arriba o sea el btn editar, closest lo mas cerca el TR obvio y despues abajo ya esta explicado el find.
+        fila = $(this).closest("tr");
+        //capturo el ID   el td:eq() , es un selector de indices, por ende si hay 4 <td>, para seleccionar el 4to td tendrias que poner td:eq(3) y con el .text agarras el texto obvio
+        id = parseInt(fila.find("td:eq(0)").text());
+        titulo = fila.find("td:eq(1)").text();
+        nombre = fila.find("td:eq(2)").text();
+        resolucion = fila.find("td:eq(3)").text();
+        estado_p = fila.find("td:eq(4)").text();
+
+        // console.log(id);
+        // console.log(titulo);
+        // console.log(nombre);
+        // console.log(resolucion);
+        // console.log(estado_p);
+
+
+        console.log(id);
+        /**Configuraciones del MODAL */
+        $("#titulo").val(titulo); //insertando valores a un input
+        $("#nombre").val(nombre);
+        $("#resolucion").val(resolucion);
+        $("#estado").show();
+        $("#estado").val(estado_p);
+
+        // $("#labelestadomateria").show();
+        $(".modal-header").css("background-color", "#00aeae");
+        $(".modal-header").css("color", "white");
+        $("#cargar").css("background-color", "#00aeae");
+        $("#cargar").css("color", "white");
+        $(".modal-title").text("Editar Plan");
+        //
+        /**Configuraciones del MODAL */
+
+
+        // Si opcion es igual a 2 o sea Editar
+        if (opcion === 2) {
+            $('#cargar').click(function() {
+
+                // console.log(id);
+                // console.log(nombre);
+                // console.log(abreviatura);
+                // console.log(estado_m);
+
+
+                valor_input_titulo = $('#titulo').val();
+                valor_input_nombre = $('#nombre').val();
+                valor_input_resolucion = $('#resolucion').val();
+                valor_input_estado = $('#estado').val();
+
+                console.log(valor_input_titulo);
+                console.log(valor_input_nombre);
+                console.log(valor_input_resolucion);
+                console.log(valor_input_estado);
+
+                if ($('#titulo').val().length === 0 ||
+                    $('#nombre').val().length === 0 ||
+                    $('#resolucion').val().length === 0 ||
+                    $('#estado').val().length === 0) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Por favor no deje ningun campo vacio',
+                        //  footer: '<a href="">Why do I have this issue?</a>'
+                    })
+                } else {
+                    Swal.fire({
+                        title: 'Los datos son correctos?',
+                        text: "Esta seguro de editar esta materia?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si, estoy seguro',
+                        cancelButtonText: 'Cancelar',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            /**
+                             * Si confirma el formulario lo envia por post mediante Jquery
+                             */
+
+                            $.post('../../backend/plandeestudio/crudplandeestudio.php', {
+                                opcion: opcion,
+                                id: id,
+                                titulo_plan: valor_input_titulo,
+                                nombre_plan: valor_input_nombre,
+                                resolucion_plan: valor_input_resolucion,
+                                estado_plan: valor_input_estado
+                            }, function(data) {
+                                if (data == '1') {
+                                    Swal.fire(
+                                        'Plan Actualizado!',
+                                        'El plan de estudio ha sido actualizado',
+                                        'success'
+                                    ).then(
+                                        () => {
+
+                                            $("#form_plan_estudio").trigger(
+                                                "reset"); //Reiniciar el formulario
+                                            $("#modal_plan_estudio .close")
+                                                .click(); //Cerrar el formulario
+                                            listar();
+                                        });
+                                } else {
+                                    // alert(data);
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: 'Revisa los campos nuevamente',
+                                        //  footer: '<a href="">Why do I have this issue?</a>'
+                                    })
+                                }
+                            });
+
+                        }
+                    })
+
+
+                }
+
+
+
+            });
+
+        }
+
+
+
+
+    });
+    </script>
+
 
     <!-- Cargar datos en la tabla -->
     <script>
@@ -476,141 +614,7 @@
 
 
 
-    <script>
-    //Editar
-    $(document).on("click", ".btnEditar", function() {
 
-        opcion = 2; //Editar
-
-
-        //fila seria seleccionar la fila, la selecionas con el this, que this seria agarrar el elemento que pusiste en el click de arriba o sea el btn editar, closest lo mas cerca el TR obvio y despues abajo ya esta explicado el find.
-        fila = $(this).closest("tr");
-        //capturo el ID   el td:eq() , es un selector de indices, por ende si hay 4 <td>, para seleccionar el 4to td tendrias que poner td:eq(3) y con el .text agarras el texto obvio
-        id = parseInt(fila.find("td:eq(0)").text());
-        titulo = fila.find("td:eq(1)").text();
-        nombre = fila.find("td:eq(2)").text();
-        resolucion = fila.find("td:eq(3)").text();
-        estado_p = fila.find("td:eq(4)").text();
-
-        // console.log(id);
-        // console.log(titulo);
-        // console.log(nombre);
-        // console.log(resolucion);
-        // console.log(estado_p);
-
-
-        /**Configuraciones del MODAL */
-        $("#titulo").val(titulo); //insertando valores a un input
-        $("#nombre").val(nombre);
-        $("#resolucion").val(resolucion);
-        $("#estado").show();
-        $("#estado").val(estado_p);
-
-        // $("#labelestadomateria").show();
-        $(".modal-header").css("background-color", "#00aeae");
-        $(".modal-header").css("color", "white");
-        $("#boton_enviarform").css("background-color", "#00aeae");
-        $("#boton_enviarform").css("color", "white");
-        $(".modal-title").text("Editar Materia");
-        //
-        /**Configuraciones del MODAL */
-
-
-        // Si opcion es igual a 2 o sea Editar
-        if (opcion === 2) {
-            $('#boton_enviarform').click(function() {
-                console.log('ENTRO NOMAS PERRO')
-                // console.log(id);
-                // console.log(nombre);
-                // console.log(abreviatura);
-                // console.log(estado_m);
-
-
-                valor_input_nombremateria = $('#inputnombremateria').val();
-                valor_input_abreviaturamateria = $('#inputabreviaturamateria').val();
-                valor_input_estadomateria = $('#inputestadomateria').val();
-
-                console.log(valor_input_nombremateria);
-                console.log(valor_input_abreviaturamateria);
-                console.log(valor_input_estadomateria);
-
-                if ($('#inputnombremateria').val().length === 0 ||
-                    $('#inputabreviaturamateria').val().length === 0 ||
-                    $('#inputestadomateria').val().length === 0) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Por favor no deje ningun campo vacio',
-                        //  footer: '<a href="">Why do I have this issue?</a>'
-                    })
-                } else {
-                    Swal.fire({
-                        title: 'Los datos son correctos?',
-                        text: "Esta seguro de editar esta materia?",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Si, estoy seguro',
-                        cancelButtonText: 'Cancelar',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            /**
-                             * Si confirma el formulario lo envia por post mediante Jquery
-                             */
-
-                            $.post('../../backend/plandeestudio/crudplandeestudio.php', {
-                                opcion: opcion,
-                                id: id,
-                                nombre_materia: valor_input_nombremateria,
-                                abreviatura_materia: valor_input_abreviaturamateria,
-                                estado_materia: valor_input_estadomateria
-                            }, function(data) {
-                                if (data == '1') {
-                                    Swal.fire(
-                                        'Buen Trabajo!',
-                                        'La materia ha sido cargada!',
-                                        'success'
-                                    ).then(
-                                        () => {
-                                            $('#form_agregar_materias').trigger(
-                                                "reset"); //Reiniciar el formulario
-
-
-                                            // $('#exampleModal').hide();
-                                            $('#exampleModal').modal('hide')
-
-
-                                            listar(); //Listar la tabla de nuevo
-                                        });
-                                } else {
-                                    alert(data);
-                                    // Swal.fire({
-                                    //     icon: 'error',
-                                    //     title: 'Oops...',
-                                    //     text: 'Revisa los campos nuevamente',
-                                    //     //  footer: '<a href="">Why do I have this issue?</a>'
-                                    // })
-                                }
-                            });
-
-                        }
-                    })
-
-
-                }
-
-
-
-            });
-
-        }
-
-
-
-
-    });
-    </script>
 </body>
 
 </html>
