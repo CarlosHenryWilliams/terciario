@@ -195,6 +195,8 @@
     </script>
 
 
+
+
     <!-- Agregar Plan de Estudio -->
     <script>
     //AGREGAR PLAN DE ESTUDIO
@@ -307,12 +309,123 @@
     });
     </script>
 
-    <?php
 
 
+    <script>
+    /**Deshabilitar plan
+     * 
+     * Obtiene el id de de la plan
+     * */
 
 
-    ?>
+    //ESTADO HABILITADO/DESHABILITADO
+
+    $(document).on("click", ".btnEstado", function() {
+        opcion = 3; //Editar
+
+        fila = $(this).closest("tr");
+        id = parseInt(fila.find("td:eq(0)").text());
+
+        console.log(opcion);
+
+        console.log("EL ID ES : ", id);
+
+        Swal.fire({
+            title: "Deshabilitar Plan",
+            text: "Esta seguro que desea dar de baja el plan de estudio?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, estoy seguro",
+            cancelButtonText: "Cancelar",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                /**
+                 * Si confirma el formulario lo envia por post mediante Jquery
+                 */
+                $.post(
+                    "../../backend/plandeestudio/crudplandeestudio.php", {
+                        opcion: opcion,
+                        id: id,
+                    },
+                    function(data) {
+                        if (data == 1) {
+                            Swal.fire(
+                                "Perfecto!",
+                                "El Plan ha sido dado de baja!",
+                                "success"
+                            ).then(() => {
+                                listar();
+                            });
+                        } else {
+                            // alert(data);
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Ha ocurrido un error inesperado",
+                                footer: '<a href="">Why do I have this issue?</a>',
+                            });
+                        }
+                    }
+                );
+            }
+        });
+    });
+
+    //ESTADO HABILITADO/DESHABILITADO
+
+    // function get_id_plan(id) {
+
+    //     console.log(id)
+    //     let id_plan = id;
+
+    //     Swal.fire({
+    //         title: 'Deshabilitar Plan de Estudio',
+    //         text: "Esta seguro que desea dar de baja el Plan?",
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Si, estoy seguro',
+    //         cancelButtonText: 'Cancelar',
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             /**
+    //              * Si confirma el formulario lo envia por post mediante Jquery
+    //              */
+    //             $.post('../../backend/plandeestudio/deshabilitarplan.php', {
+    //                 var_id_plan: id_plan
+    //             }, function(data) {
+    //                 if (data == '1') {
+    //                     Swal.fire('Perfecto!', 'El Plan de Estudio ha sido dada de baja!', 'success')
+    //                         .then(
+    //                             () => {
+
+    //                                 //  setInterval(function() {
+    //                                 //      $('#tabla_materias').load('#tabla_materias');
+    //                                 //  }, 1000);
+
+    //                                 $('#').load('#tabla_plan_estudio');
+    //                             });
+    //                     tabla_plan
+
+    //                 } else {
+    //                     Swal.fire({
+    //                         icon: 'error',
+    //                         title: 'Oops...',
+    //                         text: 'Ha ocurrido un error inesperado',
+    //                         //  footer: '<a href="">Why do I have this issue?</a>'
+    //                     })
+    //                 }
+    //             });
+
+    //         }
+    //     })
+    // }
+    </script>
+
+
 
     <!-- Cargar datos en la tabla -->
     <script>
@@ -347,7 +460,7 @@
                     "data": "estado_p"
                 },
                 {
-                    "defaultContent": "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal' data-target='#modal_plan_estudio'><i class=' fa-solid fa-pen-to-square'></i></button><button class='btn btn-danger btn-sm btnBorrar m-1 rounded'>anashet</button></div></div>"
+                    "defaultContent": "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal' data-target='#modal_plan_estudio'><i class=' fa-solid fa-pen-to-square'></i></button><button class='btn btn-danger btn-sm btnEstado m-1 rounded'>Dar de baja</button></div></div>"
                 }
             ],
 
@@ -361,61 +474,6 @@
     console.log($resultado);
     </script>
 
-
-    <!-- <script>
-        /**Deshabilitar plan
-         * 
-         * Obtiene el id de de la plan
-         * */
-
-        function get_id_plan(id) {
-
-            console.log(id)
-            let id_plan = id;
-
-            Swal.fire({
-                title: 'Deshabilitar Plan de Estudio',
-                text: "Esta seguro que desea dar de baja el Plan?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, estoy seguro',
-                cancelButtonText: 'Cancelar',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    /**
-                     * Si confirma el formulario lo envia por post mediante Jquery
-                     */
-                    $.post('../../backend/plandeestudio/deshabilitarplan.php', {
-                        var_id_plan: id_plan
-                    }, function(data) {
-                        if (data == '1') {
-                            Swal.fire('Perfecto!', 'El Plan de Estudio ha sido dada de baja!', 'success').then(
-                                () => {
-
-                                    //  setInterval(function() {
-                                    //      $('#tabla_materias').load('#tabla_materias');
-                                    //  }, 1000);
-
-                                    $('#').load('#tabla_plan_estudio');
-                                });
-                            tabla_plan
-
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'Ha ocurrido un error inesperado',
-                                //  footer: '<a href="">Why do I have this issue?</a>'
-                            })
-                        }
-                    });
-
-                }
-            })
-        }
-    </script> -->
 
 
     <script>
