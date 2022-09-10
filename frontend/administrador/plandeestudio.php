@@ -271,8 +271,8 @@
                             }, function(data) {
                                 if (data == '1') {
                                     Swal.fire(
-                                        'Good job!',
-                                        'You clicked the button!',
+                                        'Se ha agregado con exito!',
+                                        'Haz click para continuar',
                                         'success'
                                     ).then(() => {
                                         $("#form_plan_estudio").trigger(
