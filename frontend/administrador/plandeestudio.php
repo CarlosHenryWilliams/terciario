@@ -14,7 +14,8 @@
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
 
 
@@ -30,7 +31,9 @@
     <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     <script src='sweetalert2.min.js'></script>
     <link rel='stylesheet' href='sweetalert2.min.css'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 
@@ -57,7 +60,8 @@
                     <div class="titulo_boton_modal d-flex justify-content-around my-2">
                         <h1 class="h1 col-lg-9 col-12 my-auto">PLAN DE ESTUDIO</h1>
                         <!-- Button modal -->
-                        <button type="button" class="btn btn-outline-info my-auto" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" class="btn btn-outline-info my-auto" data-toggle="modal"
+                            data-target="#modal_plan_estudio">
                             Agregar Plan de Estudio
                         </button>
                     </div>
@@ -75,17 +79,19 @@
                     <div class="acciones">
 
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="modal_plan_estudio" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Cargue los datos del Plan de Estudio</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Cargue los datos del Plan de
+                                            Estudio</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="POST" class="mt-2">
+                                        <form method="POST" class="mt-2" id="form_plan_estudio">
                                             <div>
                                                 <label for=""> Titulo del Plan</label>
                                                 <input type="text" id="titulo" class="form-control ">
@@ -109,7 +115,8 @@
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="button" id="cargar" class="btn btn-outline-success w-25">Cargar</button>
+                                        <button type="button" id="cargar"
+                                            class="btn btn-outline-success w-25">Cargar</button>
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +131,9 @@
                             Materias
                         </div>
                         <div class="card-body ">
-                            <table id="tabla_completa_plan_estudio" class="table table-bordered display responsive nowrap table-responsive " style="width:100%">
+                            <table id="tabla_completa_plan_estudio"
+                                class="table table-bordered display responsive nowrap table-responsive "
+                                style="width:100%">
                                 <thead class="">
                                     <tr class="">
                                         <th>ID</th>
@@ -164,14 +173,16 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/chart-area-demo.js"></script>
     <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
 
 
@@ -186,66 +197,73 @@
 
     <!-- Agregar Plan de Estudio -->
     <script>
-        $('#cargar').click(function() {
+    $('#cargar').click(function() {
 
-            let titulo = document.getElementById('titulo').value;
-            let nombre = document.getElementById('nombre').value;
-            let resolucion = document.getElementById('resolucion').value;
-            let estado = document.getElementById('estado').value;
+        let titulo = document.getElementById('titulo').value;
+        let nombre = document.getElementById('nombre').value;
+        let resolucion = document.getElementById('resolucion').value;
+        let estado = document.getElementById('estado').value;
 
-            // console.log(titulo, nombre, resolucion);
+        // console.log(titulo, nombre, resolucion);
 
-            if (titulo == '' || nombre == '' || resolucion == '' || estado == '') {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Por favor no deje ningun campo vacio',
-                    //  footer: '<a href="">Why do I have this issue?</a>'
-                })
-            } else {
+        if (titulo == '' || nombre == '' || resolucion == '' || estado == '') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Por favor no deje ningun campo vacio',
+                //  footer: '<a href="">Why do I have this issue?</a>'
+            })
+        } else {
 
-                Swal.fire({
-                    title: 'Los datos son correctos?',
-                    text: "La materia se cargara al sistema",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Si, estoy seguro',
-                    cancelButtonText: 'Cancelar',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        /**
-                         * Si confirma el formulario lo envia por post mediante Jquery
-                         */
+            Swal.fire({
+                title: 'Los datos son correctos?',
+                text: "La materia se cargara al sistema",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, estoy seguro',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    /**
+                     * Si confirma el formulario lo envia por post mediante Jquery
+                     */
 
-                        $.post('../../backend/plandeestudio/agregarplan.php', {
-                            var_titulo: titulo,
-                            var_nombre: nombre,
-                            var_resolucion: resolucion,
-                            var_estado: estado
-                        }, function(data) {
-                            if (data == '1') {
-                                Swal.fire(
-                                    'Good job!',
-                                    'You clicked the button!',
-                                    'success'
-                                )
-                            } else {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: 'Revisa los campos nuevamente',
-                                    //  footer: '<a href="">Why do I have this issue?</a>'
-                                })
-                            }
-                        });
-                    }
-                })
+                    $.post('../../backend/plandeestudio/agregarplan.php', {
+                        var_titulo: titulo,
+                        var_nombre: nombre,
+                        var_resolucion: resolucion,
+                        var_estado: estado
+                    }, function(data) {
+                        if (data == '1') {
+                            Swal.fire(
+                                'Good job!',
+                                'You clicked the button!',
+                                'success'
+                            ).then(() => {
+                                $("#form_plan_estudio").trigger(
+                                    "reset"); //Reiniciar el formulario
+                                $("#modal_plan_estudio .close")
+                                    .click(); //Cerrar el formulario
+                                listar();
 
-            }
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Revisa los campos nuevamente',
+                                //  footer: '<a href="">Why do I have this issue?</a>'
+                            })
+                        }
+                    });
+                }
+            })
 
-        });
+        }
+
+    });
     </script>
 
     <?php
@@ -257,49 +275,49 @@
 
     <!-- Cargar datos en la tabla -->
     <script>
-        $(document).ready(function() {
-            listar();
+    $(document).ready(function() {
+        listar();
+    });
+
+    var listar = function() {
+        var tableMaterias = $("#tabla_completa_plan_estudio").DataTable({
+
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json" // spanish version
+            },
+            "destroy": true, //para que no se buguee cuando agregas o editas etc
+            "ajax": {
+                "method": "POST",
+                "url": "../../backend/plandeestudio/buscarplan.php"
+            },
+            "columns": [{
+                    "data": "id" //con "data" vas cargando los campos que tenes en tu bd, data es una funcion nativa de datatables.
+                },
+                {
+                    "data": "titulo"
+                },
+                {
+                    "data": "nombre"
+                },
+                {
+                    "data": "resolucion"
+                },
+                {
+                    "data": "estado_p"
+                },
+                {
+                    "defaultContent": "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal' data-target='#modal_plan_estudio'><i class=' fa-solid fa-pen-to-square'></i></button><button class='btn btn-danger btn-sm btnBorrar m-1 rounded'>anashet</button></div></div>"
+                }
+            ],
+
+            "columnDefs": [{
+                "width": "30%",
+                "targets": [0, 1, 2, 3, 4] //aclarar el ancho y a cuales columnas
+            }]
+
         });
-
-        var listar = function() {
-            var tableMaterias = $("#tabla_completa_plan_estudio").DataTable({
-
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json" // spanish version
-                },
-                "destroy": true, //para que no se buguee cuando agregas o editas etc
-                "ajax": {
-                    "method": "POST",
-                    "url": "../../backend/plandeestudio/buscarplan.php"
-                },
-                "columns": [{
-                        "data": "id" //con "data" vas cargando los campos que tenes en tu bd, data es una funcion nativa de datatables.
-                    },
-                    {
-                        "data": "titulo"
-                    },
-                    {
-                        "data": "nombre"
-                    },
-                    {
-                        "data": "resolucion"
-                    },
-                    {
-                        "data": "estado_p"
-                    },
-                    {
-                        "defaultContent": "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal' data-target='#exampleModal'><i class=' fa-solid fa-pen-to-square'></i></button><button class='btn btn-danger btn-sm btnBorrar m-1 rounded'>anashet</button></div></div>"
-                    }
-                ],
-
-                "columnDefs": [{
-                    "width": "30%",
-                    "targets": [0, 1, 2, 3, 4] //aclarar el ancho y a cuales columnas
-                }]
-
-            });
-        }
-        console.log($resultado);
+    }
+    console.log($resultado);
     </script>
 
 
@@ -360,242 +378,243 @@
 
 
     <script>
-        //Editar
-        $(document).on("click", ".btnEditar", function() {
+    //Editar
+    $(document).on("click", ".btnEditar", function() {
 
-            opcion = 2; //Editar
-
-
-            //fila seria seleccionar la fila, la selecionas con el this, que this seria agarrar el elemento que pusiste en el click de arriba o sea el btn editar, closest lo mas cerca el TR obvio y despues abajo ya esta explicado el find.
-            fila = $(this).closest("tr");
-            //capturo el ID   el td:eq() , es un selector de indices, por ende si hay 4 <td>, para seleccionar el 4to td tendrias que poner td:eq(3) y con el .text agarras el texto obvio
-            id = parseInt(fila.find("td:eq(0)").text());
-            titulo = fila.find("td:eq(1)").text();
-            nombre = fila.find("td:eq(2)").text();
-            resolucion = fila.find("td:eq(3)").text();
-            estado_p = fila.find("td:eq(4)").text();
-
-            // console.log(id);
-            // console.log(titulo);
-            // console.log(nombre);
-            // console.log(resolucion);
-            // console.log(estado_p);
+        opcion = 2; //Editar
 
 
-            /**Configuraciones del MODAL */
-            $("#titulo").val(titulo); //insertando valores a un input
-            $("#nombre").val(nombre);
-            $("#resolucion").val(resolucion);
-            $("#estado").show();
-            $("#estado").val(estado_p);
+        //fila seria seleccionar la fila, la selecionas con el this, que this seria agarrar el elemento que pusiste en el click de arriba o sea el btn editar, closest lo mas cerca el TR obvio y despues abajo ya esta explicado el find.
+        fila = $(this).closest("tr");
+        //capturo el ID   el td:eq() , es un selector de indices, por ende si hay 4 <td>, para seleccionar el 4to td tendrias que poner td:eq(3) y con el .text agarras el texto obvio
+        id = parseInt(fila.find("td:eq(0)").text());
+        titulo = fila.find("td:eq(1)").text();
+        nombre = fila.find("td:eq(2)").text();
+        resolucion = fila.find("td:eq(3)").text();
+        estado_p = fila.find("td:eq(4)").text();
 
-            // $("#labelestadomateria").show();
-            $(".modal-header").css("background-color", "#00aeae");
-            $(".modal-header").css("color", "white");
-            $("#boton_enviarform").css("background-color", "#00aeae");
-            $("#boton_enviarform").css("color", "white");
-            $(".modal-title").text("Editar Materia");
-            //
-            /**Configuraciones del MODAL */
-
-
-            // Si opcion es igual a 2 o sea Editar
-            if (opcion === 2) {
-                $('#boton_enviarform').click(function() {
-                    console.log('ENTRO NOMAS PERRO')
-                    // console.log(id);
-                    // console.log(nombre);
-                    // console.log(abreviatura);
-                    // console.log(estado_m);
+        // console.log(id);
+        // console.log(titulo);
+        // console.log(nombre);
+        // console.log(resolucion);
+        // console.log(estado_p);
 
 
-                    valor_input_nombremateria = $('#inputnombremateria').val();
-                    valor_input_abreviaturamateria = $('#inputabreviaturamateria').val();
-                    valor_input_estadomateria = $('#inputestadomateria').val();
+        /**Configuraciones del MODAL */
+        $("#titulo").val(titulo); //insertando valores a un input
+        $("#nombre").val(nombre);
+        $("#resolucion").val(resolucion);
+        $("#estado").show();
+        $("#estado").val(estado_p);
 
-                    console.log(valor_input_nombremateria);
-                    console.log(valor_input_abreviaturamateria);
-                    console.log(valor_input_estadomateria);
-
-                    if ($('#inputnombremateria').val().length === 0 ||
-                        $('#inputabreviaturamateria').val().length === 0 ||
-                        $('#inputestadomateria').val().length === 0) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Por favor no deje ningun campo vacio',
-                            //  footer: '<a href="">Why do I have this issue?</a>'
-                        })
-                    } else {
-                        Swal.fire({
-                            title: 'Los datos son correctos?',
-                            text: "Esta seguro de editar esta materia?",
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Si, estoy seguro',
-                            cancelButtonText: 'Cancelar',
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                /**
-                                 * Si confirma el formulario lo envia por post mediante Jquery
-                                 */
-
-                                $.post('../../backend/materias/crudmaterias.php', {
-                                    opcion: opcion,
-                                    id: id,
-                                    nombre_materia: valor_input_nombremateria,
-                                    abreviatura_materia: valor_input_abreviaturamateria,
-                                    estado_materia: valor_input_estadomateria
-                                }, function(data) {
-                                    if (data == '1') {
-                                        Swal.fire(
-                                            'Buen Trabajo!',
-                                            'La materia ha sido cargada!',
-                                            'success'
-                                        ).then(
-                                            () => {
-                                                $('#form_agregar_materias').trigger(
-                                                    "reset"); //Reiniciar el formulario
+        // $("#labelestadomateria").show();
+        $(".modal-header").css("background-color", "#00aeae");
+        $(".modal-header").css("color", "white");
+        $("#boton_enviarform").css("background-color", "#00aeae");
+        $("#boton_enviarform").css("color", "white");
+        $(".modal-title").text("Editar Materia");
+        //
+        /**Configuraciones del MODAL */
 
 
-                                                // $('#exampleModal').hide();
-                                                $('#exampleModal').modal('hide')
+        // Si opcion es igual a 2 o sea Editar
+        if (opcion === 2) {
+            $('#boton_enviarform').click(function() {
+                console.log('ENTRO NOMAS PERRO')
+                // console.log(id);
+                // console.log(nombre);
+                // console.log(abreviatura);
+                // console.log(estado_m);
 
 
-                                                listar(); //Listar la tabla de nuevo
-                                            });
-                                    } else {
-                                        Swal.fire({
-                                            icon: 'error',
-                                            title: 'Oops...',
-                                            text: 'Revisa los campos nuevamente',
-                                            //  footer: '<a href="">Why do I have this issue?</a>'
-                                        })
-                                    }
-                                });
+                valor_input_nombremateria = $('#inputnombremateria').val();
+                valor_input_abreviaturamateria = $('#inputabreviaturamateria').val();
+                valor_input_estadomateria = $('#inputestadomateria').val();
 
-                            }
-                        })
+                console.log(valor_input_nombremateria);
+                console.log(valor_input_abreviaturamateria);
+                console.log(valor_input_estadomateria);
+
+                if ($('#inputnombremateria').val().length === 0 ||
+                    $('#inputabreviaturamateria').val().length === 0 ||
+                    $('#inputestadomateria').val().length === 0) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Por favor no deje ningun campo vacio',
+                        //  footer: '<a href="">Why do I have this issue?</a>'
+                    })
+                } else {
+                    Swal.fire({
+                        title: 'Los datos son correctos?',
+                        text: "Esta seguro de editar esta materia?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si, estoy seguro',
+                        cancelButtonText: 'Cancelar',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            /**
+                             * Si confirma el formulario lo envia por post mediante Jquery
+                             */
+
+                            $.post('../../backend/materias/crudmaterias.php', {
+                                opcion: opcion,
+                                id: id,
+                                nombre_materia: valor_input_nombremateria,
+                                abreviatura_materia: valor_input_abreviaturamateria,
+                                estado_materia: valor_input_estadomateria
+                            }, function(data) {
+                                if (data == '1') {
+                                    Swal.fire(
+                                        'Buen Trabajo!',
+                                        'La materia ha sido cargada!',
+                                        'success'
+                                    ).then(
+                                        () => {
+                                            $('#form_agregar_materias').trigger(
+                                                "reset"); //Reiniciar el formulario
 
 
-                    }
+                                            // $('#exampleModal').hide();
+                                            $('#exampleModal').modal('hide')
 
 
+                                            listar(); //Listar la tabla de nuevo
+                                        });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: 'Revisa los campos nuevamente',
+                                        //  footer: '<a href="">Why do I have this issue?</a>'
+                                    })
+                                }
+                            });
 
-                });
+                        }
+                    })
 
-            }
+
+                }
 
 
 
+            });
 
-        });
-
-
-
-        //Editar
-        $(document).on("click", ".btnAgregar", function() {
-
-            opcion = 1; //Agregar
-
-            /**
-             * MODIFICACIONES MODAL
-             */
-            $("#inputestadomateria").hide();
-            $("#labelestadomateria").hide();
-
-            $("#inputnombremateria").val(""); //DEBERIA IR EL INPUT DEL NOMBRE DEL MODAL
-            $("#inputabreviaturamateria").val("");
-            $("#inputestadomateria").val(1);
-
-            /**
-             * CSS MODAL
-             */
-            $(".modal-header").css("background-color", "#007bff");
-            $(".modal-header").css("color", "white");
-            $("#boton_enviarform").css("background-color", "#007bff");
-            $("#boton_enviarform").css("color", "white");
-            $(".modal-title").text("Agregar Materia");
-
-
-
-            if (opcion === 1) {
-
-                //  MODAL AGREGAR
-                $('#boton_enviarform').click(function() {
-
-                    let nombre_materia = document.getElementById('inputnombremateria').value;
-                    let abreviatura_materia = document.getElementById('inputabreviaturamateria').value;
-                    let estado_materia = document.getElementById('inputestadomateria').value;
-
-                    console.log(nombre_materia, abreviatura_materia, estado_materia);
-
-                    if (nombre_materia == '' || abreviatura_materia == '' || estado_materia == '') {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Por favor no deje ningun campo vacio',
-                            //  footer: '<a href="">Why do I have this issue?</a>'
-                        })
-                    } else {
-                        Swal.fire({
-                            title: 'Los datos son correctos?',
-                            text: "La materia se cargara al sistema",
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Si, estoy seguro',
-                            cancelButtonText: 'Cancelar',
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                /**
-                                 * Si confirma el formulario lo envia por post mediante Jquery
-                                 */
-
-                                $.post('../../backend/materias/cargarmateria.php', {
-                                    var_nombre_materia: nombre_materia,
-                                    var_abreviatura_materia: abreviatura_materia,
-                                    var_estado_materia: estado_materia
-                                }, function(data) {
-                                    if (data == '1') {
-                                        Swal.fire(
-                                            'Buen Trabajo!',
-                                            'La materia ha sido cargada!',
-                                            'success'
-                                        ).then(
-                                            () => {
-
-                                                $('#form_agregar_materias').trigger(
-                                                    "reset"); //Reiniciar el formulario
-                                                listar(); //Listar la tabla de nuevo
-                                            });
-                                    } else {
-                                        Swal.fire({
-                                            icon: 'error',
-                                            title: 'Oops...',
-                                            text: 'Revisa los campos nuevamente',
-                                            //  footer: '<a href="">Why do I have this issue?</a>'
-                                        })
-                                    }
-                                });
-
-                            }
-                        })
-
-
-                    }
-
-                });
-
-            }
+        }
 
 
 
 
-        });
+    });
+
+
+
+    //Editar
+    $(document).on("click", ".btnAgregar", function() {
+
+        opcion = 1; //Agregar
+
+        /**
+         * MODIFICACIONES MODAL
+         */
+        $("#inputestadomateria").hide();
+        $("#labelestadomateria").hide();
+
+        $("#inputnombremateria").val(""); //DEBERIA IR EL INPUT DEL NOMBRE DEL MODAL
+        $("#inputabreviaturamateria").val("");
+        $("#inputestadomateria").val(1);
+
+        /**
+         * CSS MODAL
+         */
+        $(".modal-header").css("background-color", "#007bff");
+        $(".modal-header").css("color", "white");
+        $("#boton_enviarform").css("background-color", "#007bff");
+        $("#boton_enviarform").css("color", "white");
+        $(".modal-title").text("Agregar Materia");
+
+
+
+        if (opcion === 1) {
+
+            //  MODAL AGREGAR
+            $('#boton_enviarform').click(function() {
+
+                let nombre_materia = document.getElementById('inputnombremateria').value;
+                let abreviatura_materia = document.getElementById('inputabreviaturamateria').value;
+                let estado_materia = document.getElementById('inputestadomateria').value;
+
+                console.log(nombre_materia, abreviatura_materia, estado_materia);
+
+                if (nombre_materia == '' || abreviatura_materia == '' || estado_materia == '') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Por favor no deje ningun campo vacio',
+                        //  footer: '<a href="">Why do I have this issue?</a>'
+                    })
+                } else {
+                    Swal.fire({
+                        title: 'Los datos son correctos?',
+                        text: "El plan se cargara al sistema",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si, estoy seguro',
+                        cancelButtonText: 'Cancelar',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            /**
+                             * Si confirma el formulario lo envia por post mediante Jquery
+                             */
+
+                            $.post('../../backend/materias/cargarmateria.php', {
+                                var_nombre_materia: nombre_materia,
+                                var_abreviatura_materia: abreviatura_materia,
+                                var_estado_materia: estado_materia
+                            }, function(data) {
+                                if (data == '1') {
+                                    Swal.fire(
+                                        'Buen Trabajo!',
+                                        'La materia ha sido cargada!',
+                                        'success'
+                                    ).then(
+                                        () => {
+
+                                            listar();
+                                            // $('#form_agregar_materias').trigger(
+                                            //     "reset"); //Reiniciar el formulario
+                                            // listar(); //Listar la tabla de nuevo
+                                        });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: 'Revisa los campos nuevamente',
+                                        //  footer: '<a href="">Why do I have this issue?</a>'
+                                    })
+                                }
+                            });
+
+                        }
+                    })
+
+
+                }
+
+            });
+
+        }
+
+
+
+
+    });
     </script>
 </body>
 
