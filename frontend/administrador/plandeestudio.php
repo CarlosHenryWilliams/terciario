@@ -60,7 +60,7 @@
                     <div class="titulo_boton_modal d-flex justify-content-around my-2">
                         <h1 class="h1 col-lg-9 col-12 my-auto">PLAN DE ESTUDIO</h1>
                         <!-- Button modal -->
-                        <button type="button" class="btn btn-outline-info my-auto" data-toggle="modal"
+                        <button type="button" class="btn btn-outline-info my-auto btnAgregar" data-toggle="modal"
                             data-target="#modal_plan_estudio">
                             Agregar Plan de Estudio
                         </button>
@@ -84,8 +84,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Cargue los datos del Plan de
-                                            Estudio</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -109,7 +108,8 @@
 
                                             <div>
                                                 <!-- ESTADO: Activo/Inactivo -->
-                                                <input type="hidden" id="estado" class="form-control" value="1">
+                                                <label id="label_estado" for="">Estado</label>
+                                                <input id="estado" type="text" class="form-control" value="1">
                                             </div>
                                         </form>
                                     </div>
@@ -197,71 +197,112 @@
 
     <!-- Agregar Plan de Estudio -->
     <script>
-    $('#cargar').click(function() {
+    //AGREGAR PLAN DE ESTUDIO
+    $(document).on("click", ".btnAgregar", function() {
 
-        let titulo = document.getElementById('titulo').value;
-        let nombre = document.getElementById('nombre').value;
-        let resolucion = document.getElementById('resolucion').value;
-        let estado = document.getElementById('estado').value;
+        opcion = 1; //Agregar
 
-        // console.log(titulo, nombre, resolucion);
 
-        if (titulo == '' || nombre == '' || resolucion == '' || estado == '') {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Por favor no deje ningun campo vacio',
-                //  footer: '<a href="">Why do I have this issue?</a>'
-            })
-        } else {
+        /**
+         * MODIFICACIONES MODAL
+         */
+        $("#label_estado").hide();
+        $("#estado").hide();
 
-            Swal.fire({
-                title: 'Los datos son correctos?',
-                text: "La materia se cargara al sistema",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, estoy seguro',
-                cancelButtonText: 'Cancelar',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    /**
-                     * Si confirma el formulario lo envia por post mediante Jquery
-                     */
+        $("#titulo").val("");
+        $("#nombre").val("");
+        $("#resolucion").val("");
+        $("#estado").val(1);
 
-                    $.post('../../backend/plandeestudio/agregarplan.php', {
-                        var_titulo: titulo,
-                        var_nombre: nombre,
-                        var_resolucion: resolucion,
-                        var_estado: estado
-                    }, function(data) {
-                        if (data == '1') {
-                            Swal.fire(
-                                'Good job!',
-                                'You clicked the button!',
-                                'success'
-                            ).then(() => {
-                                $("#form_plan_estudio").trigger(
-                                    "reset"); //Reiniciar el formulario
-                                $("#modal_plan_estudio .close")
-                                    .click(); //Cerrar el formulario
-                                listar();
+        /**
+         * CSS MODAL
+         */
+        $(".modal-title").text("Agregar Plan de Estudio");
+        $(".modal-header").css("background-color", "#007bff");
+        $(".modal-header").css("color", "white");
+        $("#boton_enviarform").css("background-color", "#007bff");
+        $("#boton_enviarform").css("color", "white");
 
+
+
+
+        if (opcion === 1) {
+
+            console.log('ENTROA ACA');
+            $('#cargar').click(function() {
+
+                let titulo = document.getElementById('titulo').value;
+                let nombre = document.getElementById('nombre').value;
+                let resolucion = document.getElementById('resolucion').value;
+                let estado = document.getElementById('estado').value;
+
+                // console.log(titulo, nombre, resolucion);
+
+                if (titulo == '' || nombre == '' || resolucion == '' || estado == '') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Por favor no deje ningun campo vacio',
+                        //  footer: '<a href="">Why do I have this issue?</a>'
+                    })
+                } else {
+
+                    Swal.fire({
+                        title: 'Los datos son correctos?',
+                        text: "La materia se cargara al sistema",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si, estoy seguro',
+                        cancelButtonText: 'Cancelar',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            /**
+                             * Si confirma el formulario lo envia por post mediante Jquery
+                             */
+
+                            $.post('../../backend/plandeestudio/crudplandeestudio.php', {
+                                opcion: opcion,
+                                var_titulo: titulo,
+                                var_nombre: nombre,
+                                var_resolucion: resolucion,
+                                var_estado: estado
+                            }, function(data) {
+                                if (data == '1') {
+                                    Swal.fire(
+                                        'Good job!',
+                                        'You clicked the button!',
+                                        'success'
+                                    ).then(() => {
+                                        $("#form_plan_estudio").trigger(
+                                            "reset"); //Reiniciar el formulario
+                                        $("#modal_plan_estudio .close")
+                                            .click(); //Cerrar el formulario
+                                        listar();
+
+                                    });
+                                } else {
+                                    // alert(data);
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: 'Revisa los campos nuevamente',
+                                        //  footer: '<a href="">Why do I have this issue?</a>'
+                                    })
+                                }
                             });
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'Revisa los campos nuevamente',
-                                //  footer: '<a href="">Why do I have this issue?</a>'
-                            })
                         }
-                    });
+                    })
+
                 }
-            })
+
+            });
 
         }
+
+
+
 
     });
     </script>
@@ -460,7 +501,7 @@
                              * Si confirma el formulario lo envia por post mediante Jquery
                              */
 
-                            $.post('../../backend/materias/crudmaterias.php', {
+                            $.post('../../backend/plandeestudio/crudplandeestudio.php', {
                                 opcion: opcion,
                                 id: id,
                                 nombre_materia: valor_input_nombremateria,
@@ -485,12 +526,13 @@
                                             listar(); //Listar la tabla de nuevo
                                         });
                                 } else {
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Oops...',
-                                        text: 'Revisa los campos nuevamente',
-                                        //  footer: '<a href="">Why do I have this issue?</a>'
-                                    })
+                                    alert(data);
+                                    // Swal.fire({
+                                    //     icon: 'error',
+                                    //     title: 'Oops...',
+                                    //     text: 'Revisa los campos nuevamente',
+                                    //     //  footer: '<a href="">Why do I have this issue?</a>'
+                                    // })
                                 }
                             });
 
@@ -501,111 +543,6 @@
                 }
 
 
-
-            });
-
-        }
-
-
-
-
-    });
-
-
-
-    //Editar
-    $(document).on("click", ".btnAgregar", function() {
-
-        opcion = 1; //Agregar
-
-        /**
-         * MODIFICACIONES MODAL
-         */
-        $("#inputestadomateria").hide();
-        $("#labelestadomateria").hide();
-
-        $("#inputnombremateria").val(""); //DEBERIA IR EL INPUT DEL NOMBRE DEL MODAL
-        $("#inputabreviaturamateria").val("");
-        $("#inputestadomateria").val(1);
-
-        /**
-         * CSS MODAL
-         */
-        $(".modal-header").css("background-color", "#007bff");
-        $(".modal-header").css("color", "white");
-        $("#boton_enviarform").css("background-color", "#007bff");
-        $("#boton_enviarform").css("color", "white");
-        $(".modal-title").text("Agregar Materia");
-
-
-
-        if (opcion === 1) {
-
-            //  MODAL AGREGAR
-            $('#boton_enviarform').click(function() {
-
-                let nombre_materia = document.getElementById('inputnombremateria').value;
-                let abreviatura_materia = document.getElementById('inputabreviaturamateria').value;
-                let estado_materia = document.getElementById('inputestadomateria').value;
-
-                console.log(nombre_materia, abreviatura_materia, estado_materia);
-
-                if (nombre_materia == '' || abreviatura_materia == '' || estado_materia == '') {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Por favor no deje ningun campo vacio',
-                        //  footer: '<a href="">Why do I have this issue?</a>'
-                    })
-                } else {
-                    Swal.fire({
-                        title: 'Los datos son correctos?',
-                        text: "El plan se cargara al sistema",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Si, estoy seguro',
-                        cancelButtonText: 'Cancelar',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            /**
-                             * Si confirma el formulario lo envia por post mediante Jquery
-                             */
-
-                            $.post('../../backend/materias/cargarmateria.php', {
-                                var_nombre_materia: nombre_materia,
-                                var_abreviatura_materia: abreviatura_materia,
-                                var_estado_materia: estado_materia
-                            }, function(data) {
-                                if (data == '1') {
-                                    Swal.fire(
-                                        'Buen Trabajo!',
-                                        'La materia ha sido cargada!',
-                                        'success'
-                                    ).then(
-                                        () => {
-
-                                            listar();
-                                            // $('#form_agregar_materias').trigger(
-                                            //     "reset"); //Reiniciar el formulario
-                                            // listar(); //Listar la tabla de nuevo
-                                        });
-                                } else {
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Oops...',
-                                        text: 'Revisa los campos nuevamente',
-                                        //  footer: '<a href="">Why do I have this issue?</a>'
-                                    })
-                                }
-                            });
-
-                        }
-                    })
-
-
-                }
 
             });
 

@@ -11,14 +11,12 @@ $opcion = $_POST['opcion'];
 switch ($opcion) {
     case 1: //AGREGAR
 
-        $nombre_materia = $_POST['var_nombre_materia'];
-        $abreviatura_materia = $_POST['var_abreviatura_materia'];
-        $estadohabilitado = $_POST['var_estado_materia'];
+        $titulo = $_POST['var_titulo'];
+        $nombre = $_POST['var_nombre'];
+        $resolucion = $_POST['var_resolucion'];
+        $estado = $_POST['var_estado'];
 
-        $query = "INSERT INTO `materias`( `nombre`, `abreviatura`, `estado_m`) VALUES ('$nombre_materia','$abreviatura_materia','$estadohabilitado')";
-
-        $resultado  = mysqli_query(conectame(), $query);
-
+        $resultado = conectame()->query("INSERT INTO `plan_estudio`( `titulo`, `nombre`, `resolucion`, `estado_p`) VALUES ('$titulo','$nombre','$resolucion','$estado')");
 
         $error = mysqli_error(conectame());
 
@@ -28,7 +26,6 @@ switch ($opcion) {
             echo '0';
         }
         break;
-
 
     case 2:  //CASO 2 EDITAR
         // $query = "UPDATE `materias` SET `nombre`= '' ,`abreviatura`= '' ,`estado_m`='' 
