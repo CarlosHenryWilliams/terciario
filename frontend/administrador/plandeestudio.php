@@ -13,7 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-    
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
 
@@ -59,6 +59,15 @@
                         <!-- Button modal -->
                         <button type="button" class="btn btn-outline-info my-auto" data-toggle="modal" data-target="#exampleModal">
                             Agregar Plan de Estudio
+                        </button>
+                    </div>
+
+                    <div>
+                        <button type="button" class="btn btn-outline-danger m-1">
+                            Deshabilitados
+                        </button>
+                        <button type="button" class="btn btn-outline-success m-1">
+                            Habilitados
                         </button>
                     </div>
 
@@ -153,18 +162,16 @@
     <!-- cierre footer -->
 
 
-  
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/chart-area-demo.js"></script>
     <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
 
 
@@ -241,11 +248,11 @@
         });
     </script>
 
-    <?php 
-       
+    <?php
 
 
-        
+
+
     ?>
 
     <!-- Cargar datos en la tabla -->
@@ -278,7 +285,7 @@
                         "data": "resolucion"
                     },
                     {
-                       "data": "estado_p"
+                        "data": "estado_p"
                     },
                     {
                         "defaultContent": "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal' data-target='#exampleModal'><i class=' fa-solid fa-pen-to-square'></i></button><button class='btn btn-danger btn-sm btnBorrar m-1 rounded'>anashet</button></div></div>"
@@ -381,7 +388,7 @@
             $("#resolucion").val(resolucion);
             $("#estado").show();
             $("#estado").val(estado_p);
-            
+
             // $("#labelestadomateria").show();
             $(".modal-header").css("background-color", "#00aeae");
             $(".modal-header").css("color", "white");

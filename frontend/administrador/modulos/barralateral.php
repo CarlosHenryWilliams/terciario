@@ -32,7 +32,6 @@
                      data-bs-parent="#sidenavAccordion">
                      <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                          <a class="nav-link" href="plandeestudio.php">Ver Planes</a>
-                         <a class="nav-link" href="">Cargar Nuevo</a>
                      </nav>
                  </div>
 
