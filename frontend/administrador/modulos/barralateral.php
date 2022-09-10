@@ -2,12 +2,16 @@
      <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
          <div class="sb-sidenav-menu">
              <div class="nav">
-                 <div class="sb-sidenav-menu-heading">Inicio</div>
+                 <div class="sb-sidenav-menu-heading text-white">Inicio</div>
                  <a class="nav-link" href="index.php">
                      <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                      Administrar
                  </a>
-                 <div class="sb-sidenav-menu-heading">Usuarios</div>
+                 <div class="sb-sidenav-menu-heading text-white">Usuarios</div>
+                 <a class="nav-link" href="roles.php">
+                     <div class="sb-nav-link-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                     Roles
+                 </a>
                  <a class="nav-link" href="alumnos.php">
                      <div class="sb-nav-link-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                      Alumnos
@@ -20,32 +24,27 @@
                      <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
                      Personal
                  </a>
-                 <div class="sb-sidenav-menu-heading">Formularios</div>
+                 <div class="sb-sidenav-menu-heading text-white">Apartados</div>
 
-                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages1"
-                     aria-expanded="false" aria-controls="collapsePages">
+                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages">
                      <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                      Plan de Estudio
                      <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                  </a>
-                 <div class="collapse" id="collapsePages1" aria-labelledby="headingTwo"
-                     data-bs-parent="#sidenavAccordion">
+                 <div class="collapse" id="collapsePages1" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                      <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                          <a class="nav-link" href="plandeestudio.php">Ver Planes</a>
                      </nav>
                  </div>
 
-                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
-                     aria-expanded="false" aria-controls="collapsePages">
+                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                      <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                      Materias
                      <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                  </a>
-                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
-                     data-bs-parent="#sidenavAccordion">
+                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                      <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                          <a class="nav-link" href="materias.php">Ver Materias</a>
-                         <a class="nav-link" href="">Cargar Nuevo</a>
                      </nav>
                  </div>
              </div>
