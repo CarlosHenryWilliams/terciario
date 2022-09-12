@@ -12,6 +12,7 @@
     <title>Administrador - Terciario 89</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/desing.css"/>
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -63,10 +64,10 @@
                     </div>
 
                     <div>
-                        <button type="button" class="btn btn-outline-danger m-1" id="plan_deshabiltados"  onclick="toggleElement('table_deshabilitado')">
+                        <button type="button" class="btn m-1 btn-danger" id="plan_deshabiltados" aria-pressed="false" onclick="toggleElement('table_deshabilitado')">
                             Deshabilitados
                         </button>
-                        <button type="button" class="btn btn-outline-success m-1" id="plan_habiltados"  onclick="toggleElement('table_habilitado')">
+                        <button type="button" class="btn m-1 btn-activo btn-success" id="plan_habiltados" aria-pressed="false"   onclick="toggleElement('table_habilitado')">
                             Habilitados
                         </button>
                     </div>
@@ -119,13 +120,13 @@
                     </div>
 
                     <!-- TABLA DESHABILITADOS -->
-                    <div class="card mb-4 ">
+                    <div class="card mb-4 " id="table_deshabilitado">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
                             Materias
                         </div>
                         <div class="card-body">
-                            <table id="tabla_completa_plan_estudio" class="table table-bordered display responsive nowrap table-responsive " style="width:100%">
+                            <table id="tabla_deshabilitado_plan_estudio" class="table table-bordered display responsive nowrap table-responsive " style="width:100%">
                                 <thead class="">
                                     <tr class="">
                                         <th>ID</th>
@@ -144,13 +145,13 @@
                     </div>
 
                     <!-- TABLA HABILITADOS -->
-                    <div class="card mb-4 btn-active">
+                    <div class="card mb-4 btn-active" id="table_habilitado">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
                             Materias
                         </div>
                         <div class="card-body ">
-                            <table id="tabla_completa_plan_estudio" class="table table-bordered display responsive nowrap table-responsive " style="width:100%">
+                            <table id="#tabla_habilitado_plan_estudio" class="table table-bordered display responsive nowrap table-responsive " style="width:100%">
                                 <thead class="">
                                     <tr class="">
                                         <th>ID</th>
@@ -581,14 +582,14 @@
     </script>
 
 
-    <!-- Cargar datos en la tabla -->
+    <!-- Cargar datos en la tabla deshabilitados-->
     <script>
         $(document).ready(function() {
             listar();
         });
 
         var listar = function() {
-            var tableMaterias = $("#tabla_completa_plan_estudio").DataTable({
+            var tableMaterias = $("#tabla_deshabilitado_plan_estudio").DataTable({
 
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json" // spanish version
@@ -596,7 +597,54 @@
                 "destroy": true, //para que no se buguee cuando agregas o editas etc
                 "ajax": {
                     "method": "POST",
-                    "url": "../../backend/plandeestudio/buscarplan.php"
+                    "url": "../../backend/plandeestudio/buscardeshabilitados.php"
+                },
+                "columns": [{
+                        "data": "id" //con "data" vas cargando los campos que tenes en tu bd, data es una funcion nativa de datatables.
+                    },
+                    {
+                        "data": "titulo"
+                    },
+                    {
+                        "data": "nombre"
+                    },
+                    {
+                        "data": "resolucion"
+                    },
+                    {
+                        "data": "estado_p"
+                    },
+                    {
+                        "defaultContent": "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal' data-target='#modal_plan_estudio'><i class=' fa-solid fa-pen-to-square'></i></button><button class='btn btn-danger btn-sm btnEstado m-1 rounded'>Dar de baja</button></div></div>"
+                    }
+                ],
+
+                "columnDefs": [{
+                    "width": "30%",
+                    "targets": [0, 1, 2, 3, 4] //aclarar el ancho y a cuales columnas
+                }]
+
+            });
+        }
+        console.log($resultado);
+    </script>
+
+     <!-- Cargar datos en la tabla habilitados-->
+     <script>
+        $(document).ready(function() {
+            listar();
+        });
+
+        var listar = function() {
+            var tableMaterias = $("#tabla_habilitado_plan_estudio").DataTable({
+
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json" // spanish version
+                },
+                "destroy": true, //para que no se buguee cuando agregas o editas etc
+                "ajax": {
+                    "method": "POST",
+                    "url": "../../backend/plandeestudio/buscarhabilitados.php"
                 },
                 "columns": [{
                         "data": "id" //con "data" vas cargando los campos que tenes en tu bd, data es una funcion nativa de datatables.

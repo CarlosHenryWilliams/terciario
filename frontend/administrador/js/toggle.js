@@ -7,7 +7,7 @@ function toggleElement(el) {
     document.getElementById("plan_deshabiltados").classList.remove("btn-activo");
     document.getElementById("plan_habiltados").className += " btn-activo";
   } else {
-    otro = "table_d";
+    otro = "table_deshabilitado";
     document.getElementById("plan_habiltados").classList.remove("btn-activo");
     document.getElementById("plan_deshabiltados").className += " btn-activo";
   }

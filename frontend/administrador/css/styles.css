@@ -70,9 +70,7 @@
   box-sizing: border-box;
 }
 
-.btn-activo{
-  color: violet;
-}
+
 
 @media (prefers-reduced-motion: no-preference) {
   :root {
