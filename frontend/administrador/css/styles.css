@@ -70,7 +70,13 @@
   box-sizing: border-box;
 }
 
+.activo{
+  display: block;
+}
 
+.inactivo{
+  display: none;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   :root {
