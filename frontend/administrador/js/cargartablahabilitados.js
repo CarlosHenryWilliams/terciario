@@ -26,7 +26,7 @@ var cargartablahabilitados = function () {
       },
       {
         defaultContent:
-          "<div ><div class='btn-group'><button id='botoneditardocente2' class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal' data-target='#modal_plan_estudio'><i class=' fa-solid fa-pen-to-square'></i></button><button class='btn btn-danger btn-sm btnEstado m-1 rounded'>Dar de baja</button></div></div>",
+          "<div ><div class='btn-group'><button id='botoneditardocente2' class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal' data-target='#modal_plan_estudio'><i class=' fa-solid fa-pen-to-square'></i></button><button class='btn btn-danger btn-sm btnEstado m-1 rounded'>Dar de baja <i class='fa-solid fa-download'></i></button><button type='button' class='btn btn-secondary btn-sm btnMaterias m-1 rounded' data-toggle='modal' data-target= '#modal_materias_plan_estudio'>Matarias</button></div></div>",
       },
     ],
 
