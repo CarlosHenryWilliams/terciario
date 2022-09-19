@@ -1,17 +1,24 @@
 $(document).ready(function () {
-  listar(); //MOSTRAR DATOS DE LA TABLA
+  cargar_tabla_materias_habilitadas(); //MOSTRAR DATOS DE LA TABLA
+  cargar_tabla_materias_deshabilitadas(); //MOSTRAR DATOS DE LA TABLA
 });
 
-//MOSTRAR DATOS DE LA TABLA
-var listar = function () {
-  var tableMaterias = $("#tabla_completa_materias").DataTable({
+/**
+ *
+ * ? JAVASCRIPT DE LAS MATERIAS HABILITADAS
+ *
+ */
+
+//MOSTRAR DATOS DE LA TABLA MATERIAS HABILITADAS
+var cargar_tabla_materias_habilitadas = function () {
+  var tableMaterias = $("#tabla_materias_habilitadas").DataTable({
     language: {
       url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json", // spanish version
     },
     destroy: true, //para que no se buguee cuando agregas o editas etc
     ajax: {
       method: "POST",
-      url: "../../backend/materias/buscarmaterias.php",
+      url: "../../backend/materias/buscarmateriashabilitadas.php",
     },
     columns: [
       {
@@ -32,7 +39,7 @@ var listar = function () {
       // },
       {
         defaultContent:
-          "<div><div class='btn-group'><button class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal' data-target='#modal_form_materias'><i class=' fa-solid fa-pen-to-square'></i></button><button class='btn btn-danger btn-sm btnEstado m-1 rounded'>Dar de baja<i class='fa-solid fa-download'></i></button></div></div>",
+          "<div><div class='btn-group'><button class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal' data-target='#modal_form_materias'><i class=' fa-solid fa-pen-to-square'></i></button><button class='btn btn-danger btn-sm btnEstado m-1 rounded'>Dar de baja <i class='fa-solid fa-download'></i></button></div></div>",
       },
     ],
 
@@ -44,7 +51,7 @@ var listar = function () {
     ],
   });
 };
-//MOSTRAR DATOS DE LA TABLA
+//MOSTRAR DATOS DE LA TABLA MATERIAS HABILITADAS
 
 //AGREGAR MATERIAAA
 $(document).on("click", ".btnAgregar", function () {
@@ -124,7 +131,7 @@ $(document).on("click", ".btnAgregar", function () {
                   ).then(() => {
                     $("#form_agregar_materias").trigger("reset"); //Reiniciar el formulario
                     $("#modal_form_materias .close").click(); //Cerrar el formulario
-                    listar(); //Listar la tabla de nuevo
+                    cargar_tabla_materias_habilitadas(); //Listar la tabla de nuevo
                   });
                 } else {
                   // alert(data);
@@ -146,10 +153,10 @@ $(document).on("click", ".btnAgregar", function () {
 
 //AGREGAR MATERIA
 
-//ESTADO HABILITADO/DESHABILITADO
+//DAR DE BAJA UNA MATERIA
 
 $(document).on("click", ".btnEstado", function () {
-  opcion = 3; //Editar
+  opcion = 3; //DAR DE BAJA
 
   fila = $(this).closest("tr");
   id = parseInt(fila.find("td:eq(0)").text());
@@ -181,7 +188,8 @@ $(document).on("click", ".btnEstado", function () {
               "La materia ha sido dada de baja!",
               "success"
             ).then(() => {
-              listar();
+              cargar_tabla_materias_habilitadas();
+              cargar_tabla_materias_deshabilitadas();
             });
           } else {
             // alert(data);
@@ -198,7 +206,7 @@ $(document).on("click", ".btnEstado", function () {
   });
 });
 
-//ESTADO HABILITADO/DESHABILITADO
+//DAR DE BAJA
 
 //EDITAR MATERIA
 $(document).on("click", ".btnEditar", function () {
@@ -294,7 +302,8 @@ $(document).on("click", ".btnEditar", function () {
                     $("#form_agregar_materias").trigger("reset"); //Reiniciar el formulario
 
                     $("#modal_form_materias .close").click(); //Cerrar el Modal
-                    listar(); //Listar la tabla de nuevo
+                    cargar_tabla_materias_habilitadas(); //Listar la tabla de nuevo
+                    cargar_tabla_materias_deshabilitadas();
                   });
                 } else {
                   Swal.fire({
@@ -313,3 +322,112 @@ $(document).on("click", ".btnEditar", function () {
   }
 });
 //EDITAR MATERIA
+
+/**
+ *
+ *   ? JAVASCRIPT DE LAS MATERIAS HABILITADAS
+ *
+ */
+
+/**
+ * ? JAVASCRIPT DE LAS MATERIAS DESHABILITADAS
+ */
+
+//MOSTRAR DATOS DE LA TABLA MATERIAS HABILITADAS
+var cargar_tabla_materias_deshabilitadas = function () {
+  var tableMaterias = $("#tabla_materias_deshabilitadas").DataTable({
+    language: {
+      url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json", // spanish version
+    },
+    destroy: true, //para que no se buguee cuando agregas o editas etc
+    ajax: {
+      method: "POST",
+      url: "../../backend/materias/buscarmateriasdeshabilitadas.php",
+    },
+    columns: [
+      {
+        data: "id", //con "data" vas cargando los campos que tenes en tu bd, data es una funcion nativa de datatables.
+      },
+      {
+        data: "nombre",
+      },
+      {
+        data: "abreviatura",
+      },
+      {
+        data: "estado_m",
+      },
+      // {
+      //   defaultContent:
+      //     "<div ><div class='btn-group'><button class='btn btn-info btnEditar' data-toggle='modal' data-target='#modal_form_materias'>Editar</button><button class='btn btn-danger btn-sm btnEstado'><i class='material-icons'>Dar de baja</i></button></div></div>",
+      // },
+      {
+        defaultContent:
+          "<div><div class='btn-group'><button class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal' data-target='#modal_form_materias'><i class=' fa-solid fa-pen-to-square'></i></button><button class='btn btn-success btn-sm btnEstado2 m-1 rounded'>Dar de alta <i class='fa-solid fa-upload'></i></button></div></div>",
+      },
+    ],
+
+    columnDefs: [
+      {
+        width: "30%",
+        targets: [0, 1, 2, 3, 4], //aclarar el ancho y a cuales columnas
+      },
+    ],
+  });
+};
+//MOSTRAR DATOS DE LA TABLA MATERIAS HABILITADAS
+
+//DAR DE ALTA UNA MATERIA
+
+$(document).on("click", ".btnEstado2", function () {
+  opcion = 4; //DAR DE ALTA
+
+  fila = $(this).closest("tr");
+  id = parseInt(fila.find("td:eq(0)").text());
+
+  Swal.fire({
+    title: "Deshabilitar Materia",
+    text: "Esta seguro que desea dar de alta esta materia?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, estoy seguro",
+    cancelButtonText: "Cancelar",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      /**
+       * Si confirma el formulario lo envia por post mediante Jquery
+       */
+      $.post(
+        "../../backend/materias/crudmaterias.php",
+        {
+          opcion: opcion,
+          id: id,
+        },
+        function (data) {
+          if (data == 1) {
+            Swal.fire(
+              "Perfecto!",
+              "La materia ha sido dada de alta!",
+              "success"
+            ).then(() => {
+              cargar_tabla_materias_habilitadas();
+              cargar_tabla_materias_deshabilitadas();
+            });
+          } else {
+            // alert(data);
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Ha ocurrido un error inesperado",
+              footer: '<a href="">Why do I have this issue?</a>',
+            });
+          }
+        }
+      );
+    }
+  });
+});
+
+//DAR DE BAJA
