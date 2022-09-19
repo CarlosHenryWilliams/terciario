@@ -125,7 +125,7 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
-                            Materias
+                            Materias Habilitadas
                         </div>
                         <div class="card-body ">
                             <table id="tabla_completa_materias"
@@ -191,7 +191,34 @@
     </script>
 
 
+    <!-- 
+    <div>
+        <div class='btn-group'>
+            <button id='botoneditardocente2' class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal'
+                data-target='#modal_plan_estudio'>
+                <i class=' fa-solid fa-pen-to-square'></i>
+            </button>
+            <button class='btn btn-danger btn-sm btnEstado m-1 rounded'>Dar de baja
+                <i class='fa-solid fa-download'></i>
+            </button>
+            <button type='button' class='btn btn-secondary btn-sm btnMaterias m-1 rounded' data-toggle='modal'
+                data-target='#modal_materias_plan_estudio'>
+                Matarias
+            </button>
+        </div>
+    </div> -->
 
+
+    <div>
+        <div class='btn-group'>
+            <button class='btn btn-info btnEditar m-1 rounded' data-toggle='modal' data-target='#modal_form_materias'>
+                <i class=' fa-solid fa-pen-to-square'></i>
+            </button>
+            <button class='btn btn-danger btn-sm btnEstado m-1 rounded'>Dar de baja
+                <i class='fa-solid fa-download'></i>
+            </button>
+        </div>
+    </div>
 
     <!-- SCRIPT DATATABLES -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">

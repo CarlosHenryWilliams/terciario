@@ -26,9 +26,13 @@ var listar = function () {
       {
         data: "estado_m",
       },
+      // {
+      //   defaultContent:
+      //     "<div ><div class='btn-group'><button class='btn btn-info btnEditar' data-toggle='modal' data-target='#modal_form_materias'>Editar</button><button class='btn btn-danger btn-sm btnEstado'><i class='material-icons'>Dar de baja</i></button></div></div>",
+      // },
       {
         defaultContent:
-          "<div ><div class='btn-group'><button class='btn btn-info btnEditar' data-toggle='modal' data-target='#modal_form_materias'>Editar</button><button class='btn btn-danger btn-sm btnEstado'><i class='material-icons'>Dar de baja</i></button></div></div>",
+          "<div><div class='btn-group'><button class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal' data-target='#modal_form_materias'><i class=' fa-solid fa-pen-to-square'></i></button><button class='btn btn-danger btn-sm btnEstado m-1 rounded'>Dar de baja<i class='fa-solid fa-download'></i></button></div></div>",
       },
     ],
 
