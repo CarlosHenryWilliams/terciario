@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2022 at 01:32 PM
+-- Generation Time: Sep 22, 2022 at 01:50 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -98,7 +98,9 @@ CREATE TABLE `notas` (
 CREATE TABLE `planestudio_materia` (
   `id` int(11) NOT NULL,
   `id_plan_estudio` int(50) NOT NULL,
-  `id_materias` int(50) NOT NULL
+  `id_materias` int(50) NOT NULL,
+  `ano_plan_materia` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `periodo_cursada` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -123,8 +125,9 @@ INSERT INTO `plan_estudio` (`id`, `titulo`, `nombre`, `resolucion`, `estado_p`) 
 (1, 'titulo1', 'nombre13', 'resolucion1', 0),
 (2, 'plandeestudio1', 'Charlyg', 'resolucion11', 0),
 (3, 'titulo de plan', 'nombre del plan', 'resolucion del plan', 0),
-(4, 'plandeestudio1', 'Charly', 'resolucion12', 1),
-(5, 'plandeestudio1', 'CharlyW', 'resolucion12', 1);
+(4, 'plandeestudio1', 'Charly', 'resolucion12', 0),
+(5, 'plandeestudio1tdtt', 'CharlyW', 'resolucion12', 1),
+(6, 'titulo14', 'Mariveya', 'eresamkdsao', 1);
 
 -- --------------------------------------------------------
 
@@ -299,7 +302,7 @@ ALTER TABLE `planestudio_materia`
 -- AUTO_INCREMENT for table `plan_estudio`
 --
 ALTER TABLE `plan_estudio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `roles`
