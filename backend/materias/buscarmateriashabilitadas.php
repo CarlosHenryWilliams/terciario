@@ -1,6 +1,6 @@
 <?php
 include('../conexion.php');
-$query = "SELECT * FROM `materias`";
+$query = "SELECT * FROM `materias` WHERE estado_m = 1";
 
 $resultado = mysqli_query(conectame(), $query);
 

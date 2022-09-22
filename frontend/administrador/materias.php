@@ -58,20 +58,28 @@
             <main>
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center ">
-
-
                         <h1 class="mt-4 mb-4">MATERIAS</h1>
-
-
                     </div>
 
-
-                    <div class="acciones">
+                    <div>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary btnAgregar" data-toggle="modal"
                             data-target="#modal_form_materias">
                             Agregar materia nueva
                         </button>
+                        <button type="button" class="btn m-1 btn-danger" id="plan_deshabiltados" aria-pressed="false"
+                            onclick="toggleElement('table_deshabilitado')">
+                            Materias deshabilitadas
+                        </button>
+                        <input type="hidden" id="estado" value="0">
+                        <button type="button" class="btn m-1 btn-activo btn-success" id="plan_habiltados"
+                            aria-pressed="false" onclick="toggleElement('table_habilitado')">
+                            Materias habilitadas
+                        </button>
+                    </div>
+
+                    <div class="acciones">
+
 
                         <!-- Modal -->
                         <div class="modal fade" id="modal_form_materias" tabindex="-1"
@@ -121,14 +129,14 @@
 
                     </div>
 
-                    <!-- TABLA -->
-                    <div class="card mb-4">
+                    <!-- TABLA MATERIAS HABILITADAS -->
+                    <div class="card mb-4" id="div_tabla_materias_habilitadas">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
-                            Materias
+                            Materias Habilitadas
                         </div>
                         <div class="card-body ">
-                            <table id="tabla_completa_materias"
+                            <table id="tabla_materias_habilitadas"
                                 class="table table-bordered display responsive nowrap table-responsive"
                                 style="width:100%">
                                 <thead class="">
@@ -141,12 +149,37 @@
 
                                     </tr>
                                 </thead>
-
-
-
                             </table>
                         </div>
                     </div>
+
+
+                    <!-- TABLA MATERIAS DESHABILITADAS -->
+                    <div class="card mb-4" id="div_tabla_materias_deshabilitadas">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Materias Deshabilitadas
+                        </div>
+                        <div class="card-body ">
+                            <table id="tabla_materias_deshabilitadas"
+                                class="table table-bordered display responsive nowrap table-responsive"
+                                style="width:100%">
+                                <thead class="">
+                                    <tr class="">
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Abreviatura</th>
+                                        <th>estado_m</th>
+                                        <th>Acciones</th>
+
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+
+
                 </div>
             </main>
             <!-- Footer -->
@@ -191,7 +224,34 @@
     </script>
 
 
+    <!-- 
+    <div>
+        <div class='btn-group'>
+            <button id='botoneditardocente2' class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal'
+                data-target='#modal_plan_estudio'>
+                <i class=' fa-solid fa-pen-to-square'></i>
+            </button>
+            <button class='btn btn-danger btn-sm btnEstado m-1 rounded'>Dar de baja
+                <i class='fa-solid fa-download'></i>
+            </button>
+            <button type='button' class='btn btn-secondary btn-sm btnMaterias m-1 rounded' data-toggle='modal'
+                data-target='#modal_materias_plan_estudio'>
+                Matarias
+            </button>
+        </div>
+    </div> -->
 
+
+    <!-- <div>
+        <div class='btn-group'>
+            <button class='btn btn-info btnEditar m-1 rounded' data-toggle='modal' data-target='#modal_form_materias'>
+                <i class=' fa-solid fa-pen-to-square'></i>
+            </button>
+            <button class='btn btn-danger btn-sm btnEstado m-1 rounded'>Dar de baja
+                <i class='fa-solid fa-download'></i>
+            </button>
+        </div>
+    </div> -->
 
     <!-- SCRIPT DATATABLES -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">

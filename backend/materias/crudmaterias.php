@@ -65,10 +65,21 @@ switch ($opcion) {
         }
 
         break;
-    case 4:  //LISTAR TABLA
+    case 4: //CASO 3 DAR DE ALTA
 
-        //EL READ ESTA EN buscarmaterias.php
+        $id_materia = $_POST['id'];
 
+        $query1 = "UPDATE `materias` SET `estado_m`='1' WHERE `id` =$id_materia";
+        $resultado1  = mysqli_query(conectame(), $query1);
+
+        $error1 = mysqli_error(conectame());
+        if ($error1 == '') {   //O sea si se ejecuto sin errores la consulta.
+            echo "1";
+        } else {
+            echo "0";
+        }
+
+        break;
 
         break;
 }
