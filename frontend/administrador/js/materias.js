@@ -431,3 +431,23 @@ $(document).on("click", ".btnEstado2", function () {
 });
 
 //DAR DE BAJA
+
+//TOGGLE, PARA VER LAS TABLAS HABILITADAS Y DESHABILITADAS
+function toggleElement(el) {
+  // el argumento 'el' trae un string que contiene el id del elemento que quiero togglear
+  let otro;
+  // el elemento que no traigo
+  if (el === "div_tabla_materias_deshabilitadas") {
+    otro = "div_tabla_materias_habilitadas";
+    document.getElementById("materias_deshabiltadas").classList.remove("btn-activo");
+    document.getElementById("materias_habiltadas").className += " btn-activo";
+  } else {
+    otro = "div_tabla_materias_deshabilitadas";
+    document.getElementById("materias_habiltadas").classList.remove("btn-activo");
+    document.getElementById("materias_deshabiltadas").className += " btn-activo";
+  }
+  let element = document.getElementById(el);
+  let elementotro = document.getElementById(otro);
+  element.style.display = "inline-table";
+  elementotro.style.display = "none";
+}

@@ -67,13 +67,13 @@
                             data-target="#modal_form_materias">
                             Agregar materia nueva
                         </button>
-                        <button type="button" class="btn m-1 btn-danger" id="plan_deshabiltados" aria-pressed="false"
-                            onclick="toggleElement('table_deshabilitado')">
+                        <button type="button" class="btn m-1 btn-danger" id="materias_deshabiltadas" aria-pressed="false"
+                            onclick="toggleElement('div_tabla_materias_deshabilitadas')">
                             Materias deshabilitadas
                         </button>
                         <input type="hidden" id="estado" value="0">
-                        <button type="button" class="btn m-1 btn-activo btn-success" id="plan_habiltados"
-                            aria-pressed="false" onclick="toggleElement('table_habilitado')">
+                        <button type="button" class="btn m-1 btn-activo btn-success" id="materias_habiltadas"
+                            aria-pressed="false" onclick="toggleElement('div_tabla_materias_habilitadas')">
                             Materias habilitadas
                         </button>
                     </div>
