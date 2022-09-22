@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 10-09-2022 a las 23:51:44
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.5
+-- Host: 127.0.0.1
+-- Generation Time: Sep 22, 2022 at 01:32 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `terciario`
+-- Database: `terciario`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cursada`
+-- Table structure for table `cursada`
 --
 
 CREATE TABLE `cursada` (
@@ -37,7 +37,18 @@ CREATE TABLE `cursada` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `materias`
+-- Table structure for table `localidad`
+--
+
+CREATE TABLE `localidad` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `materias`
 --
 
 CREATE TABLE `materias` (
@@ -48,7 +59,7 @@ CREATE TABLE `materias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `materias`
+-- Dumping data for table `materias`
 --
 
 INSERT INTO `materias` (`id`, `nombre`, `abreviatura`, `estado_m`) VALUES
@@ -61,14 +72,14 @@ INSERT INTO `materias` (`id`, `nombre`, `abreviatura`, `estado_m`) VALUES
 (15, 'FAFA', 'FAFAFAFAFA', 1),
 (16, 'FAFAFAFAF', 'FAFAF', 1),
 (17, 'FAFFAFAFF', 'FAFAFAFA', 1),
-(18, 'FAFAFA', 'FAFAFAF', 1),
+(18, 'FAFAFA', 'FAFAFAF', 0),
 (19, 'FAFAFA', 'FAFAFA', 1),
-(20, 'Confirmando', 'quefunciona1', 0);
+(20, 'Confirmando2', 'obviopa', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `notas`
+-- Table structure for table `notas`
 --
 
 CREATE TABLE `notas` (
@@ -81,7 +92,7 @@ CREATE TABLE `notas` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `planestudio_materia`
+-- Table structure for table `planestudio_materia`
 --
 
 CREATE TABLE `planestudio_materia` (
@@ -93,7 +104,7 @@ CREATE TABLE `planestudio_materia` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `plan_estudio`
+-- Table structure for table `plan_estudio`
 --
 
 CREATE TABLE `plan_estudio` (
@@ -105,20 +116,20 @@ CREATE TABLE `plan_estudio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `plan_estudio`
+-- Dumping data for table `plan_estudio`
 --
 
 INSERT INTO `plan_estudio` (`id`, `titulo`, `nombre`, `resolucion`, `estado_p`) VALUES
-(1, 'titulo1', 'nombre1', 'resolucion1', 1),
-(2, 'plandeestudio1', 'Charly', 'resolucion11', 1),
-(3, 'titulo de plan', 'nombre del plan', 'resolucion del plan', 1),
+(1, 'titulo1', 'nombre13', 'resolucion1', 0),
+(2, 'plandeestudio1', 'Charlyg', 'resolucion11', 0),
+(3, 'titulo de plan', 'nombre del plan', 'resolucion del plan', 0),
 (4, 'plandeestudio1', 'Charly', 'resolucion12', 1),
 (5, 'plandeestudio1', 'CharlyW', 'resolucion12', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -129,7 +140,7 @@ CREATE TABLE `roles` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `roles_usuarios`
+-- Table structure for table `roles_usuarios`
 --
 
 CREATE TABLE `roles_usuarios` (
@@ -141,7 +152,7 @@ CREATE TABLE `roles_usuarios` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipo_notas`
+-- Table structure for table `tipo_notas`
 --
 
 CREATE TABLE `tipo_notas` (
@@ -152,7 +163,7 @@ CREATE TABLE `tipo_notas` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -175,128 +186,141 @@ CREATE TABLE `usuarios` (
   `telefono_alternativo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `telefono_alternativo_persona` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'a quien pertenece el telefono alternativo',
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `clave` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `estado_u` int(11) NOT NULL COMMENT 'Es para ver si el usuario esta habilitado o no\r\n'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `sexo`, `dni`, `fecha_nacimiento`, `lugar_nacimiento`, `estado_civil`, `domicilio`, `domicilio_numero`, `piso`, `depto`, `localidad`, `partido`, `codigo_postal`, `telefono`, `telefono_alternativo`, `telefono_alternativo_persona`, `email`, `estado_u`) VALUES
-(1, 'Julian', 'Roberto', 'M', '45151275', '0000-00-00', 'Buenos Aires', 'Soltero', 'Calle 34', 1288, '', '', 'Santa Teresita', 'La Costa', 7107, '', '', '', 'carloscharlywilliams@gmail.com', 0);
+INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `sexo`, `dni`, `fecha_nacimiento`, `lugar_nacimiento`, `estado_civil`, `domicilio`, `domicilio_numero`, `piso`, `depto`, `localidad`, `partido`, `codigo_postal`, `telefono`, `telefono_alternativo`, `telefono_alternativo_persona`, `email`, `clave`, `estado_u`) VALUES
+(1, 'Julian', 'Roberto', 'M', '45151275', '0000-00-00', 'Buenos Aires', 'Soltero', 'Calle 34', 1288, '', '', 'Santa Teresita', 'La Costa', 7107, '', '', '', 'carloscharlywilliams@gmail.com', '', 0);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `cursada`
+-- Indexes for table `cursada`
 --
 ALTER TABLE `cursada`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `materias`
+-- Indexes for table `localidad`
+--
+ALTER TABLE `localidad`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `materias`
 --
 ALTER TABLE `materias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `notas`
+-- Indexes for table `notas`
 --
 ALTER TABLE `notas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `planestudio_materia`
+-- Indexes for table `planestudio_materia`
 --
 ALTER TABLE `planestudio_materia`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `plan_estudio`
+-- Indexes for table `plan_estudio`
 --
 ALTER TABLE `plan_estudio`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `roles_usuarios`
+-- Indexes for table `roles_usuarios`
 --
 ALTER TABLE `roles_usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `tipo_notas`
+-- Indexes for table `tipo_notas`
 --
 ALTER TABLE `tipo_notas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `cursada`
+-- AUTO_INCREMENT for table `cursada`
 --
 ALTER TABLE `cursada`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `materias`
+-- AUTO_INCREMENT for table `localidad`
+--
+ALTER TABLE `localidad`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `materias`
 --
 ALTER TABLE `materias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT de la tabla `notas`
+-- AUTO_INCREMENT for table `notas`
 --
 ALTER TABLE `notas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `planestudio_materia`
+-- AUTO_INCREMENT for table `planestudio_materia`
 --
 ALTER TABLE `planestudio_materia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `plan_estudio`
+-- AUTO_INCREMENT for table `plan_estudio`
 --
 ALTER TABLE `plan_estudio`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `roles_usuarios`
+-- AUTO_INCREMENT for table `roles_usuarios`
 --
 ALTER TABLE `roles_usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tipo_notas`
+-- AUTO_INCREMENT for table `tipo_notas`
 --
 ALTER TABLE `tipo_notas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
