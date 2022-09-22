@@ -55,7 +55,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <div class="titulo_boton_modal d-flex justify-content-around my-2">
+                    <div class="titulo_boton_modal d-flex justify-content-around my-3">
                         <h1 class="h1 col-lg-9 col-12 my-auto">PLAN DE ESTUDIO</h1>
                         <!-- Button modal -->
                         <button type="button" class="btn btn-outline-info my-auto btnAgregar" data-toggle="modal" data-target="#modal_plan_estudio">
@@ -63,7 +63,7 @@
                         </button>
                     </div>
 
-                    <div>
+                    <div class="w-50 d-flex justify-content-start ms-4">
                         <button type="button" class="btn m-1 btn-danger" id="plan_deshabiltados" aria-pressed="false" onclick="toggleElement('table_deshabilitado')">
                             Deshabilitados
                         </button>
@@ -89,9 +89,11 @@
                                         <form action="asignarmaterias.php">
                                             <button class="btn btn-info"><i class="fa-solid fa-plus"></i> Asignar Materias </button>
                                         </form>
-
-                                        <h4 class="mt-2">Materias Asignadas a <?php echo "plan de estudio" ?></h4>
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <h4 class="mt-2">Materias Asignadas a: </h4><h4 class="" id="plan_titulo"></h4>
+                                        </div>
                                         
+
                                     </div>
                                 </div>
                             </div>
@@ -149,52 +151,59 @@
 
 
                     <!-- TABLA HABILITADOS -->
-                    <div class="card mb-4 btn-active" id="table_habilitado">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            Planes habilitados
-                        </div>
-                        <div class="card-body ">
-                            <table id="tabla_habilitado_plan_estudio" class="table table-bordered display responsive nowrap table-responsive " style="width:100%">
-                                <thead class="">
-                                    <tr class="">
-                                        <th>ID</th>
-                                        <th>Titulo</th>
-                                        <th>Nombre</th>
-                                        <th>Resolución</th>
-                                        <th>Estado_p</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
+                    <div class="m-4 btn-active" id="table_habilitado">
+                        <h2>HABILITADOS</h2>
+                        <div class="card mb-4 btn-active">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Planes habilitados
+                            </div>
+                            <div class="card-body ">
+                                <table id="tabla_habilitado_plan_estudio" class="table table-bordered display responsive nowrap table-responsive " style="width:100%">
+                                    <thead class="">
+                                        <tr class="">
+                                            <th>ID</th>
+                                            <th>Titulo</th>
+                                            <th>Nombre</th>
+                                            <th>Resolución</th>
+                                            <th>Estado_p</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
 
 
 
-                            </table>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
-                     <!-- TABLA DESHABILITADOS -->
-                     <div class="card mb-4 " id="table_deshabilitado">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            Planes deshabilitados
-                        </div>
-                        <div class="card-body">
-                            <table id="tabla_deshabilitado_plan_estudio" class="table table-bordered display responsive nowrap table-responsive " style="width:100%">
-                                <thead class="">
-                                    <tr class="">
-                                        <th>ID</th>
-                                        <th>Titulo</th>
-                                        <th>Nombre</th>
-                                        <th>Resolución</th>
-                                        <th>Estado_p</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
+                    <!-- TABLA DESHABILITADOS -->
+
+                    <div class="m-4" id="table_deshabilitado">
+                        <h2>DESHABILITADOS</h2>
+                        <div class="card mb-4 btn-active">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Planes deshabilitados
+                            </div>
+                            <div class="card-body">
+                                <table id="tabla_deshabilitado_plan_estudio" class="table table-bordered display responsive nowrap table-responsive " style="width:100%">
+                                    <thead class="">
+                                        <tr class="">
+                                            <th>ID</th>
+                                            <th>Titulo</th>
+                                            <th>Nombre</th>
+                                            <th>Resolución</th>
+                                            <th>Estado_p</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
 
 
 
-                            </table>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
@@ -612,7 +621,26 @@
     </script>
 
 
+    <script>
+        $(document).on("click", ".btnMaterias", function() {
 
+
+            //fila seria seleccionar la fila, la selecionas con el this, que this seria agarrar el elemento que pusiste en el click de arriba o sea el btn editar, closest lo mas cerca el TR obvio y despues abajo ya esta explicado el find.
+            fila = $(this).closest("tr");
+            //capturo el ID   el td:eq() , es un selector de indices, por ende si hay 4 <td>, para seleccionar el 4to td tendrias que poner td:eq(3) y con el .text agarras el texto obvio
+            id_plan = parseInt(fila.find("td:eq(0)").text());
+            nombre_plan = (fila.find("td:eq(1)").text());
+
+            console.log(id_plan);
+            // console.log(titulo);
+             console.log(nombre_plan);
+            // console.log(resolucion);
+            // console.log(estado_p);
+            // $("#plan_titulo").val(''); 
+            $(" #plan_titulo").text(nombre_plan);
+
+        });
+    </script>
 
     <script src="js/estado.js"></script>
     <!-- Cargar datos en la tabla habilitados-->

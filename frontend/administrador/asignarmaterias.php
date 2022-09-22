@@ -63,28 +63,28 @@
                         </button>
                     </div>
                     <!-- TABLA DESHABILITADOS -->
-                        <div class="card mb-4 " id="table_materias" style="width: 90%;">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                Materias para Asignar
-                            </div>
-                            <div class="card-body">
-                                <table id="tabla_materias" class="table table-bordered display responsive nowrap table-responsive " style="width:100%">
-                                    <thead class="">
-                                        <tr class="">
-                                            <th>ID</th>
-                                            <th>Nombre</th>
-                                            <th>Abreviatura</th>
-                                            <th>Estado_m</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </thead>
-
-
-
-                                </table>
-                            </div>
+                    <div class="card mb-4 " id="table_materias" style="width: 90%;">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Materias para Asignar
                         </div>
+                        <div class="card-body">
+                            <table id="tabla_materias" class="table table-bordered display responsive nowrap table-responsive " style="width:100%">
+                                <thead class="">
+                                    <tr class="">
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Abreviatura</th>
+                                        <th>Estado_m</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+
+
+
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -135,6 +135,62 @@
 </body>
 
 <script>
+    
+    $(document).on("click", ".btnAgregarMateria", function() {
+
+        opcion = 2; 
+
+
+        //fila seria seleccionar la fila, la selecionas con el this, que this seria agarrar el elemento que pusiste en el click de arriba o sea el btn editar, closest lo mas cerca el TR obvio y despues abajo ya esta explicado el find.
+        fila = $(this).closest("tr");
+        //capturo el ID   el td:eq() , es un selector de indices, por ende si hay 4 <td>, para seleccionar el 4to td tendrias que poner td:eq(3) y con el .text agarras el texto obvio
+        id = parseInt(fila.find("td:eq(0)").text());
+
+        console.log(id);
+        // console.log(titulo);
+        // console.log(nombre);
+        // console.log(resolucion);
+        // console.log(estado_p);
+
+        $.post('../../backend/plandeestudio/asignar_materia_planestudio.php', {
+            opcion: opcion,
+            id_materia: id,
+            id_plan:id_plan
+        }
+        
+        // , function(data) {
+        //     if (data == '1') {
+        //         Swal.fire(
+        //             'Plan Actualizado!',
+        //             'El plan de estudio ha sido actualizado',
+        //             'success'
+        //         ).then(
+        //             () => {
+
+        //                 $("#form_plan_estudio").trigger(
+        //                     "reset"); //Reiniciar el formulario
+        //                 $("#modal_plan_estudio .close")
+        //                     .click(); //Cerrar el formulario
+        //                 listar();
+        //             });
+        //     } else {
+        //         // alert(data);
+        //         Swal.fire({
+        //             icon: 'error',
+        //             title: 'Oops...',
+        //             text: 'Revisa los campos nuevamente',
+        //             //  footer: '<a href="">Why do I have this issue?</a>'
+        //         })
+        //     }
+        // }
+
+        );
+
+    });
+</script>
+
+
+<script>
     $(document).ready(function() {
         listar();
     });
@@ -162,7 +218,7 @@
                     data: "estado_m",
                 },
                 {
-                    defaultContent: "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal' data-target='#modal_plan_estudio'><i class='fa-solid fa-plus'></i> Agregar Materia</button></div></div>",
+                    defaultContent: "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-primary btnAgregarMateria m-1 rounded'><i class='fa-solid fa-plus'></i> Agregar Materia</button></div></div>",
                 },
             ],
 
