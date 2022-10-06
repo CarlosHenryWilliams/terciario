@@ -1,7 +1,5 @@
 <?php include('modulos/conexion.php');  ?>
 
-<?php include('../../backend/materias/crudmaterias.php');  ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -69,8 +67,8 @@
                             data-target="#modal_form_materias">
                             Agregar materia nueva
                         </button>
-                        <button type="button" class="btn m-1 btn-danger" id="materias_deshabiltadas"
-                            aria-pressed="false" onclick="toggleElement('div_tabla_materias_deshabilitadas')">
+                        <button type="button" class="btn m-1 btn-danger" id="materias_deshabiltadas" aria-pressed="false"
+                            onclick="toggleElement('div_tabla_materias_deshabilitadas')">
                             Materias deshabilitadas
                         </button>
                         <input type="hidden" id="estado" value="0">
@@ -131,30 +129,6 @@
 
                     </div>
 
-
-                    <div id="nisman15">
-                        <p>ACA ESTA EL NISMAN15
-
-                        </p>
-                    </div>
-
-
-
-
-
-                    <!-- PROBANDO TABLA NUEVA -->
-                
-                    <div class='card-header'>
-                        <i class='fas fa-table me-1'></i>
-                            Materias Habilitadas
-                    </div>
-                    <div class='card-body' id="probandoreiniciotabla">
-                        <?php
-                            mostrar_alumnos_actividad();
-                        ?>
-                    </div>
-
-
                     <!-- TABLA MATERIAS HABILITADAS -->
                     <div class="card mb-4" id="div_tabla_materias_habilitadas">
                         <div class="card-header">
@@ -162,8 +136,9 @@
                             Materias Habilitadas
                         </div>
                         <div class="card-body ">
-                            <table width="100%" id="tabla_materias_habilitadas"
-                                class="table table-bordered display responsive nowrap table-responsive">
+                            <table id="tabla_materias_habilitadas"
+                                class="table table-bordered display responsive nowrap table-responsive"
+                                style="width:100%">
                                 <thead class="">
                                     <tr class="">
                                         <th>ID</th>
@@ -185,9 +160,9 @@
                             <i class="fas fa-table me-1"></i>
                             Materias Deshabilitadas
                         </div>
-                        <div class="card-body col-12">
+                        <div class="card-body ">
                             <table id="tabla_materias_deshabilitadas"
-                                class="col-12 table table-bordered display responsive nowrap table-responsive"
+                                class="table table-bordered display responsive nowrap table-responsive"
                                 style="width:100%">
                                 <thead class="">
                                     <tr class="">
@@ -249,8 +224,6 @@
     </script>
 
 
-
-
     <!-- 
     <div>
         <div class='btn-group'>
@@ -293,11 +266,5 @@
 
 
 </body>
-<script>
-    $(document).ready(function() {
 
-        $('#nisman').DataTable();
-
-    });
-    </script>
 </html>

@@ -1,4 +1,7 @@
-
+$(document).ready(function () {
+  cargar_tabla_materias_habilitadas(); //MOSTRAR DATOS DE LA TABLA
+  cargar_tabla_materias_deshabilitadas(); //MOSTRAR DATOS DE LA TABLA
+});
 
 /**
  *
@@ -36,15 +39,13 @@ var cargar_tabla_materias_habilitadas = function () {
       // },
       {
         defaultContent:
-          "<div><div class='btn-group'><button class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal' data-id='" +
-          id +
-          "' data-target='#modal_form_materias'><i class=' fa-solid fa-pen-to-square'></i></button><button class='btn btn-danger btn-sm btnEstado m-1 rounded'>Dar de baja <i class='fa-solid fa-download'></i></button></div></div>",
+          "<div><div class='btn-group'><button class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal' data-target='#modal_form_materias'><i class=' fa-solid fa-pen-to-square'></i></button><button class='btn btn-danger btn-sm btnEstado m-1 rounded'>Dar de baja <i class='fa-solid fa-download'></i></button></div></div>",
       },
     ],
 
     columnDefs: [
       {
-        // width: "30%",
+        width: "30%",
         targets: [0, 1, 2, 3, 4], //aclarar el ancho y a cuales columnas
       },
     ],
@@ -130,9 +131,7 @@ $(document).on("click", ".btnAgregar", function () {
                   ).then(() => {
                     $("#form_agregar_materias").trigger("reset"); //Reiniciar el formulario
                     $("#modal_form_materias .close").click(); //Cerrar el formulario
-                    $("#probandoreiniciotabla").load(" #probandoreiniciotabla");
-                    console.log("estoyharto");
-
+                    cargar_tabla_materias_habilitadas(); //Listar la tabla de nuevo
                   });
                 } else {
                   // alert(data);
@@ -303,8 +302,8 @@ $(document).on("click", ".btnEditar", function () {
                     $("#form_agregar_materias").trigger("reset"); //Reiniciar el formulario
 
                     $("#modal_form_materias .close").click(); //Cerrar el Modal
-                    //cargar_tabla_materias_habilitadas(); //Listar la tabla de nuevo
-                    //cargar_tabla_materias_deshabilitadas();
+                    cargar_tabla_materias_habilitadas(); //Listar la tabla de nuevo
+                    cargar_tabla_materias_deshabilitadas();
                   });
                 } else {
                   Swal.fire({
@@ -413,8 +412,8 @@ $(document).on("click", ".btnEstado2", function () {
               "La materia ha sido dada de alta!",
               "success"
             ).then(() => {
-              //cargar_tabla_materias_habilitadas();
-              //cargar_tabla_materias_deshabilitadas();
+              cargar_tabla_materias_habilitadas();
+              cargar_tabla_materias_deshabilitadas();
             });
           } else {
             // alert(data);
@@ -440,17 +439,12 @@ function toggleElement(el) {
   // el elemento que no traigo
   if (el === "div_tabla_materias_deshabilitadas") {
     otro = "div_tabla_materias_habilitadas";
-    document
-      .getElementById("materias_deshabiltadas")
-      .classList.remove("btn-activo");
+    document.getElementById("materias_deshabiltadas").classList.remove("btn-activo");
     document.getElementById("materias_habiltadas").className += " btn-activo";
   } else {
     otro = "div_tabla_materias_deshabilitadas";
-    document
-      .getElementById("materias_habiltadas")
-      .classList.remove("btn-activo");
-    document.getElementById("materias_deshabiltadas").className +=
-      " btn-activo";
+    document.getElementById("materias_habiltadas").classList.remove("btn-activo");
+    document.getElementById("materias_deshabiltadas").className += " btn-activo";
   }
   let element = document.getElementById(el);
   let elementotro = document.getElementById(otro);

@@ -145,7 +145,7 @@
         fila = $(this).closest("tr");
         //capturo el ID   el td:eq() , es un selector de indices, por ende si hay 4 <td>, para seleccionar el 4to td tendrias que poner td:eq(3) y con el .text agarras el texto obvio
         id = parseInt(fila.find("td:eq(0)").text());
-
+        
         console.log(id);
         // console.log(titulo);
         // console.log(nombre);
