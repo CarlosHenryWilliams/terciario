@@ -1,5 +1,3 @@
-
-
 /**
  *
  * ? JAVASCRIPT DE LAS MATERIAS HABILITADAS
@@ -52,107 +50,106 @@ var cargar_tabla_materias_habilitadas = function () {
 };
 //MOSTRAR DATOS DE LA TABLA MATERIAS HABILITADAS
 
-//AGREGAR MATERIAAA
-$(document).on("click", ".btnAgregar", function () {
-  opcion = 1;
+// //AGREGAR MATERIAAA
+// $(document).on("click", ".btnAgregar", function () {
+//   opcion = 1;
 
-  /**
-   * MODIFICACIONES MODAL
-   */
-  $("#inputestadomateria").hide();
-  $("#labelestadomateria").hide();
+//   /**
+//    * MODIFICACIONES MODAL
+//    */
+//   $("#inputestadomateria").hide();
+//   $("#labelestadomateria").hide();
 
-  $("#inputnombremateria").val(""); //DEBERIA IR EL INPUT DEL NOMBRE DEL MODAL
-  $("#inputabreviaturamateria").val("");
-  $("#inputestadomateria").val(1);
+//   $("#inputnombremateria").val(""); //DEBERIA IR EL INPUT DEL NOMBRE DEL MODAL
+//   $("#inputabreviaturamateria").val("");
+//   $("#inputestadomateria").val(1);
 
-  /**
-   * CSS MODAL
-   */
-  $(".modal-header").css("background-color", "#007bff");
-  $(".modal-header").css("color", "white");
-  $("#boton_enviarform").css("background-color", "#007bff");
-  $("#boton_enviarform").css("color", "white");
-  $(".modal-title").text("Agregar Materia");
+//   /**
+//    * CSS MODAL
+//    */
+//   $(".modal-header").css("background-color", "#007bff");
+//   $(".modal-header").css("color", "white");
+//   $("#boton_enviarform").css("background-color", "#007bff");
+//   $("#boton_enviarform").css("color", "white");
+//   $(".modal-title").text("Agregar Materia");
 
-  if (opcion === 1) {
-    //  MODAL AGREGAR
-    $("#boton_enviarform").click(function () {
-      let nombre_materia = document.getElementById("inputnombremateria").value;
-      let abreviatura_materia = document.getElementById(
-        "inputabreviaturamateria"
-      ).value;
-      let estado_materia = document.getElementById("inputestadomateria").value;
+//   if (opcion === 1) {
+//     //  MODAL AGREGAR
+//     $("#boton_enviarform").click(function () {
+//       let nombre_materia = document.getElementById("inputnombremateria").value;
+//       let abreviatura_materia = document.getElementById(
+//         "inputabreviaturamateria"
+//       ).value;
+//       let estado_materia = document.getElementById("inputestadomateria").value;
 
-      console.log(nombre_materia, abreviatura_materia, estado_materia);
+//       console.log(nombre_materia, abreviatura_materia, estado_materia);
 
-      if (
-        nombre_materia == "" ||
-        abreviatura_materia == "" ||
-        estado_materia == ""
-      ) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Por favor no deje ningun campo vacio",
-          //  footer: '<a href="">Why do I have this issue?</a>'
-        });
-      } else {
-        Swal.fire({
-          title: "Los datos son correctos?",
-          text: "La materia se cargara al sistema",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Si, estoy seguro",
-          cancelButtonText: "Cancelar",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            /**
-             * Si confirma el formulario lo envia por post mediante Jquery
-             */
+//       if (
+//         nombre_materia == "" ||
+//         abreviatura_materia == "" ||
+//         estado_materia == ""
+//       ) {
+//         Swal.fire({
+//           icon: "error",
+//           title: "Oops...",
+//           text: "Por favor no deje ningun campo vacio",
+//           //  footer: '<a href="">Why do I have this issue?</a>'
+//         });
+//       } else {
+//         Swal.fire({
+//           title: "Los datos son correctos?",
+//           text: "La materia se cargara al sistema",
+//           icon: "warning",
+//           showCancelButton: true,
+//           confirmButtonColor: "#3085d6",
+//           cancelButtonColor: "#d33",
+//           confirmButtonText: "Si, estoy seguro",
+//           cancelButtonText: "Cancelar",
+//         }).then((result) => {
+//           if (result.isConfirmed) {
+//             /**
+//              * Si confirma el formulario lo envia por post mediante Jquery
+//              */
 
-            $.post(
-              "../../backend/materias/crudmaterias.php",
-              {
-                opcion: opcion,
-                var_nombre_materia: nombre_materia,
-                var_abreviatura_materia: abreviatura_materia,
-                var_estado_materia: estado_materia,
-              },
-              function (data) {
-                if (data == "1") {
-                  Swal.fire(
-                    "Buen Trabajo!",
-                    "La materia ha sido cargada!",
-                    "success"
-                  ).then(() => {
-                    $("#form_agregar_materias").trigger("reset"); //Reiniciar el formulario
-                    $("#modal_form_materias .close").click(); //Cerrar el formulario
-                    $("#probandoreiniciotabla").load(" #probandoreiniciotabla");
-                    console.log("estoyharto");
+//             $.post(
+//               "../../backend/materias/crudmaterias.php",
+//               {
+//                 opcion: opcion,
+//                 var_nombre_materia: nombre_materia,
+//                 var_abreviatura_materia: abreviatura_materia,
+//                 var_estado_materia: estado_materia,
+//               },
+//               function (data) {
+//                 if (data == "1") {
+//                   Swal.fire(
+//                     "Buen Trabajo!",
+//                     "La materia ha sido cargada!",
+//                     "success"
+//                   ).then(() => {
+//                     $("#form_agregar_materias").trigger("reset"); //Reiniciar el formulario
+//                     $("#modal_form_materias .close").click(); //Cerrar el formulario
+//                     $("#probandoreiniciotabla").load(" #probandoreiniciotabla");
+//                     console.log("estoyharto");
+//                   });
+//                 } else {
+//                   // alert(data);
+//                   Swal.fire({
+//                     icon: "error",
+//                     title: "Oops...",
+//                     text: "Revisa los campos nuevamente",
+//                     //  footer: '<a href="">Why do I have this issue?</a>'
+//                   });
+//                 }
+//               }
+//             );
+//           }
+//         });
+//       }
+//     });
+//   }
+// });
 
-                  });
-                } else {
-                  // alert(data);
-                  Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Revisa los campos nuevamente",
-                    //  footer: '<a href="">Why do I have this issue?</a>'
-                  });
-                }
-              }
-            );
-          }
-        });
-      }
-    });
-  }
-});
-
-//AGREGAR MATERIA
+// //AGREGAR MATERIA
 
 //DAR DE BAJA UNA MATERIA
 

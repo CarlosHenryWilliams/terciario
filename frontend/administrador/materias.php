@@ -65,148 +65,198 @@
 
                     <div>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary btnAgregar" data-toggle="modal"
+                        <!-- <button type="button" class="btn btn-primary btnAgregar" data-toggle="modal"
                             data-target="#modal_form_materias">
                             Agregar materia nueva
-                        </button>
-                        <button type="button" class="btn m-1 btn-danger" id="materias_deshabiltadas"
-                            aria-pressed="false" onclick="toggleElement('div_tabla_materias_deshabilitadas')">
-                            Materias deshabilitadas
-                        </button>
-                        <input type="hidden" id="estado" value="0">
-                        <button type="button" class="btn m-1 btn-activo btn-success" id="materias_habiltadas"
-                            aria-pressed="false" onclick="toggleElement('div_tabla_materias_habilitadas')">
-                            Materias habilitadas
-                        </button>
+                        </button> -->
+
                     </div>
 
-                    <div class="acciones">
 
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="modal_form_materias" tabindex="-1"
-                            aria-labelledby="modal_form_materiasLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modal_form_materiasLabel">Cargar Materia</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="card mb-4 ">
+                        <div class="card-header">
+
+
+                            <div class="d-flex bd-highlight">
+
+                                <div class=" flex-grow-1 bd-highlight">
+                                    <div class="bd-highlight w-75"> <i class="fas fa-table me-1"></i>
+                                        Materias
                                     </div>
-                                    <form method="POST" id="form_agregar_alumno">
-                                        <div class="modal-body">
-
-
-                                            <div class="form-group">
-                                                <label for="inputnombremateria">Nombre de la materia</label>
-                                                <input type="text" class="form-control" required id="inputnombremateria"
-                                                    aria-describedby="emailHelp">
-                                                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share
-                                                    your email with anyone else.</small> -->
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputabreviaturamateria">Abreviatura</label>
-                                                <input type="text" class="form-control" required
-                                                    id="inputabreviaturamateria">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputabreviaturamateria"
-                                                    id="labelestadomateria">Estado</label>
-                                                <input type="text" value="1" class="form-control"
-                                                    id="inputestadomateria">
-                                            </div>
-
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Cerrar</button>
-                                            <button type="button" id="boton_enviarform" class="btn ">Cargar</button>
-                                        </div>
-                                    </form>
+                                </div>
+                                <div class=" bd-highlight">
+                                    <div class=" flex-shrink-1 bd-highlight"> <a href="#!" data-id=""
+                                            data-toggle="modal" data-target="#modal_form_materias"
+                                            class="btn btn-primary btn-sm  btnAgregar">Nueva
+                                            Materia</a>
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
-
-                    </div>
-
-
-                    <div id="nisman15">
-                        <p>ACA ESTA EL NISMAN15
-
-                        </p>
-                    </div>
-
-
-
-
-
-                    <!-- PROBANDO TABLA NUEVA -->
-                
-                    <div class='card-header'>
-                        <i class='fas fa-table me-1'></i>
-                            Materias Habilitadas
-                    </div>
-                    <div class='card-body' id="probandoreiniciotabla">
-                        <?php
-                            mostrar_alumnos_actividad();
-                        ?>
-                    </div>
-
-
-                    <!-- TABLA MATERIAS HABILITADAS -->
-                    <div class="card mb-4" id="div_tabla_materias_habilitadas">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            Materias Habilitadas
-                        </div>
-                        <div class="card-body ">
-                            <table width="100%" id="tabla_materias_habilitadas"
-                                class="table table-bordered display responsive nowrap table-responsive">
-                                <thead class="">
-                                    <tr class="">
-                                        <th>ID</th>
+                        <div class="card-body table-responsive">
+                            <table id="materias" class="table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
                                         <th>Nombre</th>
                                         <th>Abreviatura</th>
-                                        <th>estado_m</th>
+                                        <th>Estado_m</th>
                                         <th>Acciones</th>
-
                                     </tr>
                                 </thead>
+
+                                <tbody>
+
+
+
+                                </tbody>
                             </table>
                         </div>
                     </div>
 
 
-                    <!-- TABLA MATERIAS DESHABILITADAS -->
-                    <div class="card mb-4" id="div_tabla_materias_deshabilitadas">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            Materias Deshabilitadas
-                        </div>
-                        <div class="card-body col-12">
-                            <table id="tabla_materias_deshabilitadas"
-                                class="col-12 table table-bordered display responsive nowrap table-responsive"
-                                style="width:100%">
-                                <thead class="">
-                                    <tr class="">
-                                        <th>ID</th>
-                                        <th>Nombre</th>
-                                        <th>Abreviatura</th>
-                                        <th>estado_m</th>
-                                        <th>Acciones</th>
 
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
+
 
 
 
                 </div>
             </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Modal -->
+            <!-- <div class="modal fade" id="modal_form_materias2" tabindex="-1" aria-labelledby="modal_form_materiasLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal_form_materiasLabel">Cargar Materia</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form method="POST" id="form_agregar_alumno">
+                            <div class="modal-body">
+
+
+                                <div class="form-group">
+                                    <label for="inputnombremateria">Nombre de la materia</label>
+                                    <input type="text" class="form-control" required id="inputnombremateria"
+                                        aria-describedby="emailHelp">
+                                 
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputabreviaturamateria">Abreviatura</label>
+                                    <input type="text" class="form-control" required id="inputabreviaturamateria">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputabreviaturamateria" id="labelestadomateria">Estado</label>
+                                    <input type="text" value="1" class="form-control" id="inputestadomateria">
+                                </div>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="button" id="boton_enviarform" class="btn ">Cargar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+ -->
+
+
+
+
+            <!-- Add user Modal -->
+            <div class="modal fade" id="modal_form_materias" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar Materia</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="addUser" action="">
+                                <div class="mb-3 row">
+                                    <label for="nombre_materia" class="col-md-3 form-label">Nombre</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="input_nombre_materia" name="nombre"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="abreviatura_materia" class="col-md-3 form-label">Abreviatura</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="input_abreviatura_materia"
+                                            name="abreviatura" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="estado_m_materia" class="col-md-3 form-label">Estado_m</label>
+                                    <div class="col-md-9">
+                                        <!-- <input type="text" class="form-control" id="estado_m_materia" name="mobile"> -->
+
+                                        <select class="form-select" aria-label="Default select example"
+                                            id="input_estado_m_materia" name="estado" required>
+                                            <option value="">Por favor seleccione un estado</option>
+                                            <option value="1">Habilitado</option>
+                                            <option value="0">Deshabilitado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- <div class="mb-3 row">
+                            <label for="addCityField" class="col-md-3 form-label">City</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="addCityField" name="City">
+                            </div>
+                        </div> -->
+                                <div class="text-center">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" id="boton_enviarform" class="btn btn-primary">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
             <!-- Footer -->
 
             <footer class="py-4 bg-light mt-auto">
@@ -251,34 +301,6 @@
 
 
 
-    <!-- 
-    <div>
-        <div class='btn-group'>
-            <button id='botoneditardocente2' class='btn btn-primary btnEditar m-1 rounded' data-toggle='modal'
-                data-target='#modal_plan_estudio'>
-                <i class=' fa-solid fa-pen-to-square'></i>
-            </button>
-            <button class='btn btn-danger btn-sm btnEstado m-1 rounded'>Dar de baja
-                <i class='fa-solid fa-download'></i>
-            </button>
-            <button type='button' class='btn btn-secondary btn-sm btnMaterias m-1 rounded' data-toggle='modal'
-                data-target='#modal_materias_plan_estudio'>
-                Matarias
-            </button>
-        </div>
-    </div> -->
-
-
-    <!-- <div>
-        <div class='btn-group'>
-            <button class='btn btn-info btnEditar m-1 rounded' data-toggle='modal' data-target='#modal_form_materias'>
-                <i class=' fa-solid fa-pen-to-square'></i>
-            </button>
-            <button class='btn btn-danger btn-sm btnEstado m-1 rounded'>Dar de baja
-                <i class='fa-solid fa-download'></i>
-            </button>
-        </div>
-    </div> -->
 
     <!-- SCRIPT DATATABLES -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">
@@ -294,10 +316,194 @@
 
 </body>
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
+    $('#materias').DataTable({
+        "fnCreatedRow": function(nRow, aData, iDataIndex) {
+            $(nRow).attr('id', aData[0]);
+        },
+        'serverSide': 'true',
+        'processing': 'true',
+        'paging': 'true',
+        'order': [],
+        'ajax': {
+            'url': '../../backend/materias/buscarmaterias.php',
+            'type': 'post',
+        },
+        "aoColumnDefs": [{
+                "bSortable": false,
+                "aTargets": [4]
+            },
 
-        $('#nisman').DataTable();
+            {
+                // hide id_number column
+                "targets": [0],
+                "visible": false,
+                "searchable": false
+            }
 
+        ]
     });
-    </script>
+
+
+
+
+    //AGREGAR MATERIAAA
+    $(document).on("click", ".btnAgregar", function() {
+        opcion = 1;
+        console.log(opcion);
+
+        /**
+         * MODIFICACIONES MODAL
+         */
+        // $("#inputestadomateria").hide();
+        // $("#labelestadomateria").hide();
+
+        $("#inputnombremateria").val(""); //DEBERIA IR EL INPUT DEL NOMBRE DEL MODAL
+        $("#inputabreviaturamateria").val("");
+        // $("#inputestadomateria").val(1);
+
+        /**
+         * CSS MODAL
+         */
+        $(".modal-header").css("background-color", "#007bff");
+        $(".modal-header").css("color", "white");
+        $("#boton_enviarform").css("background-color", "#007bff");
+        $("#boton_enviarform").css("color", "white");
+        $(".modal-title").text("Agregar Materia");
+
+        if (opcion === 1) {
+            //  MODAL AGREGAR
+            $("#boton_enviarform").click(function() {
+
+
+                var nombre_materia = $('#input_nombre_materia').val();
+                var abreviatura_materia = $('#input_abreviatura_materia').val();
+                var estado_m_materia = $('#input_estado_m_materia').val();
+
+                console.log(nombre_materia, abreviatura_materia, estado_m_materia);
+
+                if (
+                    nombre_materia == "" ||
+                    abreviatura_materia == "" ||
+                    estado_m_materia == ""
+                ) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Por favor no deje ningun campo vacio",
+                        //  footer: '<a href="">Why do I have this issue?</a>'
+                    });
+                } else {
+                    Swal.fire({
+                        title: "Los datos son correctos?",
+                        text: "La materia se cargara al sistema",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Si, estoy seguro",
+                        cancelButtonText: "Cancelar",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            /**
+                             * Si confirma el formulario lo envia por post mediante Jquery
+                             */
+
+
+                            $.ajax({
+                                url: "../../backend/materias/crudmaterias.php",
+                                type: "post",
+                                data: {
+                                    opcion: opcion,
+                                    nombre_materia: nombre_materia,
+                                    abreviatura_materia: abreviatura_materia,
+                                    estado_m_materia: estado_m_materia
+                                },
+                                success: function(data) {
+                                    var json = JSON.parse(data);
+                                    var status = json.status;
+                                    if (status == 'true') {
+
+                                        Swal.fire(
+                                            "Buen Trabajo!",
+                                            "La materia ha sido cargada!",
+                                            "success"
+                                        ).then(() => {
+
+                                            $("#form_agregar_materias")
+                                                .trigger(
+                                                    "reset"
+                                                ); //Reiniciar el formulario
+                                            $("#modal_form_materias .close")
+                                                .click(); //Cerrar el formulario
+                                            $("#probandoreiniciotabla")
+                                                .load(
+                                                    " #probandoreiniciotabla"
+                                                );
+                                            mytable = $('#materias')
+                                                .DataTable();
+                                            mytable.draw();
+
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            icon: "error",
+                                            title: "Oops...",
+                                            text: "Revisa los campos nuevamente",
+                                            //  footer: '<a href="">Why do I have this issue?</a>'
+                                        });
+                                    }
+                                }
+                            });
+
+
+
+                            // $.post(
+                            //     "../../backend/materias/crudmaterias.php", {
+                            //         opcion: opcion,
+                            //         var_nombre_materia: nombre_materia,
+                            //         var_abreviatura_materia: abreviatura_materia,
+                            //         var_estado_materia: estado_materia,
+                            //     },
+                            //     function(data) {
+                            //         if (data == "1") {
+                            //             Swal.fire(
+                            //                 "Buen Trabajo!",
+                            //                 "La materia ha sido cargada!",
+                            //                 "success"
+                            //             ).then(() => {
+                            //                 $("#form_agregar_materias")
+                            //                     .trigger(
+                            //                         "reset"
+                            //                     ); //Reiniciar el formulario
+                            //                 $("#modal_form_materias .close")
+                            //                     .click(); //Cerrar el formulario
+                            //                 $("#probandoreiniciotabla")
+                            //                     .load(
+                            //                         " #probandoreiniciotabla"
+                            //                     );
+                            //                 console.log("estoyharto");
+                            //             });
+                            //         } else {
+                            //             // alert(data);
+                            //             Swal.fire({
+                            //                 icon: "error",
+                            //                 title: "Oops...",
+                            //                 text: "Revisa los campos nuevamente",
+                            //                 //  footer: '<a href="">Why do I have this issue?</a>'
+                            //             });
+                            //         }
+                            //     }
+                            // );
+                        }
+                    });
+                }
+            });
+        }
+    });
+
+    //AGREGAR MATERIA
+});
+</script>
+
 </html>
