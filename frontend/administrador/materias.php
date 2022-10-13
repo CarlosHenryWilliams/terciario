@@ -513,28 +513,13 @@ $(document).ready(function() {
 $(document).on("click", ".btndardebaja", function() {
     opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
 
-
-
-
     // var table = $('#materias').DataTable();
     // event.preventDefault();
-
     var id = $(this).data('id');
-    var trid = $(this).closest('tr').attr('id'); //trid el id del tr/fila
+    // var trid = $(this).closest('tr').attr('id'); //trid el id del tr/fila
 
     console.log(id);
-    console.log(trid);
-
-
-    // var table = $('#example').DataTable();
-    // var trid = $(this).closest('tr').attr('id');
-    //trid el id del tr/fila
-    // console.log(selectedRow);
     // console.log(trid);
-    // var id = $(this).data('id');
-    // console.log('LO DE ABAJO NI IDEA');
-    // console.log(id);
-    // $('#exampleModal').modal('show');
 
     $.ajax({
         url: "../../backend/materias/crudmaterias.php",
@@ -555,65 +540,76 @@ $(document).on("click", ".btndardebaja", function() {
 
             opcion = 3; // una vez adentro opcion pasa a ser 3 o sea dar de baja
 
+            Swal.fire({
+                title: "Deshabilitar Materia",
+                text: "Esta seguro que desea dar de baja la materia?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, estoy seguro",
+                cancelButtonText: "Cancelar",
+            }).then((result) => {
+                if (result.isConfirmed) {
 
+                    $.ajax({
+                        url: "../../backend/materias/crudmaterias.php",
+                        data: {
+                            opcion: opcion,
+                            id: id
+                        },
+                        type: "post",
+                        success: function(data) {
+                            var json = JSON.parse(data);
+                            status = json.status;
+                            if (status == 'success') {
 
-            if (confirm("Esta seguro que desea dar de baja la Materia ? ")) {
-                $.ajax({
-                    url: "../../backend/materias/crudmaterias.php",
-                    data: {
-                        opcion: opcion,
-                        id: id
-                    },
-                    type: "post",
-                    success: function(data) {
-                        var json = JSON.parse(data);
-                        status = json.status;
-                        if (status == 'success') {
-                            //table.fnDeleteRow( table.$('#' + id)[0] );
-                            //$("#example tbody").find(id).remove();
-                            //table.row($(this).closest("tr")) .remove();
-                            // $("#" + id).closest('tr').remove();
+                                Swal.fire(
+                                    "Perfecto!",
+                                    "La materia ha sido dada de baja!",
+                                    "success"
+                                ).then(() => {
 
-                            tablamaterias = $('#materias').DataTable();
+                                    tablamaterias = $('#materias')
+                                        .DataTable();
 
+                                    texto_estado = 'Deshabilitado';
 
-                            texto_estado = 'Deshabilitado';
-                            var button = '<td><a href="#" data-id="' + id +
-                                '" class="btn btn-info btn-sm editbtn">Editar</a>  <a href="#!"  data-id="' +
-                                id +
-                                '"  class="btn btn-danger btn-sm deleteBtn">Eliminar</a> <a href="#!"  data-id="' +
-                                id +
-                                '"  class="btn btn-success btn-sm deleteBtn">Dar de Alta</a></td>';
-                            // }
+                                    var button =
+                                        '<td><a href="#" data-id="' +
+                                        id +
+                                        '" class="btn btn-info btn-sm editbtn">Editar</a>  <a href="#!"  data-id="' +
+                                        id +
+                                        '"  class="btn btn-danger btn-sm deleteBtn">Eliminar</a> <a href="#!"  data-id="' +
+                                        id +
+                                        '"  class="btn btn-success btn-sm btndardardealta">Dar de Alta</a></td>';
 
-                            //En el codigo de abajo dibuja la tabla
-                            var row = tablamaterias.row("[id='" + trid + "']");
-                            //el table es del table de arriba table = $('example').Datatable();
-                            row.row("[id='" + trid + "']").data([id, nombre_materia,
-                                abreviatura_materia, texto_estado, button
-                            ]);
-
-                        } else {
-                            alert('Failed');
-                            return;
+                                    //En el codigo de abajo dibuja la tabla
+                                    var row = tablamaterias.row(
+                                        "[id='" + id +
+                                        "']");
+                                    //el table es del table de arriba table = $('example').Datatable();
+                                    row.row("[id='" + id + "']").data(
+                                        [id,
+                                            nombre_materia,
+                                            abreviatura_materia,
+                                            texto_estado,
+                                            button
+                                        ]);
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "Ha ocurrido un error inesperado",
+                                    // footer: '<a href="">Why do I have this issue?</a>',
+                                });
+                                return;
+                            }
                         }
-                    }
-                });
-            } else {
-                return null;
-            }
-
-
-            // $('#nombreField').val(json.nombre); //valor de la base de datos
-            // $('#abreviaturaField').val(json.abreviatura);
-            // $('#estadoField').val(json.estado_m);
-            // $('#id').val(id);
-            // $('#trid').val(trid);
-
-
-
-
-
+                    });
+                }
+            });
         }
     })
 
@@ -628,48 +624,7 @@ $(document).on("click", ".btndardebaja", function() {
     // fila = $(this).closest("tr");
     // id = parseInt(fila.find("td:eq(0)").text());
 
-    // Swal.fire({
-    //     title: "Deshabilitar Materia",
-    //     text: "Esta seguro que desea dar de baja la materia?",
-    //     icon: "warning",
-    //     showCancelButton: true,
-    //     confirmButtonColor: "#3085d6",
-    //     cancelButtonColor: "#d33",
-    //     confirmButtonText: "Si, estoy seguro",
-    //     cancelButtonText: "Cancelar",
-    // }).then((result) => {
-    //     if (result.isConfirmed) {
-    //         /**
-    //          * Si confirma el formulario lo envia por post mediante Jquery
-    //          */
-    //         $.post(
-    //             "../../backend/materias/crudmaterias.php", {
-    //                 opcion: opcion,
-    //                 id: id,
-    //             },
-    //             function(data) {
-    //                 if (data == 1) {
-    //                     Swal.fire(
-    //                         "Perfecto!",
-    //                         "La materia ha sido dada de baja!",
-    //                         "success"
-    //                     ).then(() => {
-    //                         cargar_tabla_materias_habilitadas();
-    //                         cargar_tabla_materias_deshabilitadas();
-    //                     });
-    //                 } else {
-    //                     // alert(data);
-    //                     Swal.fire({
-    //                         icon: "error",
-    //                         title: "Oops...",
-    //                         text: "Ha ocurrido un error inesperado",
-    //                         footer: '<a href="">Why do I have this issue?</a>',
-    //                     });
-    //                 }
-    //             }
-    //         );
-    //     }
-    // });
+
 });
 
 //DAR DE BAJA
