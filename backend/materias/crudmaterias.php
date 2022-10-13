@@ -19,7 +19,7 @@ switch ($opcion) {
         $sql = "INSERT INTO `materias`( `nombre`, `abreviatura`, `estado_m`) VALUES ('$nombre_materia','$abreviatura_materia','$estado_m_materia')";
 
         $query = mysqli_query(conectame(), $sql);
-        $lastId = mysqli_insert_id(conectame());
+        // $lastId = mysqli_insert_id(conectame());
         if ($query == true) {
 
             $data = array(
@@ -77,16 +77,36 @@ switch ($opcion) {
     case 3: //CASO 3 DAR DE BAJA
 
         $id_materia = $_POST['id'];
+        $sql = "UPDATE `materias` SET `estado_m`='0' WHERE `id` =$id_materia";
 
-        $query1 = "UPDATE `materias` SET `estado_m`='0' WHERE `id` =$id_materia";
-        $resultado1  = mysqli_query(conectame(), $query1);
+        $query = mysqli_query(conectame(), $sql);
+        // $lastId = mysqli_insert_id(conectame());
+        if ($query == true) {
 
-        $error1 = mysqli_error(conectame());
-        if ($error1 == '') {   //O sea si se ejecuto sin errores la consulta.
-            echo "1";
+            $data = array(
+                'status' => 'success',
+            );
+
+            echo json_encode($data);
         } else {
-            echo "0";
+            $data = array(
+                'status' => 'false',
+            );
+
+            echo json_encode($data);
         }
+
+        // $query1 = "UPDATE `materias` SET `estado_m`='0' WHERE `id` =$id_materia";
+        // $resultado1  = mysqli_query(conectame(), $query1);
+
+        // $error1 = mysqli_error(conectame());
+        // if ($error1 == '') {   //O sea si se ejecuto sin errores la consulta.
+        //     echo "1";
+        // } else {
+        //     echo "0";
+        // }
+
+
 
         break;
     case 4: //CASO 3 DAR DE ALTA
@@ -105,6 +125,21 @@ switch ($opcion) {
 
         break;
 
+
+
+    case 5: //CASO 5 OBTENER PRIMERO LOS DATOS CON UNA CONSULTA (INDIVIDUALMENTE)
+
+
+        // $id_materia = $_POST['id'];
+        // $sql = "SELECT * FROM materias  WHERE `id` =$id_materia";
+
+        // $query = mysqli_query(conectame(), $sql);
+        // $lastId = mysqli_insert_id(conectame());
+        $id_materia = $_POST['id'];
+        $sql = "SELECT * FROM materias WHERE id='$id_materia'";
+        $query = mysqli_query(conectame(), $sql);
+        $row = mysqli_fetch_assoc($query);
+        echo json_encode($row);
         break;
 }
 

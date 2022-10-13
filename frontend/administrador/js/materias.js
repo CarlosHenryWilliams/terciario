@@ -151,61 +151,6 @@ var cargar_tabla_materias_habilitadas = function () {
 
 // //AGREGAR MATERIA
 
-//DAR DE BAJA UNA MATERIA
-
-$(document).on("click", ".btnEstado", function () {
-  opcion = 3; //DAR DE BAJA
-
-  fila = $(this).closest("tr");
-  id = parseInt(fila.find("td:eq(0)").text());
-
-  Swal.fire({
-    title: "Deshabilitar Materia",
-    text: "Esta seguro que desea dar de baja la materia?",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Si, estoy seguro",
-    cancelButtonText: "Cancelar",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      /**
-       * Si confirma el formulario lo envia por post mediante Jquery
-       */
-      $.post(
-        "../../backend/materias/crudmaterias.php",
-        {
-          opcion: opcion,
-          id: id,
-        },
-        function (data) {
-          if (data == 1) {
-            Swal.fire(
-              "Perfecto!",
-              "La materia ha sido dada de baja!",
-              "success"
-            ).then(() => {
-              cargar_tabla_materias_habilitadas();
-              cargar_tabla_materias_deshabilitadas();
-            });
-          } else {
-            // alert(data);
-            Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: "Ha ocurrido un error inesperado",
-              footer: '<a href="">Why do I have this issue?</a>',
-            });
-          }
-        }
-      );
-    }
-  });
-});
-
-//DAR DE BAJA
-
 //EDITAR MATERIA
 $(document).on("click", ".btnEditar", function () {
   opcion = 2; //Editar
