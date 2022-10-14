@@ -110,17 +110,24 @@ switch ($opcion) {
 
         break;
     case 4: //CASO 3 DAR DE ALTA
-
         $id_materia = $_POST['id'];
+        $sql = "UPDATE `materias` SET `estado_m`='1' WHERE `id` =$id_materia";
 
-        $query1 = "UPDATE `materias` SET `estado_m`='1' WHERE `id` =$id_materia";
-        $resultado1  = mysqli_query(conectame(), $query1);
+        $query = mysqli_query(conectame(), $sql);
+        // $lastId = mysqli_insert_id(conectame());
+        if ($query == true) {
 
-        $error1 = mysqli_error(conectame());
-        if ($error1 == '') {   //O sea si se ejecuto sin errores la consulta.
-            echo "1";
+            $data = array(
+                'status' => 'success',
+            );
+
+            echo json_encode($data);
         } else {
-            echo "0";
+            $data = array(
+                'status' => 'false',
+            );
+
+            echo json_encode($data);
         }
 
         break;

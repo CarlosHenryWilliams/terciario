@@ -613,21 +613,118 @@ $(document).on("click", ".btndardebaja", function() {
         }
     })
 
-
-
-
-
-
-
-
-
-    // fila = $(this).closest("tr");
-    // id = parseInt(fila.find("td:eq(0)").text());
-
-
 });
 
 //DAR DE BAJA
+</script>
+
+
+
+
+
+<script>
+//DAR DE ALTA
+
+$(document).on("click", ".btndardardealta", function() {
+    opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
+
+    var id = $(this).data('id');
+
+    console.log(id);
+
+    $.ajax({
+        url: "../../backend/materias/crudmaterias.php",
+        data: {
+            opcion: opcion,
+            id: id
+        },
+        type: 'post',
+        success: function(data) {
+            var json = JSON.parse(data);
+
+            var nombre_materia = json.nombre;
+            var abreviatura_materia = json.abreviatura;
+            var estado_materia = json.estado_m;
+
+
+            console.log(nombre_materia, abreviatura_materia, estado_materia);
+
+            opcion = 4; // una vez adentro opcion pasa a ser 3 o sea dar de baja
+
+            Swal.fire({
+                title: "Habilitar Materia",
+                text: "Esta seguro que desea habilitar esta materia?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, estoy seguro",
+                cancelButtonText: "Cancelar",
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        url: "../../backend/materias/crudmaterias.php",
+                        data: {
+                            opcion: opcion,
+                            id: id
+                        },
+                        type: "post",
+                        success: function(data) {
+                            var json = JSON.parse(data);
+                            status = json.status;
+                            if (status == 'success') {
+
+                                Swal.fire(
+                                    "Perfecto!",
+                                    "La materia ha sido habilitada!",
+                                    "success"
+                                ).then(() => {
+
+                                    tablamaterias = $('#materias')
+                                        .DataTable();
+
+                                    texto_estado = 'Habilitado';
+
+                                    var button =
+                                        '<td><a href="#" data-id="' +
+                                        id +
+                                        '" class="btn btn-info btn-sm editbtn">Editar</a>  <a href="#!"  data-id="' +
+                                        id +
+                                        '"  class="btn btn-danger btn-sm deleteBtn">Eliminar</a> <a href="#!"  data-id="' +
+                                        id +
+                                        '"  class="btn btn-warning btn-sm btndardebaja">Dar de Baja</a></td>';
+
+                                    //En el codigo de abajo dibuja la tabla
+                                    var row = tablamaterias.row(
+                                        "[id='" + id +
+                                        "']");
+                                    //el table es del table de arriba table = $('example').Datatable();
+                                    row.row("[id='" + id + "']").data(
+                                        [id,
+                                            nombre_materia,
+                                            abreviatura_materia,
+                                            texto_estado,
+                                            button
+                                        ]);
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "Ha ocurrido un error inesperado",
+                                    // footer: '<a href="">Why do I have this issue?</a>',
+                                });
+                                return;
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    })
+
+});
 </script>
 
 </html>
