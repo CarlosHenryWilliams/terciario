@@ -458,7 +458,7 @@ $(document).ready(function() {
 <script>
 //EDITAR  MATERIAAA
 $(document).on("click", ".btneditar", function() {
-    opcion = 5;
+    opcion = 5; //PRIMERO OPCION 5 PARA QUE AGARRE LOS DATOS
     console.log(opcion);
 
 
@@ -489,24 +489,179 @@ $(document).on("click", ".btneditar", function() {
     var id = $(this).data('id');
     console.log(id);
 
-    $.ajax({
-        url: "../../backend/materias/crudmaterias.php",
-        data: {
-            opcion: opcion,
-            id: id
-        },
-        type: 'post',
-        success: function(data) {
-            var json = JSON.parse(data);
-            $('#input_nombre_materia').val(json.nombre); //valor de la base de datos
-            $('#input_abreviatura_materia').val(json.abreviatura);
-            $('#input_estado_m_materia').val(json.estado_m);
-            $('#input_id_materia').val(id);
+    if (opcion === 5) {
 
-            // $('#id').val(id);
-            // $('#trid').val(trid);
-        }
-    })
+        $.ajax({
+            url: "../../backend/materias/crudmaterias.php",
+            data: {
+                opcion: opcion,
+                id: id
+            },
+            type: 'post',
+            success: function(data) {
+                var json = JSON.parse(data);
+                $('#input_nombre_materia').val(json.nombre); //valor de la base de datos
+                $('#input_abreviatura_materia').val(json.abreviatura);
+                $('#input_estado_m_materia').val(json.estado_m);
+                $('#input_id_materia').val(id);
+
+                opcion = 2; //UNA VEZ QUE AGARRA LOS DATOS LOS ENVIA  A LA OPCION 2
+
+                if (opcion === 2) {
+
+
+                    $("#boton_enviarform").click(function() {
+
+                        opcion = 2; //AHORA SI, A EDITAR
+
+                        var nombre_materia = $('#input_nombre_materia').val();
+                        var abreviatura_materia = $('#input_abreviatura_materia').val();
+                        var estado_materia = $('#input_estado_m_materia').val();
+
+                        var id = $('#input_id_materia').val();
+                        // console.log(nombre_materia, abreviatura_materia, estado_materia, id);
+
+
+                        if (nombre_materia != '' && abreviatura_materia != '' &&
+                            estado_materia != '') {
+
+                            Swal.fire({
+                                title: 'Editar Materia',
+                                text: "Esta seguro que desea editar la materia?",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Si, estoy seguro',
+                                cancelButtonText: 'Cancelar'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+
+
+                                    $.ajax({
+                                        url: "../../backend/materias/crudmaterias.php",
+                                        type: "post",
+                                        data: {
+                                            opcion: opcion,
+                                            nombre_materia: nombre_materia,
+                                            abreviatura_materia: abreviatura_materia,
+                                            estado_materia: estado_materia,
+                                            id: id
+                                        },
+                                        success: function(data) {
+                                            var json = JSON.parse(data);
+                                            var status = json.status;
+                                            if (status == 'success') {
+
+
+                                                Swal.fire(
+                                                    'Materia Editada!',
+                                                    'La materia ha sido editada con exito!',
+                                                    'success'
+                                                ).then(() => {
+
+                                                    $("#modal_form_materias")
+                                                        .trigger(
+                                                            "reset"
+                                                        ); //Reiniciar el formulario
+                                                    $("#modal_form_materias .close")
+                                                        .click(); //Cerrar el formulario
+
+
+                                                    tablamaterias
+                                                        = $(
+                                                            '#materias')
+                                                        .DataTable();
+
+                                                    if (estado_materia ==
+                                                        1) {
+                                                        var texto_estado =
+                                                            'Habilitado';
+                                                        var button =
+                                                            '<td><a href="#!" data-id="' +
+                                                            id +
+                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_materias">Editar</a>  <a href="#!"  data-id="' +
+                                                            id +
+                                                            '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#!"  data-id="' +
+                                                            id +
+                                                            '"  class="btn btn-warning btn-sm btndardebaja">Dar de Baja</a></td>';
+
+                                                    } else {
+                                                        texto_estado
+                                                            =
+                                                            'Deshabilitado';
+                                                        var button =
+                                                            '<td><a href="#!" data-id="' +
+                                                            id +
+                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_materias">Editar</a>  <a href="#"  data-id="' +
+                                                            id +
+                                                            '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#"  data-id="' +
+                                                            id +
+                                                            '"  class="btn btn-success btn-sm btndardardealta">Dar de Alta</a></td>';
+                                                    }
+
+
+                                                    //En el codigo de abajo dibuja la tabla
+                                                    var row =
+                                                        tablamaterias
+                                                        .row(
+                                                            "[id='" +
+                                                            id +
+                                                            "']"
+                                                            );
+                                                    //el table es del table de arriba table = $('example').Datatable();
+                                                    row.row("[id='" +
+                                                            id +
+                                                            "']"
+                                                            )
+                                                        .data([id,
+                                                            nombre_materia,
+                                                            abreviatura_materia,
+                                                            texto_estado,
+                                                            button
+                                                        ]);
+
+
+                                                });
+
+
+                                            } else { //si el estado no es success ( o sea error en la consulta o algo)
+                                                Swal.fire({
+                                                    icon: "error",
+                                                    title: "Oops...",
+                                                    text: "Revisa los campos nuevamente",
+                                                    //  footer: '<a href="">Why do I have this issue?</a>'
+                                                });
+                                            }
+                                        }
+                                    });
+
+                                }
+                            })
+
+                        } else {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Por favor no deje ningun campo vacio",
+                                //  footer: '<a href="">Why do I have this issue?</a>'
+                            });
+                        }
+
+
+                    });
+
+
+
+
+                }
+
+                // $('#id').val(id);
+                // $('#trid').val(trid);
+            }
+        })
+    }
+
 
 
 
@@ -517,94 +672,6 @@ $(document).on("click", ".btneditar", function() {
 
 <script>
 //EDITAR MATERIA 2
-
-$("#boton_enviarform").click(function() {
-
-    opcion = 2; //AHORA SI, A EDITAR
-
-    var nombre_materia = $('#input_nombre_materia').val();
-    var abreviatura_materia = $('#input_abreviatura_materia').val();
-    var estado_materia = $('#input_estado_m_materia').val();
-
-    var id = $('#input_id_materia').val();
-    console.log(nombre_materia, abreviatura_materia, estado_materia, id);
-
-
-    if (nombre_materia != '' && abreviatura_materia != '' && estado_materia != '') {
-        $.ajax({
-            url: "../../backend/materias/crudmaterias.php",
-            type: "post",
-            data: {
-                opcion: opcion,
-                nombre_materia: nombre_materia,
-                abreviatura_materia: abreviatura_materia,
-                estado_materia: estado_materia,
-                id: id
-            },
-            success: function(data) {
-                var json = JSON.parse(data);
-                var status = json.status;
-                if (status == 'success') {
-
-
-
-
-                    $("#modal_form_materias")
-                        .trigger(
-                            "reset"
-                        ); //Reiniciar el formulario
-                    $("#modal_form_materias .close")
-                        .click(); //Cerrar el formulario
-
-                    tablamaterias = $('#materias').DataTable();
-
-
-
-
-                    if (estado_materia == 1) {
-                        var texto_estado = 'Habilitado';
-                        var button = '<td><a href="#!" data-id="' + id +
-                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_materias">Editar</a>  <a href="#!"  data-id="' +
-                            id +
-                            '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#!"  data-id="' +
-                            id +
-                            '"  class="btn btn-warning btn-sm btndardebaja">Dar de Baja</a></td>';
-
-                    } else {
-                        texto_estado = 'Deshabilitado';
-                        var button = '<td><a href="#!" data-id="' + id +
-                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_materias">Editar</a>  <a href="#"  data-id="' +
-                            id +
-                            '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#"  data-id="' +
-                            id +
-                            '"  class="btn btn-success btn-sm btndardardealta">Dar de Alta</a></td>';
-                    }
-
-
-                    //En el codigo de abajo dibuja la tabla
-                    var row = tablamaterias.row("[id='" + id + "']");
-                    //el table es del table de arriba table = $('example').Datatable();
-                    row.row("[id='" + id + "']").data([id, nombre_materia,
-                        abreviatura_materia, texto_estado, button
-                    ]);
-
-                    // table.cell(parseInt(trid) - 1,0).data(id);
-                    // table.cell(parseInt(trid) - 1,1).data(username);
-                    // table.cell(parseInt(trid) - 1,2).data(email);
-                    // table.cell(parseInt(trid) - 1,3).data(mobile);
-                    // table.cell(parseInt(trid) - 1,4).data(city);
-
-                } else {
-                    alert('failed');
-                }
-            }
-        });
-    } else {
-        alert('Fill all the required fields');
-    }
-
-
-});
 </script>
 
 
