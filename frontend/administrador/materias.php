@@ -467,20 +467,19 @@ $(document).ready(function() {
 <script>
 //EDITAR  MATERIAAA
 $(document).on("click", ".btneditar", function() {
+
+
+
     opcion = 5; //PRIMERO OPCION 5 PARA QUE AGARRE LOS DATOS
-    console.log(opcion);
-
-
 
 
     /**
      * MODIFICACIONES MODAL
      */
-    // $("#inputestadomateria").hide();
-    // $("#labelestadomateria").hide();
+    document.getElementById("boton_agregar_form").style.display = "none";
 
+    document.getElementById("boton_editar_form").style.display = "block";
 
-    // $("#inputestadomateria").val(1);
     /**
      * CSS MODAL
      */
@@ -491,16 +490,12 @@ $(document).on("click", ".btneditar", function() {
     $(".modal-title").text("Editar Materia");
 
 
-    document.getElementById("boton_agregar_form").style.display = "none";
 
-    document.getElementById("boton_editar_form").style.display = "block";
 
     var tablamaterias = $('#materias').DataTable();
-    // var trid = $(this).closest('tr').attr('id'); //trid el id del tr/fila
-    // console.log(selectedRow);
-    // console.log(trid);
+
     var id = $(this).data('id');
-    console.log(id);
+
 
     if (opcion === 5) {
 
@@ -526,7 +521,7 @@ $(document).on("click", ".btneditar", function() {
                     $("#boton_editar_form").click(function() {
 
                         console.log('ESTA ACA EN OPCION 2 EDITAR');
-                        opcion = 2; //AHORA SI, A EDITAR
+
 
                         var nombre_materia = $('#input_nombre_materia').val();
                         var abreviatura_materia = $('#input_abreviatura_materia').val();
@@ -671,8 +666,7 @@ $(document).on("click", ".btneditar", function() {
 
                 }
 
-                // $('#id').val(id);
-                // $('#trid').val(trid);
+
             }
         })
     }
@@ -698,10 +692,8 @@ $(document).on("click", ".btneditar", function() {
 $(document).on("click", ".btndardebaja", function() {
     opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
 
-    // var table = $('#materias').DataTable();
-    // event.preventDefault();
+
     var id = $(this).data('id');
-    // var trid = $(this).closest('tr').attr('id'); //trid el id del tr/fila
 
     console.log(id);
     // console.log(trid);
@@ -916,8 +908,7 @@ $(document).on('click', '.btneliminar', function(event) {
 
 
     opcion = 6;
-    // var table = $('#example').DataTable();
-    // event.preventDefault();
+
     var id = $(this).data('id');
 
 
@@ -949,9 +940,7 @@ $(document).on('click', '.btneliminar', function(event) {
                     var json = JSON.parse(data);
                     status = json.status;
                     if (status == 'success') {
-                        //table.fnDeleteRow( table.$('#' + id)[0] );
-                        //$("#example tbody").find(id).remove();
-                        //table.row($(this).closest("tr")) .remove();
+
 
                         Swal.fire(
                             "Perfecto!",
