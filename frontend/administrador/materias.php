@@ -235,7 +235,8 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" id="boton_enviarform" class="btn btn-primary">Enviar</button>
+                            <button type="submit" id="boton_agregar_form" class="btn btn-primary">Agregar</button>
+                            <button type="submit" id="boton_editar_form" class="btn btn-primary">Editar</button>
                         </div>
                     </div>
                 </div>
@@ -339,33 +340,41 @@ $(document).ready(function() {
     //AGREGAR MATERIAAA
     $(document).on("click", ".btnAgregar", function() {
         opcion = 1;
+
         console.log(opcion);
 
         /**
          * MODIFICACIONES MODAL
          */
-        // $("#inputestadomateria").hide();
-        // $("#labelestadomateria").hide();
 
-        $("#input_nombre_materia").val(""); //DEBERIA IR EL INPUT DEL NOMBRE DEL MODAL
+        //HAGO LOS INPUTS VACIOS
+        $("#input_nombre_materia").val("");
         $("#input_abreviatura_materia").val("");
         $("#input_estado_m_materia").val("");
-        // $("#inputestadomateria").val(1);
+        $("#input_id_materia").val("");
+
+
+        // MUESTRO EL BOTON DE AGREGAR
+        document.getElementById("boton_agregar_form").style.display = "block";
+        // OCULTO EL BOTON DE EDITAR
+
+        document.getElementById("boton_editar_form").style.display = "none";
+
 
         /**
          * CSS MODAL
          */
         $(".modal-header").css("background-color", "#007bff");
         $(".modal-header").css("color", "white");
-        $("#boton_enviarform").css("background-color", "#007bff");
-        $("#boton_enviarform").css("color", "white");
+        $("#boton_agregar_form").css("background-color", "#007bff");
+        $("#boton_agregar_form").css("color", "white");
         $(".modal-title").text("Agregar Materia");
 
         if (opcion === 1) {
             //  MODAL AGREGAR
-            $("#boton_enviarform").click(function() {
+            $("#boton_agregar_form").click(function() {
 
-
+                console.log('ESTA ACA EN OPCION 1 AGREGAR');
                 var nombre_materia = $('#input_nombre_materia').val();
                 var abreviatura_materia = $('#input_abreviatura_materia').val();
                 var estado_m_materia = $('#input_estado_m_materia').val();
@@ -477,10 +486,14 @@ $(document).on("click", ".btneditar", function() {
      */
     $(".modal-header").css("background-color", "#17a2b8");
     $(".modal-header").css("color", "white");
-    $("#boton_enviarform").css("background-color", "#17a2b8");
-    $("#boton_enviarform").css("color", "white");
+    $("#boton_editar_form").css("background-color", "#17a2b8");
+    $("#boton_editar_form").css("color", "white");
     $(".modal-title").text("Editar Materia");
 
+
+    document.getElementById("boton_agregar_form").style.display = "none";
+
+    document.getElementById("boton_editar_form").style.display = "block";
 
     var tablamaterias = $('#materias').DataTable();
     // var trid = $(this).closest('tr').attr('id'); //trid el id del tr/fila
@@ -510,8 +523,9 @@ $(document).on("click", ".btneditar", function() {
                 if (opcion === 2) {
 
 
-                    $("#boton_enviarform").click(function() {
+                    $("#boton_editar_form").click(function() {
 
+                        console.log('ESTA ACA EN OPCION 2 EDITAR');
                         opcion = 2; //AHORA SI, A EDITAR
 
                         var nombre_materia = $('#input_nombre_materia').val();
@@ -570,7 +584,8 @@ $(document).on("click", ".btneditar", function() {
 
                                                     tablamaterias
                                                         = $(
-                                                            '#materias')
+                                                            '#materias'
+                                                        )
                                                         .DataTable();
 
                                                     if (estado_materia ==
@@ -608,12 +623,12 @@ $(document).on("click", ".btneditar", function() {
                                                             "[id='" +
                                                             id +
                                                             "']"
-                                                            );
+                                                        );
                                                     //el table es del table de arriba table = $('example').Datatable();
                                                     row.row("[id='" +
                                                             id +
                                                             "']"
-                                                            )
+                                                        )
                                                         .data([id,
                                                             nombre_materia,
                                                             abreviatura_materia,
