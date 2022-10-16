@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2022 at 01:50 PM
+-- Generation Time: Oct 16, 2022 at 07:11 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -63,18 +63,38 @@ CREATE TABLE `materias` (
 --
 
 INSERT INTO `materias` (`id`, `nombre`, `abreviatura`, `estado_m`) VALUES
-(9, 'Javier', 'Mascherano', 1),
-(10, 'dada', 'dsadsa', 1),
-(11, 'fsaf', 'fsafsa', 1),
-(12, 'fsafas', 'fsafsfa', 1),
-(13, 'FAFA', 'FAFAFA', 1),
-(14, 'FAF', 'FAFAAF', 1),
-(15, 'FAFA', 'FAFAFAFAFA', 1),
-(16, 'FAFAFAFAF', 'FAFAF', 1),
-(17, 'FAFFAFAFF', 'FAFAFAFA', 1),
-(18, 'FAFAFA', 'FAFAFAF', 0),
-(19, 'FAFAFA', 'FAFAFA', 1),
-(20, 'Confirmando2', 'obviopa', 1);
+(68, 'que onda perro', 'dsads', 0),
+(69, 'dale', 'amigoooo', 1),
+(70, 'one more', 'time', 1),
+(71, 'why', 'not', 1),
+(73, 'fafaf', 'fafafafa', 1),
+(74, 'y', 'ahora', 1),
+(75, 'Javier', 'dadada', 1),
+(77, 'Eskere', 'dsadsa', 1),
+(78, 'Jose', 'Barbabrie', 1),
+(79, 'Eskere', 'afsaf', 1),
+(80, 'Eskere', 'dadada', 0),
+(81, 'Eskere', 'dsadsa', 0),
+(82, 'Eskere', 'dadada', 0),
+(84, 'Eskere', 'dadada', 0),
+(85, 'Eskere', 'dadada', 0),
+(138, 'Cambie el titulo', 'alexander_2001_12@hotmail.com', 0),
+(139, 'Charly', 'W', 0),
+(140, 'Charly', 'a', 0),
+(143, 'Charly', 'a', 0),
+(144, 'Charly', 'ese', 1),
+(145, 'No di', 'maria', 0),
+(146, 'No di', 'maria', 0),
+(148, 'para', 'tomas', 0),
+(149, 'fsafas', 'fsafa', 1),
+(150, 'Dewan2', 'Pavonisman2', 0),
+(175, 'Tomas', 'W', 1),
+(177, 'Tomas', 'ese', 1),
+(178, 'Mariveya', 'W', 1),
+(179, 'Ahora si muchachos', 'Nosedigamas', 1),
+(180, 'Mariveya', 'Josemariallego', 0),
+(181, 'Tomas', 'Nisansdad', 1),
+(182, 'Mariveya', 'ese', 1);
 
 -- --------------------------------------------------------
 
@@ -127,7 +147,7 @@ INSERT INTO `plan_estudio` (`id`, `titulo`, `nombre`, `resolucion`, `estado_p`) 
 (3, 'titulo de plan', 'nombre del plan', 'resolucion del plan', 0),
 (4, 'plandeestudio1', 'Charly', 'resolucion12', 0),
 (5, 'plandeestudio1tdtt', 'CharlyW', 'resolucion12', 1),
-(6, 'titulo14', 'Mariveya', 'eresamkdsao', 1);
+(6, 'titulo14', 'Mariveya', 'eresamkdsaof', 0);
 
 -- --------------------------------------------------------
 
@@ -137,7 +157,8 @@ INSERT INTO `plan_estudio` (`id`, `titulo`, `nombre`, `resolucion`, `estado_p`) 
 
 CREATE TABLE `roles` (
   `id` int(11) NOT NULL,
-  `nombre_rol` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+  `nombre_rol` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `estado_r` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -284,7 +305,7 @@ ALTER TABLE `localidad`
 -- AUTO_INCREMENT for table `materias`
 --
 ALTER TABLE `materias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
 
 --
 -- AUTO_INCREMENT for table `notas`
@@ -302,7 +323,7 @@ ALTER TABLE `planestudio_materia`
 -- AUTO_INCREMENT for table `plan_estudio`
 --
 ALTER TABLE `plan_estudio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `roles`
