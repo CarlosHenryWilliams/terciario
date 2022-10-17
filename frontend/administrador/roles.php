@@ -281,6 +281,8 @@ $(document).ready(function() {
         //HAGO LOS INPUTS VACIOS
         $("#input_nombre_rol").val("");
         $("#input_estado_r_rol").val("");
+        $('#input_id_rol').val("");
+
 
 
         // MUESTRO EL BOTON DE AGREGAR
@@ -412,7 +414,7 @@ $(document).on("click", ".btneditar", function() {
     $(".modal-header").css("color", "white");
     $("#boton_editar_form").css("background-color", "#17a2b8");
     $("#boton_editar_form").css("color", "white");
-    $(".modal-title").text("Editar Materia");
+    $(".modal-title").text("Editar Rol");
 
 
 
@@ -425,7 +427,7 @@ $(document).on("click", ".btneditar", function() {
     if (opcion === 5) {
 
         $.ajax({
-            url: "../../backend/materias/crudmaterias.php",
+            url: "../../backend/roles/crudroles.php",
             data: {
                 opcion: opcion,
                 id: id
@@ -433,12 +435,14 @@ $(document).on("click", ".btneditar", function() {
             type: 'post',
             success: function(data) {
                 var json = JSON.parse(data);
-                $('#input_nombre_materia').val(json.nombre); //valor de la base de datos
-                $('#input_abreviatura_materia').val(json.abreviatura);
-                $('#input_estado_m_materia').val(json.estado_m);
-                $('#input_id_materia').val(id);
 
-                opcion = 2; //UNA VEZ QUE AGARRA LOS DATOS LOS ENVIA  A LA OPCION 2
+                $("#input_id_rol").val(json.id);
+                $("#input_nombre_rol").val(json.nombre_rol);
+                $("#input_estado_r_rol").val(json.estado_r);
+
+
+
+                opcion = 2; //UNA VEZ QUE AGARRA LOS DATOS LOS ENVIA  A LA OPCION 2 QUE ES EDITAR
 
                 if (opcion === 2) {
 
@@ -448,20 +452,18 @@ $(document).on("click", ".btneditar", function() {
                         console.log('ESTA ACA EN OPCION 2 EDITAR');
 
 
-                        var nombre_materia = $('#input_nombre_materia').val();
-                        var abreviatura_materia = $('#input_abreviatura_materia').val();
-                        var estado_materia = $('#input_estado_m_materia').val();
+                        var nombre_rol = $('#input_nombre_rol').val();
+                        var estado_r_rol = $('#input_estado_r_rol').val();
 
-                        var id = $('#input_id_materia').val();
-                        // console.log(nombre_materia, abreviatura_materia, estado_materia, id);
+                        var id = $('#input_id_rol').val();
 
 
-                        if (nombre_materia != '' && abreviatura_materia != '' &&
-                            estado_materia != '') {
+                        if (nombre_rol != '' && estado_r_rol != '' &&
+                            id != '') {
 
                             Swal.fire({
-                                title: 'Editar Materia',
-                                text: "Esta seguro que desea editar la materia?",
+                                title: 'Editar Rol',
+                                text: "Esta seguro que desea editar el Rol?",
                                 icon: 'warning',
                                 showCancelButton: true,
                                 confirmButtonColor: '#3085d6',
@@ -473,13 +475,12 @@ $(document).on("click", ".btneditar", function() {
 
 
                                     $.ajax({
-                                        url: "../../backend/materias/crudmaterias.php",
+                                        url: "../../backend/roles/crudroles.php",
                                         type: "post",
                                         data: {
                                             opcion: opcion,
-                                            nombre_materia: nombre_materia,
-                                            abreviatura_materia: abreviatura_materia,
-                                            estado_materia: estado_materia,
+                                            nombre_rol: nombre_rol,
+                                            estado_r_rol: estado_r_rol,
                                             id: id
                                         },
                                         success: function(data) {
@@ -489,8 +490,8 @@ $(document).on("click", ".btneditar", function() {
 
 
                                                 Swal.fire(
-                                                    'Materia Editada!',
-                                                    'La materia ha sido editada con exito!',
+                                                    'Rol Editado!',
+                                                    'El Rol ha sido editado con exito!',
                                                     'success'
                                                 ).then(() => {
 
@@ -502,13 +503,13 @@ $(document).on("click", ".btneditar", function() {
                                                         .click(); //Cerrar el formulario
 
 
-                                                    tablamaterias
+                                                    tablaroles
                                                         = $(
-                                                            '#materias'
+                                                            '#roles'
                                                         )
                                                         .DataTable();
 
-                                                    if (estado_materia ==
+                                                    if (estado_r_rol ==
                                                         1) {
                                                         var texto_estado =
                                                             'Habilitado';
@@ -538,7 +539,7 @@ $(document).on("click", ".btneditar", function() {
 
                                                     //En el codigo de abajo dibuja la tabla
                                                     var row =
-                                                        tablamaterias
+                                                        tablaroles
                                                         .row(
                                                             "[id='" +
                                                             id +
@@ -550,8 +551,7 @@ $(document).on("click", ".btneditar", function() {
                                                             "']"
                                                         )
                                                         .data([id,
-                                                            nombre_materia,
-                                                            abreviatura_materia,
+                                                            nombre_rol,
                                                             texto_estado,
                                                             button
                                                         ]);

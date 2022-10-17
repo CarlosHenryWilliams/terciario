@@ -42,14 +42,12 @@ switch ($opcion) {
     case 2:  //CASO 2 EDITAR
 
 
-        $id_materia = $_POST['id'];
-        $nombre_materia = $_POST['nombre_materia'];
-        $abreviatura_materia = $_POST['abreviatura_materia'];
-        $estado_materia = $_POST['estado_materia'];
+        $id_rol = $_POST['id'];
+        $nombre_rol = $_POST['nombre_rol'];
+        $estado_r_rol = $_POST['estado_r_rol'];
 
-        // $sql = "UPDATE `users` SET  `username`='$username' , `email`= '$email', `mobile`='$mobile',  `city`='$city' WHERE id='$id' ";
 
-        $sql = "UPDATE `materias` SET `nombre`='$nombre_materia',`abreviatura`='$abreviatura_materia',`estado_m`='$estado_materia' WHERE `id`=$id_materia";
+        $sql = "UPDATE `roles` SET `nombre_rol`='$nombre_rol',`estado_r`='$estado_r_rol' WHERE `id`=$id_rol";
         $query = mysqli_query(conectame(), $sql);
         // $lastId = mysqli_insert_id($con);
         if ($query == true) {
