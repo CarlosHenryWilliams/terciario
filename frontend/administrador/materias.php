@@ -212,7 +212,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label for="estado_m_materia" class="col-md-3 form-label">Estado_m</label>
+                                    <label for="estado_m_materia" class="col-md-3 form-label">Estado</label>
                                     <div class="col-md-9">
                                         <!-- <input type="text" class="form-control" id="estado_m_materia" name="mobile"> -->
 
@@ -420,7 +420,7 @@ $(document).ready(function() {
                                 success: function(data) {
                                     var json = JSON.parse(data);
                                     var status = json.status;
-                                    if (status == 'true') {
+                                    if (status == 'success') {
 
                                         Swal.fire(
                                             "Buen Trabajo!",

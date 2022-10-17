@@ -12,18 +12,17 @@ switch ($opcion) {
     case 1: //AGREGAR
 
 
-        $nombre_materia = $_POST['nombre_materia'];
-        $abreviatura_materia = $_POST['abreviatura_materia'];
-        $estado_m_materia = $_POST['estado_m_materia'];
+        $nombre_rol = $_POST['nombre_rol'];
+        $estado_r_rol = $_POST['estado_r_rol'];
 
-        $sql = "INSERT INTO `materias`( `nombre`, `abreviatura`, `estado_m`) VALUES ('$nombre_materia','$abreviatura_materia','$estado_m_materia')";
+        $sql = "INSERT INTO `roles`( `nombre_rol`, `estado_r`) VALUES ('$nombre_rol','$estado_r_rol')";
 
         $query = mysqli_query(conectame(), $sql);
 
         if ($query == true) {
 
             $data = array(
-                'status' => 'true',
+                'status' => 'success',
 
             );
 

@@ -130,7 +130,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Agregar Materia</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar Rol</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -140,39 +140,27 @@
                                 <div class="mb-3 row">
                                     <label for="nombre_materia" class="col-md-3 form-label">Nombre</label>
 
-                                    <input type="hidden" class="form-control" id="input_id_materia" name="id" required>
+                                    <input type="hidden" class="form-control" id="input_id_rol" name="id" required>
 
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" id="input_nombre_materia" name="nombre"
+                                        <input type="text" class="form-control" id="input_nombre_rol" name="nombre"
                                             required>
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label for="abreviatura_materia" class="col-md-3 form-label">Abreviatura</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" id="input_abreviatura_materia"
-                                            name="abreviatura" required>
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="estado_m_materia" class="col-md-3 form-label">Estado_m</label>
+                                    <label for="input_estado_r_rol" class="col-md-3 form-label">Estado</label>
                                     <div class="col-md-9">
                                         <!-- <input type="text" class="form-control" id="estado_m_materia" name="mobile"> -->
 
                                         <select class="form-select" aria-label="Default select example"
-                                            id="input_estado_m_materia" name="estado" required>
+                                            id="input_estado_r_rol" name="estado" required>
                                             <option value="">Por favor seleccione un estado</option>
                                             <option value="1">Habilitado</option>
                                             <option value="0">Deshabilitado</option>
                                         </select>
                                     </div>
                                 </div>
-                                <!-- <div class="mb-3 row">
-                            <label for="addCityField" class="col-md-3 form-label">City</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" id="addCityField" name="City">
-                            </div>
-                        </div> -->
+
                                 <div class="text-center">
                                 </div>
                             </form>
@@ -265,15 +253,14 @@ $(document).ready(function() {
         "aoColumnDefs": [{
                 "bSortable": false,
                 "aTargets": [3]
-            }
-            // ,
+            },
 
-            // {
-            //     // hide id_number column
-            //     "targets": [0],
-            //     "visible": false,
-            //     "searchable": false
-            // }
+            {
+                // hide id_number column
+                "targets": [0],
+                "visible": false,
+                "searchable": false
+            }
 
         ]
     });
@@ -281,7 +268,7 @@ $(document).ready(function() {
 
 
 
-    //AGREGAR MATERIAAA
+    //AGREGAR ROL
     $(document).on("click", ".btnAgregar", function() {
         opcion = 1;
 
@@ -292,10 +279,8 @@ $(document).ready(function() {
          */
 
         //HAGO LOS INPUTS VACIOS
-        $("#input_nombre_materia").val("");
-        $("#input_abreviatura_materia").val("");
-        $("#input_estado_m_materia").val("");
-        $("#input_id_materia").val("");
+        $("#input_nombre_rol").val("");
+        $("#input_estado_r_rol").val("");
 
 
         // MUESTRO EL BOTON DE AGREGAR
@@ -312,24 +297,21 @@ $(document).ready(function() {
         $(".modal-header").css("color", "white");
         $("#boton_agregar_form").css("background-color", "#007bff");
         $("#boton_agregar_form").css("color", "white");
-        $(".modal-title").text("Agregar Materia");
+        $(".modal-title").text("Agregar Rol");
 
         if (opcion === 1) {
             //  MODAL AGREGAR
             $("#boton_agregar_form").click(function() {
 
                 console.log('ESTA ACA EN OPCION 1 AGREGAR');
-                var nombre_materia = $('#input_nombre_materia').val();
-                var abreviatura_materia = $('#input_abreviatura_materia').val();
-                var estado_m_materia = $('#input_estado_m_materia').val();
+                var nombre_rol = $('#input_nombre_rol').val();
+                var estado_r_rol = $('#input_estado_r_rol').val();
 
-                console.log(nombre_materia, abreviatura_materia, estado_m_materia);
+                console.log(nombre_rol, estado_r_rol);
 
                 if (
-                    nombre_materia == "" ||
-                    abreviatura_materia == "" ||
-                    estado_m_materia == ""
-                ) {
+                    nombre_rol == "" ||
+                    estado_r_rol == "") {
                     Swal.fire({
                         icon: "error",
                         title: "Oops...",
@@ -339,7 +321,7 @@ $(document).ready(function() {
                 } else {
                     Swal.fire({
                         title: "Los datos son correctos?",
-                        text: "La materia se cargara al sistema",
+                        text: "El Rol se cargara al sistema",
                         icon: "warning",
                         showCancelButton: true,
                         confirmButtonColor: "#3085d6",
@@ -353,22 +335,21 @@ $(document).ready(function() {
                              */
 
                             $.ajax({
-                                url: "../../backend/materias/crudmaterias.php",
+                                url: "../../backend/roles/crudroles.php",
                                 type: "post",
                                 data: {
                                     opcion: opcion,
-                                    nombre_materia: nombre_materia,
-                                    abreviatura_materia: abreviatura_materia,
-                                    estado_m_materia: estado_m_materia
+                                    nombre_rol: nombre_rol,
+                                    estado_r_rol: estado_r_rol
                                 },
                                 success: function(data) {
                                     var json = JSON.parse(data);
                                     var status = json.status;
-                                    if (status == 'true') {
+                                    if (status == 'success') {
 
                                         Swal.fire(
                                             "Buen Trabajo!",
-                                            "La materia ha sido cargada!",
+                                            "El Rol ha sido cargada!",
                                             "success"
                                         ).then(() => {
 
@@ -379,7 +360,7 @@ $(document).ready(function() {
                                             $("#modal_form_rol .close")
                                                 .click(); //Cerrar el formulario
 
-                                            mytable = $('#materias')
+                                            mytable = $('#roles')
                                                 .DataTable();
                                             mytable.draw();
 
@@ -400,7 +381,7 @@ $(document).ready(function() {
                 }
             });
         }
-    }); // TERMINA AGREGAR MATERIA
+    }); // TERMINA AGREGAR ROL
 
 
 });

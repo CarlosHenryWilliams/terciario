@@ -23,7 +23,7 @@ switch ($opcion) {
         if ($query == true) {
 
             $data = array(
-                'status' => 'true',
+                'status' => 'success',
 
             );
 
