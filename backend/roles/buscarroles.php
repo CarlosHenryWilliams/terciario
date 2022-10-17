@@ -19,23 +19,21 @@ include('../conexion.php');
 
 
 $output = array();
-$sql = "SELECT * FROM materias ";
+$sql = "SELECT * FROM roles ";
 
 $totalQuery = mysqli_query(conectame(), $sql);
 $total_all_rows = mysqli_num_rows($totalQuery);
 
 $columns = array(
     0 => 'id',
-    1 => 'nombre',
-    2 => 'abreviatura',
-    3 => 'estado_m',
+    1 => 'nombre_rol',
+    2 => 'estado_r',
 );
 
 if (isset($_POST['search']['value'])) {
     $search_value = $_POST['search']['value'];
-    $sql .= " WHERE nombre like '%" . $search_value . "%'";
-    $sql .= " OR abreviatura like '%" . $search_value . "%'";
-    $sql .= " OR estado_m like '%" . $search_value . "%'";
+    $sql .= " WHERE nombre_rol like '%" . $search_value . "%'";
+    $sql .= " OR estado_r like '%" . $search_value . "%'";
 }
 
 if (isset($_POST['order'])) {
@@ -58,9 +56,9 @@ $data = array();
 while ($row = mysqli_fetch_assoc($query)) {
     $sub_array = array();
     $sub_array[] = $row['id'];
-    $sub_array[] = $row['nombre'];
-    $sub_array[] = $row['abreviatura'];
-    if ($row['estado_m'] == 1) {
+    $sub_array[] = $row['nombre_rol'];
+
+    if ($row['estado_r'] == 1) {
         $sub_array[] = 'Habilitado';
         // $sub_array[] = 'Habilitado' .
         // 	'<a href="javascript:void();" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm editbtn" > Baja</a>';
@@ -70,12 +68,12 @@ while ($row = mysqli_fetch_assoc($query)) {
     // $sub_array[] = $row['estado_m'];
     // $sub_array[] = $row['city'];
 
-    if ($row['estado_m'] == 1) {
-        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"   data-toggle="modal" data-target="#modal_form_materias">Editar</a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" >Eliminar</a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-warning btn-sm btndardebaja" >Dar de Baja</a>';
+    if ($row['estado_r'] == 1) {
+        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"   data-toggle="modal" data-target="#modal_form_rol">Editar</a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" >Eliminar</a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-warning btn-sm btndardebaja" >Dar de Baja</a>';
         // $sub_array[] = 'Habilitado' .
         // 	'<a href="javascript:void();" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm editbtn" > Baja</a>';
     } else {
-        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_materias" >Editar</a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" >Eliminar</a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-success btn-sm btndardealta" >Dar de Alta</a>';
+        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_rol" >Editar</a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" >Eliminar</a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-success btn-sm btndardealta" >Dar de Alta</a>';
     }
 
     $data[] = $sub_array;

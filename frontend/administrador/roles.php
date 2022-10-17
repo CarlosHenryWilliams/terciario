@@ -60,15 +60,11 @@
             <main>
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center ">
-                        <h1 class="mt-4 mb-4">MATERIAS</h1>
+                        <h1 class="mt-4 mb-4">ROLES</h1>
                     </div>
 
                     <div>
-                        <!-- Button trigger modal -->
-                        <!-- <button type="button" class="btn btn-primary btnAgregar" data-toggle="modal"
-                            data-target="#modal_form_materias">
-                            Agregar materia nueva
-                        </button> -->
+
 
                     </div>
 
@@ -80,27 +76,25 @@
 
                                 <div class=" flex-grow-1 bd-highlight">
                                     <div class="bd-highlight w-75"> <i class="fas fa-table me-1"></i>
-                                        Materias
+                                        Roles
                                     </div>
                                 </div>
                                 <div class=" bd-highlight">
                                     <div class=" flex-shrink-1 bd-highlight"> <a href="#!" data-id=""
-                                            data-toggle="modal" data-target="#modal_form_materias"
-                                            class="btn btn-primary btn-sm  btnAgregar">Nueva
-                                            Materia</a>
+                                            data-toggle="modal" data-target="#modal_form_rol"
+                                            class="btn btn-primary btn-sm  btnAgregar">Nuevo Rol</a>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
                         <div class="card-body table-responsive">
-                            <table id="materias" class="table-bordered">
+                            <table id="roles" class="table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
                                         <th>Nombre</th>
-                                        <th>Abreviatura</th>
-                                        <th>Estado_m</th>
+                                        <th>Estado</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -130,59 +124,8 @@
 
 
 
-
-
-
-
-
-
-            <!-- Modal -->
-            <!-- <div class="modal fade" id="modal_form_materias2" tabindex="-1" aria-labelledby="modal_form_materiasLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modal_form_materiasLabel">Cargar Materia</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <form method="POST" id="form_agregar_alumno">
-                            <div class="modal-body">
-
-
-                                <div class="form-group">
-                                    <label for="inputnombremateria">Nombre de la materia</label>
-                                    <input type="text" class="form-control" required id="inputnombremateria"
-                                        aria-describedby="emailHelp">
-                                 
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputabreviaturamateria">Abreviatura</label>
-                                    <input type="text" class="form-control" required id="inputabreviaturamateria">
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputabreviaturamateria" id="labelestadomateria">Estado</label>
-                                    <input type="text" value="1" class="form-control" id="inputestadomateria">
-                                </div>
-
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                <button type="button" id="boton_enviarform" class="btn ">Cargar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
- -->
-
-
-
-
-            <!-- Add user Modal -->
-            <div class="modal fade" id="modal_form_materias" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <!-- MODAL ROL-->
+            <div class="modal fade" id="modal_form_rol" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -307,7 +250,7 @@
 </body>
 <script>
 $(document).ready(function() {
-    $('#materias').DataTable({
+    $('#roles').DataTable({
         "fnCreatedRow": function(nRow, aData, iDataIndex) {
             $(nRow).attr('id', aData[0]);
         },
@@ -316,20 +259,21 @@ $(document).ready(function() {
         'paging': 'true',
         'order': [],
         'ajax': {
-            'url': '../../backend/materias/buscarmaterias.php',
+            'url': '../../backend/roles/buscarroles.php',
             'type': 'post',
         },
         "aoColumnDefs": [{
                 "bSortable": false,
-                "aTargets": [4]
-            },
-
-            {
-                // hide id_number column
-                "targets": [0],
-                "visible": false,
-                "searchable": false
+                "aTargets": [3]
             }
+            // ,
+
+            // {
+            //     // hide id_number column
+            //     "targets": [0],
+            //     "visible": false,
+            //     "searchable": false
+            // }
 
         ]
     });
@@ -428,11 +372,11 @@ $(document).ready(function() {
                                             "success"
                                         ).then(() => {
 
-                                            $("#modal_form_materias")
+                                            $("#modal_form_rol")
                                                 .trigger(
                                                     "reset"
                                                 ); //Reiniciar el formulario
-                                            $("#modal_form_materias .close")
+                                            $("#modal_form_rol .close")
                                                 .click(); //Cerrar el formulario
 
                                             mytable = $('#materias')
@@ -569,11 +513,11 @@ $(document).on("click", ".btneditar", function() {
                                                     'success'
                                                 ).then(() => {
 
-                                                    $("#modal_form_materias")
+                                                    $("#modal_form_rol")
                                                         .trigger(
                                                             "reset"
                                                         ); //Reiniciar el formulario
-                                                    $("#modal_form_materias .close")
+                                                    $("#modal_form_rol .close")
                                                         .click(); //Cerrar el formulario
 
 
@@ -590,7 +534,7 @@ $(document).on("click", ".btneditar", function() {
                                                         var button =
                                                             '<td><a href="#!" data-id="' +
                                                             id +
-                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_materias">Editar</a>  <a href="#!"  data-id="' +
+                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_rol">Editar</a>  <a href="#!"  data-id="' +
                                                             id +
                                                             '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#!"  data-id="' +
                                                             id +
@@ -603,7 +547,7 @@ $(document).on("click", ".btneditar", function() {
                                                         var button =
                                                             '<td><a href="#!" data-id="' +
                                                             id +
-                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_materias">Editar</a>  <a href="#"  data-id="' +
+                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_rol">Editar</a>  <a href="#"  data-id="' +
                                                             id +
                                                             '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#"  data-id="' +
                                                             id +
@@ -699,7 +643,7 @@ $(document).on("click", ".btndardebaja", function() {
     // console.log(trid);
 
     $.ajax({
-        url: "../../backend/materias/crudmaterias.php",
+        url: "../../backend/roles/crudroles.php",
         data: {
             opcion: opcion,
             id: id
@@ -708,18 +652,17 @@ $(document).on("click", ".btndardebaja", function() {
         success: function(data) {
             var json = JSON.parse(data);
 
-            var nombre_materia = json.nombre;
-            var abreviatura_materia = json.abreviatura;
-            var estado_materia = json.estado_m;
+            var nombre_rol = json.nombre_rol;
+            var estado_rol = json.estado_r;
 
 
-            console.log(nombre_materia, abreviatura_materia, estado_materia);
+            console.log(nombre_rol, estado_rol);
 
             opcion = 3; // una vez adentro opcion pasa a ser 3 o sea dar de baja
 
             Swal.fire({
-                title: "Deshabilitar Materia",
-                text: "Esta seguro que desea dar de baja la materia?",
+                title: "Deshabilitar Rol",
+                text: "Esta seguro que desea dar de baja el Rol?",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -730,7 +673,7 @@ $(document).on("click", ".btndardebaja", function() {
                 if (result.isConfirmed) {
 
                     $.ajax({
-                        url: "../../backend/materias/crudmaterias.php",
+                        url: "../../backend/roles/crudroles.php",
                         data: {
                             opcion: opcion,
                             id: id
@@ -743,11 +686,11 @@ $(document).on("click", ".btndardebaja", function() {
 
                                 Swal.fire(
                                     "Perfecto!",
-                                    "La materia ha sido dada de baja!",
+                                    "El rol ha sido dada de baja!",
                                     "success"
                                 ).then(() => {
 
-                                    tablamaterias = $('#materias')
+                                    tablaroles = $('#roles')
                                         .DataTable();
 
                                     texto_estado = 'Deshabilitado';
@@ -755,21 +698,20 @@ $(document).on("click", ".btndardebaja", function() {
                                     var button =
                                         '<td><a href="#" data-id="' +
                                         id +
-                                        '" class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_materias">Editar</a>  <a href="#!"  data-id="' +
+                                        '" class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_rol">Editar</a>  <a href="#!"  data-id="' +
                                         id +
                                         '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#!"  data-id="' +
                                         id +
                                         '"  class="btn btn-success btn-sm btndardealta">Dar de Alta</a></td>';
 
                                     //En el codigo de abajo dibuja la tabla
-                                    var row = tablamaterias.row(
+                                    var row = tablaroles.row(
                                         "[id='" + id +
                                         "']");
                                     //el table es del table de arriba table = $('example').Datatable();
                                     row.row("[id='" + id + "']").data(
                                         [id,
-                                            nombre_materia,
-                                            abreviatura_materia,
+                                            nombre_rol,
                                             texto_estado,
                                             button
                                         ]);
@@ -806,7 +748,7 @@ $(document).on("click", ".btndardealta", function() {
     console.log(id);
 
     $.ajax({
-        url: "../../backend/materias/crudmaterias.php",
+        url: "../../backend/roles/crudroles.php",
         data: {
             opcion: opcion,
             id: id
@@ -815,18 +757,18 @@ $(document).on("click", ".btndardealta", function() {
         success: function(data) {
             var json = JSON.parse(data);
 
-            var nombre_materia = json.nombre;
-            var abreviatura_materia = json.abreviatura;
-            var estado_materia = json.estado_m;
+            var nombre_rol = json.nombre_rol;
+            var estado_rol = json.estado_r;
 
 
-            console.log(nombre_materia, abreviatura_materia, estado_materia);
+
+            console.log(nombre_rol, estado_rol);
 
             opcion = 4; // una vez adentro opcion pasa a ser 3 o sea dar de baja
 
             Swal.fire({
-                title: "Habilitar Materia",
-                text: "Esta seguro que desea habilitar esta materia?",
+                title: "Habilitar Rol",
+                text: "Esta seguro que desea habilitar el Rol?",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -837,7 +779,7 @@ $(document).on("click", ".btndardealta", function() {
                 if (result.isConfirmed) {
 
                     $.ajax({
-                        url: "../../backend/materias/crudmaterias.php",
+                        url: "../../backend/roles/crudroles.php",
                         data: {
                             opcion: opcion,
                             id: id
@@ -850,11 +792,11 @@ $(document).on("click", ".btndardealta", function() {
 
                                 Swal.fire(
                                     "Perfecto!",
-                                    "La materia ha sido habilitada!",
+                                    "El rol ha sido habilitado!",
                                     "success"
                                 ).then(() => {
 
-                                    tablamaterias = $('#materias')
+                                    tablaroles = $('#roles')
                                         .DataTable();
 
                                     texto_estado = 'Habilitado';
@@ -862,21 +804,20 @@ $(document).on("click", ".btndardealta", function() {
                                     var button =
                                         '<td><a href="#" data-id="' +
                                         id +
-                                        '" class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_materias">Editar</a>  <a href="#!"  data-id="' +
+                                        '" class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_rol">Editar</a>  <a href="#!"  data-id="' +
                                         id +
                                         '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#!"  data-id="' +
                                         id +
                                         '"  class="btn btn-warning btn-sm btndardebaja">Dar de Baja</a></td>';
 
                                     //En el codigo de abajo dibuja la tabla
-                                    var row = tablamaterias.row(
+                                    var row = tablaroles.row(
                                         "[id='" + id +
                                         "']");
                                     //el table es del table de arriba table = $('example').Datatable();
                                     row.row("[id='" + id + "']").data(
                                         [id,
-                                            nombre_materia,
-                                            abreviatura_materia,
+                                            nombre_rol,
                                             texto_estado,
                                             button
                                         ]);
