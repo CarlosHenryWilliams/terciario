@@ -835,8 +835,8 @@ $(document).on('click', '.btneliminar', function(event) {
 
 
     Swal.fire({
-        title: "Eliminar Materia",
-        text: "Estas seguro que desea eliminar la materia ?",
+        title: "Eliminar Rol",
+        text: "Estas seguro que desea eliminar el Rol ?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -849,7 +849,7 @@ $(document).on('click', '.btneliminar', function(event) {
 
 
             $.ajax({
-                url: "../../backend/materias/crudmaterias.php",
+                url: "../../backend/roles/crudroles.php",
                 data: {
                     opcion: opcion,
                     id: id
@@ -866,7 +866,7 @@ $(document).on('click', '.btneliminar', function(event) {
 
                         Swal.fire(
                             "Perfecto!",
-                            "La materia ha sido eliminada!",
+                            "El Rol ha sido eliminado!",
                             "success"
                         ).then(() => {
 

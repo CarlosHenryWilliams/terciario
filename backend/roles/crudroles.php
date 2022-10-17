@@ -138,13 +138,8 @@ switch ($opcion) {
     case 6: //CASO 6 ELIMINAR MATERIA
 
 
-        // $id_materia = $_POST['id'];
-        // $sql = "SELECT * FROM materias  WHERE `id` =$id_materia";
-
-        // $query = mysqli_query(conectame(), $sql);
-        // $lastId = mysqli_insert_id(conectame());
-        $id_materia = $_POST['id'];
-        $sql = "DELETE FROM `materias` WHERE id='$id_materia'";
+        $id_rol = $_POST['id'];
+        $sql = "DELETE FROM `roles` WHERE id='$id_rol'";
         $query = mysqli_query(conectame(), $sql);
         if ($query == true) {
 
