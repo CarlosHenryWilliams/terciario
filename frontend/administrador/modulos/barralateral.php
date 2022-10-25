@@ -9,7 +9,7 @@
                  </a>
                  <div class="sb-sidenav-menu-heading text-white">Usuarios</div>
 
-                 <a class="nav-link" href="#!" data-toggle="modal" data-target="#AgregarUsuario">
+                 <a class="nav-link btnAgregarUsuario" href="#!" data-toggle="modal" data-target="#AgregarUsuario">
                      <div class="sb-nav-link-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                      Agregar Usuario <i class="fa-solid fa-user-plus ml-3"></i>
                  </a>
@@ -74,12 +74,12 @@
 
 
 
- <!-- Modal -->
+ <!-- Modal  Agregar Usuario-->
  <div class="modal fade" id="AgregarUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
      <div class="modal-dialog">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
+                 <h5 class="modal-title" id="exampleModalLabel">Agregar Usuario</h5>
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true">&times;</span>
                  </button>
@@ -87,6 +87,37 @@
              <form method="POST">
                  <div class="modal-body">
                      <fieldset>
+
+
+
+
+                         <div class="form-group">
+                             <div class="">
+                                 <label for="select_rol_usuario" class="d-flex justify-content-start">Rol</label>
+                                 <select name="rol" id="select_rol_usuario" class="form-select" required>
+                                     <option value="">Seleccione un Rol </option>
+
+                                     <?php
+
+                                        include('buscarroles.php'); //BUSCADOR DE MATERIAL
+
+
+                                        while ($row = mysqli_fetch_array($resultado)) { ?>
+
+                                     <option value="<?php echo $row['id'] ?>"><?php echo $row['nombre_rol'] ?>
+                                     </option>
+
+                                     <?php }
+                                        ?>
+
+
+
+                                 </select>
+                             </div>
+                         </div>
+
+
+
                          <div class="form-group">
                              <div class="">
                                  <label for="" class="d-flex justify-content-start">Fecha de
@@ -120,7 +151,8 @@
                          <div class="form-group">
                              <div class="">
                                  <label class="d-flex justify-content-start">Género</label>
-                                 <select id="select_sexo_alumno" class="form-control" name="sexo">
+                                 <select id="select_sexo_alumno" class="form-select" name="sexo" required>
+                                     <option value="">Seleccione el Género</option>
                                      <option value="F">Femenino</option>
                                      <option value="M">Masculino</option>
                                      <option value="X">Otros</option>
@@ -256,3 +288,124 @@
          </div>
      </div>
  </div>
+
+
+
+
+ <script>
+//AGREGAR  USUARIO
+$(document).on("click", ".btnAgregarUsuario", function() {
+    opcion = 1;
+
+    console.log(opcion);
+
+    /**
+     * MODIFICACIONES MODAL
+     */
+
+    //HAGO LOS INPUTS VACIOS
+    $("#input_nombre_materia").val("");
+    $("#input_abreviatura_materia").val("");
+    $("#input_estado_m_materia").val("");
+    $("#input_id_materia").val("");
+
+
+
+
+    /**
+     * CSS MODAL
+     */
+    $(".modal-header").css("background-color", "#17a2b8");
+    $(".modal-header").css("color", "white");
+    $("#boton_agregar_form").css("background-color", "#007bff");
+    $("#boton_agregar_form").css("color", "white");
+    // $(".modal-title").text("Agregar Materia");
+
+    if (opcion === 1) {
+        // MODAL AGREGAR
+        $("#boton_agregar_form").click(function() {
+
+            console.log('ESTA ACA EN OPCION 1 AGREGAR');
+            var nombre_materia = $('#input_nombre_materia').val();
+            var abreviatura_materia = $('#input_abreviatura_materia').val();
+            var estado_m_materia = $('#input_estado_m_materia').val();
+
+            console.log(nombre_materia, abreviatura_materia, estado_m_materia);
+
+            if (
+                nombre_materia == "" ||
+                abreviatura_materia == "" ||
+                estado_m_materia == ""
+            ) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Por favor no deje ningun campo vacio",
+                    // footer: '<a href="">Why do I have this issue?</a>'
+                });
+            } else {
+                Swal.fire({
+                    title: "Los datos son correctos?",
+                    text: "La materia se cargara al sistema",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Si, estoy seguro",
+                    cancelButtonText: "Cancelar",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        /**
+                         * Si confirma el formulario lo envia por post mediante Jquery
+                         */
+
+                        $.ajax({
+                            url: "../../backend/materias/crudmaterias.php",
+                            type: "post",
+                            data: {
+                                opcion: opcion,
+                                nombre_materia: nombre_materia,
+                                abreviatura_materia: abreviatura_materia,
+                                estado_m_materia: estado_m_materia
+                            },
+                            success: function(data) {
+                                var json = JSON.parse(data);
+                                var status = json.status;
+                                if (status == 'success') {
+
+                                    Swal.fire(
+                                        "Buen Trabajo!",
+                                        "La materia ha sido cargada!",
+                                        "success"
+                                    ).then(() => {
+
+                                        $("#modal_form_materias")
+                                            .trigger(
+                                                "reset"
+                                            ); //Reiniciar el formulario
+                                        $("#modal_form_materias .close")
+                                            .click(); //Cerrar el formulario
+
+                                        mytable = $('#materias')
+                                            .DataTable();
+                                        mytable.draw();
+
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: "error",
+                                        title: "Oops...",
+                                        text: "Revisa los campos nuevamente",
+                                        // footer: '<a href="">Why do I have this issue?</a>'
+                                    });
+                                }
+                            }
+                        });
+
+                    }
+                });
+            }
+        });
+    }
+}); // TERMINA AGREGAR MATERIA
+ </script>
