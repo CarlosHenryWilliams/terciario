@@ -129,21 +129,21 @@
 
                          <div class="form-group">
                              <div class="">
-                                 <input id="input_nombre_alumno" name="nombre" class="form-control bg-transparent"
+                                 <input id="input_nombre_usuario" name="nombre" class="form-control bg-transparent"
                                      placeholder="Nombre" type="text" required="">
                              </div>
                          </div>
 
                          <div class="form-group">
                              <div class="">
-                                 <input id="input_apellido_alumno" name="apellido" class="form-control bg-transparent"
+                                 <input id="input_apellido_usuario" name="apellido" class="form-control bg-transparent"
                                      placeholder="Apellido" type="text" required="">
                              </div>
                          </div>
 
                          <div class="form-group">
                              <div class="">
-                                 <input id="input_dni_alumno" name="dni" class="form-control bg-transparent"
+                                 <input id="input_dni_usuario" name="dni" class="form-control bg-transparent"
                                      placeholder="Dni" type="text" required="">
                              </div>
                          </div>
@@ -151,7 +151,7 @@
                          <div class="form-group">
                              <div class="">
                                  <label class="d-flex justify-content-start">Género</label>
-                                 <select id="select_sexo_alumno" class="form-select" name="sexo" required>
+                                 <select id="select_sexo_usuario" class="form-select" name="sexo" required>
                                      <option value="">Seleccione el Género</option>
                                      <option value="F">Femenino</option>
                                      <option value="M">Masculino</option>
@@ -164,7 +164,7 @@
                              <div class="">
                                  <label for="" class="d-flex justify-content-start">Fecha de
                                      nacimiento</label>
-                                 <input id="input_fecha_nacimiento_alumno" name="fecha_nacimiento"
+                                 <input id="input_fecha_nacimiento_usuario" name="fecha_nacimiento"
                                      class="form-control bg-transparent" placeholder="Fecha de nacimiento" type="date"
                                      required="">
                              </div>
@@ -172,7 +172,7 @@
 
                          <div class="form-group">
                              <div class="">
-                                 <input id="input_lugar_nacimiento_alumno" name="lugar_nacimiento"
+                                 <input id="input_lugar_nacimiento_usuario" name="lugar_nacimiento"
                                      class="form-control bg-transparent" placeholder="Lugar de nacimiento" type="text"
                                      required="">
                              </div>
@@ -180,7 +180,7 @@
 
                          <div class="form-group">
                              <div class="">
-                                 <input id="input_estado_civil_alumno" name="estado_civil"
+                                 <input id="input_estado_civil_usuario" name="estado_civil"
                                      class="form-control bg-transparent" placeholder="Estado civil" type="text"
                                      required="">
                              </div>
@@ -188,7 +188,7 @@
 
                          <div class="form-group">
                              <div class="">
-                                 <input input="input_domicilio_alumno" name="domicilio"
+                                 <input input="input_domicilio_usuario" name="domicilio"
                                      class="form-control bg-transparent" placeholder="Domicilio" type="text"
                                      required="">
                              </div>
@@ -198,7 +198,7 @@
 
                          <div class="form-group">
                              <div class="">
-                                 <input input="input_domicilio_numero_alumno" name="domicilio_numero"
+                                 <input input="input_domicilio_numero_usuario" name="domicilio_numero"
                                      class="form-control bg-transparent" placeholder="Número de domicilio" type="text"
                                      required="">
                              </div>
@@ -206,7 +206,7 @@
 
                          <div class="form-group">
                              <div class="">
-                                 <input input="input_piso_alumno" name="piso" class="form-control bg-transparent"
+                                 <input input="input_piso_usuario" name="piso" class="form-control bg-transparent"
                                      placeholder="Piso" type="text" required="">
                              </div>
                          </div>
@@ -214,7 +214,7 @@
 
                          <div class="form-group">
                              <div class="">
-                                 <input id="input_depto_alumno" name="depto" class="form-control bg-transparent"
+                                 <input id="input_depto_usuario" name="depto" class="form-control bg-transparent"
                                      placeholder="depto" type="text" required="">
                              </div>
                          </div>
@@ -224,14 +224,15 @@
 
                          <div class="form-group">
                              <div class="">
-                                 <input id="input_localidad_alumno" name="localidad" class="form-control bg-transparent"
-                                     placeholder="Localidad" type="text" required="">
+                                 <input id="input_localidad_usuario" name="localidad"
+                                     class="form-control bg-transparent" placeholder="Localidad" type="text"
+                                     required="">
                              </div>
                          </div>
 
                          <div class="form-group">
                              <div class="">
-                                 <input id="input_partido_alumno" name="partido" class="form-control bg-transparent"
+                                 <input id="input_partido_usuario" name="partido" class="form-control bg-transparent"
                                      placeholder="Partido" type="text" required="">
                              </div>
                          </div>
@@ -240,7 +241,7 @@
 
                          <div class="form-group">
                              <div class="">
-                                 <input id="input_codigo_postal_alumno" name="codigo_postal"
+                                 <input id="input_codigo_postal_usuario" name="codigo_postal"
                                      class="form-control bg-transparent" placeholder="Codigo postal" type="text"
                                      required="">
                              </div>
@@ -249,13 +250,13 @@
 
                          <div class="form-group">
                              <div class="">
-                                 <input id="input_telefono_alumno" name="telefono" class="form-control bg-transparent"
+                                 <input id="input_telefono_usuario" name="telefono" class="form-control bg-transparent"
                                      placeholder="Telefono" type="text" required="">
                              </div>
                          </div>
                          <div class="form-group">
                              <div class="">
-                                 <input id="input_telefono_alternativo_alumno" name="telefono_alternativo"
+                                 <input id="input_telefono_alternativo_usuario" name="telefono_alternativo"
                                      class="form-control bg-transparent" placeholder="Telefono alternativo" type="text"
                                      required="">
                              </div>
@@ -263,7 +264,7 @@
                          <!-- DE ACA PARA ABAJO EPRRO -->
                          <div class="form-group">
                              <div class="">
-                                 <input id="input_telefono_alternativo_persona_alumno"
+                                 <input id="input_telefono_alternativo_persona_usuario"
                                      name="telefono_alternativo_persona" class="form-control bg-transparent"
                                      placeholder="Telefono alternativo persona" type="text" required="">
                              </div>
@@ -271,14 +272,34 @@
 
                          <div class="form-group">
                              <div class="">
-                                 <input id="input_correo_alumno" name="email" class="form-control bg-transparent"
+                                 <input id="input_correo_usuario" name="email" class="form-control bg-transparent"
                                      placeholder="Correo electronico" type="text" required="">
                              </div>
+                         </div>
+
+
+
+                         <div class="form-group">
+                             <label class="d-flex justify-content-start">Estado</label>
+
+                             <select class="form-select" aria-label="Default select example" id="input_estado_r_rol"
+                                 name="estado" required>
+                                 <option value="">Por favor seleccione un estado</option>
+                                 <option value="1">Habilitado</option>
+                                 <option value="0">Deshabilitado</option>
+                             </select>
+                         </div>
+
+                         <div class="form-group">
+                             <label class="d-flex justify-content-start">Contraseña (por defecto 1234)</label>
+
+                             <input id="input_clave_usuario" name="clave" class="form-control bg-transparent"
+                                 placeholder="Contraseña" type="password" required>
                          </div>
                          <div class="form-group">
                              <div class="modal-footer">
                                  <button type="submit" class="btn btn-info btn-lg btn-block"
-                                     id="btn_enviar_form_alumno">Agregar</button>
+                                     id="btn_enviar_form_usuarios">Agregar</button>
                              </div>
                          </div>
 
@@ -304,12 +325,11 @@ $(document).on("click", ".btnAgregarUsuario", function() {
      */
 
     //HAGO LOS INPUTS VACIOS
-    $("#input_nombre_materia").val("");
-    $("#input_abreviatura_materia").val("");
-    $("#input_estado_m_materia").val("");
-    $("#input_id_materia").val("");
-
-
+    // $("#input_nombre_materia").val("");
+    // $("#input_abreviatura_materia").val("");
+    // $("#input_estado_m_materia").val("");
+    // $("#input_id_materia").val("");
+    $("#input_clave_usuario").val("1234");
 
 
     /**
@@ -323,10 +343,15 @@ $(document).on("click", ".btnAgregarUsuario", function() {
 
     if (opcion === 1) {
         // MODAL AGREGAR
-        $("#boton_agregar_form").click(function() {
+        $("#btn_enviar_form_usuarios").click(function() {
+
 
             console.log('ESTA ACA EN OPCION 1 AGREGAR');
-            var nombre_materia = $('#input_nombre_materia').val();
+
+            var rol_usuario = $('#select_rol_usuario').val();
+            var fecha_inscripcion_usuario = $('#input_fecha_inscripcion').val();
+
+
             var abreviatura_materia = $('#input_abreviatura_materia').val();
             var estado_m_materia = $('#input_estado_m_materia').val();
 
@@ -375,21 +400,20 @@ $(document).on("click", ".btnAgregarUsuario", function() {
 
                                     Swal.fire(
                                         "Buen Trabajo!",
-                                        "La materia ha sido cargada!",
+                                        "El Usuario ha sido cargado con exito!",
                                         "success"
                                     ).then(() => {
 
-                                        $("#modal_form_materias")
+                                        $("#AgregarUsuario")
                                             .trigger(
                                                 "reset"
                                             ); //Reiniciar el formulario
-                                        $("#modal_form_materias .close")
+                                        $("#AgregarUsuarios .close")
                                             .click(); //Cerrar el formulario
 
                                         mytable = $('#materias')
                                             .DataTable();
                                         mytable.draw();
-
                                     });
                                 } else {
                                     Swal.fire({
