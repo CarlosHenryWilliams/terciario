@@ -14,7 +14,8 @@
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
 
 
@@ -24,7 +25,9 @@
     <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     <script src='sweetalert2.min.js'></script>
     <link rel='stylesheet' href='sweetalert2.min.css'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 
@@ -57,14 +60,14 @@
                     </div>
 
 
-                    <div class="acciones">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <!-- <div class="acciones"> -->
+                    <!-- Button trigger modal -->
+                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                             Agregar docente
-                        </button>
+                        </button> -->
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <!-- Modal -->
+                    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -215,12 +218,12 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div> -->
                     <!-- TABLA -->
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
-                            docentes
+                            Docentes
                         </div>
                         <div class="card-body">
                             <table id="datatablesSimple">
@@ -258,35 +261,35 @@
                                     foreach ($resultado as $docentes) {
 
                                     ?>
-                                        <tr>
-                                            <td><?php echo $docentes['id'] ?></td>
-                                            <td><?php echo $docentes['nombre'] ?></td>
-                                            <td><?php echo $docentes['apellido'] ?> </td>
-                                            <td><?php echo $docentes['dni'] ?> </td>
-                                            <td><?php echo $docentes['sexo'] ?> </td>
-                                            <td><?php echo $docentes['fecha_nacimiento'] ?> </td>
-                                            <td><?php echo $docentes['lugar_nacimiento'] ?> </td>
-                                            <td><?php echo $docentes['estado_civil'] ?> </td>
-                                            <td><?php echo $docentes['domicilio'] ?> </td>
-                                            <td><?php echo $docentes['domicilio_numero'] ?> </td>
-                                            <td><?php echo $docentes['piso'] ?> </td>
-                                            <td><?php echo $docentes['depto'] ?> </td>
-                                            <td><?php echo $docentes['localidad'] ?> </td>
-                                            <td><?php echo $docentes['partido'] ?> </td>
-                                            <td><?php echo $docentes['codigo_postal'] ?> </td>
-                                            <td><?php echo $docentes['telefono'] ?> </td>
-                                            <td><?php echo $docentes['telefono_alternativo'] ?> </td>
-                                            <td><?php echo $docentes['telefono_alternativo_persona'] ?> </td>
-                                            <td><?php echo $docentes['email'] ?> </td>
+                                    <tr>
+                                        <td><?php echo $docentes['id'] ?></td>
+                                        <td><?php echo $docentes['nombre'] ?></td>
+                                        <td><?php echo $docentes['apellido'] ?> </td>
+                                        <td><?php echo $docentes['dni'] ?> </td>
+                                        <td><?php echo $docentes['sexo'] ?> </td>
+                                        <td><?php echo $docentes['fecha_nacimiento'] ?> </td>
+                                        <td><?php echo $docentes['lugar_nacimiento'] ?> </td>
+                                        <td><?php echo $docentes['estado_civil'] ?> </td>
+                                        <td><?php echo $docentes['domicilio'] ?> </td>
+                                        <td><?php echo $docentes['domicilio_numero'] ?> </td>
+                                        <td><?php echo $docentes['piso'] ?> </td>
+                                        <td><?php echo $docentes['depto'] ?> </td>
+                                        <td><?php echo $docentes['localidad'] ?> </td>
+                                        <td><?php echo $docentes['partido'] ?> </td>
+                                        <td><?php echo $docentes['codigo_postal'] ?> </td>
+                                        <td><?php echo $docentes['telefono'] ?> </td>
+                                        <td><?php echo $docentes['telefono_alternativo'] ?> </td>
+                                        <td><?php echo $docentes['telefono_alternativo_persona'] ?> </td>
+                                        <td><?php echo $docentes['email'] ?> </td>
 
-                                            <td><button id="botoneditardocente" class="btn btn-info ">Editar</button></td>
-                                            <!-- <a href="<?php  ?>" target="_blank">
+                                        <td><button id="botoneditardocente" class="btn btn-info ">Editar</button></td>
+                                        <!-- <a href="<?php  ?>" target="_blank">
                                                  <?php
 
                                                     ?>
                                              </a> -->
 
-                                        </tr>
+                                    </tr>
 
                                     <?php
                                     }
@@ -321,7 +324,8 @@
     <!-- cierre footer -->
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
@@ -332,7 +336,8 @@
     <script src="assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
 </body>
 
