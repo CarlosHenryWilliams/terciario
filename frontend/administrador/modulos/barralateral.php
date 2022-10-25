@@ -282,7 +282,7 @@
                          <div class="form-group">
                              <label class="d-flex justify-content-start">Estado</label>
 
-                             <select class="form-select" aria-label="Default select example" id="input_estado_r_rol"
+                             <select class="form-select" aria-label="Default select example" id="input_estado_usuario"
                                  name="estado" required>
                                  <option value="">Por favor seleccione un estado</option>
                                  <option value="1">Habilitado</option>
@@ -352,8 +352,45 @@ $(document).on("click", ".btnAgregarUsuario", function() {
             var fecha_inscripcion_usuario = $('#input_fecha_inscripcion').val();
 
 
-            var abreviatura_materia = $('#input_abreviatura_materia').val();
-            var estado_m_materia = $('#input_estado_m_materia').val();
+            var nombre_usuario = $('#input_nombre_usuario').val();
+            var apellido_usuario = $('#input_apellido_usuario').val();
+
+            var dni = $('#input_dni_usuario').val();
+            var sexo_usuario = $('#select_sexo_usuario').val();
+
+            var fecha_nacimiento_usuario = $('#input_fecha_nacimiento_usuario').val();
+            var lugar_nacimiento_usuario = $('#input_lugar_nacimiento_usuario').val();
+
+
+            var estado_civil_usuario = $('#input_estado_civil_usuario').val();
+
+            var domicilio_usuario = $('#input_domicilio_usuario').val();
+
+            var domicilio_numero_usuario = $('#input_domicilio_numero_usuario').val();
+            var piso_usuario = $('#input_piso_usuario').val();
+
+            var depto_usuario = $('#input_depto_usuario').val();
+
+            var localidad_usuario = $('#input_localidad_usuario').val();
+
+            var partido_usuario = $('#input_partido_usuario').val();
+
+            var codigo_postal_usuario = $('#input_codigo_postal_usuario').val();
+
+            var telefono_usuario = $('#input_telefono_usuario').val();
+            var telefono_alternativo_usuario = $('#input_telefono_alternativo_usuario').val();
+
+
+
+            var telefono_alternativo_persona_usuario = $('#input_telefono_alternativo_persona_usuario')
+                .val();
+
+            var correo_usuario = $('#input_correo_usuario').val();
+
+            var estado_usuario = $('#input_estado_usuario').val();
+
+            var clave_usuario = $('#input_clave_usuario').val();
+
 
             console.log(nombre_materia, abreviatura_materia, estado_m_materia);
 
