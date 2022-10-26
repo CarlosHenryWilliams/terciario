@@ -84,7 +84,7 @@
                      <span aria-hidden="true">&times;</span>
                  </button>
              </div>
-             <form method="POST">
+             <form action="" id="formagregarusuario">
                  <div class="modal-body">
                      <fieldset>
 
@@ -99,7 +99,7 @@
 
                                      <?php
 
-                                        include('buscarroles.php'); //BUSCADOR DE MATERIAL
+                                        include('modulos/buscarroles.php'); //BUSCADOR DE MATERIAL
 
 
                                         while ($row = mysqli_fetch_array($resultado)) { ?>
@@ -188,7 +188,7 @@
 
                          <div class="form-group">
                              <div class="">
-                                 <input input="input_domicilio_usuario" name="domicilio"
+                                 <input id="input_domicilio_usuario" name="domicilio"
                                      class="form-control bg-transparent" placeholder="Domicilio" type="text"
                                      required="">
                              </div>
@@ -198,7 +198,7 @@
 
                          <div class="form-group">
                              <div class="">
-                                 <input input="input_domicilio_numero_usuario" name="domicilio_numero"
+                                 <input id="input_domicilio_numero_usuario" name="domicilio_numero"
                                      class="form-control bg-transparent" placeholder="Número de domicilio" type="text"
                                      required="">
                              </div>
@@ -206,7 +206,7 @@
 
                          <div class="form-group">
                              <div class="">
-                                 <input input="input_piso_usuario" name="piso" class="form-control bg-transparent"
+                                 <input id="input_piso_usuario" name="piso" class="form-control bg-transparent"
                                      placeholder="Piso" type="text" required="">
                              </div>
                          </div>
@@ -293,12 +293,12 @@
                          <div class="form-group">
                              <label class="d-flex justify-content-start">Contraseña (por defecto 1234)</label>
 
-                             <input id="input_clave_usuario" name="clave" class="form-control bg-transparent"
+                             <input readonly id="input_clave_usuario" name="clave" class="form-control bg-transparent"
                                  placeholder="Contraseña" type="password" required>
                          </div>
                          <div class="form-group">
                              <div class="modal-footer">
-                                 <button type="submit" class="btn btn-info btn-lg btn-block"
+                                 <button type="button" class="btn btn-info btn-lg btn-block"
                                      id="btn_enviar_form_usuarios">Agregar</button>
                              </div>
                          </div>
@@ -350,54 +350,55 @@ $(document).on("click", ".btnAgregarUsuario", function() {
 
             var rol_usuario = $('#select_rol_usuario').val();
             var fecha_inscripcion_usuario = $('#input_fecha_inscripcion').val();
-
-
             var nombre_usuario = $('#input_nombre_usuario').val();
             var apellido_usuario = $('#input_apellido_usuario').val();
-
-            var dni = $('#input_dni_usuario').val();
+            var dni_usuario = $('#input_dni_usuario').val();
             var sexo_usuario = $('#select_sexo_usuario').val();
-
             var fecha_nacimiento_usuario = $('#input_fecha_nacimiento_usuario').val();
             var lugar_nacimiento_usuario = $('#input_lugar_nacimiento_usuario').val();
-
-
             var estado_civil_usuario = $('#input_estado_civil_usuario').val();
-
             var domicilio_usuario = $('#input_domicilio_usuario').val();
-
             var domicilio_numero_usuario = $('#input_domicilio_numero_usuario').val();
             var piso_usuario = $('#input_piso_usuario').val();
-
             var depto_usuario = $('#input_depto_usuario').val();
-
             var localidad_usuario = $('#input_localidad_usuario').val();
-
             var partido_usuario = $('#input_partido_usuario').val();
-
             var codigo_postal_usuario = $('#input_codigo_postal_usuario').val();
-
             var telefono_usuario = $('#input_telefono_usuario').val();
             var telefono_alternativo_usuario = $('#input_telefono_alternativo_usuario').val();
-
-
-
             var telefono_alternativo_persona_usuario = $('#input_telefono_alternativo_persona_usuario')
                 .val();
-
             var correo_usuario = $('#input_correo_usuario').val();
-
             var estado_usuario = $('#input_estado_usuario').val();
-
             var clave_usuario = $('#input_clave_usuario').val();
 
 
-            console.log(nombre_materia, abreviatura_materia, estado_m_materia);
+            console.log(rol_usuario, fecha_inscripcion_usuario, nombre_usuario, apellido_usuario,
+                dni_usuario, sexo_usuario, fecha_nacimiento_usuario, lugar_nacimiento_usuario,
+                estado_civil_usuario, domicilio_usuario, domicilio_numero_usuario, piso_usuario,
+                depto_usuario, codigo_postal_usuario, telefono_usuario,
+                telefono_alternativo_usuario, telefono_alternativo_persona_usuario, correo_usuario,
+                estado_usuario, clave_usuario);
 
             if (
-                nombre_materia == "" ||
-                abreviatura_materia == "" ||
-                estado_m_materia == ""
+                rol_usuario == "" ||
+                fecha_inscripcion_usuario == "" ||
+                nombre_usuario == "" ||
+                apellido_usuario == "" ||
+                dni_usuario == "" ||
+                sexo_usuario == "" ||
+                fecha_nacimiento_usuario == "" ||
+                lugar_nacimiento_usuario == "" ||
+                estado_civil_usuario == "" ||
+                domicilio_usuario == "" ||
+                domicilio_numero_usuario == "" ||
+                codigo_postal_usuario == "" ||
+                telefono_usuario == "" ||
+                correo_usuario == "" ||
+                estado_usuario == "" ||
+                clave_usuario == ""
+
+
             ) {
                 Swal.fire({
                     icon: "error",
@@ -408,7 +409,7 @@ $(document).on("click", ".btnAgregarUsuario", function() {
             } else {
                 Swal.fire({
                     title: "Los datos son correctos?",
-                    text: "La materia se cargara al sistema",
+                    text: "El usuario sera cargado al sistema",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
@@ -422,13 +423,32 @@ $(document).on("click", ".btnAgregarUsuario", function() {
                          */
 
                         $.ajax({
-                            url: "../../backend/materias/crudmaterias.php",
+                            url: "modulos/agregarusuario.php",
                             type: "post",
                             data: {
                                 opcion: opcion,
-                                nombre_materia: nombre_materia,
-                                abreviatura_materia: abreviatura_materia,
-                                estado_m_materia: estado_m_materia
+                                rol_usuario: rol_usuario,
+                                fecha_inscripcion_usuario: fecha_inscripcion_usuario,
+                                nombre_usuario: nombre_usuario,
+                                apellido_usuario: apellido_usuario,
+                                dni_usuario: dni_usuario,
+                                sexo_usuario: sexo_usuario,
+                                fecha_nacimiento_usuario: fecha_nacimiento_usuario,
+                                lugar_nacimiento_usuario: lugar_nacimiento_usuario,
+                                estado_civil_usuario: estado_civil_usuario,
+                                domicilio_usuario: domicilio_usuario,
+                                domicilio_numero_usuario: domicilio_numero_usuario,
+                                piso_usuario: piso_usuario,
+                                depto_usuario: depto_usuario,
+                                localidad_usuario: localidad_usuario,
+                                partido_usuario: partido_usuario,
+                                codigo_postal_usuario: codigo_postal_usuario,
+                                telefono_usuario: telefono_usuario,
+                                telefono_alternativo_usuario: telefono_alternativo_usuario,
+                                telefono_alternativo_persona_usuario: telefono_alternativo_persona_usuario,
+                                correo_usuario: correo_usuario,
+                                estado_usuario: estado_usuario,
+                                clave_usuario: clave_usuario
                             },
                             success: function(data) {
                                 var json = JSON.parse(data);
@@ -441,16 +461,16 @@ $(document).on("click", ".btnAgregarUsuario", function() {
                                         "success"
                                     ).then(() => {
 
-                                        $("#AgregarUsuario")
+                                        $("#formagregarusuario")
                                             .trigger(
                                                 "reset"
                                             ); //Reiniciar el formulario
-                                        $("#AgregarUsuarios .close")
+                                        $("#AgregarUsuario .close")
                                             .click(); //Cerrar el formulario
 
-                                        mytable = $('#materias')
-                                            .DataTable();
-                                        mytable.draw();
+                                        // mytable = $('#materias')
+                                        //     .DataTable();
+                                        // mytable.draw();
                                     });
                                 } else {
                                     Swal.fire({

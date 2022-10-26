@@ -181,7 +181,7 @@
 
 
 
-            <!-- Add user Modal -->
+            <!-- MODAL MATERIAS -->
             <div class="modal fade" id="modal_form_materias" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
@@ -193,7 +193,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form id="addUser" action="">
+                            <form id="" action="">
                                 <div class="mb-3 row">
                                     <label for="nombre_materia" class="col-md-3 form-label">Nombre</label>
 
