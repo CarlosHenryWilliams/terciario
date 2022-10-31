@@ -62,30 +62,30 @@ switch ($opcion) {
 
         break;
 
-        case 3: //CASO 3 DAR DE BAJA
+    case 3: //CASO 3 DAR DE BAJA
 
-            $id_plan = $_POST['id'];
+        $id_plan = $_POST['id'];
 
-            $sql = conectame()->query("UPDATE `plan_estudio` SET `estado_p`='0' WHERE `id` =$id_plan");
-    
-            if ($sql == true) {
-    
-                $data = array(
-                    'status' => 'success',
-                );
-    
-                echo json_encode($data);
-            } else {
-                $data = array(
-                    'status' => 'false',
-                );
-    
-                echo json_encode($data);
-            }
-    
-            break;
+        $sql = conectame()->query("UPDATE `plan_estudio` SET `estado_p`='0' WHERE `id` =$id_plan");
 
-    case 4:  //CASO 3 DAR DE ALTA
+        if ($sql == true) {
+
+            $data = array(
+                'status' => 'success',
+            );
+
+            echo json_encode($data);
+        } else {
+            $data = array(
+                'status' => 'false',
+            );
+
+            echo json_encode($data);
+        }
+
+        break;
+
+    case 4:  //CASO 4 DAR DE ALTA
 
         $id_plan = $_POST['id'];
 
@@ -117,24 +117,24 @@ switch ($opcion) {
         echo json_encode($row);
         break;
 
-        case 6: //CASO 6 ELIMINAR MATERIA
+    case 6: //CASO 6 ELIMINAR MATERIA
 
-            $id_plan = $_POST['id'];
-            $sql = conectame()->query("DELETE FROM `plan_estudio` WHERE id='$id_plan'");
+        $id_plan = $_POST['id'];
+        $sql = conectame()->query("DELETE FROM `plan_estudio` WHERE id='$id_plan'");
 
-            if ($sql == true) {
-    
-                $data = array(
-                    'status' => 'success',
-                );
-    
-                echo json_encode($data);
-            } else {
-                $data = array(
-                    'status' => 'false',
-                );
-    
-                echo json_encode($data);
-            }
-            break;
+        if ($sql == true) {
+
+            $data = array(
+                'status' => 'success',
+            );
+
+            echo json_encode($data);
+        } else {
+            $data = array(
+                'status' => 'false',
+            );
+
+            echo json_encode($data);
+        }
+        break;
 }

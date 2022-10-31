@@ -575,7 +575,7 @@ $(document).on("click", ".btneditar", function() {
                                                             id +
                                                             '"  class="btn btn-warning btn-sm btndardebaja">Dar de Baja</a></td> <a href="#" data-id="' +
                                                             id +
-                                                            '"  class="btn btn-secondary btn-sm btnmaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio">Materias</a>';
+                                                            '"  class="btn btn-secondary btn-sm btnMaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio">Materias</a>';
 
                                                     } else {
                                                         texto_estado
@@ -590,7 +590,7 @@ $(document).on("click", ".btneditar", function() {
                                                             id +
                                                             '"  class="btn btn-success btn-sm btndardardealta">Dar de Alta</a></td> <a href="#" data-id="' +
                                                             id +
-                                                            '"  class="btn btn-secondary btn-sm btnmaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio" >Materias</a>';
+                                                            '"  class="btn btn-secondary btn-sm btnMaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio" >Materias</a>';
                                                     }
 
 
@@ -738,7 +738,7 @@ $(document).on("click", ".btndardebaja", function() {
                                         id +
                                         '"  class="btn btn-success btn-sm btndardardealta">Dar de Alta</a></td> <a href="#" data-id="' +
                                         id +
-                                        '"  class="btn btn-secondary btn-sm btnmaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio" >Materias</a>';
+                                        '"  class="btn btn-secondary btn-sm btnMaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio" >Materias</a>';
 
                                     //En el codigo de abajo dibuja la tabla
                                     var row = tablaplanes.row(
@@ -850,7 +850,7 @@ $(document).on("click", ".btndardardealta", function() {
                                         id +
                                         '"  class="btn btn-warning btn-sm btndardebaja">Dar de Baja</a></td> <a href="#" data-id="' +
                                         id +
-                                        '"  class="btn btn-secondary btn-sm btnmaterias"  data-toggle="modal" data-target="#modal_materias_plan_estudio">Materias</a>';
+                                        '"  class="btn btn-secondary btn-sm btnMaterias"  data-toggle="modal" data-target="#modal_materias_plan_estudio">Materias</a>';
 
                                     //En el codigo de abajo dibuja la tabla
                                     var row = tablaplanes.row(
@@ -951,6 +951,30 @@ $(document).on('click', '.btneliminar', function(event) {
     });
 
 })
+</script>
+
+<script>
+$(document).on("click", ".btnMaterias", function() {
+
+    opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
+    var id = $(this).data('id');
+    //Asi se obtiene el id del plan porque tiene cargado en el atributo data el id el boton
+    $.ajax({
+        url: "../../backend/plandeestudio/crudplandeestudio.php",
+        data: {
+            opcion: opcion,
+            id: id
+        },
+        type: 'post',
+        success: function(data) {
+            var json = JSON.parse(data); //lees los datos json o sea los convertis a string
+
+            var nombre_plan = json.nombre;
+            $(" #plan_titulo").text(nombre_plan);
+
+        }
+    })
+});
 </script>
 
 </html>
