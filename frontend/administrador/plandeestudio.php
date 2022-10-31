@@ -186,6 +186,34 @@
 
 
 
+            <!--  MODAL MATERIAS-->
+            <div class="modal fade" id="modal_materias_plan_estudio" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">MATERIAS ASIGNADAS</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="asignarmaterias.php">
+                                <button class="btn btn-info"><i class="fa-solid fa-plus"></i> Asignar
+                                    Materias </button>
+                            </form>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <h4 class="mt-2">Materias Asignadas a: </h4>
+                                <h4 class="ms-1 mt-2" id="plan_titulo"> </h4>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- FIN MODAL MATERIAS-->
 
 
 
@@ -545,7 +573,9 @@ $(document).on("click", ".btneditar", function() {
                                                             id +
                                                             '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#!"  data-id="' +
                                                             id +
-                                                            '"  class="btn btn-warning btn-sm btndardebaja">Dar de Baja</a></td>';
+                                                            '"  class="btn btn-warning btn-sm btndardebaja">Dar de Baja</a></td> <a href="#" data-id="' +
+                                                            id +
+                                                            '"  class="btn btn-secondary btn-sm btnmaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio">Materias</a>';
 
                                                     } else {
                                                         texto_estado
@@ -558,7 +588,9 @@ $(document).on("click", ".btneditar", function() {
                                                             id +
                                                             '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#"  data-id="' +
                                                             id +
-                                                            '"  class="btn btn-success btn-sm btndardardealta">Dar de Alta</a></td>';
+                                                            '"  class="btn btn-success btn-sm btndardardealta">Dar de Alta</a></td> <a href="#" data-id="' +
+                                                            id +
+                                                            '"  class="btn btn-secondary btn-sm btnmaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio" >Materias</a>';
                                                     }
 
 
@@ -704,7 +736,9 @@ $(document).on("click", ".btndardebaja", function() {
                                         id +
                                         '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#!"  data-id="' +
                                         id +
-                                        '"  class="btn btn-success btn-sm btndardardealta">Dar de Alta</a></td>';
+                                        '"  class="btn btn-success btn-sm btndardardealta">Dar de Alta</a></td> <a href="#" data-id="' +
+                                        id +
+                                        '"  class="btn btn-secondary btn-sm btnmaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio" >Materias</a>';
 
                                     //En el codigo de abajo dibuja la tabla
                                     var row = tablaplanes.row(
@@ -814,7 +848,9 @@ $(document).on("click", ".btndardardealta", function() {
                                         id +
                                         '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#!"  data-id="' +
                                         id +
-                                        '"  class="btn btn-warning btn-sm btndardebaja">Dar de Baja</a></td>';
+                                        '"  class="btn btn-warning btn-sm btndardebaja">Dar de Baja</a></td> <a href="#" data-id="' +
+                                        id +
+                                        '"  class="btn btn-secondary btn-sm btnmaterias"  data-toggle="modal" data-target="#modal_materias_plan_estudio">Materias</a>';
 
                                     //En el codigo de abajo dibuja la tabla
                                     var row = tablaplanes.row(

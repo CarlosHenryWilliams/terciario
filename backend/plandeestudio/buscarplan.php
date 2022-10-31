@@ -74,11 +74,11 @@ while ($row = mysqli_fetch_assoc($query)) {
     // $sub_array[] = $row['city'];
 
     if ($row['estado_p'] == 1) {
-        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"   data-toggle="modal" data-target="#modal_form_planes">Editar</a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" >Eliminar</a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-warning btn-sm btndardebaja" >Dar de Baja</a>';
+        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"   data-toggle="modal" data-target="#modal_form_planes">Editar</a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" >Eliminar</a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-warning btn-sm btndardebaja" >Dar de Baja</a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-secondary btn-sm btnmaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio">Materias</a>';
         // $sub_array[] = 'Habilitado' .
         // 	'<a href="javascript:void();" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm editbtn" > Baja</a>';
     } else {
-        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_planes" >Editar</a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" >Eliminar</a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-success btn-sm btndardardealta" >Dar de Alta</a>';
+        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_planes" >Editar</a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" >Eliminar</a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-success btn-sm btndardardealta" >Dar de Alta</a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-secondary btn-sm btnmaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio" >Materias</a>';
     }
 
     $data[] = $sub_array;

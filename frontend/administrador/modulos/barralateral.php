@@ -44,6 +44,9 @@
                      <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                          <a class="nav-link" href="plandeestudio.php">Ver Planes</a>
                      </nav>
+                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                         <a class="nav-link" href="plandeestudioviejo.php">Ver Planes VIEJOS</a>
+                     </nav>
                  </div>
 
                  <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
