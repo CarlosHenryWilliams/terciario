@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="css/desing.css" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
 
 
@@ -31,7 +32,9 @@
     <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     <script src='sweetalert2.min.js'></script>
     <link rel='stylesheet' href='sweetalert2.min.css'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 
@@ -55,23 +58,52 @@
         <div id="layoutSidenav_content">
 
             <main>
-                <div class="" style="width: 100%; display:flex;  align-items: center; flex-direction: column;">
-                    <div class="d-flex justify-content-around w-100 my-3">
+
+
+
+
+
+                <div class="container">
+
+                    <div class="d-flex align-items-center ">
+                        <h1 class="mt-4 mb-4">ASIGNAR MATERIAS</h1>
+                    </div>
+
+                    <!-- <div class="d-flex justify-content-around w-100 my-3">
                         <h1 class="h1 col-lg-9 col-12 my-auto">ASIGNAR MATERIAS</h1>
                         <button type="button" class="btn btn-outline-info my-auto mx-3" data-toggle="modal" data-target="#modal_plan_estudio">
                             GUARDAR
                         </button>
-                    </div>
-                    <!-- TABLA DESHABILITADOS -->
-                    <div class="card mb-4 " id="table_materias" style="width: 90%;">
+                    </div> -->
+
+
+
+
+                    <div class="card mb-4 ">
                         <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            Materias para Asignar
+                            <div class="d-flex bd-highlight">
+
+                                <div class=" flex-grow-1 bd-highlight">
+                                    <div class="bd-highlight w-75"> <i class="fas fa-table me-1"></i>
+                                        Planes de estudio
+                                    </div>
+                                </div>
+                                <div class=" bd-highlight">
+                                    <div class=" flex-shrink-1 bd-highlight">
+                                        <a href="#!" data-id="" class="btn btn-outline-info  btn-sm ">
+                                            GUARDAR
+                                        </a>
+                                        <!-- btn-sm hace que el boton sea pequeño -->
+
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="card-body">
-                            <table id="tabla_materias" class="table table-bordered display responsive nowrap table-responsive " style="width:100%">
-                                <thead class="">
-                                    <tr class="">
+                        <div class="card-body table-responsive">
+                            <table id="tabla_materias" class="table-bordered">
+                                <thead>
+                                    <tr>
                                         <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Abreviatura</th>
@@ -80,11 +112,15 @@
                                     </tr>
                                 </thead>
 
+                                <tbody>
 
 
+
+                                </tbody>
                             </table>
                         </div>
                     </div>
+
                 </div>
 
 
@@ -113,14 +149,16 @@
     <!-- SCRIPTS -------------------------------------------------------------------------------------------------- -->
     <script src="js/toggle.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/chart-area-demo.js"></script>
     <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
 
     <!-- SCRIPT DATATABLES -->
@@ -135,29 +173,28 @@
 </body>
 
 <script>
-    
-    $(document).on("click", ".btnAgregarMateria", function() {
+$(document).on("click", ".btnAgregarMateria", function() {
 
-        opcion = 2; 
+    opcion = 2;
 
 
-        //fila seria seleccionar la fila, la selecionas con el this, que this seria agarrar el elemento que pusiste en el click de arriba o sea el btn editar, closest lo mas cerca el TR obvio y despues abajo ya esta explicado el find.
-        fila = $(this).closest("tr");
-        //capturo el ID   el td:eq() , es un selector de indices, por ende si hay 4 <td>, para seleccionar el 4to td tendrias que poner td:eq(3) y con el .text agarras el texto obvio
-        id = parseInt(fila.find("td:eq(0)").text());
-        
-        console.log(id);
-        // console.log(titulo);
-        // console.log(nombre);
-        // console.log(resolucion);
-        // console.log(estado_p);
+    //fila seria seleccionar la fila, la selecionas con el this, que this seria agarrar el elemento que pusiste en el click de arriba o sea el btn editar, closest lo mas cerca el TR obvio y despues abajo ya esta explicado el find.
+    fila = $(this).closest("tr");
+    //capturo el ID   el td:eq() , es un selector de indices, por ende si hay 4 <td>, para seleccionar el 4to td tendrias que poner td:eq(3) y con el .text agarras el texto obvio
+    id = parseInt(fila.find("td:eq(0)").text());
 
-        $.post('../../backend/plandeestudio/asignar_materia_planestudio.php', {
+    console.log(id);
+    // console.log(titulo);
+    // console.log(nombre);
+    // console.log(resolucion);
+    // console.log(estado_p);
+
+    $.post('../../backend/plandeestudio/asignar_materia_planestudio.php', {
             opcion: opcion,
             id_materia: id,
-            id_plan:id_plan
+            id_plan: id_plan
         }
-        
+
         // , function(data) {
         //     if (data == '1') {
         //         Swal.fire(
@@ -184,50 +221,43 @@
         //     }
         // }
 
-        );
+    );
 
-    });
+});
 </script>
+
 
 
 <script>
-    $(document).ready(function() {
-        listar();
+$(document).ready(function() {
+    $('#tabla_materias').DataTable({
+        "fnCreatedRow": function(nRow, aData, iDataIndex) {
+            $(nRow).attr('id', aData[0]);
+        },
+        'serverSide': 'true',
+        'processing': 'true',
+        'paging': 'true',
+        'order': [],
+        'ajax': {
+            'url': '../../backend/plandeestudio/buscarmaterias.php',
+            'type': 'post',
+        },
+        "aoColumnDefs": [{
+                "bSortable": false,
+                "aTargets": [4]
+            },
+
+            {
+                // hide id_number column
+                "targets": [0],
+                "visible": false,
+                "searchable": false
+            }
+
+        ]
     });
-
-    var listar = function() {
-        var tableMaterias = $("#tabla_materias").DataTable({
-            language: {
-                url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json", // spanish version
-            },
-            destroy: true, //para que no se buguee cuando agregas o editas etc
-            ajax: {
-                method: "POST",
-                url: "../../backend/plandeestudio/buscarmaterias.php",
-            },
-            columns: [{
-                    data: "id", //con "data" vas cargando los campos que tenes en tu bd, data es una funcion nativa de datatables.
-                },
-                {
-                    data: "nombre",
-                },
-                {
-                    data: "abreviatura",
-                },
-                {
-                    data: "estado_m",
-                },
-                {
-                    defaultContent: "<div ><div class='btn-group'><button id='botoneditardocente' class='btn btn-primary btnAgregarMateria m-1 rounded'><i class='fa-solid fa-plus'></i> Agregar Materia</button></div></div>",
-                },
-            ],
-
-            columnDefs: [{
-                width: "30%",
-                targets: [0, 1, 2, 3, 4], //aclarar el ancho y a cuales columnas
-            }, ],
-        });
-    };
+});
 </script>
+
 
 </html>

@@ -63,14 +63,8 @@
                         <h1 class="mt-4 mb-4">PLAN DE ESTUDIO</h1>
                     </div>
 
-                    <div>
-
-                    </div>
-
                     <div class="card mb-4 ">
                         <div class="card-header">
-
-
                             <div class="d-flex bd-highlight">
 
                                 <div class=" flex-grow-1 bd-highlight">
@@ -109,13 +103,6 @@
                             </table>
                         </div>
                     </div>
-
-
-
-
-
-
-
                 </div>
             </main>
 
@@ -202,6 +189,8 @@
                                 <button class="btn btn-info"><i class="fa-solid fa-plus"></i> Asignar
                                     Materias </button>
                             </form>
+                            <a class="btn btn-info btnAsignarMaterias"><i class="fa-solid fa-plus"></i> Asignar
+                                Materias </a>
                             <div class="d-flex align-items-center justify-content-center">
                                 <h4 class="mt-2">Materias Asignadas a: </h4>
                                 <h4 class="ms-1 mt-2" id="plan_titulo"> </h4>
@@ -971,6 +960,14 @@ $(document).on("click", ".btnMaterias", function() {
 
             var nombre_plan = json.nombre;
             $(" #plan_titulo").text(nombre_plan);
+
+
+            $(" .btnAsignarMaterias").attr("href", "asignarmaterias.php?id='+id+'");
+
+            // window.location.href =
+            //     "http://www.gorissen.info/Pierre/maps/googleMapLocation.php?lat=" + elemA +
+            //     "&lon=" + elemB + "&setLatLon=Set"
+
 
         }
     })
