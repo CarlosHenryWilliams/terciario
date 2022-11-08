@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2022 at 07:11 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Nov 08, 2022 at 12:57 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -161,6 +161,14 @@ CREATE TABLE `roles` (
   `estado_r` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `nombre_rol`, `estado_r`) VALUES
+(1, 'alumno', 1),
+(2, 'docente', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -172,6 +180,15 @@ CREATE TABLE `roles_usuarios` (
   `usuarios_dni` int(50) NOT NULL,
   `rol_id` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `roles_usuarios`
+--
+
+INSERT INTO `roles_usuarios` (`id`, `usuarios_dni`, `rol_id`) VALUES
+(1, 45151275, 1),
+(2, 45301126, 2),
+(3, 45301126, 1);
 
 -- --------------------------------------------------------
 
@@ -211,6 +228,7 @@ CREATE TABLE `usuarios` (
   `telefono_alternativo_persona` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'a quien pertenece el telefono alternativo',
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `clave` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_inscripcion` date NOT NULL,
   `estado_u` int(11) NOT NULL COMMENT 'Es para ver si el usuario esta habilitado o no\r\n'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -218,8 +236,11 @@ CREATE TABLE `usuarios` (
 -- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `sexo`, `dni`, `fecha_nacimiento`, `lugar_nacimiento`, `estado_civil`, `domicilio`, `domicilio_numero`, `piso`, `depto`, `localidad`, `partido`, `codigo_postal`, `telefono`, `telefono_alternativo`, `telefono_alternativo_persona`, `email`, `clave`, `estado_u`) VALUES
-(1, 'Julian', 'Roberto', 'M', '45151275', '0000-00-00', 'Buenos Aires', 'Soltero', 'Calle 34', 1288, '', '', 'Santa Teresita', 'La Costa', 7107, '', '', '', 'carloscharlywilliams@gmail.com', '', 0);
+INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `sexo`, `dni`, `fecha_nacimiento`, `lugar_nacimiento`, `estado_civil`, `domicilio`, `domicilio_numero`, `piso`, `depto`, `localidad`, `partido`, `codigo_postal`, `telefono`, `telefono_alternativo`, `telefono_alternativo_persona`, `email`, `clave`, `fecha_inscripcion`, `estado_u`) VALUES
+(1, 'Julian', 'Roberto', 'M', '45151275', '0000-00-00', 'Buenos Aires', 'Soltero', 'Calle 34', 1288, '', '', 'Santa Teresita', 'La Costa', 7107, '', '', '', 'carloscharlywilliams@gmail.com', '', '0000-00-00', 0),
+(2, 'Charly', 'Williams', 'M', '45151275', '2022-11-09', 'Buenos Aires', 'Soltero', 'Calle 34 ', 1288, '', '', 'Santa Teresita ', 'La costa', 7107, '3541372647', ' ', '', 'carloscharlywilliams@gmail.com', '1234', '2022-11-16', 1),
+(3, 'Tomas', 'Alvarez', 'M', '45301126', '2022-11-02', 'Bs Aires', 'Casado', 'Los geranios ', 1241, '', '', 'Santa Teresita ', 'La costa', 7107, '3541372647', ' ', '', 'tomasalvarez@gmail.com', '1234', '2022-11-23', 1),
+(4, 'Tomas', 'Alvarez', 'M', '45301126', '2022-11-10', 'Bs Aires', 'Casado', 'Los geranios ', 1241, '8', '', 'Costa del este ', 'La costa', 7107, '3541372647', ' ', '', 'tomasalvarez@gmail.com', '1234', '2022-11-10', 1);
 
 --
 -- Indexes for dumped tables
@@ -329,13 +350,13 @@ ALTER TABLE `plan_estudio`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `roles_usuarios`
 --
 ALTER TABLE `roles_usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tipo_notas`
@@ -347,7 +368,7 @@ ALTER TABLE `tipo_notas`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
