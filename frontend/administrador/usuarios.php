@@ -1,6 +1,7 @@
 <?php include('modulos/conexion.php');  ?>
 
-<?php include('../../backend/roles/crudroles.php');  ?>
+<?php //include('../../backend/usuarios/crudusuarios.php');  
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -60,7 +61,7 @@
             <main>
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center ">
-                        <h1 class="mt-4 mb-4">ROLES</h1>
+                        <h1 class="mt-4 mb-4">USUARIOS</h1>
                     </div>
 
                     <div>
@@ -76,28 +77,48 @@
 
                                 <div class=" flex-grow-1 bd-highlight">
                                     <div class="bd-highlight w-75"> <i class="fas fa-table me-1"></i>
-                                        Roles
+                                        Usuarios
                                     </div>
                                 </div>
                                 <div class=" bd-highlight">
                                     <div class=" flex-shrink-1 bd-highlight"> <a href="#!" data-id=""
                                             data-toggle="modal" data-target="#modal_form_rol"
-                                            class="btn btn-primary btn-sm  btnAgregar">Nuevo Rol</a>
+                                            class="btn btn-primary btn-sm  btnAgregar">Nuevo Usuario</a>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
                         <div class="card-body table-responsive">
-                            <table id="roles" class="table-bordered">
+                            <table id="usuarios" class="table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
+                                        <th>ID</th>
                                         <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Sexo</th>
+                                        <th>Dni</th>
+                                        <th>Fecha Nac</th>
+                                        <th>Lugar Nac</th>
+                                        <th>Estado civil</th>
+                                        <th>Domicilio</th>
+                                        <th>N° Domicilio</th>
+                                        <th>Piso</th>
+                                        <th>Depto</th>
+                                        <th>Localidad</th>
+                                        <th>Partido</th>
+                                        <th>Cod postal</th>
+                                        <th>Telefono</th>
+                                        <th>Telefono_alt</th>
+                                        <th>Telefono_alt_pers</th>
+                                        <th>Email</th>
+                                        <th>Clave</th>
+                                        <th>Fecha_inscripcion</th>
                                         <th>Estado</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
+
 
                                 <tbody>
 
@@ -238,7 +259,7 @@
 </body>
 <script>
 $(document).ready(function() {
-    $('#roles').DataTable({
+    $('#usuarios').DataTable({
         "fnCreatedRow": function(nRow, aData, iDataIndex) {
             $(nRow).attr('id', aData[0]);
         },
@@ -247,7 +268,7 @@ $(document).ready(function() {
         'paging': 'true',
         'order': [],
         'ajax': {
-            'url': '../../backend/roles/buscarroles.php',
+            'url': '../../backend/usuarios/buscarusuarios.php',
             'type': 'post',
         },
         "aoColumnDefs": [{

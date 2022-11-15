@@ -14,6 +14,10 @@
                      Agregar Usuario <i class="fa-solid fa-user-plus ml-3"></i>
                  </a>
 
+                 <a class="nav-link" href="usuarios.php">
+                     <div class="sb-nav-link-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                     Usuarios
+                 </a>
 
                  <a class="nav-link" href="roles.php">
                      <div class="sb-nav-link-icon"><i class="fa-solid fa-graduation-cap"></i></div>
