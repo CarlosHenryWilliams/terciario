@@ -82,8 +82,8 @@
                                 </div>
                                 <div class=" bd-highlight">
                                     <div class=" flex-shrink-1 bd-highlight"> <a href="#!" data-id=""
-                                            data-toggle="modal" data-target="#modal_form_rol"
-                                            class="btn btn-primary btn-sm  btnAgregar">Nuevo Usuario</a>
+                                            data-toggle="modal" data-target="#AgregarUsuario"
+                                            class="btn btn-primary btn-sm  btnAgregarUsuario">Nuevo Usuario</a>
                                     </div>
                                 </div>
                             </div>
@@ -290,121 +290,121 @@ $(document).ready(function() {
 
 
     //AGREGAR ROL
-    $(document).on("click", ".btnAgregar", function() {
-        opcion = 1;
+    // $(document).on("click", ".btnAgregar", function() {
+    //     opcion = 1;
 
-        console.log(opcion);
+    //     console.log(opcion);
 
-        /**
-         * MODIFICACIONES MODAL
-         */
+    //     /**
+    //      * MODIFICACIONES MODAL
+    //      */
 
-        //HAGO LOS INPUTS VACIOS
-        $("#input_nombre_rol").val("");
-        $("#input_estado_r_rol").val("");
-        $('#input_id_rol').val("");
-
-
-
-        // MUESTRO EL BOTON DE AGREGAR
-        document.getElementById("boton_agregar_form").style.display = "block";
-        // OCULTO EL BOTON DE EDITAR
-
-        document.getElementById("boton_editar_form").style.display = "none";
+    //     //HAGO LOS INPUTS VACIOS
+    //     $("#input_nombre_rol").val("");
+    //     $("#input_estado_r_rol").val("");
+    //     $('#input_id_rol').val("");
 
 
-        /**
-         * CSS MODAL
-         */
-        $(".modal-header").css("background-color", "#007bff");
-        $(".modal-header").css("color", "white");
-        $("#boton_agregar_form").css("background-color", "#007bff");
-        $("#boton_agregar_form").css("color", "white");
-        $(".modal-title").text("Agregar Rol");
 
-        if (opcion === 1) {
-            //  MODAL AGREGAR
-            $("#boton_agregar_form").click(function() {
+    //     // MUESTRO EL BOTON DE AGREGAR
+    //     document.getElementById("boton_agregar_form").style.display = "block";
+    //     // OCULTO EL BOTON DE EDITAR
 
-                console.log('ESTA ACA EN OPCION 1 AGREGAR');
-                var nombre_rol = $('#input_nombre_rol').val();
-                var estado_r_rol = $('#input_estado_r_rol').val();
+    //     document.getElementById("boton_editar_form").style.display = "none";
 
-                console.log(nombre_rol, estado_r_rol);
 
-                if (
-                    nombre_rol == "" ||
-                    estado_r_rol == "") {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "Por favor no deje ningun campo vacio",
-                        //  footer: '<a href="">Why do I have this issue?</a>'
-                    });
-                } else {
-                    Swal.fire({
-                        title: "Los datos son correctos?",
-                        text: "El Rol se cargara al sistema",
-                        icon: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        confirmButtonText: "Si, estoy seguro",
-                        cancelButtonText: "Cancelar",
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            /**
-                             * Si confirma el formulario lo envia por post mediante Jquery
-                             */
+    //     /**
+    //      * CSS MODAL
+    //      */
+    //     $(".modal-header").css("background-color", "#007bff");
+    //     $(".modal-header").css("color", "white");
+    //     $("#boton_agregar_form").css("background-color", "#007bff");
+    //     $("#boton_agregar_form").css("color", "white");
+    //     $(".modal-title").text("Agregar Rol");
 
-                            $.ajax({
-                                url: "../../backend/roles/crudroles.php",
-                                type: "post",
-                                data: {
-                                    opcion: opcion,
-                                    nombre_rol: nombre_rol,
-                                    estado_r_rol: estado_r_rol
-                                },
-                                success: function(data) {
-                                    var json = JSON.parse(data);
-                                    var status = json.status;
-                                    if (status == 'success') {
+    //     if (opcion === 1) {
+    //         //  MODAL AGREGAR
+    //         $("#boton_agregar_form").click(function() {
 
-                                        Swal.fire(
-                                            "Buen Trabajo!",
-                                            "El Rol ha sido cargada!",
-                                            "success"
-                                        ).then(() => {
+    //             console.log('ESTA ACA EN OPCION 1 AGREGAR');
+    //             var nombre_rol = $('#input_nombre_rol').val();
+    //             var estado_r_rol = $('#input_estado_r_rol').val();
 
-                                            $("#modal_form_rol")
-                                                .trigger(
-                                                    "reset"
-                                                ); //Reiniciar el formulario
-                                            $("#modal_form_rol .close")
-                                                .click(); //Cerrar el formulario
+    //             console.log(nombre_rol, estado_r_rol);
 
-                                            mytable = $('#roles')
-                                                .DataTable();
-                                            mytable.draw();
+    //             if (
+    //                 nombre_rol == "" ||
+    //                 estado_r_rol == "") {
+    //                 Swal.fire({
+    //                     icon: "error",
+    //                     title: "Oops...",
+    //                     text: "Por favor no deje ningun campo vacio",
+    //                     //  footer: '<a href="">Why do I have this issue?</a>'
+    //                 });
+    //             } else {
+    //                 Swal.fire({
+    //                     title: "Los datos son correctos?",
+    //                     text: "El Rol se cargara al sistema",
+    //                     icon: "warning",
+    //                     showCancelButton: true,
+    //                     confirmButtonColor: "#3085d6",
+    //                     cancelButtonColor: "#d33",
+    //                     confirmButtonText: "Si, estoy seguro",
+    //                     cancelButtonText: "Cancelar",
+    //                 }).then((result) => {
+    //                     if (result.isConfirmed) {
+    //                         /**
+    //                          * Si confirma el formulario lo envia por post mediante Jquery
+    //                          */
 
-                                        });
-                                    } else {
-                                        Swal.fire({
-                                            icon: "error",
-                                            title: "Oops...",
-                                            text: "Revisa los campos nuevamente",
-                                            //  footer: '<a href="">Why do I have this issue?</a>'
-                                        });
-                                    }
-                                }
-                            });
+    //                         $.ajax({
+    //                             url: "../../backend/roles/crudroles.php",
+    //                             type: "post",
+    //                             data: {
+    //                                 opcion: opcion,
+    //                                 nombre_rol: nombre_rol,
+    //                                 estado_r_rol: estado_r_rol
+    //                             },
+    //                             success: function(data) {
+    //                                 var json = JSON.parse(data);
+    //                                 var status = json.status;
+    //                                 if (status == 'success') {
 
-                        }
-                    });
-                }
-            });
-        }
-    }); // TERMINA AGREGAR ROL
+    //                                     Swal.fire(
+    //                                         "Buen Trabajo!",
+    //                                         "El Rol ha sido cargada!",
+    //                                         "success"
+    //                                     ).then(() => {
+
+    //                                         $("#modal_form_rol")
+    //                                             .trigger(
+    //                                                 "reset"
+    //                                             ); //Reiniciar el formulario
+    //                                         $("#modal_form_rol .close")
+    //                                             .click(); //Cerrar el formulario
+
+    //                                         mytable = $('#usuarios')
+    //                                             .DataTable();
+    //                                         mytable.draw();
+
+    //                                     });
+    //                                 } else {
+    //                                     Swal.fire({
+    //                                         icon: "error",
+    //                                         title: "Oops...",
+    //                                         text: "Revisa los campos nuevamente",
+    //                                         //  footer: '<a href="">Why do I have this issue?</a>'
+    //                                     });
+    //                                 }
+    //                             }
+    //                         });
+
+    //                     }
+    //                 });
+    //             }
+    //         });
+    //     }
+    // }); // TERMINA AGREGAR ROL
 
 
 });

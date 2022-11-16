@@ -475,6 +475,9 @@ $(document).on("click", ".btnAgregarUsuario", function() {
                                         $("#AgregarUsuario .close")
                                             .click(); //Cerrar el formulario
 
+                                        mytable = $('#usuarios')
+                                            .DataTable();
+                                        mytable.draw();
                                         // mytable = $('#materias')
                                         //     .DataTable();
                                         // mytable.draw();
