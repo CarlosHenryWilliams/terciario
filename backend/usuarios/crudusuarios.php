@@ -154,6 +154,16 @@ switch ($opcion) {
             echo json_encode($data);
         }
         break;
+
+    case 7: //CASO 7 VER LOS ROLES PA (INDIVIDUALMENTE)
+
+
+        $id_usuario = $_POST['id'];
+        $sql = "SELECT * FROM roles_usuarios WHERE id='$id_usuario'";
+        $query = mysqli_query(conectame(), $sql);
+        $row = mysqli_fetch_assoc($query);
+        echo json_encode($row);
+        break;
 }
 
 

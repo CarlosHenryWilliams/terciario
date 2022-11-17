@@ -464,8 +464,9 @@ $(document).on("click", ".btnroles", function() {
 
 
 
-    var id = $(this).data('id');
-
+    // var dni = $(this).data('dni');
+    var dni = $(this).attr("data-dni");
+    console.log(dni);
 
     if (opcion === 5) {
 
