@@ -440,7 +440,6 @@ $(document).on("click", ".btneditar", function() {
 
 
 
-    var tablamaterias = $('#materias').DataTable();
 
     var id = $(this).data('id');
 
@@ -750,7 +749,7 @@ $(document).on("click", ".btndardealta", function() {
     console.log(id);
 
     $.ajax({
-        url: "../../backend/roles/crudroles.php",
+        url: "../../backend/usuarios/crudusuarios.php",
         data: {
             opcion: opcion,
             id: id
@@ -766,11 +765,11 @@ $(document).on("click", ".btndardealta", function() {
 
             console.log(nombre_rol, estado_rol);
 
-            opcion = 4; // una vez adentro opcion pasa a ser 3 o sea dar de baja
+            opcion = 4; // una vez adentro opcion pasa a ser 4 o sea dar de baja
 
             Swal.fire({
-                title: "Habilitar Rol",
-                text: "Esta seguro que desea habilitar el Rol?",
+                title: "Habilitar Usuario",
+                text: "Esta seguro que desea habilitar el Usuario?",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -781,7 +780,7 @@ $(document).on("click", ".btndardealta", function() {
                 if (result.isConfirmed) {
 
                     $.ajax({
-                        url: "../../backend/roles/crudroles.php",
+                        url: "../../backend/usuarios/crudusuarios.php",
                         data: {
                             opcion: opcion,
                             id: id
@@ -794,9 +793,11 @@ $(document).on("click", ".btndardealta", function() {
 
                                 Swal.fire(
                                     "Perfecto!",
-                                    "El rol ha sido habilitado!",
+                                    "El Usuario ha sido habilitado!",
                                     "success"
                                 ).then(() => {
+
+
 
                                     tablaroles = $('#roles')
                                         .DataTable();

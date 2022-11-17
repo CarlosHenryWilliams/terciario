@@ -99,7 +99,7 @@ switch ($opcion) {
 
 
         break;
-    case 4: //CASO 3 DAR DE ALTA
+    case 4: //CASO 4 DAR DE ALTA
         $id_rol = $_POST['id'];
         $sql = "UPDATE `roles` SET `estado_r`='1' WHERE `id` =$id_rol";
 
