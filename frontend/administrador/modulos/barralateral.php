@@ -346,7 +346,7 @@ $(document).on("click", ".btnAgregarUsuario", function() {
     $(".modal-header").css("color", "white");
     $("#boton_agregar_form").css("background-color", "#007bff");
     $("#boton_agregar_form").css("color", "white");
-    // $(".modal-title").text("Agregar Materia");
+    $(".modal-title").text("Agregar Usuario");
 
     if (opcion === 1) {
         // MODAL AGREGAR

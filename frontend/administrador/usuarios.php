@@ -145,7 +145,37 @@
 
 
 
-            <!-- MODAL ROL-->
+
+
+
+
+
+            <!-- MODAL VER ROLES -->
+            <div class="modal fade" id="modal_ver_roles" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- MODAL USUARIOS-->
             <div class="modal fade" id="modal_form_rol" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
@@ -411,6 +441,210 @@ $(document).ready(function() {
 </script>
 
 
+<script>
+//EDITAR  MATERIAAA
+$(document).on("click", ".btnroles", function() {
+
+
+    opcion = 5; //PRIMERO OPCION 5 PARA QUE AGARRE LOS DATOS
+
+
+
+
+    /**
+     * CSS MODAL
+     */
+    $(".modal-header").css("background-color", "#17a2b8");
+    $(".modal-header").css("color", "white");
+    $("#boton_editar_form").css("background-color", "#17a2b8");
+    $("#boton_editar_form").css("color", "white");
+    $(".modal-title").text("Ver Roles");
+
+
+
+
+
+    var id = $(this).data('id');
+
+
+    if (opcion === 5) {
+
+        $.ajax({
+            url: "../../backend/roles/crudroles.php",
+            data: {
+                opcion: opcion,
+                id: id
+            },
+            type: 'post',
+            success: function(data) {
+                var json = JSON.parse(data);
+
+                $("#input_id_rol").val(json.id);
+                $("#input_nombre_rol").val(json.nombre_rol);
+                $("#input_estado_r_rol").val(json.estado_r);
+
+
+
+                opcion = 2; //UNA VEZ QUE AGARRA LOS DATOS LOS ENVIA  A LA OPCION 2 QUE ES EDITAR
+
+                if (opcion === 2) {
+
+
+                    $("#boton_editar_form").click(function() {
+
+                        console.log('ESTA ACA EN OPCION 2 EDITAR');
+
+
+                        var nombre_rol = $('#input_nombre_rol').val();
+                        var estado_r_rol = $('#input_estado_r_rol').val();
+
+                        var id = $('#input_id_rol').val();
+
+
+                        if (nombre_rol != '' && estado_r_rol != '' &&
+                            id != '') {
+
+                            Swal.fire({
+                                title: 'Editar Rol',
+                                text: "Esta seguro que desea editar el Rol?",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Si, estoy seguro',
+                                cancelButtonText: 'Cancelar'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+
+
+                                    $.ajax({
+                                        url: "../../backend/roles/crudroles.php",
+                                        type: "post",
+                                        data: {
+                                            opcion: opcion,
+                                            nombre_rol: nombre_rol,
+                                            estado_r_rol: estado_r_rol,
+                                            id: id
+                                        },
+                                        success: function(data) {
+                                            var json = JSON.parse(data);
+                                            var status = json.status;
+                                            if (status == 'success') {
+
+
+                                                Swal.fire(
+                                                    'Rol Editado!',
+                                                    'El Rol ha sido editado con exito!',
+                                                    'success'
+                                                ).then(() => {
+
+                                                    $("#modal_form_rol")
+                                                        .trigger(
+                                                            "reset"
+                                                        ); //Reiniciar el formulario
+                                                    $("#modal_form_rol .close")
+                                                        .click(); //Cerrar el formulario
+
+
+                                                    tablaroles
+                                                        = $(
+                                                            '#roles'
+                                                        )
+                                                        .DataTable();
+
+                                                    if (estado_r_rol ==
+                                                        1) {
+                                                        var texto_estado =
+                                                            'Habilitado';
+                                                        var button =
+                                                            '<td><a href="#!" data-id="' +
+                                                            id +
+                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_rol">Editar</a>  <a href="#!"  data-id="' +
+                                                            id +
+                                                            '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#!"  data-id="' +
+                                                            id +
+                                                            '"  class="btn btn-warning btn-sm btndardebaja">Dar de Baja</a></td>';
+
+                                                    } else {
+                                                        texto_estado
+                                                            =
+                                                            'Deshabilitado';
+                                                        var button =
+                                                            '<td><a href="#!" data-id="' +
+                                                            id +
+                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_rol">Editar</a>  <a href="#"  data-id="' +
+                                                            id +
+                                                            '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#"  data-id="' +
+                                                            id +
+                                                            '"  class="btn btn-success btn-sm btndardealta">Dar de Alta</a></td>';
+                                                    }
+
+
+                                                    //En el codigo de abajo dibuja la tabla
+                                                    var row =
+                                                        tablaroles
+                                                        .row(
+                                                            "[id='" +
+                                                            id +
+                                                            "']"
+                                                        );
+                                                    //el table es del table de arriba table = $('example').Datatable();
+                                                    row.row("[id='" +
+                                                            id +
+                                                            "']"
+                                                        )
+                                                        .data([id,
+                                                            nombre_rol,
+                                                            texto_estado,
+                                                            button
+                                                        ]);
+
+
+                                                });
+
+
+                                            } else { //si el estado no es success ( o sea error en la consulta o algo)
+                                                Swal.fire({
+                                                    icon: "error",
+                                                    title: "Oops...",
+                                                    text: "Revisa los campos nuevamente",
+                                                    //  footer: '<a href="">Why do I have this issue?</a>'
+                                                });
+                                            }
+                                        }
+                                    });
+
+                                }
+                            })
+
+                        } else {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Por favor no deje ningun campo vacio",
+                                //  footer: '<a href="">Why do I have this issue?</a>'
+                            });
+                        }
+
+
+                    });
+
+
+
+
+                }
+
+
+            }
+        })
+    }
+
+
+
+
+
+}); // TERMINA EDITAR  MATERIA
+</script>
 
 <script>
 //EDITAR  MATERIAAA
@@ -435,7 +669,7 @@ $(document).on("click", ".btneditar", function() {
     $(".modal-header").css("color", "white");
     $("#boton_editar_form").css("background-color", "#17a2b8");
     $("#boton_editar_form").css("color", "white");
-    $(".modal-title").text("Editar Rol");
+    $(".modal-title").text("Editar Usuario");
 
 
 

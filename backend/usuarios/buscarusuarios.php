@@ -109,11 +109,11 @@ while ($row = mysqli_fetch_assoc($query)) {
     // $sub_array[] = $row['city'];
 
     if ($row['estado_u'] == 1) {
-        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"   data-toggle="modal" data-target="#modal_form_rol">Editar</a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" >Eliminar</a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-warning btn-sm btndardebaja" >Dar de Baja</a>';
+        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-primary btn-sm btnroles"   data-toggle="modal" data-target="#modal_ver_roles">Ver Roles</a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"   data-toggle="modal" data-target="#modal_form_rol">Editar</a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" >Eliminar</a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-warning btn-sm btndardebaja" >Dar de Baja</a>';
         // $sub_array[] = 'Habilitado' .
         // 	'<a href="javascript:void();" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm editbtn" > Baja</a>';
     } else {
-        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_rol" >Editar</a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" >Eliminar</a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-success btn-sm btndardealta" >Dar de Alta</a>';
+        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-primary btn-sm btnroles"   data-toggle="modal" data-target="#modal_ver_roles">Ver Roles</a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_rol" >Editar</a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" >Eliminar</a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-success btn-sm btndardealta" >Dar de Alta</a>';
     }
 
     $data[] = $sub_array;
