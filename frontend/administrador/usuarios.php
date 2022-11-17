@@ -162,7 +162,28 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            ...
+
+                            <div class="container">
+                                <div class=" d-flex">
+                                    <h4 id="nombre_modal_rol" value=""></h4>
+                                    <h4 id="dni_modal_rol" value=""></h4>
+                                </div>
+
+                                <div class="roles d-flex">
+                                    <h4>cjwankjndj</h4>
+                                    <button type="text" class="btn btn-primary"></button>
+
+
+                                </div>
+
+                                <hr>
+                                <div>
+                                    <h4>cjwankjndj</h4>
+                                    <button type="text" class="btn btn-primary"></button>
+                                </div>
+
+                            </div>
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -466,12 +487,15 @@ $(document).on("click", ".btnroles", function() {
 
     // var dni = $(this).data('dni');
     var dni = $(this).attr("data-dni");
+    var id = $(this).attr("data-id");
+
     console.log(dni);
+    console.log(id);
 
     if (opcion === 5) {
 
         $.ajax({
-            url: "../../backend/roles/crudroles.php",
+            url: "../../backend/usuarios/crudusuarios.php",
             data: {
                 opcion: opcion,
                 id: id
@@ -481,8 +505,12 @@ $(document).on("click", ".btnroles", function() {
                 var json = JSON.parse(data);
 
                 $("#input_id_rol").val(json.id);
-                $("#input_nombre_rol").val(json.nombre_rol);
-                $("#input_estado_r_rol").val(json.estado_r);
+
+                document.getElementById("nombre_modal_rol").innerHTML = json.nombre;
+                document.getElementById("dni_modal_rol").innerHTML = json.dni;
+
+                // $("#nombre_modal_rol").val(json.nombre);
+                // $("#dni_modal_rol").val(json.dni);
 
 
 
