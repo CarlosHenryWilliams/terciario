@@ -1,5 +1,6 @@
 <?php include('modulos/conexion.php');  ?>
 
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -59,10 +60,13 @@
 
             <main>
 
+                <?php
+                $id_boton_plan = $_POST['id_boton_plan'];
+
+                ?>
 
 
-
-
+                <p><?php echo $id_boton_plan ?></p>
                 <div class="container">
 
                     <div class="d-flex align-items-center ">

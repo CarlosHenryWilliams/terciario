@@ -185,12 +185,13 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="asignarmaterias.php">
-                                <button class="btn btn-info"><i class="fa-solid fa-plus"></i> Asignar
+                            <form action="asignarmaterias.php" method="POST">
+
+                                <button type="submit" value="" name="id_boton_plan"
+                                    class="btn btn-info btnAsignarMaterias"><i class="fa-solid fa-plus"></i> Asignar
                                     Materias </button>
                             </form>
-                            <a class="btn btn-info btnAsignarMaterias"><i class="fa-solid fa-plus"></i> Asignar
-                                Materias </a>
+
                             <div class="d-flex align-items-center justify-content-center">
                                 <h4 class="mt-2">Materias Asignadas a: </h4>
                                 <h4 class="ms-1 mt-2" id="plan_titulo"> </h4>
@@ -947,6 +948,7 @@ $(document).on("click", ".btnMaterias", function() {
 
     opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
     var id = $(this).data('id');
+    console.log(id);
     //Asi se obtiene el id del plan porque tiene cargado en el atributo data el id el boton
     $.ajax({
         url: "../../backend/plandeestudio/crudplandeestudio.php",
@@ -961,8 +963,9 @@ $(document).on("click", ".btnMaterias", function() {
             var nombre_plan = json.nombre;
             $(" #plan_titulo").text(nombre_plan);
 
+            $(" .btnAsignarMaterias").val(json.id);
 
-            $(" .btnAsignarMaterias").attr("href", "asignarmaterias.php?id='+id+'");
+            // $(" .btnAsignarMaterias").attr("href", "asignarmaterias.php?id='+id+'");
 
             // window.location.href =
             //     "http://www.gorissen.info/Pierre/maps/googleMapLocation.php?lat=" + elemA +
