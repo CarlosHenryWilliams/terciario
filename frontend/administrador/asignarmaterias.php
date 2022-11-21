@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="css/desing.css" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
 
 
@@ -32,7 +33,9 @@
     <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     <script src='sweetalert2.min.js'></script>
     <link rel='stylesheet' href='sweetalert2.min.css'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 
@@ -149,47 +152,60 @@
 
 
     <!-- MODAL ASIGNAR MATERIAS-->
-    <div class="modal fade" id="modal_form_asignar_materias" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modal_form_asignar_materias" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Agregar Rol</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Agregar Materia</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                 </div>
                 <div class="modal-body">
+                    <h5>Especifique los parametros de la Materia</h5>
                     <form id="addUser" action="">
                         <div class="mb-3 row">
-                            <label for="nombre_materia" class="col-md-3 form-label">Nombre</label>
 
-                            <input type="hidden" class="form-control" id="input_id_rol" name="id" required>
+
+                            <input type="hidden" class="form-control" id="input_id_plan_de_estudio" name="id_plan"
+                                value="<?php echo $id_boton_plan ?>" required>
+                            <input type="hidden" class="form-control" id="input_id_materia" name="id_materia" required>
+
+                            <label for="nombre_materia" class="col-md-3 form-label">Año de cursada
+                            </label>
 
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="input_nombre_rol" name="nombre" required>
+                                <input type="text" class="form-control" id="input_ano_cursada" name="nombre" required>
                             </div>
                         </div>
+
                         <div class="mb-3 row">
-                            <label for="input_estado_r_rol" class="col-md-3 form-label">Estado</label>
+                            <label for="input_periodo_cursada" class="col-md-3 form-label">Periodo</label>
                             <div class="col-md-9">
                                 <!-- <input type="text" class="form-control" id="estado_m_materia" name="mobile"> -->
 
-                                <select class="form-select" aria-label="Default select example" id="input_estado_r_rol" name="estado" required>
-                                    <option value="">Por favor seleccione un estado</option>
-                                    <option value="1">Habilitado</option>
-                                    <option value="0">Deshabilitado</option>
+                                <select class="form-select" aria-label="Default select example"
+                                    id="input_periodo_cursada" name="estado" required>
+                                    <option value="">Por favor seleccione el periodo de cursada</option>
+                                    <option value="1er Cuatrimestre">1er Cuatrimestre</option>
+                                    <option value="2do Cuatrimestre">2do Cuatrimestre</option>
+                                    <option value="Anual">Anual</option>
+
                                 </select>
                             </div>
                         </div>
 
                         <div class="text-center">
                         </div>
+
+                        <div class="modal-footer">
+                            <button type="button" id="boton_agregar_form" class="btn btn-primary">Agregar</button>
+
+                        </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" id="boton_agregar_form" class="btn btn-primary">Agregar</button>
-                    <button type="submit" id="boton_editar_form" class="btn btn-primary">Editar</button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -200,14 +216,16 @@
     <!-- SCRIPTS -------------------------------------------------------------------------------------------------- -->
     <script src="js/toggle.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/chart-area-demo.js"></script>
     <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
 
     <!-- SCRIPT DATATABLES -->
@@ -222,82 +240,140 @@
 </body>
 
 <script>
-    $(document).on("click", ".btnAgregarMateria", function() {
-
-        opcion = 2;
+$(document).on("click", ".btnAgregarMateria", function() {
 
 
-        var id = $(this).data('id');
-        console.log(id);
 
-        $.post('../../backend/plandeestudio/asignar_materia_planestudio.php', {
-                opcion: opcion,
-                id_materia: id,
-                id_plan: id_plan
-            }
 
-            // , function(data) {
-            //     if (data == '1') {
-            //         Swal.fire(
-            //             'Plan Actualizado!',
-            //             'El plan de estudio ha sido actualizado',
-            //             'success'
-            //         ).then(
-            //             () => {
+    var id_materia = $(this).data('id');
+    console.log('ID MATERIA', id_materia);
 
-            //                 $("#form_plan_estudio").trigger(
-            //                     "reset"); //Reiniciar el formulario
-            //                 $("#modal_plan_estudio .close")
-            //                     .click(); //Cerrar el formulario
-            //                 listar();
-            //             });
-            //     } else {
-            //         // alert(data);
-            //         Swal.fire({
-            //             icon: 'error',
-            //             title: 'Oops...',
-            //             text: 'Revisa los campos nuevamente',
-            //             //  footer: '<a href="">Why do I have this issue?</a>'
-            //         })
-            //     }
-            // }
+    // LE INSERTO EL ID DE LA MATERIA AL INPUT OCULTO
+    $(" #input_id_materia").val(id_materia);
 
-        );
 
+    //  MODAL AGREGAR
+    $("#boton_agregar_form").click(function() {
+
+        var id_plan_de_estudio = $('#input_id_plan_de_estudio').val();
+        var ano_cursada = $('#input_ano_cursada').val();
+        var periodo_cursada = $('#input_periodo_cursada').val();
+
+
+        console.log(ano_cursada, periodo_cursada);
+
+        if (
+            ano_cursada == "" ||
+            periodo_cursada == ""
+
+        ) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Por favor no deje ningun campo vacio",
+                //  footer: '<a href="">Why do I have this issue?</a>'
+            });
+        } else {
+            Swal.fire({
+                title: "Los datos son correctos?",
+                text: "La Materia se agregara al Plan de Estudio",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, estoy seguro",
+                cancelButtonText: "Cancelar",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    /**
+                     * Si confirma el formulario lo envia por post mediante Jquery
+                     */
+
+                    $.ajax({
+                        url: "../../backend/plandeestudio/asignar_materia_planestudio.php",
+                        type: "post",
+                        data: {
+                            id_plan_de_estudio: id_plan_de_estudio,
+                            id_materia: id_materia,
+                            ano_cursada: ano_cursada,
+                            periodo_cursada: periodo_cursada
+
+
+                        },
+                        success: function(data) {
+                            var json = JSON.parse(data);
+                            var status = json.status;
+                            if (status == 'true') {
+
+                                Swal.fire(
+                                    "Buen Trabajo!",
+                                    "La Materia ha sido agregada al plan de estudio",
+                                    "success"
+                                ).then(() => {
+
+                                    $("#modal_form_asignar_materias")
+                                        .trigger(
+                                            "reset"
+                                        ); //Reiniciar el formulario
+                                    $("#modal_form_asignar_materias .close")
+                                        .click(); //Cerrar el formulario
+
+                                    // mytable = $('#planes')
+                                    //     .DataTable();
+                                    // mytable.draw();
+
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "Revisa los campos nuevamente",
+                                    //  footer: '<a href="">Why do I have this issue?</a>'
+                                });
+                            }
+                        }
+                    });
+
+                }
+            });
+        }
     });
+
+
+});
 </script>
 
 
 
 <script>
-    $(document).ready(function() {
-        $('#tabla_materias').DataTable({
-            "fnCreatedRow": function(nRow, aData, iDataIndex) {
-                $(nRow).attr('id', aData[0]);
+$(document).ready(function() {
+    $('#tabla_materias').DataTable({
+        "fnCreatedRow": function(nRow, aData, iDataIndex) {
+            $(nRow).attr('id', aData[0]);
+        },
+        'serverSide': 'true',
+        'processing': 'true',
+        'paging': 'true',
+        'order': [],
+        'ajax': {
+            'url': '../../backend/plandeestudio/buscarmaterias.php',
+            'type': 'post',
+        },
+        "aoColumnDefs": [{
+                "bSortable": false,
+                "aTargets": [4]
             },
-            'serverSide': 'true',
-            'processing': 'true',
-            'paging': 'true',
-            'order': [],
-            'ajax': {
-                'url': '../../backend/plandeestudio/buscarmaterias.php',
-                'type': 'post',
-            },
-            "aoColumnDefs": [{
-                    "bSortable": false,
-                    "aTargets": [4]
-                },
 
-                {
-                    // hide id_number column
-                    "targets": [0],
-                    "visible": false,
-                    "searchable": false
-                }
+            {
+                // hide id_number column
+                "targets": [0],
+                "visible": false,
+                "searchable": false
+            }
 
-            ]
-        });
+        ]
     });
+});
 </script>
 
 
