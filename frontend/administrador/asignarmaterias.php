@@ -16,8 +16,7 @@
     <link rel="stylesheet" href="css/desing.css" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
 
 
@@ -33,9 +32,7 @@
     <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     <script src='sweetalert2.min.js'></script>
     <link rel='stylesheet' href='sweetalert2.min.css'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
-        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 
@@ -150,19 +147,67 @@
 
 
 
+
+    <!-- MODAL ASIGNAR MATERIAS-->
+    <div class="modal fade" id="modal_form_asignar_materias" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar Rol</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addUser" action="">
+                        <div class="mb-3 row">
+                            <label for="nombre_materia" class="col-md-3 form-label">Nombre</label>
+
+                            <input type="hidden" class="form-control" id="input_id_rol" name="id" required>
+
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="input_nombre_rol" name="nombre" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="input_estado_r_rol" class="col-md-3 form-label">Estado</label>
+                            <div class="col-md-9">
+                                <!-- <input type="text" class="form-control" id="estado_m_materia" name="mobile"> -->
+
+                                <select class="form-select" aria-label="Default select example" id="input_estado_r_rol" name="estado" required>
+                                    <option value="">Por favor seleccione un estado</option>
+                                    <option value="1">Habilitado</option>
+                                    <option value="0">Deshabilitado</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="boton_agregar_form" class="btn btn-primary">Agregar</button>
+                    <button type="submit" id="boton_editar_form" class="btn btn-primary">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <!-- SCRIPTS -------------------------------------------------------------------------------------------------- -->
     <script src="js/toggle.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/chart-area-demo.js"></script>
     <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
 
     <!-- SCRIPT DATATABLES -->
@@ -177,90 +222,82 @@
 </body>
 
 <script>
-$(document).on("click", ".btnAgregarMateria", function() {
+    $(document).on("click", ".btnAgregarMateria", function() {
 
-    opcion = 2;
+        opcion = 2;
 
 
-    //fila seria seleccionar la fila, la selecionas con el this, que this seria agarrar el elemento que pusiste en el click de arriba o sea el btn editar, closest lo mas cerca el TR obvio y despues abajo ya esta explicado el find.
-    fila = $(this).closest("tr");
-    //capturo el ID   el td:eq() , es un selector de indices, por ende si hay 4 <td>, para seleccionar el 4to td tendrias que poner td:eq(3) y con el .text agarras el texto obvio
-    id = parseInt(fila.find("td:eq(0)").text());
+        var id = $(this).data('id');
+        console.log(id);
 
-    console.log(id);
-    // console.log(titulo);
-    // console.log(nombre);
-    // console.log(resolucion);
-    // console.log(estado_p);
+        $.post('../../backend/plandeestudio/asignar_materia_planestudio.php', {
+                opcion: opcion,
+                id_materia: id,
+                id_plan: id_plan
+            }
 
-    $.post('../../backend/plandeestudio/asignar_materia_planestudio.php', {
-            opcion: opcion,
-            id_materia: id,
-            id_plan: id_plan
-        }
+            // , function(data) {
+            //     if (data == '1') {
+            //         Swal.fire(
+            //             'Plan Actualizado!',
+            //             'El plan de estudio ha sido actualizado',
+            //             'success'
+            //         ).then(
+            //             () => {
 
-        // , function(data) {
-        //     if (data == '1') {
-        //         Swal.fire(
-        //             'Plan Actualizado!',
-        //             'El plan de estudio ha sido actualizado',
-        //             'success'
-        //         ).then(
-        //             () => {
+            //                 $("#form_plan_estudio").trigger(
+            //                     "reset"); //Reiniciar el formulario
+            //                 $("#modal_plan_estudio .close")
+            //                     .click(); //Cerrar el formulario
+            //                 listar();
+            //             });
+            //     } else {
+            //         // alert(data);
+            //         Swal.fire({
+            //             icon: 'error',
+            //             title: 'Oops...',
+            //             text: 'Revisa los campos nuevamente',
+            //             //  footer: '<a href="">Why do I have this issue?</a>'
+            //         })
+            //     }
+            // }
 
-        //                 $("#form_plan_estudio").trigger(
-        //                     "reset"); //Reiniciar el formulario
-        //                 $("#modal_plan_estudio .close")
-        //                     .click(); //Cerrar el formulario
-        //                 listar();
-        //             });
-        //     } else {
-        //         // alert(data);
-        //         Swal.fire({
-        //             icon: 'error',
-        //             title: 'Oops...',
-        //             text: 'Revisa los campos nuevamente',
-        //             //  footer: '<a href="">Why do I have this issue?</a>'
-        //         })
-        //     }
-        // }
+        );
 
-    );
-
-});
+    });
 </script>
 
 
 
 <script>
-$(document).ready(function() {
-    $('#tabla_materias').DataTable({
-        "fnCreatedRow": function(nRow, aData, iDataIndex) {
-            $(nRow).attr('id', aData[0]);
-        },
-        'serverSide': 'true',
-        'processing': 'true',
-        'paging': 'true',
-        'order': [],
-        'ajax': {
-            'url': '../../backend/plandeestudio/buscarmaterias.php',
-            'type': 'post',
-        },
-        "aoColumnDefs": [{
-                "bSortable": false,
-                "aTargets": [4]
+    $(document).ready(function() {
+        $('#tabla_materias').DataTable({
+            "fnCreatedRow": function(nRow, aData, iDataIndex) {
+                $(nRow).attr('id', aData[0]);
             },
+            'serverSide': 'true',
+            'processing': 'true',
+            'paging': 'true',
+            'order': [],
+            'ajax': {
+                'url': '../../backend/plandeestudio/buscarmaterias.php',
+                'type': 'post',
+            },
+            "aoColumnDefs": [{
+                    "bSortable": false,
+                    "aTargets": [4]
+                },
 
-            {
-                // hide id_number column
-                "targets": [0],
-                "visible": false,
-                "searchable": false
-            }
+                {
+                    // hide id_number column
+                    "targets": [0],
+                    "visible": false,
+                    "searchable": false
+                }
 
-        ]
+            ]
+        });
     });
-});
 </script>
 
 
