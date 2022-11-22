@@ -210,42 +210,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Product 1</td>
-                                        <td>100$</td>
-                                        <td><a><i class="fas fa-times"></i></a></td>
-                                        <td>hola</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Product 1</td>
-                                        <td>100$</td>
-                                        <td><a><i class="fas fa-times"></i></a></td>
-                                        <td>hola</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Product 1</td>
-                                        <td>100$</td>
-                                        <td><a><i class="fas fa-times"></i></a></td>
-                                        <td>hola</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Product 1</td>
-                                        <td>100$</td>
-                                        <td><a><i class="fas fa-times"></i></a></td>
-                                        <td>hola</td>
-                                    </tr>
-                                    <tr class="total">
 
-                                        <th scope="row">1</th>
-                                        <td>Product 1</td>
-                                        <td>100$</td>
-                                        <td><a><i class="fas fa-times"></i></a></td>
-                                        <td>hola</td>
-                                    </tr>
+
+
                                 </tbody>
                             </table>
 
@@ -357,6 +324,7 @@ $(document).on("click", ".btnMaterias", function() {
         },
         type: 'post',
         success: function(data) {
+            alert(data);
             // var json = JSON.parse(data); //lees los datos json o sea los convertis a string
 
             // var nombre_plan = json.nombre;
@@ -375,13 +343,41 @@ $(document).on("click", ".btnMaterias", function() {
     })
 
 
+
+    $('#planes_materias').DataTable({
+        "fnCreatedRow": function(nRow, aData, iDataIndex) {
+            $(nRow).attr('id', aData[0]);
+        },
+        'serverSide': 'true',
+        'processing': 'true',
+        'paging': 'true',
+        'order': [],
+        'ajax': {
+            'url': '../../backend/plandeestudio/buscarmaterias_asignadasaunplan.php',
+            'type': 'post',
+        },
+        "aoColumnDefs": [{
+                "bSortable": false,
+                "aTargets": [4]
+            },
+
+            {
+                // hide id_number column
+                "targets": [0],
+                "visible": false,
+                "searchable": false
+            }
+
+        ]
+    });
+
 });
 </script>
 
 <script>
 $(document).ready(function() {
 
-    $('#planes_materias').DataTable();
+
 
     $('#planes').DataTable({
         "fnCreatedRow": function(nRow, aData, iDataIndex) {
