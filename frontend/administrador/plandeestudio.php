@@ -193,9 +193,53 @@
                             </form>
 
                             <div class="d-flex align-items-center justify-content-center">
-                                <h4 class="mt-2">Materias Asignadas a: </h4>
+                                <h4 class="mt-2">Materias de: </h4>
                                 <h4 class="ms-1 mt-2" id="plan_titulo"> </h4>
                             </div>
+
+
+                            <table class="table table-hover" id="planes_materias">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Product name</th>
+                                        <th>Price</th>
+                                        <th>Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Product 1</td>
+                                        <td>100$</td>
+                                        <td><a><i class="fas fa-times"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Product 2</td>
+                                        <td>100$</td>
+                                        <td><a><i class="fas fa-times"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Product 3</td>
+                                        <td>100$</td>
+                                        <td><a><i class="fas fa-times"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>Product 4</td>
+                                        <td>100$</td>
+                                        <td><a><i class="fas fa-times"></i></a></td>
+                                    </tr>
+                                    <tr class="total">
+                                        <th scope="row">5</th>
+                                        <td>Total</td>
+                                        <td>400$</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
 
                         </div>
@@ -265,8 +309,46 @@
 
 
 </body>
+
+<script>
+$(document).on("click", ".btnMaterias", function() {
+
+    opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
+    var id = $(this).data('id');
+    console.log(id);
+    //Asi se obtiene el id del plan porque tiene cargado en el atributo data el id el boton
+    $.ajax({
+        url: "../../backend/plandeestudio/crudplandeestudio.php",
+        data: {
+            opcion: opcion,
+            id: id
+        },
+        type: 'post',
+        success: function(data) {
+            var json = JSON.parse(data); //lees los datos json o sea los convertis a string
+
+            var nombre_plan = json.nombre;
+            $(" #plan_titulo").text(nombre_plan);
+
+            $(" .btnAsignarMaterias").val(json.id);
+
+            // $(" .btnAsignarMaterias").attr("href", "asignarmaterias.php?id='+id+'");
+
+            // window.location.href =
+            //     "http://www.gorissen.info/Pierre/maps/googleMapLocation.php?lat=" + elemA +
+            //     "&lon=" + elemB + "&setLatLon=Set"
+
+
+        }
+    })
+});
+</script>
+
 <script>
 $(document).ready(function() {
+
+    $('#planes_materias').DataTable();
+
     $('#planes').DataTable({
         "fnCreatedRow": function(nRow, aData, iDataIndex) {
             $(nRow).attr('id', aData[0]);
@@ -943,38 +1025,6 @@ $(document).on('click', '.btneliminar', function(event) {
 })
 </script>
 
-<script>
-$(document).on("click", ".btnMaterias", function() {
 
-    opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
-    var id = $(this).data('id');
-    console.log(id);
-    //Asi se obtiene el id del plan porque tiene cargado en el atributo data el id el boton
-    $.ajax({
-        url: "../../backend/plandeestudio/crudplandeestudio.php",
-        data: {
-            opcion: opcion,
-            id: id
-        },
-        type: 'post',
-        success: function(data) {
-            var json = JSON.parse(data); //lees los datos json o sea los convertis a string
-
-            var nombre_plan = json.nombre;
-            $(" #plan_titulo").text(nombre_plan);
-
-            $(" .btnAsignarMaterias").val(json.id);
-
-            // $(" .btnAsignarMaterias").attr("href", "asignarmaterias.php?id='+id+'");
-
-            // window.location.href =
-            //     "http://www.gorissen.info/Pierre/maps/googleMapLocation.php?lat=" + elemA +
-            //     "&lon=" + elemB + "&setLatLon=Set"
-
-
-        }
-    })
-});
-</script>
 
 </html>
