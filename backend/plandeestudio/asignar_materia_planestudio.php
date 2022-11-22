@@ -6,7 +6,7 @@ $id_materia = $_POST['id_materia'];
 $ano_cursada = $_POST['ano_cursada'];
 $periodo_cursada = $_POST['periodo_cursada'];
 
-$consulta = conectame()->query("INSERT INTO `planestudio_materia` (`id_plan_estudio`, `id_materias`, `ano_plan_materia`, `periodo_cursada`) VALUES ('$$id_plan','$id_materia','$ano_cursada','$periodo_cursada')");
+$consulta = conectame()->query("INSERT INTO `planestudio_materia` (`id_plan_estudio`, `id_materias`, `ano_plan_materia`, `periodo_cursada`) VALUES ('$id_plan','$id_materia','$ano_cursada','$periodo_cursada')");
 
 
 

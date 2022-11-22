@@ -19,7 +19,7 @@ include('../conexion.php');
 
 
 $output = array();
-$sql = "SELECT * FROM materias ";
+$sql = "SELECT * FROM `materias`WHERE NOT estado_m = 2 ";
 
 $totalQuery = mysqli_query(conectame(), $sql);
 $total_all_rows = mysqli_num_rows($totalQuery);
@@ -32,8 +32,11 @@ $columns = array(
 );
 
 if (isset($_POST['search']['value'])) {
+
     $search_value = $_POST['search']['value'];
-    $sql .= " WHERE nombre like '%" . $search_value . "%'";
+    // $sql = "SELECT * FROM `materias`";
+
+    $sql .= " AND nombre like '%" . $search_value . "%'";
     $sql .= " OR abreviatura like '%" . $search_value . "%'";
     $sql .= " OR estado_m like '%" . $search_value . "%'";
 }

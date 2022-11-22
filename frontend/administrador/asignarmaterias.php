@@ -252,10 +252,12 @@ $(document).on("click", ".btnAgregarMateria", function() {
     $(" #input_id_materia").val(id_materia);
 
 
+
     //  MODAL AGREGAR
     $("#boton_agregar_form").click(function() {
 
         var id_plan_de_estudio = $('#input_id_plan_de_estudio').val();
+        console.log(id_plan_de_estudio);
         var ano_cursada = $('#input_ano_cursada').val();
         var periodo_cursada = $('#input_periodo_cursada').val();
 
@@ -317,6 +319,9 @@ $(document).on("click", ".btnAgregarMateria", function() {
                                         ); //Reiniciar el formulario
                                     $("#modal_form_asignar_materias .close")
                                         .click(); //Cerrar el formulario
+
+                                    $("#" + id_materia).closest('tr')
+                                        .remove();
 
                                     // mytable = $('#planes')
                                     //     .DataTable();
