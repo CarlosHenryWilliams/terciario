@@ -201,10 +201,12 @@
                             <table class="table table-hover" id="planes_materias">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Product name</th>
-                                        <th>Price</th>
-                                        <th>Remove</th>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Abreviatura</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -213,30 +215,36 @@
                                         <td>Product 1</td>
                                         <td>100$</td>
                                         <td><a><i class="fas fa-times"></i></a></td>
+                                        <td>hola</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">2</th>
-                                        <td>Product 2</td>
+                                        <th scope="row">1</th>
+                                        <td>Product 1</td>
                                         <td>100$</td>
                                         <td><a><i class="fas fa-times"></i></a></td>
+                                        <td>hola</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">3</th>
-                                        <td>Product 3</td>
+                                        <th scope="row">1</th>
+                                        <td>Product 1</td>
                                         <td>100$</td>
                                         <td><a><i class="fas fa-times"></i></a></td>
+                                        <td>hola</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">4</th>
-                                        <td>Product 4</td>
+                                        <th scope="row">1</th>
+                                        <td>Product 1</td>
                                         <td>100$</td>
                                         <td><a><i class="fas fa-times"></i></a></td>
+                                        <td>hola</td>
                                     </tr>
                                     <tr class="total">
-                                        <th scope="row">5</th>
-                                        <td>Total</td>
-                                        <td>400$</td>
-                                        <td></td>
+
+                                        <th scope="row">1</th>
+                                        <td>Product 1</td>
+                                        <td>100$</td>
+                                        <td><a><i class="fas fa-times"></i></a></td>
+                                        <td>hola</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -341,6 +349,32 @@ $(document).on("click", ".btnMaterias", function() {
 
         }
     })
+
+    $.ajax({
+        url: "../../backend/plandeestudio/buscarmaterias_asignadasaunplan.php",
+        data: {
+            id: id
+        },
+        type: 'post',
+        success: function(data) {
+            // var json = JSON.parse(data); //lees los datos json o sea los convertis a string
+
+            // var nombre_plan = json.nombre;
+            // $(" #plan_titulo").text(nombre_plan);
+
+            // $(" .btnAsignarMaterias").val(json.id);
+
+            // $(" .btnAsignarMaterias").attr("href", "asignarmaterias.php?id='+id+'");
+
+            // window.location.href =
+            //     "http://www.gorissen.info/Pierre/maps/googleMapLocation.php?lat=" + elemA +
+            //     "&lon=" + elemB + "&setLatLon=Set"
+
+
+        }
+    })
+
+
 });
 </script>
 
