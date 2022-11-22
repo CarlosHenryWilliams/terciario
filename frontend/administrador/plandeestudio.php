@@ -675,11 +675,11 @@ $(document).on("click", ".btneditar", function() {
                                                         var button =
                                                             '<td><a href="#!" data-id="' +
                                                             id +
-                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_planes">Editar</a>  <a href="#!"  data-id="' +
+                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_planes"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#!"  data-id="' +
                                                             id +
-                                                            '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#!"  data-id="' +
+                                                            '"  class="btn btn-danger btn-sm btneliminar"><i class="fa-solid fa-trash-can"></i></a> <a href="#!"  data-id="' +
                                                             id +
-                                                            '"  class="btn btn-warning btn-sm btndardebaja">Dar de Baja</a></td> <a href="#" data-id="' +
+                                                            '"  class="btn btn-warning btn-sm btndardebaja" style="background-color: #fc8403; color: white;">Deshabilitar <i class="fa-solid fa-arrow-down"></i></a></td> <a href="#" data-id="' +
                                                             id +
                                                             '"  class="btn btn-secondary btn-sm btnMaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio">Materias</a>';
 
@@ -690,11 +690,11 @@ $(document).on("click", ".btneditar", function() {
                                                         var button =
                                                             '<td><a href="#!" data-id="' +
                                                             id +
-                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_planes">Editar</a>  <a href="#"  data-id="' +
+                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_planes"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#"  data-id="' +
                                                             id +
-                                                            '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#"  data-id="' +
+                                                            '"  class="btn btn-danger btn-sm btneliminar"><i class="fa-solid fa-trash-can"></i></a> <a href="#"  data-id="' +
                                                             id +
-                                                            '"  class="btn btn-success btn-sm btndardardealta">Dar de Alta</a></td> <a href="#" data-id="' +
+                                                            '"  class="btn btn-success btn-sm btndardardealta">Habilitar <i class="fa-solid fa-arrow-up"></i></a></td> <a href="#" data-id="' +
                                                             id +
                                                             '"  class="btn btn-secondary btn-sm btnMaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio" >Materias</a>';
                                                     }
@@ -838,11 +838,11 @@ $(document).on("click", ".btndardebaja", function() {
                                     var button =
                                         '<td><a href="#" data-id="' +
                                         id +
-                                        '" class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_planes">Editar</a>  <a href="#!"  data-id="' +
+                                        '" class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_planes"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#!"  data-id="' +
                                         id +
-                                        '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#!"  data-id="' +
+                                        '"  class="btn btn-danger btn-sm btneliminar"><i class="fa-solid fa-trash-can"></i></a> <a href="#!"  data-id="' +
                                         id +
-                                        '"  class="btn btn-success btn-sm btndardardealta">Dar de Alta</a></td> <a href="#" data-id="' +
+                                        '"  class="btn btn-success btn-sm btndardardealta">Habilitar <i class="fa-solid fa-arrow-up"></i></a></td> <a href="#" data-id="' +
                                         id +
                                         '"  class="btn btn-secondary btn-sm btnMaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio" >Materias</a>';
 
@@ -950,11 +950,11 @@ $(document).on("click", ".btndardardealta", function() {
                                     var button =
                                         '<td><a href="#" data-id="' +
                                         id +
-                                        '" class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_planes">Editar</a>  <a href="#!"  data-id="' +
+                                        '" class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_planes"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#!"  data-id="' +
                                         id +
-                                        '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#!"  data-id="' +
+                                        '"  class="btn btn-danger btn-sm btneliminar"><i class="fa-solid fa-trash-can"></i></a> <a href="#!"  data-id="' +
                                         id +
-                                        '"  class="btn btn-warning btn-sm btndardebaja">Dar de Baja</a></td> <a href="#" data-id="' +
+                                        '"  class="btn btn-warning btn-sm btndardebaja" style="background-color: #fc8403; color: white;">Deshabilitar <i class="fa-solid fa-arrow-down"></i></a></td> <a href="#" data-id="' +
                                         id +
                                         '"  class="btn btn-secondary btn-sm btnMaterias"  data-toggle="modal" data-target="#modal_materias_plan_estudio">Materias</a>';
 
