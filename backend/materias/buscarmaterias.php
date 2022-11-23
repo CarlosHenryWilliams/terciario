@@ -74,11 +74,11 @@ while ($row = mysqli_fetch_assoc($query)) {
     // $sub_array[] = $row['city'];
 
     if ($row['estado_m'] == 1) {
-        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"   data-toggle="modal" data-target="#modal_form_materias"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" ><i class="fa-solid fa-trash-can"></i></a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-warning btn-sm btndardebaja" style="background-color: #fc8403; color: white;">Deshabilitar <i class="fa-solid fa-arrow-down"></i></a>';
+        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"   data-toggle="modal" data-target="#modal_form_materias" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa-solid fa-trash-can"></i></a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-warning btn-sm btndardebaja" style="background-color: #fc8403; color: white;" data-toggle="tooltip" data-placement="bottom" title="Deshabilitar"><i class="fa-solid fa-arrow-down"></i></a>';
         // $sub_array[] = 'Habilitado' .
         // 	'<a href="javascript:void();" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm editbtn" > Baja</a>';
     } else {
-        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_materias" ><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" ><i class="fa-solid fa-trash-can"></i></a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-success btn-sm btndardealta" >Habilitar <i class="fa-solid fa-arrow-up"></i></a>';
+        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_materias" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa-solid fa-trash-can"></i></a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-success btn-sm btndardealta" data-toggle="tooltip" data-placement="bottom" title="Habilitar"><i class="fa-solid fa-arrow-up"></i></a>';
     }
 
     $data[] = $sub_array;
