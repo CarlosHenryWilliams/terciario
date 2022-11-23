@@ -1,7 +1,7 @@
 <?php
 include('../conexion.php');
-$id_plan_de_estudio = $_POST['id'];
 
+$id_plan_de_estudio = $_POST['id_planestudio'];
 
 
 
@@ -20,11 +20,8 @@ $columns = array(
 );
 
 if (isset($_POST['search']['value'])) {
-
     $search_value = $_POST['search']['value'];
-    // $sql = "SELECT * FROM `materias`";
-
-    $sql .= " AND nombre like '%" . $search_value . "%'";
+    $sql .= " AND materias.nombre like '%" . $search_value . "%'";
     $sql .= " OR abreviatura like '%" . $search_value . "%'";
     $sql .= " OR estado_m like '%" . $search_value . "%'";
 }
@@ -37,11 +34,11 @@ if (isset($_POST['order'])) {
     $sql .= " ORDER BY materias.id desc";
 }
 
-// if ($_POST['length'] != -1) {
-//     $start = $_POST['start'];
-//     $length = $_POST['length'];
-//     $sql .= " LIMIT  " . $start . ", " . $length;
-// }
+if ($_POST['length'] != -1) {
+    $start = $_POST['start'];
+    $length = $_POST['length'];
+    $sql .= " LIMIT  " . $start . ", " . $length;
+}
 
 $query = mysqli_query(conectame(), $sql);
 $count_rows = mysqli_num_rows($query);
@@ -51,24 +48,8 @@ while ($row = mysqli_fetch_assoc($query)) {
     $sub_array[] = $row['id'];
     $sub_array[] = $row['nombre'];
     $sub_array[] = $row['abreviatura'];
-    if ($row['estado_m'] == 1) {
-        $sub_array[] = 'Habilitado';
-        // $sub_array[] = 'Habilitado' .
-        // 	'<a href="javascript:void();" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm editbtn" > Baja</a>';
-    } else {
-        $sub_array[] = 'Deshabilitado';
-    }
-    // $sub_array[] = $row['estado_m'];
-    // $sub_array[] = $row['city'];
-
-    if ($row['estado_m'] == 1) {
-        $sub_array[] = ' <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" >Desvincular</a> ';
-        // $sub_array[] = 'Habilitado' .
-        // 	'<a href="javascript:void();" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm editbtn" > Baja</a>';
-    } else {
-        $sub_array[] = '<a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" >Desvincular</a>';
-    }
-
+    $sub_array[] = $row['estado_m'];
+    $sub_array[] = ' <a href="#" data-id="' . $row['id'] . '"   class="btn btn-primary btnAgregarMateria m-1 rounded"  data-toggle="modal" data-target="#modal_form_asignar_materias"> Agregar Materia <i class="fa-solid fa-plus"></i></a>';
     $data[] = $sub_array;
 }
 
@@ -79,3 +60,4 @@ $output = array(
     'data' => $data,
 );
 echo  json_encode($output);
+

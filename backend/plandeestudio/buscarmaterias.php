@@ -1,21 +1,5 @@
 <?php
 include('../conexion.php');
-// $query = "SELECT * FROM `materias`";
-
-// $resultado = mysqli_query(conectame(), $query);
-
-// if (!$resultado) {
-//     die('Query Failed' . mysqli_error(conectame()));
-// } else {
-//     $array["data"] = []; // declaras un array
-//     while ($data = mysqli_fetch_assoc($resultado)) {
-//         $array["data"][] = $data;
-//     }
-//     echo json_encode($array); //el json encode te devuelve el json pero en formato string asi lo puede procesar el frontend
-// }
-// mysqli_free_result($resultado);
-// mysqli_close(conectame());
-
 
 
 
@@ -62,7 +46,7 @@ while ($row = mysqli_fetch_assoc($query)) {
     $sub_array[] = $row['nombre'];
     $sub_array[] = $row['abreviatura'];
     $sub_array[] = $row['estado_m'];
-    $sub_array[] = ' <a href="#" data-id="' . $row['id'] . '"   class="btn btn-primary btnAgregarMateria m-1 rounded"  data-toggle="modal" data-target="#modal_form_asignar_materias"> Agregar Materia <i class="fa-solid fa-plus"></i></a>';
+    $sub_array[] = ' <a href="#" data-id="' . $row['id'] . '"   class="btn btn-primary btnAgregarMateria m-1 rounded"  data-toggle="modal" data-target="#modal_form_asignar_materias"><i class="fa-solid fa-plus"></i> Agregar Materias </a>';
     $data[] = $sub_array;
 }
 

@@ -1,6 +1,9 @@
 <?php include('modulos/conexion.php');  ?>
 
+<?php 
+@$opcion = $_POST['id_planestudio'];
 
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -58,9 +61,12 @@
 
         <div id="layoutSidenav_content">
             <main>
+
+                <input class="boton_id_plan_oculto" type="text" value="<?php echo $opcion;?>">
+
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center ">
-                        <h1 class="mt-4 mb-4">PLAN DE ESTUDIO</h1>
+                        <h1 class="mt-4 mb-4">MATERIAS ASIGNADAS</h1>
                     </div>
 
                     <div class="card mb-4 ">
@@ -69,13 +75,12 @@
 
                                 <div class=" flex-grow-1 bd-highlight">
                                     <div class="bd-highlight w-75"> <i class="fas fa-table me-1"></i>
-                                        Planes de estudio
+                                        Materias
                                     </div>
                                 </div>
                                 <div class=" bd-highlight">
-                                    <div class=" flex-shrink-1 bd-highlight"> <a href="#!" data-id=""
-                                            data-toggle="modal" data-target="#modal_form_planes"
-                                            class="btn btn-primary btn-sm  btnAgregar">Nuevo Plan de Estudio
+                                    <div class=" flex-shrink-1 bd-highlight"> <a href="plandeestudio.php" 
+                                            class="btn btn-warning btn-sm  btnAgregar">Volver
                                         </a>
                                     </div>
                                 </div>
@@ -83,13 +88,12 @@
 
                         </div>
                         <div class="card-body table-responsive">
-                            <table id="planes" class="table-bordered">
+                            <table id="materias" class="table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Titulo</th>
                                         <th>Nombre</th>
-                                        <th>Resolucion</th>
+                                        <th>abreviatura</th>
                                         <th>Estado</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -195,13 +199,13 @@
                             <div class="d-flex align-items-center justify-content-center">
                                 <h4 class="mt-2">Materias de: </h4>
                                 <h4 class="ms-1 mt-2" id="plan_titulo"> </h4>
-            
+                                <form action="" method="POST">
 
-                                <form action="ver_materias_asignadas_plan.php" method="POST">
+                                <form action="" method="POST">
 
-                                    <input type="text"  class="boton_id_plan_oculto">
-                                    <button type="submit" value="" name="id_planestudio"
-                                        class="btn btn-info ms-2  btnVerMaterias"> VER MATERIAS ASIGNADAS
+                                    <button type="submit" value="" name=""
+                                        class="btn btn-info ms-2"><i class="fa-solid fa-plus"></i> Asignar
+                                        Materias 
                                     </button>
                                 </form>
 
@@ -277,69 +281,25 @@
 
 </body>
 
-<script>
-$(document).on("click", ".btnMaterias", function() {
-
-    opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
-    var id = $(this).data('id');
-    console.log(id);
-    //Asi se obtiene el id del plan porque tiene cargado en el atributo data el id el boton
-    $.ajax({
-        url: "../../backend/plandeestudio/crudplandeestudio.php",
-        data: {
-            opcion: opcion,
-            id: id
-        },
-        type: 'post',
-        success: function(data) {
-            var json = JSON.parse(data); //lees los datos json o sea los convertis a string
-
-            var nombre_plan = json.nombre;
-            $(" #plan_titulo").text(nombre_plan);
-
-            $(" .btnAsignarMaterias").val(json.id);
-            $(" .btnVerMaterias").val(json.id);
-
-            $(' .boton_id_plan_oculto').val(json.id)
-
-            // $(" .btnAsignarMaterias").attr("href", "asignarmaterias.php?id='+id+'");
-
-            // window.location.href =
-            //     "http://www.gorissen.info/Pierre/maps/googleMapLocation.php?lat=" + elemA +
-            //     "&lon=" + elemB + "&setLatLon=Set"
-
-
-        }
-    })
-
-
-});
-</script>
-
-<script>
-
-$(document).on("click", ".btnVerMaterias", function() {
-
-    var id_planestudio = $(".boton_id_plan_oculto").val();
-
-  console.log(id_planestudio);
-
-
-//Asi se obtiene el id del plan porque tiene cargado en el atributo data el id el boton
-
-
-
-
-});
-
-</script>
 
 <script>
 $(document).ready(function() {
 
+    var id_planestudio = $(".boton_id_plan_oculto").val();
 
+    $.ajax({
+    url: "../../backend/plandeestudio/buscarmaterias_asignadasaunplan.php",
+    data: {
+        id_planestudio: id_planestudio
+    },
+    type: 'post',
+    success: function(data) {
+       // alert(data);
+      
+    }
+    })
 
-    $('#planes').DataTable({
+    $('#materias').DataTable({
         "fnCreatedRow": function(nRow, aData, iDataIndex) {
             $(nRow).attr('id', aData[0]);
         },
@@ -348,7 +308,7 @@ $(document).ready(function() {
         'paging': 'true',
         'order': [],
         'ajax': {
-            'url': '../../backend/plandeestudio/buscarplan.php',
+            'url': '../../backend/plandeestudio/buscarmaterias_asignadasaunplan.php',
             'type': 'post',
         },
         "aoColumnDefs": [{
@@ -498,231 +458,6 @@ $(document).ready(function() {
 });
 </script>
 
-
-
-<script>
-//EDITAR  PLANES
-$(document).on("click", ".btneditar", function() {
-
-
-
-    opcion = 5; //PRIMERO OPCION 5 PARA QUE AGARRE LOS DATOS
-
-
-    /**
-     * MODIFICACIONES MODAL
-     */
-    document.getElementById("boton_agregar_form").style.display = "none";
-
-    document.getElementById("boton_editar_form").style.display = "block";
-
-    /**
-     * CSS MODAL
-     */
-    $(".modal-header").css("background-color", "#17a2b8");
-    $(".modal-header").css("color", "white");
-    $("#boton_editar_form").css("background-color", "#17a2b8");
-    $("#boton_editar_form").css("color", "white");
-    $(".modal-title").text("Editar Plan de Estudio");
-
-
-
-
-    var tablaplanes = $('#planes').DataTable();
-
-    var id = $(this).data('id');
-
-    console.log(id);
-
-
-    if (opcion === 5) {
-
-        $.ajax({
-            url: "../../backend/plandeestudio/crudplandeestudio.php",
-            data: {
-                opcion: opcion,
-                id: id
-            },
-            type: 'post',
-            success: function(data) {
-                var json = JSON.parse(data);
-                $('#input_titulo_plan').val(json.titulo); //valor de la base de datos
-                $('#input_nombre_plan').val(json.nombre);
-                $('#input_resolucion_plan').val(json.resolucion);
-                $('#input_estado_p_plan').val(json.estado_p);
-                $('#input_id_plan').val(id);
-
-                opcion = 2; //UNA VEZ QUE AGARRA LOS DATOS LOS ENVIA  A LA OPCION 2
-
-                if (opcion === 2) {
-
-
-                    $("#boton_editar_form").click(function() {
-
-                        console.log('ESTA ACA EN OPCION 2 EDITAR');
-
-
-                        var titulo_plan = $('#input_titulo_plan').val();
-                        var nombre_plan = $('#input_nombre_plan').val();
-                        var resolucion_plan = $('#input_resolucion_plan').val();
-                        var estado_plan = $('#input_estado_p_plan').val();
-
-                        var id = $('#input_id_plan').val();
-                        //console.log(titulo_plan, nombre_plan, resolucion_plan, estado_plan , id);
-
-
-                        if (titulo_plan != '' && nombre_plan != '' && resolucion_plan !=
-                            '' &&
-                            estado_plan != '') {
-
-                            Swal.fire({
-                                title: 'Editar Plan de Estudio',
-                                text: "Esta seguro que desea editar este Plan?",
-                                icon: 'warning',
-                                showCancelButton: true,
-                                confirmButtonColor: '#3085d6',
-                                cancelButtonColor: '#d33',
-                                confirmButtonText: 'Si, estoy seguro',
-                                cancelButtonText: 'Cancelar'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-
-
-                                    $.ajax({
-                                        url: "../../backend/plandeestudio/crudplandeestudio.php",
-                                        type: "post",
-                                        data: {
-                                            opcion: opcion,
-                                            titulo_plan: titulo_plan,
-                                            nombre_plan: nombre_plan,
-                                            resolucion_plan: resolucion_plan,
-                                            estado_plan: estado_plan,
-                                            id: id
-                                        },
-                                        success: function(data) {
-                                            var json = JSON.parse(data);
-                                            var status = json.status;
-                                            if (status == 'success') {
-
-                                                Swal.fire(
-                                                    'Plan de Estudio Editado!',
-                                                    'El Plan de Esudio ha sido editado con exito!',
-                                                    'success'
-                                                ).then(() => {
-
-                                                    $("#modal_form_planes")
-                                                        .trigger(
-                                                            "reset"
-                                                        ); //Reiniciar el formulario
-                                                    $("#modal_form_planes .close")
-                                                        .click(); //Cerrar el formulario
-
-
-                                                    tablaplanes
-                                                        = $(
-                                                            '#planes'
-                                                        )
-                                                        .DataTable();
-
-                                                    if (estado_plan ==
-                                                        1) {
-                                                        var texto_estado =
-                                                            'Habilitado';
-                                                        var button =
-                                                            '<td><a href="#!" data-id="' +
-                                                            id +
-                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_planes"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#!"  data-id="' +
-                                                            id +
-                                                            '"  class="btn btn-danger btn-sm btneliminar"><i class="fa-solid fa-trash-can"></i></a> <a href="#!"  data-id="' +
-                                                            id +
-                                                            '"  class="btn btn-warning btn-sm btndardebaja" style="background-color: #fc8403; color: white;">Deshabilitar <i class="fa-solid fa-arrow-down"></i></a></td> <a href="#" data-id="' +
-                                                            id +
-                                                            '"  class="btn btn-secondary btn-sm btnMaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio">Materias</a>';
-
-                                                    } else {
-                                                        texto_estado
-                                                            =
-                                                            'Deshabilitado';
-                                                        var button =
-                                                            '<td><a href="#!" data-id="' +
-                                                            id +
-                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_planes"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#"  data-id="' +
-                                                            id +
-                                                            '"  class="btn btn-danger btn-sm btneliminar"><i class="fa-solid fa-trash-can"></i></a> <a href="#"  data-id="' +
-                                                            id +
-                                                            '"  class="btn btn-success btn-sm btndardardealta">Habilitar <i class="fa-solid fa-arrow-up"></i></a></td> <a href="#" data-id="' +
-                                                            id +
-                                                            '"  class="btn btn-secondary btn-sm btnMaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio" >Materias</a>';
-                                                    }
-
-
-                                                    //En el codigo de abajo dibuja la tabla
-                                                    var row =
-                                                        tablaplanes
-                                                        .row(
-                                                            "[id='" +
-                                                            id +
-                                                            "']"
-                                                        );
-                                                    //el table es del table de arriba table = $('example').Datatable();
-                                                    row.row("[id='" +
-                                                            id +
-                                                            "']"
-                                                        )
-                                                        .data([id,
-                                                            titulo_plan,
-                                                            nombre_plan,
-                                                            resolucion_plan,
-                                                            texto_estado,
-                                                            button
-                                                        ]);
-
-
-                                                });
-
-
-                                            } else { //si el estado no es success ( o sea error en la consulta o algo)
-                                                Swal.fire({
-                                                    icon: "error",
-                                                    title: "Oops...",
-                                                    text: "Revisa los campos nuevamente",
-                                                    //  footer: '<a href="">Why do I have this issue?</a>'
-                                                });
-                                            }
-                                        }
-                                    });
-
-                                }
-                            })
-
-                        } else {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops...",
-                                text: "Por favor no deje ningun campo vacio",
-                                //  footer: '<a href="">Why do I have this issue?</a>'
-                            });
-                        }
-
-
-                    });
-
-
-
-
-                }
-
-
-            }
-        })
-    }
-
-
-
-
-
-}); // TERMINA EDITAR  PLANES
-</script>
 
 
 <script>
