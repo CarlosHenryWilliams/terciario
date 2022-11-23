@@ -286,18 +286,8 @@
 $(document).ready(function() {
 
     var id_planestudio = $(".boton_id_plan_oculto").val();
-
-    $.ajax({
-    url: "../../backend/plandeestudio/buscarmaterias_asignadasaunplan.php",
-    data: {
-        id_planestudio: id_planestudio
-    },
-    type: 'post',
-    success: function(data) {
-       // alert(data);
-      
-    }
-    })
+    console.log(id_planestudio);
+  
 
     $('#materias').DataTable({
         "fnCreatedRow": function(nRow, aData, iDataIndex) {
@@ -309,6 +299,9 @@ $(document).ready(function() {
         'order': [],
         'ajax': {
             'url': '../../backend/plandeestudio/buscarmaterias_asignadasaunplan.php',
+            'data': {
+                'id_planestudio: id_planestudio'ç
+             },
             'type': 'post',
         },
         "aoColumnDefs": [{

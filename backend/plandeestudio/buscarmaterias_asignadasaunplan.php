@@ -19,26 +19,6 @@ $columns = array(
     3 => 'estado_m',
 );
 
-if (isset($_POST['search']['value'])) {
-    $search_value = $_POST['search']['value'];
-    $sql .= " AND materias.nombre like '%" . $search_value . "%'";
-    $sql .= " OR abreviatura like '%" . $search_value . "%'";
-    $sql .= " OR estado_m like '%" . $search_value . "%'";
-}
-
-if (isset($_POST['order'])) {
-    $column_name = $_POST['order'][0]['column'];
-    $order = $_POST['order'][0]['dir'];
-    $sql .= " ORDER BY " . $columns[$column_name] . " " . $order . "";
-} else {
-    $sql .= " ORDER BY materias.id desc";
-}
-
-if ($_POST['length'] != -1) {
-    $start = $_POST['start'];
-    $length = $_POST['length'];
-    $sql .= " LIMIT  " . $start . ", " . $length;
-}
 
 $query = mysqli_query(conectame(), $sql);
 $count_rows = mysqli_num_rows($query);
@@ -59,5 +39,7 @@ $output = array(
     'recordsFiltered' =>   $total_all_rows,
     'data' => $data,
 );
+    
+
 echo  json_encode($output);
 
