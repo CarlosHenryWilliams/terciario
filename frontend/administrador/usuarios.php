@@ -279,7 +279,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form id="addUser" action="">
+                            <form id="" action="">
                                 <div class="mb-3 row">
                                     <label for="nombre_materia" class="col-md-3 form-label">Nombre</label>
 
@@ -312,6 +312,91 @@
                             <button type="submit" id="boton_agregar_form" class="btn btn-primary">Agregar</button>
                             <button type="submit" id="boton_editar_form" class="btn btn-primary">Editar</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <!-- MODAL ASIGNAR MATERIAS-->
+            <div class="modal fade" id="modal_vincular_plan" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="exampleModalLabel">Vincular Plan</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                        <div class="modal-body">
+                            <h5>Planes a Vincular</h5>
+                            <form id="" action="">
+                                <div class="mb-3 row">
+
+                                    <!-- 
+                                    <input type="text" class="form-control" id="input_id_plan_de_estudio" name=""
+                                        value="" required> -->
+
+                                    <!-- <input type="text" class="form-control" id="input_id_plan_de_estudio" name="" value="<?php echo $id_boton_plan ?>" required> -->
+                                    <!-- <input type="text" class="form-control" id="input_dni_usuario" name="" required> -->
+
+
+                                    </label>
+
+
+                                    <div class="col-md-9">
+
+                                        <select class="form-select" aria-label="Default select example"
+                                            id="input_ano_cursada" name="nombre" required>
+                                            <option value="">Por favor seleccione el plan de estudio</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+
+
+                                        </select>
+
+                                    </div>
+
+
+
+                                </div>
+
+                                <!-- <div class="mb-3 row">
+                                    <label for="input_periodo_cursada" class="col-md-3 form-label">Periodo</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="estado_m_materia" name="mobile">
+
+                                        <select class="form-select" aria-label="Default select example"
+                                            id="input_periodo_cursada" name="estado" required>
+                                            <option value="">Por favor seleccione el periodo de cursada</option>
+                                            <option value="1er Cuatrimestre">1er Cuatrimestre</option>
+                                            <option value="2do Cuatrimestre">2do Cuatrimestre</option>
+                                            <option value="Anual">Anual</option>
+
+                                        </select>
+                                    </div>
+                                </div> -->
+
+                                <div class="text-center">
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" id="boton_agregar_form"
+                                        class="btn btn-primary">Agregar</button>
+
+                                </div>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -379,6 +464,222 @@
 
 
 </body>
+
+
+<script>
+//EDITAR  MATERIAAA
+$(document).on("click", ".btnvincularplan", function() {
+
+
+    opcion = 5; //PRIMERO OPCION 5 PARA QUE AGARRE LOS DATOS
+
+
+
+
+    /**
+     * CSS MODAL
+     */
+    $(".modal-header").css("background-color", "#17a2b8");
+    $(".modal-header").css("color", "white");
+    $("#boton_editar_form").css("background-color", "#17a2b8");
+    $("#boton_editar_form").css("color", "white");
+    $(".modal-title").text("Vincular Plan");
+
+
+
+
+
+    // var dni = $(this).data('dni');
+    var dni = $(this).attr("data-dni");
+    var id = $(this).attr("data-id");
+
+    console.log(dni);
+    console.log(id);
+
+    if (opcion === 5) {
+
+        $.ajax({
+            url: "../../backend/usuarios/crudusuarios.php",
+            data: {
+                opcion: opcion,
+                id: id
+            },
+            type: 'post',
+            success: function(data) {
+                var json = JSON.parse(data);
+
+                $("#input_id_rol").val(json.id);
+
+                document.getElementById("nombre_modal_rol").innerHTML = json.nombre;
+                document.getElementById("dni_modal_rol").innerHTML = json.dni;
+
+                // $("#nombre_modal_rol").val(json.nombre);
+                // $("#dni_modal_rol").val(json.dni);
+
+
+
+                opcion = 2; //UNA VEZ QUE AGARRA LOS DATOS LOS ENVIA  A LA OPCION 2 QUE ES EDITAR
+
+                if (opcion === 2) {
+
+
+                    $("#boton_editar_form").click(function() {
+
+                        console.log('ESTA ACA EN OPCION 2 EDITAR');
+
+
+                        var nombre_rol = $('#input_nombre_rol').val();
+                        var estado_r_rol = $('#input_estado_r_rol').val();
+
+                        var id = $('#input_id_rol').val();
+
+
+                        if (nombre_rol != '' && estado_r_rol != '' &&
+                            id != '') {
+
+                            Swal.fire({
+                                title: 'Editar Rol',
+                                text: "Esta seguro que desea editar el Rol?",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Si, estoy seguro',
+                                cancelButtonText: 'Cancelar'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+
+
+                                    $.ajax({
+                                        url: "../../backend/roles/crudroles.php",
+                                        type: "post",
+                                        data: {
+                                            opcion: opcion,
+                                            nombre_rol: nombre_rol,
+                                            estado_r_rol: estado_r_rol,
+                                            id: id
+                                        },
+                                        success: function(data) {
+                                            var json = JSON.parse(data);
+                                            var status = json.status;
+                                            if (status == 'success') {
+
+
+                                                Swal.fire(
+                                                    'Rol Editado!',
+                                                    'El Rol ha sido editado con exito!',
+                                                    'success'
+                                                ).then(() => {
+
+                                                    $("#modal_form_rol")
+                                                        .trigger(
+                                                            "reset"
+                                                        ); //Reiniciar el formulario
+                                                    $("#modal_form_rol .close")
+                                                        .click(); //Cerrar el formulario
+
+
+                                                    tablaroles
+                                                        = $(
+                                                            '#roles'
+                                                        )
+                                                        .DataTable();
+
+                                                    if (estado_r_rol ==
+                                                        1) {
+                                                        var texto_estado =
+                                                            'Habilitado';
+                                                        var button =
+                                                            '<td><a href="#!" data-id="' +
+                                                            id +
+                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_rol">Editar</a>  <a href="#!"  data-id="' +
+                                                            id +
+                                                            '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#!"  data-id="' +
+                                                            id +
+                                                            '"  class="btn btn-warning btn-sm btndardebaja">Dar de Baja</a></td>';
+
+                                                    } else {
+                                                        texto_estado
+                                                            =
+                                                            'Deshabilitado';
+                                                        var button =
+                                                            '<td><a href="#!" data-id="' +
+                                                            id +
+                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_rol">Editar</a>  <a href="#"  data-id="' +
+                                                            id +
+                                                            '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#"  data-id="' +
+                                                            id +
+                                                            '"  class="btn btn-success btn-sm btndardealta">Dar de Alta</a></td>';
+                                                    }
+
+
+                                                    //En el codigo de abajo dibuja la tabla
+                                                    var row =
+                                                        tablaroles
+                                                        .row(
+                                                            "[id='" +
+                                                            id +
+                                                            "']"
+                                                        );
+                                                    //el table es del table de arriba table = $('example').Datatable();
+                                                    row.row("[id='" +
+                                                            id +
+                                                            "']"
+                                                        )
+                                                        .data([id,
+                                                            nombre_rol,
+                                                            texto_estado,
+                                                            button
+                                                        ]);
+
+
+                                                });
+
+
+                                            } else { //si el estado no es success ( o sea error en la consulta o algo)
+                                                Swal.fire({
+                                                    icon: "error",
+                                                    title: "Oops...",
+                                                    text: "Revisa los campos nuevamente",
+                                                    //  footer: '<a href="">Why do I have this issue?</a>'
+                                                });
+                                            }
+                                        }
+                                    });
+
+                                }
+                            })
+
+                        } else {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Por favor no deje ningun campo vacio",
+                                //  footer: '<a href="">Why do I have this issue?</a>'
+                            });
+                        }
+
+
+                    });
+
+
+
+
+                }
+
+
+            }
+        })
+    }
+
+
+
+
+
+}); // TERMINA EDITAR  MATERIA
+</script>
+
+
 <script>
 $(document).ready(function() {
     $('#usuarios').DataTable({
