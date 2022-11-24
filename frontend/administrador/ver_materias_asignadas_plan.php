@@ -62,7 +62,7 @@
         <div id="layoutSidenav_content">
             <main>
 
-                <input class="boton_id_plan_oculto" type="text" value="<?php echo $opcion;?>">
+                <input class="boton_id_plan_oculto" id="boton_id_plan_oculto" type="text" value="<?php echo $opcion;?>">
 
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center ">
@@ -287,7 +287,8 @@ $(document).ready(function() {
 
     var id_planestudio = $(".boton_id_plan_oculto").val();
     console.log(id_planestudio);
-  
+    
+   
 
     $('#materias').DataTable({
         "fnCreatedRow": function(nRow, aData, iDataIndex) {
@@ -300,8 +301,8 @@ $(document).ready(function() {
         'ajax': {
             'url': '../../backend/plandeestudio/buscarmaterias_asignadasaunplan.php',
             'data': {
-                'id_planestudio: id_planestudio'ç
-             },
+                id_planestudio: id_planestudio
+            },
             'type': 'post',
         },
         "aoColumnDefs": [{

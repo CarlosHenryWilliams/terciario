@@ -6,7 +6,7 @@ $id_plan_de_estudio = $_POST['id_planestudio'];
 
 
 $output = array();
-$sql = "SELECT * FROM materias  INNER JOIN planestudio_materia ON materias.id = planestudio_materia.id_materias INNER JOIN plan_estudio ON plan_estudio.id = planestudio_materia.id_plan_estudio WHERE id_plan_estudio = $id_plan_de_estudio";
+$sql = "SELECT * FROM materias INNER JOIN planestudio_materia ON materias.id = planestudio_materia.id_materias INNER JOIN plan_estudio ON plan_estudio.id = planestudio_materia.id_plan_estudio WHERE id_plan_estudio = $id_plan_de_estudio";
 
 
 $totalQuery = mysqli_query(conectame(), $sql);
