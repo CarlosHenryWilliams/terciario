@@ -1,10 +1,11 @@
 <?php
 include('../conexion.php');
 
-
+$id_plan_de_estudio = $_POST['id_planestudio'];
 
 $output = array();
-$sql = "SELECT * FROM `materias`";
+$sql = "SELECT * FROM materias WHERE materias.id NOT IN (SELECT planestudio_materia.id_materias FROM planestudio_materia WHERE planestudio_materia.id_plan_estudio = $id_plan_de_estudio );";
+
 
 $totalQuery = mysqli_query(conectame(), $sql);
 $total_all_rows = mysqli_num_rows($totalQuery);
@@ -16,26 +17,27 @@ $columns = array(
     3 => 'estado_m',
 );
 
-if (isset($_POST['search']['value'])) {
-    $search_value = $_POST['search']['value'];
-    $sql .= " WHERE nombre like '%" . $search_value . "%'";
-    $sql .= " OR abreviatura like '%" . $search_value . "%'";
-    $sql .= " OR estado_m like '%" . $search_value . "%'";
-}
+// if (isset($_POST['search']['value'])) {
+//     $search_value = $_POST['search']['value'];
+//     $sql .= " AND materias.nombre like '%" . $search_value . "%'";
+//     $sql .= " OR abreviatura like '%" . $search_value . "%'";
+//     $sql .= " OR estado_m like '%" . $search_value . "%'";
+// }
 
-if (isset($_POST['order'])) {
-    $column_name = $_POST['order'][0]['column'];
-    $order = $_POST['order'][0]['dir'];
-    $sql .= " ORDER BY " . $columns[$column_name] . " " . $order . "";
-} else {
-    $sql .= " ORDER BY id desc";
-}
+// if (isset($_POST['order'])) {
+//     $column_name = $_POST['order'][0]['column'];
+//     $order = $_POST['order'][0]['dir'];
+//     $sql = "SELECT * FROM materias WHERE materias.id NOT IN (SELECT planestudio_materia.id_materias FROM planestudio_materia WHERE planestudio_materia.id_plan_estudio = $id_plan_de_estudio ";
+//     $sql .= " ORDER BY " . $columns[$column_name] . " " . $order . ")";
+// } else {
+//     $sql .= " ORDER BY materias.id desc)";
+// }
 
-if ($_POST['length'] != -1) {
-    $start = $_POST['start'];
-    $length = $_POST['length'];
-    $sql .= " LIMIT  " . $start . ", " . $length;
-}
+// if ($_POST['length'] != -1) {
+//     $start = $_POST['start'];
+//     $length = $_POST['length'];
+//     $sql .= " LIMIT  " . $start . ", " . $length;
+// }
 
 $query = mysqli_query(conectame(), $sql);
 $count_rows = mysqli_num_rows($query);

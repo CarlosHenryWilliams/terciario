@@ -65,8 +65,8 @@
 
                 ?>
 
+                <input class="boton_id_plan_oculto" type="text" value="<?php echo $id_boton_plan; ?>">
 
-                <p><?php echo $id_boton_plan ?></p>
                 <div class="container">
 
                     <div class="d-flex align-items-center ">
@@ -352,6 +352,10 @@ $(document).on("click", ".btnAgregarMateria", function() {
 
 <script>
 $(document).ready(function() {
+
+    var id_planestudio = $(".boton_id_plan_oculto").val();
+    console.log(id_planestudio);
+
     $('#tabla_materias').DataTable({
         "fnCreatedRow": function(nRow, aData, iDataIndex) {
             $(nRow).attr('id', aData[0]);
@@ -362,6 +366,9 @@ $(document).ready(function() {
         'order': [],
         'ajax': {
             'url': '../../backend/plandeestudio/buscarmaterias.php',
+            'data': {
+                id_planestudio: id_planestudio
+            },
             'type': 'post',
         },
         "aoColumnDefs": [{

@@ -24,7 +24,7 @@ $columns = array(
 //     $search_value = $_POST['search']['value'];
 //     $sql .= " AND materias.estado_m like '%" . $search_value . "%'";
 //     $sql .= " OR materias.abreviatura like '%" . $search_value . "%'";
-//     $sql .= " OR materias.nombre like '%" . $search_value . "%'";
+//     $sql .= " OR  materias.nombre like '%" . $search_value . "%'";
 // }
 
 if (isset($_POST['order'])) {
