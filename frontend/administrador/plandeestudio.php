@@ -185,26 +185,27 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="asignarmaterias.php" method="POST">
 
-                                <button type="submit" value="" name="id_boton_plan"
-                                    class="btn btn-info btnAsignarMaterias"><i class="fa-solid fa-plus"></i> Asignar
-                                    Materias </button>
-                            </form>
+                            
 
                             <div class="d-flex align-items-center justify-content-center">
                                 <h4 class="mt-2">Materias de: </h4>
                                 <h4 class="ms-1 mt-2" id="plan_titulo"> </h4>
-            
-
+                            </div> <hr style="width: 100%; color: black;">
+                            <div class="d-flex align-items-center justify-content-center">
                                 <form action="ver_materias_asignadas_plan.php" method="POST">
 
                                     <input type="hidden"  class="boton_id_plan_oculto">
                                     <button type="submit" value="" name="id_planestudio"
-                                        class="btn btn-info ms-2  btnVerMaterias"> VER MATERIAS ASIGNADAS
+                                        class="btn btn-success m-3  btnVerMaterias" data-toggle="tooltip" data-placement="bottom" title="Ver materias asignadas">Ver materias asignadas
                                     </button>
                                 </form>
+                                <form action="asignarmaterias.php" method="POST">
 
+                                    <button type="submit" value="" name="id_boton_plan"
+                                    class="btn btn-primary btnAsignarMaterias" data-toggle="tooltip" data-placement="bottom" title="Asignar nueva materia">Asignar nueva materia
+                                    </button>
+                                </form>
                             </div>
 
                         

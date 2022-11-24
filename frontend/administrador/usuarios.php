@@ -115,7 +115,7 @@
                                         <th>Clave</th>
                                         <th>Fecha_inscripcion</th>
                                         <th>Estado</th>
-                                        <th>Acciones</th>
+                                        <th class="col-12">Acciones...................................</th>
                                     </tr>
                                 </thead>
 
@@ -394,7 +394,7 @@
 
                                 <div class="modal-footer">
                                     <button type="button" id="boton_vincular_form"
-                                        class="btn btn-primary">Vincular</button>
+                                        class="btn btn-info">Vincular</button>
 
                                 </div>
                             </form>
@@ -595,11 +595,11 @@ $(document).on("click", ".btnvincularplan", function() {
                                                         var button =
                                                             '<td><a href="#!" data-id="' +
                                                             id +
-                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_rol">Editar</a>  <a href="#!"  data-id="' +
+                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_rol" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#!"  data-id="' +
                                                             id +
-                                                            '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#!"  data-id="' +
+                                                            '"  class="btn btn-danger btn-sm btneliminar" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa-solid fa-trash-can"></i></a> <a href="#!"  data-id="' +
                                                             id +
-                                                            '"  class="btn btn-warning btn-sm btndardebaja">Dar de Baja</a></td>';
+                                                            '"  class="btn btn-warning btn-sm btndardebaja" style="background-color: #fc8403; color: white;" data-toggle="tooltip" data-placement="bottom" title="Deshabilitar"><i class="fa-solid fa-arrow-down"></i></a></td>';
 
                                                     } else {
                                                         texto_estado
@@ -608,11 +608,11 @@ $(document).on("click", ".btnvincularplan", function() {
                                                         var button =
                                                             '<td><a href="#!" data-id="' +
                                                             id +
-                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_rol">Editar</a>  <a href="#"  data-id="' +
+                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_rol" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#"  data-id="' +
                                                             id +
-                                                            '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#"  data-id="' +
+                                                            '"  class="btn btn-danger btn-sm btneliminar" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa-solid fa-trash-can"></i></a> <a href="#"  data-id="' +
                                                             id +
-                                                            '"  class="btn btn-success btn-sm btndardealta">Dar de Alta</a></td>';
+                                                            '"  class="btn btn-success btn-sm btndardealta" data-toggle="tooltip" data-placement="bottom" title="Habilitar"><i class="fa-solid fa-arrow-up"></i></a></td>';
                                                     }
 
 
@@ -963,11 +963,11 @@ $(document).on("click", ".btnroles", function() {
                                                         var button =
                                                             '<td><a href="#!" data-id="' +
                                                             id +
-                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_rol">Editar</a>  <a href="#!"  data-id="' +
+                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_rol" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#!"  data-id="' +
                                                             id +
-                                                            '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#!"  data-id="' +
+                                                            '"  class="btn btn-danger btn-sm btneliminar" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa-solid fa-trash-can"></i></a> <a href="#!"  data-id="' +
                                                             id +
-                                                            '"  class="btn btn-warning btn-sm btndardebaja">Dar de Baja</a></td>';
+                                                            '"  class="btn btn-warning btn-sm btndardebaja" style="background-color: #fc8403; color: white;" data-toggle="tooltip" data-placement="bottom" title="Deshabilitar"><i class="fa-solid fa-arrow-down"></i></a></td>';
 
                                                     } else {
                                                         texto_estado
@@ -976,11 +976,11 @@ $(document).on("click", ".btnroles", function() {
                                                         var button =
                                                             '<td><a href="#!" data-id="' +
                                                             id +
-                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_rol">Editar</a>  <a href="#"  data-id="' +
+                                                            '" class="btn btn-info btn-sm btneditar" data-toggle="modal" data-target="#modal_form_rol" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#"  data-id="' +
                                                             id +
-                                                            '"  class="btn btn-danger btn-sm btneliminar">Eliminar</a> <a href="#"  data-id="' +
+                                                            '"  class="btn btn-danger btn-sm btneliminar" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa-solid fa-trash-can"></i</a> <a href="#"  data-id="' +
                                                             id +
-                                                            '"  class="btn btn-success btn-sm btndardealta">Dar de Alta</a></td>';
+                                                            '"  class="btn btn-success btn-sm btndardealta" data-toggle="tooltip" data-placement="bottom" title="Habilitar"><i class="fa-solid fa-arrow-up"></i></a></td>';
                                                     }
 
 
