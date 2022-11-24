@@ -65,7 +65,7 @@
 
                 ?>
 
-                <input class="boton_id_plan_oculto" type="text" value="<?php echo $id_boton_plan; ?>">
+                <input class="boton_id_plan_oculto" type="hidden" value="<?php echo $id_boton_plan; ?>">
 
                 <div class="container">
 

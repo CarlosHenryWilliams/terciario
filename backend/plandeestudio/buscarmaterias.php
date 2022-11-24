@@ -33,11 +33,13 @@ $columns = array(
 //     $sql .= " ORDER BY materias.id desc)";
 // }
 
-// if ($_POST['length'] != -1) {
-//     $start = $_POST['start'];
-//     $length = $_POST['length'];
-//     $sql .= " LIMIT  " . $start . ", " . $length;
-// }
+if ($_POST['length'] != -1) {
+    $start = $_POST['start'];
+    $length = $_POST['length'];
+    // $sql .= " LIMIT  " . $start . ", " . $length;
+    $sql = "SELECT * FROM materias WHERE materias.id NOT IN (SELECT planestudio_materia.id_materias FROM planestudio_materia WHERE planestudio_materia.id_plan_estudio = $id_plan_de_estudio )  LIMIT  " . $start . ", " . $length;
+    "";
+}
 
 $query = mysqli_query(conectame(), $sql);
 $count_rows = mysqli_num_rows($query);
