@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2022 at 07:59 PM
+-- Generation Time: Nov 25, 2022 at 12:56 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -63,37 +63,54 @@ CREATE TABLE `materias` (
 --
 
 INSERT INTO `materias` (`id`, `nombre`, `abreviatura`, `estado_m`) VALUES
-(68, 'que onda perro', 'dsads', 2),
-(69, 'dale', 'amigoooo', 1),
-(70, 'one more', 'time', 1),
-(71, 'why', 'not', 1),
-(73, 'fafaf', 'fafafafa', 1),
-(74, 'y', 'ahora', 1),
-(75, 'Javier', 'dadada', 1),
-(77, 'Eskere', 'dsadsa', 1),
-(78, 'Jose', 'Barbabrie', 1),
-(79, 'Eskere', 'afsaf', 1),
-(80, 'Eskere', 'dadada', 0),
-(81, 'Eskere', 'dsadsa', 0),
-(82, 'Eskere', 'dadada', 0),
-(84, 'Eskere', 'dadada', 0),
-(85, 'Eskere', 'dadada', 0),
-(138, 'Cambie el titulo', 'alexander_2001_12@hotmail.com', 0),
-(139, 'Charly', 'W', 0),
-(140, 'Charly', 'a', 0),
-(143, 'Charly', 'a', 0),
-(144, 'Charly', 'ese', 1),
-(145, 'No di', 'maria', 0),
-(146, 'No di', 'maria', 0),
-(149, 'fsafas', 'fsafa', 1),
-(150, 'Dewan2', 'Pavonisman2', 0),
-(175, 'Tomas', 'W', 1),
-(177, 'Tomas', 'ese', 1),
-(178, 'Mariveya', 'W', 1),
-(179, 'Ahora si muchachos', 'Nosedigamas', 1),
-(180, 'Mariveya', 'Josemariallego', 0),
-(181, 'Tomas', 'Nisansdad', 1),
-(182, 'Mariveya', 'ese', 1);
+(1, 'Sistemas y Metodos', 'SYM', 1),
+(2, 'Analisis Matematico I', 'AM1', 1),
+(3, 'Sistemas Digitales I', 'SD1', 1),
+(4, 'Introduccion a la Programacion', 'IP', 1),
+(5, 'Derecho Aplicado a la Informatica', 'DAI', 1),
+(6, 'Algebra', 'ALG', 1),
+(7, 'Analisis Matematico II', 'AM2', 1),
+(8, 'Arquitectura de Computadores', 'AC', 1),
+(9, 'Base de Datos', 'BD', 1),
+(10, 'Estructura de Datos y Algoritmos', 'EDA', 1),
+(11, 'Introduccion a la Ingenieria de Software', 'IIS', 1),
+(12, 'Introduccion a las Comunicaciones', 'IC', 1),
+(13, 'Sistemas Operativos', 'SO', 1),
+(14, 'Laboratorio I', 'L1', 1),
+(15, 'Electiva II', 'Elect2', 1),
+(16, 'Analisis de Sistemas', 'AS', 1),
+(17, 'Probabilidad y Estadistica', 'PE', 1),
+(18, 'Computacion Aplicada', 'CA', 1),
+(19, 'Laboratorio II', 'L2', 1),
+(20, 'Algebra Lineal', 'AL', 1),
+(21, 'Diseño de Sistemas', 'DS', 1),
+(22, 'Fisica I', 'F1', 1),
+(23, 'Laboratorio III', 'L3', 1),
+(24, 'Laboratorio IV', 'L4', 1),
+(25, 'Auditoria de Sistemas', 'AS', 1),
+(26, 'Analisis Matematico III', 'A3', 1),
+(27, 'Quimica General', 'QG', 1),
+(28, 'Fisica II a', 'F2a', 1),
+(29, 'Sistemas de Representacion', 'SR', 1),
+(30, 'Fisica II b', 'F2b', 1),
+(31, 'Administracion de Proyectos', 'AP', 1),
+(32, 'Higiene, Seguridad y Ecologia', 'HSE', 1),
+(33, 'Lenguajes Formales y Automatas Finitos', 'LFAF', 1),
+(34, 'Laboratorio V', 'L5', 1),
+(35, 'Calculo Numerico', 'CN', 1),
+(36, 'Analisis de la Informacion y la Decision', 'AID', 1),
+(37, 'Planeamiento Estrategico', 'PE', 1),
+(38, 'Proyecto de Investigacion I', 'PI1', 1),
+(39, 'Seguridad de Redes', 'SR', 1),
+(40, 'Fundamentos de Economia y Finanzas', 'FEF', 1),
+(41, 'Inteligencia Artificial', 'IA', 1),
+(42, 'Practica Profesional Supervisada', 'PPS', 1),
+(43, 'Teoria de la Informacion', 'TI', 1),
+(44, 'Modelos y Simulacion', 'MS', 1),
+(45, 'Trabajo Final de Grado', 'TFG', 1),
+(46, 'Electiva IIII', 'Elect4', 1),
+(47, 'Electiva IIIII a', 'Elect5a', 1),
+(48, 'Electiva IIIII b', 'Elect5b', 1);
 
 -- --------------------------------------------------------
 
@@ -127,12 +144,54 @@ CREATE TABLE `planestudio_materia` (
 --
 
 INSERT INTO `planestudio_materia` (`id`, `id_plan_estudio`, `id_materias`, `ano_plan_materia`, `periodo_cursada`) VALUES
-(11, 9, 178, '3', '2do Cuatrimestre'),
-(12, 9, 181, '1/23', '2do Cuatrimestre'),
-(13, 9, 68, '2', '1er Cuatrimestre'),
-(14, 8, 69, '2', '1er Cuatrimestre'),
-(15, 9, 69, '2', 'Anual'),
-(16, 9, 71, '1', 'Anual');
+(1, 1, 1, '1', '1er Cuatrimestre'),
+(2, 1, 2, '1', '1er Cuatrimestre'),
+(3, 1, 3, '1', '1er Cuatrimestre'),
+(4, 1, 4, '1', '1er Cuatrimestre'),
+(5, 1, 5, '1', '1er Cuatrimestre'),
+(6, 1, 6, '1', '2do Cuatrimestre'),
+(7, 1, 7, '1', '2do Cuatrimestre'),
+(8, 1, 8, '1', '2do Cuatrimestre'),
+(9, 1, 9, '1', '2do Cuatrimestre'),
+(10, 1, 10, '1', '2do Cuatrimestre'),
+(11, 1, 11, '2', '1er Cuatrimestre'),
+(12, 1, 12, '2', '1er Cuatrimestre'),
+(13, 1, 13, '2', '1er Cuatrimestre'),
+(14, 1, 14, '2', '1er Cuatrimestre'),
+(15, 1, 15, '2', '1er Cuatrimestre'),
+(16, 1, 16, '2', '2do Cuatrimestre'),
+(17, 1, 17, '2', '2do Cuatrimestre'),
+(18, 1, 18, '2', '2do Cuatrimestre'),
+(19, 1, 19, '2', '2do Cuatrimestre'),
+(20, 1, 20, '2', '2do Cuatrimestre'),
+(21, 1, 21, '3', '1er Cuatrimestre'),
+(22, 1, 22, '3', '1er Cuatrimestre'),
+(23, 1, 23, '3', '1er Cuatrimestre'),
+(24, 1, 24, '3', '1er Cuatrimestre'),
+(25, 1, 25, '3', '1er Cuatrimestre'),
+(26, 1, 26, '3', '2do Cuatrimestre'),
+(27, 1, 27, '3', '2do Cuatrimestre'),
+(28, 1, 28, '3', '2do Cuatrimestre'),
+(29, 1, 29, '3', '2do Cuatrimestre'),
+(30, 1, 30, '3', '2do Cuatrimestre'),
+(31, 1, 31, '4', '1er Cuatrimestre'),
+(32, 1, 32, '4', '1er Cuatrimestre'),
+(33, 1, 33, '4', '1er Cuatrimestre'),
+(34, 1, 34, '4', '1er Cuatrimestre'),
+(35, 1, 35, '4', '1er Cuatrimestre'),
+(36, 1, 36, '4', '2do Cuatrimestre'),
+(37, 1, 37, '4', '2do Cuatrimestre'),
+(38, 1, 38, '4', '2do Cuatrimestre'),
+(39, 1, 39, '4', '2do Cuatrimestre'),
+(40, 1, 40, '5', '1er Cuatrimestre'),
+(41, 1, 41, '5', '1er Cuatrimestre'),
+(42, 1, 42, '5', '1er Cuatrimestre'),
+(43, 1, 43, '5', '2do Cuatrimestre'),
+(44, 1, 44, '5', '2do Cuatrimestre'),
+(45, 1, 45, '5', '2do Cuatrimestre'),
+(46, 1, 46, '4', '2do Cuatrimestre'),
+(47, 1, 47, '5', '1er Cuatrimestre'),
+(48, 1, 48, '5', '2do Cuatrimestre');
 
 -- --------------------------------------------------------
 
@@ -165,8 +224,7 @@ CREATE TABLE `plan_estudio` (
 --
 
 INSERT INTO `plan_estudio` (`id`, `titulo`, `nombre`, `resolucion`, `estado_p`) VALUES
-(8, 'Ingeniero en informatica', 'Ingenieria en Informatica', '1/22', 1),
-(9, 'Profesorado de Matematica', 'Profesorado de Matematica', '1/22', 1);
+(1, 'Ingeniero en Informatica', 'Ingenieria en Informatica', '1/22', 1);
 
 -- --------------------------------------------------------
 
@@ -351,7 +409,7 @@ ALTER TABLE `localidad`
 -- AUTO_INCREMENT for table `materias`
 --
 ALTER TABLE `materias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `notas`
@@ -363,7 +421,7 @@ ALTER TABLE `notas`
 -- AUTO_INCREMENT for table `planestudio_materia`
 --
 ALTER TABLE `planestudio_materia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `planestudio_usuario`
@@ -375,7 +433,7 @@ ALTER TABLE `planestudio_usuario`
 -- AUTO_INCREMENT for table `plan_estudio`
 --
 ALTER TABLE `plan_estudio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `roles`
