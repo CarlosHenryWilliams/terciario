@@ -175,9 +175,27 @@
                             <label for="nombre_materia" class="col-md-3 form-label">Año de cursada
                             </label>
 
+
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="input_ano_cursada" name="nombre" required>
+
+                                <select class="form-select" aria-label="Default select example" id="input_ano_cursada"
+                                    name="nombre" required>
+                                    <option value="">Por favor seleccione el año de cursada</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+
+
+                                </select>
+
                             </div>
+
+
+
                         </div>
 
                         <div class="mb-3 row">

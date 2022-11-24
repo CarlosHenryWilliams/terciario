@@ -143,7 +143,7 @@ switch ($opcion) {
 
 
         break;
-    case 4: //CASO 3 DAR DE ALTA
+    case 4: //CASO 4 DAR DE ALTA
         $id_materia = $_POST['id'];
         $sql = "UPDATE `materias` SET `estado_m`='1' WHERE `id` =$id_materia";
 
