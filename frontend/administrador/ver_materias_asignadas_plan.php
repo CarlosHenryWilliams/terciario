@@ -283,6 +283,10 @@
 
 
 <script>
+
+</script>
+
+<script>
 $(document).ready(function() {
 
     var id_planestudio = $(".boton_id_plan_oculto").val();
