@@ -1,7 +1,7 @@
 <?php include('modulos/conexion.php');  ?>
 
 <?php 
-@$opcion = $_POST['id_planestudio'];
+@$id_del_plan_oculto = $_POST['id_planestudio'];
 
 ?>
 
@@ -62,7 +62,7 @@
         <div id="layoutSidenav_content">
             <main>
 
-                <input class="boton_id_plan_oculto" id="boton_id_plan_oculto" type="text" value="<?php echo $opcion;?>">
+                <input class="boton_id_plan_oculto" type="hidden" value="<?php echo $id_del_plan_oculto;?>">
 
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center ">
@@ -312,7 +312,7 @@ $(document).ready(function() {
 
             {
                 // hide id_number column
-                "targets": [0],
+                "targets": [0,3],
                 "visible": false,
                 "searchable": false
             }

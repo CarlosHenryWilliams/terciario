@@ -66,7 +66,7 @@
                 ?>
 
 
-                <p><?php echo $id_boton_plan ?></p>
+                 <!--<p><?php /*echo $id_boton_plan*/ ?></p>-->
                 <div class="container">
 
                     <div class="d-flex align-items-center ">
@@ -94,8 +94,8 @@
                                 </div>
                                 <div class=" bd-highlight">
                                     <div class=" flex-shrink-1 bd-highlight">
-                                        <a href="#!" data-id="" class="btn btn-outline-info  btn-sm ">
-                                            GUARDAR
+                                        <a href="plandeestudio.php" data-id="" class="btn btn-warning  btn-sm ">
+                                            Volver
                                         </a>
                                         <!-- btn-sm hace que el boton sea pequeño -->
 

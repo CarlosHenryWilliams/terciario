@@ -199,7 +199,7 @@
 
                                 <form action="ver_materias_asignadas_plan.php" method="POST">
 
-                                    <input type="text"  class="boton_id_plan_oculto">
+                                    <input type="hidden"  class="boton_id_plan_oculto">
                                     <button type="submit" value="" name="id_planestudio"
                                         class="btn btn-info ms-2  btnVerMaterias"> VER MATERIAS ASIGNADAS
                                     </button>
