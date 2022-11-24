@@ -62,7 +62,7 @@
         <div id="layoutSidenav_content">
             <main>
 
-                <input class="boton_id_plan_oculto" type="text" value="<?php echo $id_del_plan_oculto; ?>">
+                <input class="boton_id_plan_oculto" type="hidden" value="<?php echo $id_del_plan_oculto; ?>">
 
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center ">
@@ -283,7 +283,75 @@
 
 
 <script>
+//AGREGAR   PLANES
+$(document).on("click", ".btnQuitarMateria", function() {
+    opcion = 1;
 
+    console.log(opcion);
+
+    /**
+     * MODIFICACIONES MODAL
+     */
+    var id_planestudio = $(".boton_id_plan_oculto").val();
+    console.log(id_planestudio);
+
+
+    var id_materia = $(this).data('id');
+
+    console.log(id_materia);
+
+    Swal.fire({
+        title: "Desvincular Materia",
+        text: "Realmente desea desvincular la Materia?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirmar",
+        cancelButtonText: "Cancelar",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            /**
+             * Si confirma el formulario lo envia por post mediante Jquery
+             */
+
+            $.ajax({
+                url: "../../backend/plandeestudio/desvincularmateria.php",
+                type: "post",
+                data: {
+                    id_planestudio: id_planestudio,
+                    id_materia: id_materia
+                },
+                success: function(data) {
+                    var json = JSON.parse(data);
+                    var status = json.status;
+                    if (status == 'success') {
+
+                        Swal.fire(
+                            "Buen Trabajo!",
+                            "La Materia ha sido desvinculada!",
+                            "success"
+                        ).then(() => {
+
+                            $("#" + id_materia).closest('tr').remove();
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Revisa los campos nuevamente",
+                            //  footer: '<a href="">Why do I have this issue?</a>'
+                        });
+                    }
+                }
+            });
+
+        }
+    });
+
+
+
+}); // TERMINA AGREGAR MATERIA
 </script>
 
 <script>
@@ -327,425 +395,10 @@ $(document).ready(function() {
 
 
 
-    //AGREGAR   PLANES
-    $(document).on("click", ".btnAgregar", function() {
-        opcion = 1;
 
-        console.log(opcion);
-
-        /**
-         * MODIFICACIONES MODAL
-         */
-
-        //HAGO LOS INPUTS VACIOS
-        $("#input_titulo_plan").val("");
-        $("#input_nombre_plan").val("");
-        $("#input_resolucion_plan").val("");
-        $("#input_estado_p_plan").val("");
-        $("#input_id_plan").val("");
-
-
-        // MUESTRO EL BOTON DE AGREGAR
-        document.getElementById("boton_agregar_form").style.display = "block";
-        // OCULTO EL BOTON DE EDITAR
-
-        document.getElementById("boton_editar_form").style.display = "none";
-
-
-        /**
-         * CSS MODAL
-         */
-        $(".modal-header").css("background-color", "#007bff");
-        $(".modal-header").css("color", "white");
-        $("#boton_agregar_form").css("background-color", "#007bff");
-        $("#boton_agregar_form").css("color", "white");
-        $(".modal-title").text("Agregar Plan de Estudio");
-
-        if (opcion === 1) {
-            //  MODAL AGREGAR
-            $("#boton_agregar_form").click(function() {
-
-                console.log('ESTA ACA EN OPCION 1 AGREGAR');
-                var titulo_plan = $('#input_titulo_plan').val();
-                var nombre_plan = $('#input_nombre_plan').val();
-                var resolucion_plan = $('#input_resolucion_plan').val();
-                var estado_p_plan = $('#input_estado_p_plan').val();
-
-                console.log(titulo_plan, nombre_plan, resolucion_plan, estado_p_plan);
-
-                if (
-                    titulo_plan == "" ||
-                    nombre_plan == "" ||
-                    resolucion_plan == "" ||
-                    estado_p_plan == ""
-                ) {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "Por favor no deje ningun campo vacio",
-                        //  footer: '<a href="">Why do I have this issue?</a>'
-                    });
-                } else {
-                    Swal.fire({
-                        title: "Los datos son correctos?",
-                        text: "El Plan de Estudio se cargara al sistema",
-                        icon: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        confirmButtonText: "Si, estoy seguro",
-                        cancelButtonText: "Cancelar",
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            /**
-                             * Si confirma el formulario lo envia por post mediante Jquery
-                             */
-
-                            $.ajax({
-                                url: "../../backend/plandeestudio/crudplandeestudio.php",
-                                type: "post",
-                                data: {
-                                    opcion: opcion,
-                                    titulo_plan: titulo_plan,
-                                    nombre_plan: nombre_plan,
-                                    resolucion_plan: resolucion_plan,
-                                    estado_p_plan: estado_p_plan
-                                },
-                                success: function(data) {
-                                    var json = JSON.parse(data);
-                                    var status = json.status;
-                                    if (status == 'true') {
-
-                                        Swal.fire(
-                                            "Buen Trabajo!",
-                                            "El Plan de Estudio ha sido cargado!",
-                                            "success"
-                                        ).then(() => {
-
-                                            $("#modal_form_planes")
-                                                .trigger(
-                                                    "reset"
-                                                ); //Reiniciar el formulario
-                                            $("#modal_form_planes .close")
-                                                .click(); //Cerrar el formulario
-
-                                            mytable = $('#planes')
-                                                .DataTable();
-                                            mytable.draw();
-
-                                        });
-                                    } else {
-                                        Swal.fire({
-                                            icon: "error",
-                                            title: "Oops...",
-                                            text: "Revisa los campos nuevamente",
-                                            //  footer: '<a href="">Why do I have this issue?</a>'
-                                        });
-                                    }
-                                }
-                            });
-
-                        }
-                    });
-                }
-            });
-        }
-    }); // TERMINA AGREGAR MATERIA
 
 
 });
-</script>
-
-
-
-<script>
-//DAR DE BAJA UN PLAN
-
-$(document).on("click", ".btndardebaja", function() {
-    opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
-
-
-    var id = $(this).data('id');
-
-    console.log(id);
-
-    $.ajax({
-        url: "../../backend/plandeestudio/crudplandeestudio.php",
-        data: {
-            opcion: opcion,
-            id: id
-        },
-        type: 'post',
-        success: function(data) {
-            var json = JSON.parse(data);
-
-            var titulo_plan = json.titulo;
-            var nombre_plan = json.nombre;
-            var resolucion_plan = json.resolucion;
-            var estado_plan = json.estado_p;
-
-
-            console.log(titulo_plan, nombre_plan, resolucion_plan, estado_plan);
-
-            opcion = 3; // una vez adentro opcion pasa a ser 3 o sea dar de baja
-
-            Swal.fire({
-                title: "Deshabilitar Plan de Estudio",
-                text: "Esta seguro que desea dar de baja el Plan de Estudio?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Si, estoy seguro",
-                cancelButtonText: "Cancelar",
-            }).then((result) => {
-                if (result.isConfirmed) {
-
-                    $.ajax({
-                        url: "../../backend/plandeestudio/crudplandeestudio.php",
-                        data: {
-                            opcion: opcion,
-                            id: id
-                        },
-                        type: "post",
-                        success: function(data) {
-                            var json = JSON.parse(data);
-                            status = json.status;
-                            if (status == 'success') {
-
-                                Swal.fire(
-                                    "Perfecto!",
-                                    "El Plan de Estudio ha sido dado de baja!",
-                                    "success"
-                                ).then(() => {
-
-                                    tablaplanes = $('#planes')
-                                        .DataTable();
-
-                                    texto_estado = 'Deshabilitado';
-
-                                    var button =
-                                        '<td><a href="#" data-id="' +
-                                        id +
-                                        '" class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_planes"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#!"  data-id="' +
-                                        id +
-                                        '"  class="btn btn-danger btn-sm btneliminar"><i class="fa-solid fa-trash-can"></i></a> <a href="#!"  data-id="' +
-                                        id +
-                                        '"  class="btn btn-success btn-sm btndardardealta">Habilitar <i class="fa-solid fa-arrow-up"></i></a></td> <a href="#" data-id="' +
-                                        id +
-                                        '"  class="btn btn-secondary btn-sm btnMaterias" data-toggle="modal" data-target="#modal_materias_plan_estudio" >Materias</a>';
-
-                                    //En el codigo de abajo dibuja la tabla
-                                    var row = tablaplanes.row(
-                                        "[id='" + id +
-                                        "']");
-                                    //el table es del table de arriba table = $('example').Datatable();
-                                    row.row("[id='" + id + "']").data(
-                                        [id,
-                                            titulo_plan,
-                                            nombre_plan,
-                                            resolucion_plan,
-                                            texto_estado,
-                                            button
-                                        ]);
-                                });
-                            } else {
-                                Swal.fire({
-                                    icon: "error",
-                                    title: "Oops...",
-                                    text: "Ha ocurrido un error inesperado",
-                                    // footer: '<a href="">Why do I have this issue?</a>',
-                                });
-                                return;
-                            }
-                        }
-                    });
-                }
-            });
-        }
-    })
-
-});
-
-//DAR DE BAJA
-</script>
-
-<script>
-//DAR DE ALTA UN PLAN   
-
-$(document).on("click", ".btndardardealta", function() {
-    opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
-
-    var id = $(this).data('id');
-
-    console.log(id);
-
-    $.ajax({
-        url: "../../backend/plandeestudio/crudplandeestudio.php",
-        data: {
-            opcion: opcion,
-            id: id
-        },
-        type: 'post',
-        success: function(data) {
-            var json = JSON.parse(data);
-
-            var titulo_plan = json.titulo;
-            var nombre_plan = json.nombre;
-            var resolucion_plan = json.resolucion;
-            var estado_plan = json.estado_p;
-
-
-            console.log(titulo_plan, nombre_plan, resolucion_plan, estado_plan);
-
-
-            opcion = 4; // una vez adentro opcion pasa a ser 3 o sea dar de alta
-
-            Swal.fire({
-                title: "Habilitar Plan de Estudio",
-                text: "Esta seguro que desea habilitar este Plan de Estudio?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Si, estoy seguro",
-                cancelButtonText: "Cancelar",
-            }).then((result) => {
-                if (result.isConfirmed) {
-
-                    $.ajax({
-                        url: "../../backend/plandeestudio/crudplandeestudio.php",
-                        data: {
-                            opcion: opcion,
-                            id: id
-                        },
-                        type: "post",
-                        success: function(data) {
-                            var json = JSON.parse(data);
-                            status = json.status;
-                            if (status == 'success') {
-
-                                Swal.fire(
-                                    "Perfecto!",
-                                    "El Plan de Estudio ha sido habilitado!",
-                                    "success"
-                                ).then(() => {
-
-                                    tablaplanes = $('#planes')
-                                        .DataTable();
-
-                                    texto_estado = 'Habilitado';
-
-                                    var button =
-                                        '<td><a href="#" data-id="' +
-                                        id +
-                                        '" class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_planes"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#!"  data-id="' +
-                                        id +
-                                        '"  class="btn btn-danger btn-sm btneliminar"><i class="fa-solid fa-trash-can"></i></a> <a href="#!"  data-id="' +
-                                        id +
-                                        '"  class="btn btn-warning btn-sm btndardebaja" style="background-color: #fc8403; color: white;">Deshabilitar <i class="fa-solid fa-arrow-down"></i></a></td> <a href="#" data-id="' +
-                                        id +
-                                        '"  class="btn btn-secondary btn-sm btnMaterias"  data-toggle="modal" data-target="#modal_materias_plan_estudio">Materias</a>';
-
-                                    //En el codigo de abajo dibuja la tabla
-                                    var row = tablaplanes.row(
-                                        "[id='" + id +
-                                        "']");
-                                    //el table es del table de arriba table = $('example').Datatable();
-                                    row.row("[id='" + id + "']").data(
-                                        [id,
-                                            titulo_plan,
-                                            nombre_plan,
-                                            resolucion_plan,
-                                            texto_estado,
-                                            button
-                                        ]);
-                                });
-                            } else {
-                                Swal.fire({
-                                    icon: "error",
-                                    title: "Oops...",
-                                    text: "Ha ocurrido un error inesperado",
-                                    // footer: '<a href="">Why do I have this issue?</a>',
-                                });
-                                return;
-                            }
-                        }
-                    });
-                }
-            });
-        }
-    })
-
-});
-</script>
-
-
-<script>
-//ELIMINAR PLAN DE ESTUDIO
-
-$(document).on('click', '.btneliminar', function(event) {
-
-
-    opcion = 6;
-
-    var id = $(this).data('id');
-
-
-    Swal.fire({
-        title: "Eliminar Plan de Estudio",
-        text: "Estas seguro que desea eliminar este Plan?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Si, estoy seguro",
-        cancelButtonText: "Cancelar",
-    }).then((result) => {
-        if (result.isConfirmed) {
-
-
-
-            $.ajax({
-                url: "../../backend/plandeestudio/crudplandeestudio.php",
-                data: {
-                    opcion: opcion,
-                    id: id
-                },
-                type: "post",
-                success: function(data) {
-
-                    var json = JSON.parse(data);
-                    status = json.status;
-                    if (status == 'success') {
-
-
-                        Swal.fire(
-                            "Perfecto!",
-                            "El plan de Estudio ha sido eliminado!",
-                            "success"
-                        ).then(() => {
-
-                            $("#" + id).closest('tr').remove();
-                        });
-
-                    } else {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops...",
-                            text: "Ha ocurrido un error inesperado",
-                            // footer: '<a href="">Why do I have this issue?</a>',
-                        });
-                        return;
-                    }
-
-
-                }
-            });
-        }
-    });
-
-})
 </script>
 
 
