@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2022 at 12:57 PM
+-- Generation Time: Nov 24, 2022 at 07:59 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -55,7 +55,7 @@ CREATE TABLE `materias` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `abreviatura` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `estado_m` int(50) NOT NULL COMMENT '0 deshabilitado -- 1 habilitado'
+  `estado_m` int(50) NOT NULL COMMENT '0 deshabilitado -- 1 habilitado -- 2 Eliminado'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -63,7 +63,7 @@ CREATE TABLE `materias` (
 --
 
 INSERT INTO `materias` (`id`, `nombre`, `abreviatura`, `estado_m`) VALUES
-(68, 'que onda perro', 'dsads', 0),
+(68, 'que onda perro', 'dsads', 2),
 (69, 'dale', 'amigoooo', 1),
 (70, 'one more', 'time', 1),
 (71, 'why', 'not', 1),
@@ -85,7 +85,6 @@ INSERT INTO `materias` (`id`, `nombre`, `abreviatura`, `estado_m`) VALUES
 (144, 'Charly', 'ese', 1),
 (145, 'No di', 'maria', 0),
 (146, 'No di', 'maria', 0),
-(148, 'para', 'tomas', 0),
 (149, 'fsafas', 'fsafa', 1),
 (150, 'Dewan2', 'Pavonisman2', 0),
 (175, 'Tomas', 'W', 1),
@@ -123,6 +122,30 @@ CREATE TABLE `planestudio_materia` (
   `periodo_cursada` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `planestudio_materia`
+--
+
+INSERT INTO `planestudio_materia` (`id`, `id_plan_estudio`, `id_materias`, `ano_plan_materia`, `periodo_cursada`) VALUES
+(11, 9, 178, '3', '2do Cuatrimestre'),
+(12, 9, 181, '1/23', '2do Cuatrimestre'),
+(13, 9, 68, '2', '1er Cuatrimestre'),
+(14, 8, 69, '2', '1er Cuatrimestre'),
+(15, 9, 69, '2', 'Anual'),
+(16, 9, 71, '1', 'Anual');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `planestudio_usuario`
+--
+
+CREATE TABLE `planestudio_usuario` (
+  `id` int(11) NOT NULL,
+  `id_plan_estudio_planusuario` int(11) NOT NULL,
+  `dni_usuario_planusuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 -- --------------------------------------------------------
 
 --
@@ -142,12 +165,8 @@ CREATE TABLE `plan_estudio` (
 --
 
 INSERT INTO `plan_estudio` (`id`, `titulo`, `nombre`, `resolucion`, `estado_p`) VALUES
-(1, 'titulo1', 'nombre13', 'resolucion1', 0),
-(2, 'plandeestudio1', 'Charlyg', 'resolucion11', 0),
-(3, 'titulo de plan', 'nombre del plan', 'resolucion del plan', 0),
-(4, 'plandeestudio1', 'Charly', 'resolucion12', 0),
-(5, 'plandeestudio1tdtt', 'CharlyW', 'resolucion12', 1),
-(6, 'titulo14', 'Mariveya', 'eresamkdsaof', 0);
+(8, 'Ingeniero en informatica', 'Ingenieria en Informatica', '1/22', 1),
+(9, 'Profesorado de Matematica', 'Profesorado de Matematica', '1/22', 1);
 
 -- --------------------------------------------------------
 
@@ -167,7 +186,7 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `nombre_rol`, `estado_r`) VALUES
 (1, 'alumno', 1),
-(2, 'docente', 1);
+(2, 'docente', 0);
 
 -- --------------------------------------------------------
 
@@ -237,7 +256,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `sexo`, `dni`, `fecha_nacimiento`, `lugar_nacimiento`, `estado_civil`, `domicilio`, `domicilio_numero`, `piso`, `depto`, `localidad`, `partido`, `codigo_postal`, `telefono`, `telefono_alternativo`, `telefono_alternativo_persona`, `email`, `clave`, `fecha_inscripcion`, `estado_u`) VALUES
-(1, 'Julian', 'Roberto', 'M', '45151275', '0000-00-00', 'Buenos Aires', 'Soltero', 'Calle 34', 1288, '', '', 'Santa Teresita', 'La Costa', 7107, '', '', '', 'carloscharlywilliams@gmail.com', '', '0000-00-00', 0),
+(1, 'Julian', 'Roberto', 'M', '45151275', '0000-00-00', 'Buenos Aires', 'Soltero', 'Calle 34', 1288, '', '', 'Santa Teresita', 'La Costa', 7107, '', '', '', 'carloscharlywilliams@gmail.com', '', '0000-00-00', 1),
 (2, 'Charly', 'Williams', 'M', '45151275', '2022-11-09', 'Buenos Aires', 'Soltero', 'Calle 34 ', 1288, '', '', 'Santa Teresita ', 'La costa', 7107, '3541372647', ' ', '', 'carloscharlywilliams@gmail.com', '1234', '2022-11-16', 1),
 (3, 'Tomas', 'Alvarez', 'M', '45301126', '2022-11-02', 'Bs Aires', 'Casado', 'Los geranios ', 1241, '', '', 'Santa Teresita ', 'La costa', 7107, '3541372647', ' ', '', 'tomasalvarez@gmail.com', '1234', '2022-11-23', 1),
 (4, 'Tomas', 'Alvarez', 'M', '45301126', '2022-11-10', 'Bs Aires', 'Casado', 'Los geranios ', 1241, '8', '', 'Costa del este ', 'La costa', 7107, '3541372647', ' ', '', 'tomasalvarez@gmail.com', '1234', '2022-11-10', 1);
@@ -274,6 +293,12 @@ ALTER TABLE `notas`
 -- Indexes for table `planestudio_materia`
 --
 ALTER TABLE `planestudio_materia`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `planestudio_usuario`
+--
+ALTER TABLE `planestudio_usuario`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -338,13 +363,19 @@ ALTER TABLE `notas`
 -- AUTO_INCREMENT for table `planestudio_materia`
 --
 ALTER TABLE `planestudio_materia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `planestudio_usuario`
+--
+ALTER TABLE `planestudio_usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `plan_estudio`
 --
 ALTER TABLE `plan_estudio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `roles`
