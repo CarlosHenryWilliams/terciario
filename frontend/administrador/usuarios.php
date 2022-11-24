@@ -350,20 +350,23 @@
 
                                     <div class="col-md-9">
 
-                                        <select class="form-select" aria-label="Default select example"
-                                            id="input_ano_cursada" name="nombre" required>
+                                        <select name="id_plan_de_estudio" id="select_plan_estudio"
+                                            class="form-select  w-100 contenedorSelect " required>
                                             <option value="">Por favor seleccione el plan de estudio</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
+
+                                            <?php
+
+                                            include('../../backend/usuarios/buscarplandeestudio.php'); //BUSCADOR DE MATERIAL
 
 
+                                            while ($row = mysqli_fetch_array($resultado)) { ?>
+
+                                            <option value="<?php echo $row['id'] ?>"><?php echo $row['titulo'] ?>
+                                            </option>
+
+                                            <?php }
+                                            ?>
                                         </select>
-
                                     </div>
 
 
@@ -390,8 +393,8 @@
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button type="button" id="boton_agregar_form"
-                                        class="btn btn-primary">Agregar</button>
+                                    <button type="button" id="boton_vincular_form"
+                                        class="btn btn-primary">Vincular</button>
 
                                 </div>
                             </form>
