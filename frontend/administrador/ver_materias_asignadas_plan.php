@@ -1,6 +1,6 @@
 <?php include('modulos/conexion.php');  ?>
 
-<?php 
+<?php
 @$id_del_plan_oculto = $_POST['id_planestudio'];
 
 ?>
@@ -62,7 +62,7 @@
         <div id="layoutSidenav_content">
             <main>
 
-                <input class="boton_id_plan_oculto" type="hidden" value="<?php echo $id_del_plan_oculto;?>">
+                <input class="boton_id_plan_oculto" type="text" value="<?php echo $id_del_plan_oculto; ?>">
 
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center ">
@@ -79,7 +79,7 @@
                                     </div>
                                 </div>
                                 <div class=" bd-highlight">
-                                    <div class=" flex-shrink-1 bd-highlight"> <a href="plandeestudio.php" 
+                                    <div class=" flex-shrink-1 bd-highlight"> <a href="plandeestudio.php"
                                             class="btn btn-warning btn-sm  btnAgregar">Volver
                                         </a>
                                     </div>
@@ -201,17 +201,17 @@
                                 <h4 class="ms-1 mt-2" id="plan_titulo"> </h4>
                                 <form action="" method="POST">
 
-                                <form action="" method="POST">
+                                    <form action="" method="POST">
 
-                                    <button type="submit" value="" name=""
-                                        class="btn btn-info ms-2"><i class="fa-solid fa-plus"></i> Asignar
-                                        Materias 
-                                    </button>
-                                </form>
+                                        <button type="submit" value="" name="" class="btn btn-info ms-2"><i
+                                                class="fa-solid fa-plus"></i> Asignar
+                                            Materias
+                                        </button>
+                                    </form>
 
                             </div>
 
-                        
+
 
                         </div>
                     </div>
@@ -287,8 +287,8 @@ $(document).ready(function() {
 
     var id_planestudio = $(".boton_id_plan_oculto").val();
     console.log(id_planestudio);
-    
-   
+
+
 
     $('#materias').DataTable({
         "fnCreatedRow": function(nRow, aData, iDataIndex) {
@@ -312,7 +312,7 @@ $(document).ready(function() {
 
             {
                 // hide id_number column
-                "targets": [0,3],
+                "targets": [0, 3],
                 "visible": false,
                 "searchable": false
             }

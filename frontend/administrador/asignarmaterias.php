@@ -66,7 +66,7 @@
                 ?>
 
 
-                 <!--<p><?php /*echo $id_boton_plan*/ ?></p>-->
+                <p><?php echo $id_boton_plan ?></p>
                 <div class="container">
 
                     <div class="d-flex align-items-center ">

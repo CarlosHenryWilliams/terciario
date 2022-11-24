@@ -6,7 +6,7 @@ $id_plan_de_estudio = $_POST['id_planestudio'];
 
 
 $output = array();
-$sql = "SELECT * FROM materias INNER JOIN planestudio_materia ON materias.id = planestudio_materia.id_materias INNER JOIN plan_estudio ON plan_estudio.id = planestudio_materia.id_plan_estudio WHERE id_plan_estudio = $id_plan_de_estudio";
+$sql = "SELECT * FROM plan_estudio INNER JOIN planestudio_materia ON plan_estudio.id = planestudio_materia.id_plan_estudio INNER JOIN materias ON materias.id = planestudio_materia.id_materias WHERE id_plan_estudio = $id_plan_de_estudio";
 
 
 $totalQuery = mysqli_query(conectame(), $sql);
@@ -14,18 +14,18 @@ $total_all_rows = mysqli_num_rows($totalQuery);
 
 $columns = array(
     0 => 'id',
-    1 => 'nombre',
+    1 => 'materias.nombre',
     2 => 'abreviatura',
     3 => 'estado_m',
 );
 
 
-if (isset($_POST['search']['value'])) {
-    $search_value = $_POST['search']['value'];
-    $sql .= " AND materias.estado_m like '%" . $search_value . "%'";
-    $sql .= " OR materias.abreviatura like '%" . $search_value . "%'";
-    $sql .= " OR materias.nombre like '%" . $search_value . "%'";
-}
+// if (isset($_POST['search']['value'])) {
+//     $search_value = $_POST['search']['value'];
+//     $sql .= " AND materias.estado_m like '%" . $search_value . "%'";
+//     $sql .= " OR materias.abreviatura like '%" . $search_value . "%'";
+//     $sql .= " OR materias.nombre like '%" . $search_value . "%'";
+// }
 
 if (isset($_POST['order'])) {
     $column_name = $_POST['order'][0]['column'];
@@ -60,7 +60,6 @@ $output = array(
     'recordsFiltered' =>   $total_all_rows,
     'data' => $data,
 );
-    
+
 
 echo  json_encode($output);
-
