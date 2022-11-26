@@ -339,6 +339,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
+
+    <script>
+    $(document).ready(function() {
+
+        Swal.fire({
+            title: 'Ooopss, la pagina se encuentra en mantenimiento.',
+            width: 600,
+            padding: '3em',
+            color: '#716add',
+            background: '#fff url(/images/trees.png)',
+            backdrop: `
+    rgba(0,0,123,0.4)
+    url("/images/nyan-cat.gif")
+    left top
+    no-repeat
+  `
+        }).then((result) => {
+            window.history.back();
+        })
+    });
+    </script>
 </body>
 
 </html>
