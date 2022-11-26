@@ -83,6 +83,8 @@
                                 <th scope="col">Materia</th>
                                 <th scope="col">Cursada</th>
                                 <th scope="col">Correlatividad</th>
+                                <th scope="col">Acciones</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -92,6 +94,7 @@
                                 <td>1° Cuatrimestre</td>
 
                                 <td></td>
+                                <td><button>Quitar</button> <button>Correlatividad</button></td>
                             </tr>
                             <tr>
                                 <th scope="row">2</th>
@@ -99,6 +102,8 @@
                                 <td>2° Cuatrimestre</td>
 
                                 <td></td>
+                                <td><button>Quitar</button> <button>Correlatividad</button></td>
+
                             </tr>
                             <tr>
                                 <th scope="row">3</th>
@@ -106,6 +111,8 @@
                                 <td>Anual</td>
 
                                 <td>1</td>
+                                <td><button>Quitar</button> <button>Correlatividad</button></td>
+
                             </tr>
                         </tbody>
                     </table>
