@@ -1534,6 +1534,8 @@ $(document).on('click', '.btneliminar', function(event) {
                         });
 
                     } else {
+
+
                         Swal.fire({
                             icon: "error",
                             title: "Oops...",
