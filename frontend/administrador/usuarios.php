@@ -115,7 +115,7 @@
                                         <th>Clave</th>
                                         <th>Fecha_inscripcion</th>
                                         <th>Estado</th>
-                                        <th class="col-12">Acciones...................................</th>
+                                        <th class="col-12">Acciones........................</th>
                                     </tr>
                                 </thead>
 
