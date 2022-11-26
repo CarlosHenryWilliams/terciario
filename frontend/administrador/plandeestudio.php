@@ -186,29 +186,43 @@
                         </div>
                         <div class="modal-body">
 
-                            
+
 
                             <div class="d-flex align-items-center justify-content-center">
                                 <h4 class="mt-2">Materias de: </h4>
                                 <h4 class="ms-1 mt-2" id="plan_titulo"> </h4>
-                            </div> <hr style="width: 100%; color: black;">
+                            </div>
+                            <hr style="width: 100%; color: black;">
                             <div class="d-flex align-items-center justify-content-center">
                                 <form action="ver_materias_asignadas_plan.php" method="POST">
 
-                                    <input type="hidden"  class="boton_id_plan_oculto">
+                                    <input type="hidden" class="boton_id_plan_oculto">
                                     <button type="submit" value="" name="id_planestudio"
-                                        class="btn btn-success m-3  btnVerMaterias" data-toggle="tooltip" data-placement="bottom" title="Ver materias asignadas">Ver materias asignadas
+                                        class="btn btn-success m-3  btnVerMaterias" data-toggle="tooltip"
+                                        data-placement="bottom" title="Ver materias asignadas">Ver materias asignadas
                                     </button>
                                 </form>
+
+                                <form action="ver_materias_asignadasplan_prueba.php" method="POST">
+
+                                    <input type="hidden" class="boton_id_plan_oculto">
+                                    <button type="submit" value="" name="id_planestudio"
+                                        class="btn btn-success m-3  btnVerMaterias" data-toggle="tooltip"
+                                        data-placement="bottom" title="Ver materias asignadas">Ver materias asignadas
+                                        viejo
+                                    </button>
+                                </form>
+
                                 <form action="asignarmaterias.php" method="POST">
 
                                     <button type="submit" value="" name="id_boton_plan"
-                                    class="btn btn-primary btnAsignarMaterias" data-toggle="tooltip" data-placement="bottom" title="Asignar nueva materia">Asignar nueva materia
+                                        class="btn btn-primary btnAsignarMaterias" data-toggle="tooltip"
+                                        data-placement="bottom" title="Asignar nueva materia">Asignar nueva materia
                                     </button>
                                 </form>
                             </div>
 
-                        
+
 
                         </div>
                     </div>
@@ -318,21 +332,19 @@ $(document).on("click", ".btnMaterias", function() {
 </script>
 
 <script>
-
 $(document).on("click", ".btnVerMaterias", function() {
 
     var id_planestudio = $(".boton_id_plan_oculto").val();
 
-  console.log(id_planestudio);
+    console.log(id_planestudio);
 
 
-//Asi se obtiene el id del plan porque tiene cargado en el atributo data el id el boton
+    //Asi se obtiene el id del plan porque tiene cargado en el atributo data el id el boton
 
 
 
 
 });
-
 </script>
 
 <script>

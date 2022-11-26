@@ -66,10 +66,52 @@
 
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center ">
-                        <h1 class="mt-4 mb-4">MATERIAS ASIGNADAS</h1>
+                        <h1 class="mt-4 mb-4">MATERIAS ASIGNADAS DE :</h1>
+                        <h2 class="mt-4 mb-4 text-uppercase" id="titulo_plan"> </h2>
+
                     </div>
 
-                    <div class="card mb-4 ">
+
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <h3 class="text-center">Primer año</h3>
+                            </tr>
+                            <tr>
+                                <th scope="col">Codigo</th>
+                                <th scope="col">Materia</th>
+                                <th scope="col">Cursada</th>
+                                <th scope="col">Correlatividad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Otto</td>
+                                <td>1° Cuatrimestre</td>
+
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Thornton</td>
+                                <td>2° Cuatrimestre</td>
+
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>@twitter</td>
+                                <td>Anual</td>
+
+                                <td>1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- TABLA RIAL -->
+
+                    <!-- <div class="card mb-4 ">
                         <div class="card-header">
                             <div class="d-flex bd-highlight">
 
@@ -79,8 +121,7 @@
                                     </div>
                                 </div>
                                 <div class=" bd-highlight">
-                                    <div class=" flex-shrink-1 bd-highlight"> <a href="plandeestudio.php"
-                                            class="btn btn-warning btn-sm  btnAgregar">Volver
+                                    <div class=" flex-shrink-1 bd-highlight"> <a href="plandeestudio.php" class="btn btn-warning btn-sm  btnAgregar">Volver
                                         </a>
                                     </div>
                                 </div>
@@ -106,7 +147,11 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> -->
+
+                    <!-- TABLA RIAL -->
+
+
                 </div>
             </main>
 
@@ -280,6 +325,46 @@
 
 
 </body>
+
+
+
+<script>
+$(document).ready(function() {
+
+    opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
+
+    var id = $(".boton_id_plan_oculto").val();
+    console.log(id);
+
+
+    //Asi se obtiene el id del plan porque tiene cargado en el atributo data el id el boton
+    $.ajax({
+        url: "../../backend/plandeestudio/crudplandeestudio.php",
+        data: {
+            opcion: opcion,
+            id: id
+        },
+        type: 'post',
+        success: function(data) {
+            var json = JSON.parse(data); //lees los datos json o sea los convertis a string
+
+            var nombre_plan = json.nombre;
+            $(" #titulo_plan").text("\u00A0" +
+                nombre_plan); // EL CODIGO ESE "\u00A0" ES UN ESPACIO EN BLANCO
+
+
+            $(" .btnAsignarMaterias").val(json.id);
+            $(" .btnVerMaterias").val(json.id);
+
+            $(' .boton_id_plan_oculto').val(json.id)
+
+
+        }
+    })
+
+});
+</script>
+
 
 
 <script>
