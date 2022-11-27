@@ -99,15 +99,19 @@
                             echo "Cuarto Año";
                         } else if ($row['ano_plan_materia'] == 5) {
                             echo "Quinto Año";
+                        } else if ($row['ano_plan_materia'] == 6) {
+                            echo "Sexto Año";
+                        } else if ($row['ano_plan_materia'] == 6) {
+                            echo "Septimo Año";
                         }
                         ?></h3>
                             </tr>
                             <tr>
                                 <th>Codigo</th>
-                                <th >Materia</th>
-                                <th >Cursada</th>
-                                <th >Correlatividad</th>
-                                <th >Acciones</th>
+                                <th>Materia</th>
+                                <th>Cursada</th>
+                                <th>Correlatividad</th>
+                                <th>Acciones</th>
 
                             </tr>
                         </thead>
@@ -128,7 +132,7 @@
                                 <td><?php echo $row['nombre'] ?></td>
                                 <td><?php echo $row['periodo_cursada'] ?></td>
                                 <td></td>
-                                <td> <a href="#" data-id= "<?php $row['ano_plan_materia']?>"   class="btn btn-danger btnQuitarMateria m-1 rounded" >  Quitar </a> <a href="#" data-id= "<?php $row['ano_plan_materia']?>"   class="btn btn-primary btnQuitarMateria m-1 rounded" >  Correlativas </a></td>
+                                <td> <a href="#" data-id= "<?php $row['id']?>"   class="btn btn-danger btnQuitarMateria m-1 rounded" >  Quitar </a> <a href="#" data-id= "<?php $row['ano_plan_materia']?>"   class="btn btn-primary btnQuitarMateria m-1 rounded" >  Correlativas </a></td>
                             </tr>
 
 
@@ -379,44 +383,6 @@
 </body>
 
 
-<!-- TITULO DEL PLAN -->
-<script>
-$(document).ready(function() {
-
-    opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
-
-    var id = $(".boton_id_plan_oculto").val();
-    console.log(id);
-
-
-    //Asi se obtiene el id del plan porque tiene cargado en el atributo data el id el boton
-    $.ajax({
-        url: "../../backend/plandeestudio/crudplandeestudio.php",
-        data: {
-            opcion: opcion,
-            id: id
-        },
-        type: 'post',
-        success: function(data) {
-            var json = JSON.parse(data); //lees los datos json o sea los convertis a string
-
-            var nombre_plan = json.nombre;
-            $(" #titulo_plan").text("\u00A0" +
-                nombre_plan); // EL CODIGO ESE "\u00A0" ES UN ESPACIO EN BLANCO
-
-
-            $(" .btnAsignarMaterias").val(json.id);
-            $(" .btnVerMaterias").val(json.id);
-
-            $(' .boton_id_plan_oculto').val(json.id)
-
-
-        }
-    })
-
-});
-</script>
-<!-- TITULO DEL PLAN -->
 
 
 
