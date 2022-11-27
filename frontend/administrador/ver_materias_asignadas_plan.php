@@ -103,11 +103,11 @@
                         ?></h3>
                             </tr>
                             <tr>
-                                <th scope="col">Codigo</th>
-                                <th scope="col">Materia</th>
-                                <th scope="col">Cursada</th>
-                                <th scope="col">Correlatividad</th>
-                                <th scope="col">Acciones</th>
+                                <th>Codigo</th>
+                                <th >Materia</th>
+                                <th >Cursada</th>
+                                <th >Correlatividad</th>
+                                <th >Acciones</th>
 
                             </tr>
                         </thead>
@@ -128,7 +128,7 @@
                                 <td><?php echo $row['nombre'] ?></td>
                                 <td><?php echo $row['periodo_cursada'] ?></td>
                                 <td></td>
-                                <td><button>Quitar</button> <button>Correlatividad</button></td>
+                                <td> <a href="#" data-id= "<?php $row['ano_plan_materia']?>"   class="btn btn-danger btnQuitarMateria m-1 rounded" >  Quitar </a> <a href="#" data-id= "<?php $row['ano_plan_materia']?>"   class="btn btn-primary btnQuitarMateria m-1 rounded" >  Correlativas </a></td>
                             </tr>
 
 
