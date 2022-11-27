@@ -72,25 +72,35 @@
                     </div>
 
 
+                    <?php 
+                    
+                    $sql_año = "SELECT DISTINCT ano_plan_materia FROM planestudio_materia WHERE id_plan_estudio = '$id_del_plan_oculto'";
+                    $resultado2 = mysqli_query(conectame(), $sql_año);
 
-                    <h2><?php if ($id == 1) {
-                            echo "Primer Año";
-                        } else if ($id == 2) {
-                            echo "Segundo Año";
-                        } else if ($id == 3) {
-                            echo "Tercer Año";
-                        }
-                        ?></h2>
+                    echo $sql_año;
 
+                    while($row = mysqli_fetch_array($resultado2)){  
+                        
+                        $año = $row["ano_plan_materia"];
+                        ?>
 
-
-
-
+                    
 
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <h3 class="text-center">Primer año</h3>
+                                <h3 class="text-center"><?php if ($row == 1) {
+                            echo "Primer Año";
+                        } else if ($row['ano_plan_materia'] == 2) { 
+                            echo "Segundo Año";
+                        } else if ($row['ano_plan_materia'] == 3) {
+                            echo "Tercer Año";
+                        } else if ($row['ano_plan_materia'] == 4) {
+                            echo "Cuarto Año";
+                        } else if ($row['ano_plan_materia'] == 5) {
+                            echo "Quinto Año";
+                        }
+                        ?></h3>
                             </tr>
                             <tr>
                                 <th scope="col">Codigo</th>
@@ -104,7 +114,7 @@
                         <?php
 
 
-                        $sql = "SELECT * FROM `planestudio_materia` INNER JOIN materias ON planestudio_materia.id = materias.id WHERE `ano_plan_materia` = 1 AND `id_plan_estudio` = 1";
+                        $sql = "SELECT * FROM planestudio_materia INNER JOIN materias ON planestudio_materia.id = materias.id WHERE `ano_plan_materia` = $año AND `id_plan_estudio` = $id_del_plan_oculto";
                         $resultado = mysqli_query(conectame(), $sql);
 
                         while ($row = mysqli_fetch_array($resultado)) {
@@ -129,6 +139,22 @@
                         ?>
 
                     </table>
+
+
+
+                    <?php
+                    }
+                    
+                    ?>
+
+                   
+
+
+
+
+
+
+
 
                     <!-- TABLA RIAL -->
 
