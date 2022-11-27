@@ -82,6 +82,11 @@
                         }
                         ?></h2>
 
+
+
+
+
+
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -96,35 +101,35 @@
 
                             </tr>
                         </thead>
+                        <?php
+
+
+                        $sql = "SELECT * FROM `planestudio_materia` INNER JOIN materias ON planestudio_materia.id = materias.id WHERE `ano_plan_materia` = 1 AND `id_plan_estudio` = 1";
+                        $resultado = mysqli_query(conectame(), $sql);
+
+                        while ($row = mysqli_fetch_array($resultado)) {
+
+                        ?>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Otto</td>
-                                <td>1° Cuatrimestre</td>
 
+
+                            <tr>
+                                <td><?php echo $row['id'] ?></td>
+                                <td><?php echo $row['nombre'] ?></td>
+                                <td><?php echo $row['periodo_cursada'] ?></td>
                                 <td></td>
                                 <td><button>Quitar</button> <button>Correlatividad</button></td>
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Thornton</td>
-                                <td>2° Cuatrimestre</td>
 
-                                <td></td>
-                                <td><button>Quitar</button> <button>Correlatividad</button></td>
 
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>@twitter</td>
-                                <td>Anual</td>
 
-                                <td>1</td>
-                                <td><button>Quitar</button> <button>Correlatividad</button></td>
 
-                            </tr>
                         </tbody>
+                        <?php }
+                        ?>
+
                     </table>
+
                     <!-- TABLA RIAL -->
 
                     <!-- <div class="card mb-4 ">
@@ -166,6 +171,11 @@
                     </div> -->
 
                     <!-- TABLA RIAL -->
+
+
+
+
+
 
 
                 </div>
