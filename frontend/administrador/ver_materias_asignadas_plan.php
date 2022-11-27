@@ -77,7 +77,7 @@
                     $sql_año = "SELECT DISTINCT ano_plan_materia FROM planestudio_materia WHERE id_plan_estudio = '$id_del_plan_oculto'";
                     $resultado2 = mysqli_query(conectame(), $sql_año);
 
-                    echo $sql_año;
+                    
 
                     while($row = mysqli_fetch_array($resultado2)){  
                         
@@ -89,7 +89,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <h3 class="text-center"><?php if ($row == 1) {
+                                <h3 class="text-center"><?php if ($row['ano_plan_materia'] == 1) {
                             echo "Primer Año";
                         } else if ($row['ano_plan_materia'] == 2) { 
                             echo "Segundo Año";
