@@ -101,9 +101,10 @@
                                                                 echo "Quinto Año";
                                                             } else if ($row['ano_plan_materia'] == 6) {
                                                                 echo "Sexto Año";
-                                                            } else if ($row['ano_plan_materia'] == 6) {
+                                                            } else if ($row['ano_plan_materia'] == 7) {
                                                                 echo "Septimo Año";
                                                             }
+
                                                             ?></h3>
                             </tr>
                             <tr>
