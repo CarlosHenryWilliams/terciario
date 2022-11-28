@@ -72,39 +72,39 @@
                     </div>
 
 
-                    <?php 
-                    
+                    <?php
+
                     $sql_año = "SELECT DISTINCT ano_plan_materia FROM planestudio_materia WHERE id_plan_estudio = '$id_del_plan_oculto'";
                     $resultado2 = mysqli_query(conectame(), $sql_año);
 
-                    
 
-                    while($row = mysqli_fetch_array($resultado2)){  
-                        
+
+                    while ($row = mysqli_fetch_array($resultado2)) {
+
                         $año = $row["ano_plan_materia"];
-                        ?>
+                    ?>
 
-                    
 
-                    <table class="table table-hover">
+
+                    <table class="table table-hover" id="tabla_materias_asignadas">
                         <thead>
                             <tr>
                                 <h3 class="text-center"><?php if ($row['ano_plan_materia'] == 1) {
-                            echo "Primer Año";
-                        } else if ($row['ano_plan_materia'] == 2) { 
-                            echo "Segundo Año";
-                        } else if ($row['ano_plan_materia'] == 3) {
-                            echo "Tercer Año";
-                        } else if ($row['ano_plan_materia'] == 4) {
-                            echo "Cuarto Año";
-                        } else if ($row['ano_plan_materia'] == 5) {
-                            echo "Quinto Año";
-                        } else if ($row['ano_plan_materia'] == 6) {
-                            echo "Sexto Año";
-                        } else if ($row['ano_plan_materia'] == 6) {
-                            echo "Septimo Año";
-                        }
-                        ?></h3>
+                                                                echo "Primer Año";
+                                                            } else if ($row['ano_plan_materia'] == 2) {
+                                                                echo "Segundo Año";
+                                                            } else if ($row['ano_plan_materia'] == 3) {
+                                                                echo "Tercer Año";
+                                                            } else if ($row['ano_plan_materia'] == 4) {
+                                                                echo "Cuarto Año";
+                                                            } else if ($row['ano_plan_materia'] == 5) {
+                                                                echo "Quinto Año";
+                                                            } else if ($row['ano_plan_materia'] == 6) {
+                                                                echo "Sexto Año";
+                                                            } else if ($row['ano_plan_materia'] == 6) {
+                                                                echo "Septimo Año";
+                                                            }
+                                                            ?></h3>
                             </tr>
                             <tr>
                                 <th>Codigo</th>
@@ -118,21 +118,24 @@
                         <?php
 
 
-                        $sql = "SELECT * FROM planestudio_materia INNER JOIN materias ON planestudio_materia.id = materias.id WHERE `ano_plan_materia` = $año AND `id_plan_estudio` = $id_del_plan_oculto";
-                        $resultado = mysqli_query(conectame(), $sql);
+                            $sql = "SELECT * FROM planestudio_materia INNER JOIN materias ON planestudio_materia.id_materias = materias.id WHERE `ano_plan_materia` = $año AND `id_plan_estudio` = $id_del_plan_oculto";
+                            $resultado = mysqli_query(conectame(), $sql);
 
-                        while ($row = mysqli_fetch_array($resultado)) {
+                            while ($row = mysqli_fetch_array($resultado)) {
 
-                        ?>
+                            ?>
                         <tbody>
 
 
-                            <tr>
+                            <tr id="probando">
                                 <td><?php echo $row['id'] ?></td>
                                 <td><?php echo $row['nombre'] ?></td>
                                 <td><?php echo $row['periodo_cursada'] ?></td>
                                 <td></td>
-                                <td> <a href="#" data-id= "<?php $row['id']?>"   class="btn btn-danger btnQuitarMateria m-1 rounded" >  Quitar </a> <a href="#" data-id= "<?php $row['ano_plan_materia']?>"   class="btn btn-primary btnQuitarMateria m-1 rounded" >  Correlativas </a></td>
+                                <td> <a href="#" data-id_materia="<?php echo $row['id'] ?>"
+                                        class="btn btn-danger btnQuitarMateria m-1 rounded"> Quitar </a> <a href="#"
+                                        data-id="<?php $row['ano_plan_materia'] ?>"
+                                        class="btn btn-primary btnQuitarMateria m-1 rounded"> Correlativas </a></td>
                             </tr>
 
 
@@ -140,7 +143,7 @@
 
                         </tbody>
                         <?php }
-                        ?>
+                            ?>
 
                     </table>
 
@@ -148,10 +151,10 @@
 
                     <?php
                     }
-                    
+
                     ?>
 
-                   
+
 
 
 
@@ -393,7 +396,7 @@ $(document).ready(function() {
     opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
 
     var id = $(".boton_id_plan_oculto").val();
-    console.log(id);
+    // console.log(id);
 
 
     //Asi se obtiene el id del plan porque tiene cargado en el atributo data el id el boton
@@ -422,7 +425,7 @@ $(document).ready(function() {
     })
 
 });
-</script>
+</script>SSSSSSSSSS
 <!-- PARA VER SI ES PRIMER AÑO O 2DO ETC  -->
 
 
@@ -432,18 +435,25 @@ $(document).ready(function() {
 $(document).on("click", ".btnQuitarMateria", function() {
     opcion = 1;
 
-    console.log(opcion);
+    // console.log(opcion);
 
     /**
      * MODIFICACIONES MODAL
      */
     var id_planestudio = $(".boton_id_plan_oculto").val();
-    console.log(id_planestudio);
+    console.log('id plan : ' + id_planestudio);
 
 
-    var id_materia = $(this).data('id');
+    var id_materia = $(this).data('id_materia');
+    console.log('id materia : ' + id_materia);
 
-    console.log(id_materia);
+
+    // $("#" + id_materia).closest('tr').remove();
+    // $(id_materia).closest('tr').remove();
+
+    var fila = $(this).parent('td').parent('tr'); //con esto agarras el tr y eliminas la fila
+
+
 
     Swal.fire({
         title: "Desvincular Materia",
@@ -476,9 +486,14 @@ $(document).on("click", ".btnQuitarMateria", function() {
                             "Buen Trabajo!",
                             "La Materia ha sido desvinculada!",
                             "success"
-                        ).then(() => {
+                        ).then((id_materia) => {
 
-                            $("#" + id_materia).closest('tr').remove();
+
+
+
+                            fila.remove(); //para eliminar el tr
+
+
                         });
                     } else {
                         Swal.fire({
