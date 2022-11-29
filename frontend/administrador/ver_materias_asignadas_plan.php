@@ -136,7 +136,8 @@
                                 <td> <a href="#" data-id_materia="<?php echo $row['id'] ?>"
                                         class="btn btn-danger btnQuitarMateria m-1 rounded"> Quitar </a> <a href="#"
                                         data-id_materia="<?php echo $row['id'] ?>"
-                                        class="btn btn-primary btnCorrelativas m-1 rounded"> Correlativas </a></td>
+                                        class="btn btn-primary btnCorrelativas m-1 rounded" data-toggle="modal"
+                                        data-target="#modal_correlativas"> Correlativas </a></td>
                             </tr>
 
 
@@ -282,38 +283,46 @@
 
 
 
-            <!--  MODAL MATERIAS-->
-            <div class="modal fade" id="modal_materias_plan_estudio" tabindex="-1" role="dialog"
+            <!--  MODAL CORRELATIVAS-->
+            <div class="modal fade" id="modal_correlativas" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">MATERIAS ASIGNADAS</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle">CORRELATIVAS</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="asignarmaterias.php" method="POST">
 
-                                <button type="submit" value="" name="id_boton_plan"
-                                    class="btn btn-info btnAsignarMaterias"><i class="fa-solid fa-plus"></i> Asignar
-                                    Materias </button>
-                            </form>
+
 
                             <div class="d-flex align-items-center justify-content-center">
-                                <h4 class="mt-2">Materias de: </h4>
-                                <h4 class="ms-1 mt-2" id="plan_titulo"> </h4>
-                                <form action="" method="POST">
+                                <h4 class="mt-2">Materia: </h4>
+                                <h4 class="ms-1 mt-2" id="titulo_materia"> </h4>
+                            </div>
+                            <hr style="width: 100%; color: black;">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <form action="ver_materias_asignadas_plan.php" method="POST">
 
-                                    <form action="" method="POST">
+                                    <input type="text" class="input_id_materia_oculto">
+                                    <button type="submit" value="" name="id_planestudio"
+                                        class="btn btn-success m-3  btnVerMaterias" data-toggle="tooltip"
+                                        data-placement="bottom" title="Ver materias correlativas">Ver Materias
+                                        Correlativas
+                                    </button>
+                                </form>
 
-                                        <button type="submit" value="" name="" class="btn btn-info ms-2"><i
-                                                class="fa-solid fa-plus"></i> Asignar
-                                            Materias
-                                        </button>
-                                    </form>
 
+                                <form action="asignarmaterias.php" method="POST">
+
+                                    <button type="submit" value="" name="id_boton_plan"
+                                        class="btn btn-primary btnAsignarMaterias" data-toggle="tooltip"
+                                        data-placement="bottom" title="Agregar nueva materia">Agregar Materia
+                                        Correlativa
+                                    </button>
+                                </form>
                             </div>
 
 
@@ -323,7 +332,8 @@
                 </div>
 
             </div>
-            <!-- FIN MODAL MATERIAS-->
+            <!-- FIN MODAL CORRELATIVAS-->
+
 
 
 
@@ -399,70 +409,124 @@ $(document).on("click", ".btnCorrelativas", function() {
     console.log('id plan : ' + id_planestudio);
 
 
-    var id_materia = $(this).data('id_materia');
-    console.log('id materia : ' + id_materia);
+    var id = $(this).data('id_materia');
+    console.log('id materia : ' + id);
 
 
     // $("#" + id_materia).closest('tr').remove();
     // $(id_materia).closest('tr').remove();
 
-    var fila = $(this).parent('td').parent('tr'); //con esto agarras el tr y eliminas la fila
 
 
 
-    Swal.fire({
-        title: "Desvincular Materia",
-        text: "Realmente desea desvincular la Materia?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Confirmar",
-        cancelButtonText: "Cancelar",
-    }).then((result) => {
-        if (result.isConfirmed) {
-            /**
-             * Si confirma el formulario lo envia por post mediante Jquery
-             */
+    opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
 
-            $.ajax({
-                url: "../../backend/plandeestudio/desvincularmateria.php",
-                type: "post",
-                data: {
-                    id_planestudio: id_planestudio,
-                    id_materia: id_materia
-                },
-                success: function(data) {
-                    var json = JSON.parse(data);
-                    var status = json.status;
-                    if (status == 'success') {
+    //Asi se obtiene el id del plan porque tiene cargado en el atributo data el id el boton
+    $.ajax({
+        url: "../../backend/materias/crudmaterias.php",
+        data: {
+            opcion: opcion,
+            id: id
+        },
+        type: 'post',
+        success: function(data) {
+            var json = JSON.parse(data); //lees los datos json o sea los convertis a string
 
-                        Swal.fire(
-                            "Buen Trabajo!",
-                            "La Materia ha sido desvinculada!",
-                            "success"
-                        ).then((id_materia) => {
+            var nombremateria = json.nombre;
+            $(" #titulo_materia").text(nombremateria);
 
+            // $(" .btnAsignarMaterias").val(json.id);
+            // $(" .btnVerMaterias").val(json.id);
 
+            // $(' .boton_id_plan_oculto').val(json.id)
 
+            // $(" .btnAsignarMaterias").attr("href", "asignarmaterias.php?id='+id+'");
 
-                            fila.remove(); //para eliminar el tr
+            // window.location.href =
+            //     "http://www.gorissen.info/Pierre/maps/googleMapLocation.php?lat=" + elemA +
+            //     "&lon=" + elemB + "&setLatLon=Set"
 
-
-                        });
-                    } else {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops...",
-                            text: "Revisa los campos nuevamente",
-                            //  footer: '<a href="">Why do I have this issue?</a>'
-                        });
-                    }
-                }
-            });
 
         }
-    });
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Swal.fire({
+    //     title: "Desvincular Materia",
+    //     text: "Realmente desea desvincular la Materia?",
+    //     icon: "warning",
+    //     showCancelButton: true,
+    //     confirmButtonColor: "#3085d6",
+    //     cancelButtonColor: "#d33",
+    //     confirmButtonText: "Confirmar",
+    //     cancelButtonText: "Cancelar",
+    // }).then((result) => {
+    //     if (result.isConfirmed) {
+    //         /**
+    //          * Si confirma el formulario lo envia por post mediante Jquery
+    //          */
+
+    //         $.ajax({
+    //             url: "../../backend/plandeestudio/desvincularmateria.php",
+    //             type: "post",
+    //             data: {
+    //                 id_planestudio: id_planestudio,
+    //                 id_materia: id_materia
+    //             },
+    //             success: function(data) {
+    //                 var json = JSON.parse(data);
+    //                 var status = json.status;
+    //                 if (status == 'success') {
+
+    //                     Swal.fire(
+    //                         "Buen Trabajo!",
+    //                         "La Materia ha sido desvinculada!",
+    //                         "success"
+    //                     ).then((id_materia) => {
+
+
+
+
+    //                         fila.remove(); //para eliminar el tr
+
+
+    //                     });
+    //                 } else {
+    //                     Swal.fire({
+    //                         icon: "error",
+    //                         title: "Oops...",
+    //                         text: "Revisa los campos nuevamente",
+    //                         //  footer: '<a href="">Why do I have this issue?</a>'
+    //                     });
+    //                 }
+    //             }
+    //         });
+
+    //     }
+    // });
 
 
 
