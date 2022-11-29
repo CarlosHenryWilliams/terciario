@@ -217,70 +217,6 @@
             </main>
 
 
-            <!-- Add plan Modal -->
-            <div class="modal fade" id="modal_form_planes" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Agregar Plan de Estudio</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="addUser" action="">
-
-                                <div class="mb-3 row">
-                                    <label for="titulo_plan" class="col-md-3 form-label">Titulo</label>
-
-                                    <input type="hidden" class="form-control" id="input_id_plan" name="id" required>
-
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" id="input_titulo_plan" name="titulo"
-                                            required>
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="nombre_plan" class="col-md-3 form-label">Nombre</label>
-
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" id="input_nombre_plan" name="nombre"
-                                            required>
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="resolucion_plan" class="col-md-3 form-label">Resolucion</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" id="input_resolucion_plan"
-                                            name="resolucion" required>
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="estado_p_plan" class="col-md-3 form-label">Estado</label>
-                                    <div class="col-md-9">
-
-                                        <select class="form-select" aria-label="Default select example"
-                                            id="input_estado_p_plan" name="estado" required>
-                                            <option value="">Por favor seleccione un estado</option>
-                                            <option value="1">Habilitado</option>
-                                            <option value="0">Deshabilitado</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="text-center">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" id="boton_agregar_form" class="btn btn-primary">Agregar</button>
-                            <button type="submit" id="boton_editar_form" class="btn btn-primary">Editar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
 
 
             <!--  MODAL CORRELATIVAS-->
@@ -434,11 +370,11 @@ $(document).on("click", ".btnCorrelativas", function() {
 
             var nombremateria = json.nombre;
             $(" #titulo_materia").text(nombremateria);
+            $(' .input_id_materia_oculto').val(json.id)
 
             // $(" .btnAsignarMaterias").val(json.id);
             // $(" .btnVerMaterias").val(json.id);
 
-            // $(' .boton_id_plan_oculto').val(json.id)
 
             // $(" .btnAsignarMaterias").attr("href", "asignarmaterias.php?id='+id+'");
 
