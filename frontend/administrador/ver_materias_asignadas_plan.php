@@ -135,8 +135,8 @@
                                 <td></td>
                                 <td> <a href="#" data-id_materia="<?php echo $row['id'] ?>"
                                         class="btn btn-danger btnQuitarMateria m-1 rounded"> Quitar </a> <a href="#"
-                                        data-id="<?php $row['ano_plan_materia'] ?>"
-                                        class="btn btn-primary btnQuitarMateria m-1 rounded"> Correlativas </a></td>
+                                        data-id_materia="<?php echo $row['id'] ?>"
+                                        class="btn btn-primary btnCorrelativas m-1 rounded"> Correlativas </a></td>
                             </tr>
 
 
@@ -388,6 +388,86 @@
 
 
 
+<script>
+//DESVINCULAR MATERIA
+$(document).on("click", ".btnCorrelativas", function() {
+
+    /**
+     * MODIFICACIONES MODAL
+     */
+    var id_planestudio = $(".boton_id_plan_oculto").val();
+    console.log('id plan : ' + id_planestudio);
+
+
+    var id_materia = $(this).data('id_materia');
+    console.log('id materia : ' + id_materia);
+
+
+    // $("#" + id_materia).closest('tr').remove();
+    // $(id_materia).closest('tr').remove();
+
+    var fila = $(this).parent('td').parent('tr'); //con esto agarras el tr y eliminas la fila
+
+
+
+    Swal.fire({
+        title: "Desvincular Materia",
+        text: "Realmente desea desvincular la Materia?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirmar",
+        cancelButtonText: "Cancelar",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            /**
+             * Si confirma el formulario lo envia por post mediante Jquery
+             */
+
+            $.ajax({
+                url: "../../backend/plandeestudio/desvincularmateria.php",
+                type: "post",
+                data: {
+                    id_planestudio: id_planestudio,
+                    id_materia: id_materia
+                },
+                success: function(data) {
+                    var json = JSON.parse(data);
+                    var status = json.status;
+                    if (status == 'success') {
+
+                        Swal.fire(
+                            "Buen Trabajo!",
+                            "La Materia ha sido desvinculada!",
+                            "success"
+                        ).then((id_materia) => {
+
+
+
+
+                            fila.remove(); //para eliminar el tr
+
+
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Revisa los campos nuevamente",
+                            //  footer: '<a href="">Why do I have this issue?</a>'
+                        });
+                    }
+                }
+            });
+
+        }
+    });
+
+
+
+}); // TERMINA AGREGAR MATERIA
+</script>
 
 
 <!-- PARA VER SI ES PRIMER AÑO O 2DO ETC  -->
@@ -432,11 +512,8 @@ $(document).ready(function() {
 
 
 <script>
-//AGREGAR   PLANES
+//DESVINCULAR MATERIA
 $(document).on("click", ".btnQuitarMateria", function() {
-    opcion = 1;
-
-    // console.log(opcion);
 
     /**
      * MODIFICACIONES MODAL
