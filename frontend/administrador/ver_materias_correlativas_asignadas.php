@@ -1,7 +1,7 @@
 <?php include('modulos/conexion.php');  ?>
 
 <?php
-@$id_del_plan_oculto = $_POST['id_planestudio'];
+@$id_materias_oculto = $_POST['id_materias'];
 
 ?>
 
@@ -62,104 +62,84 @@
         <div id="layoutSidenav_content">
             <main>
 
-                <input class="boton_id_plan_oculto" type="hidden" value="<?php echo $id_del_plan_oculto; ?>">
+                <input class="boton_id_materias_oculto" type="hidden" value="<?php echo $id_materias_oculto; ?>">
 
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center ">
-                        <h1 class="mt-4 mb-4">MATERIAS ASIGNADAS DE :</h1>
+                        <h1 class="mt-4 mb-4">MATERIAS CORRELATIVAS DE :</h1>
                         <h2 class="mt-4 mb-4 text-uppercase" id="titulo_plan"> </h2>
 
                     </div>
 
 
-                    <?php
-
-                    $sql_año = "SELECT DISTINCT ano_plan_materia FROM planestudio_materia WHERE id_plan_estudio = '$id_del_plan_oculto'";
-                    $resultado2 = mysqli_query(conectame(), $sql_año);
-
-
-
-                    while ($row = mysqli_fetch_array($resultado2)) {
-
-                        $año = $row["ano_plan_materia"];
-                    ?>
-
-
-
-                    <table class="table table-hover" id="tabla_materias_asignadas">
+                    <table class="table table-hover" id="tabla_materias_correlativas_asignadas">
                         <thead>
-                            <tr>
-                                <h3 class="text-center"><?php if ($row['ano_plan_materia'] == 1) {
-                                                                echo "Primer Año";
-                                                            } else if ($row['ano_plan_materia'] == 2) {
-                                                                echo "Segundo Año";
-                                                            } else if ($row['ano_plan_materia'] == 3) {
-                                                                echo "Tercer Año";
-                                                            } else if ($row['ano_plan_materia'] == 4) {
-                                                                echo "Cuarto Año";
-                                                            } else if ($row['ano_plan_materia'] == 5) {
-                                                                echo "Quinto Año";
-                                                            } else if ($row['ano_plan_materia'] == 6) {
-                                                                echo "Sexto Año";
-                                                            } else if ($row['ano_plan_materia'] == 7) {
-                                                                echo "Septimo Año";
-                                                            }
 
-                                                            ?></h3>
-                            </tr>
                             <tr>
                                 <th>Codigo</th>
                                 <th>Materia</th>
-                                <th>Cursada</th>
-                                <th>Correlatividad</th>
+                                <th>Abreviatura</th>
                                 <th>Acciones</th>
-
                             </tr>
                         </thead>
+
+
                         <?php
+                        $sql = "SELECT * from materias INNER JOIN correlativas WHERE materias.id = correlativas.codigo_correlativa AND correlativas.codigo_materia = $id_materias_oculto";
+                        $resultado = mysqli_query(conectame(), $sql);
 
+                        if (mysqli_num_rows($resultado) < 1) {
 
-                            $sql = "SELECT * FROM planestudio_materia INNER JOIN materias ON planestudio_materia.id_materias = materias.id WHERE `ano_plan_materia` = $año AND `id_plan_estudio` = $id_del_plan_oculto";
-                            $resultado = mysqli_query(conectame(), $sql);
-
-                            while ($row = mysqli_fetch_array($resultado)) {
-
-                            ?>
+                        ?>
                         <tbody>
 
+                            <script>
+                            $(document).ready(function() {
 
-                            <tr id="probando">
-                                <td><?php echo $row['id'] ?></td>
-                                <td><?php echo $row['nombre'] ?></td>
-                                <td><?php echo $row['periodo_cursada'] ?></td>
-                                <td></td>
-                                <td> <a href="#" data-id_materia="<?php echo $row['id'] ?>"
-                                        class="btn btn-danger btnQuitarMateria m-1 rounded"> Quitar </a> <a href="#"
-                                        data-id_materia="<?php echo $row['id'] ?>"
-                                        class="btn btn-primary btnCorrelativas m-1 rounded" data-toggle="modal"
-                                        data-target="#modal_correlativas"> Correlativas </a></td>
-                            </tr>
-
-
-
+                                Swal.fire({
+                                    title: 'Ooops, no se encuentra ninguna Correlatividad asignada a esta Materia.',
+                                    width: 600,
+                                    padding: '3em',
+                                    color: '#716add',
+                                    background: '#fff url(/images/trees.png)',
+                                    backdrop: `
+    rgba(0,0,123,0.4)
+    url("/images/nyan-cat.gif")
+    left top
+    no-repeat
+  `
+                                }).then((result) => {
+                                    window.history.back();
+                                })
+                            });
+                            </script>
 
                         </tbody>
-                        <?php }
+                        <?php
+                        } else {
+                            while ($row2 = mysqli_fetch_array($resultado)) {
+
+
                             ?>
 
+                        <tbody>
+
+                            <tr id="probando">
+                                <td><?php echo $row2['id'] ?></td>
+                                <td><?php echo $row2['nombre'] ?></td>
+                                <td><?php echo $row2['abreviatura'] ?></td>
+                                <td> <a href="#" data-id_materia="<?php echo $row['id'] ?>"
+                                        class="btn btn-danger btnQuitarMateria m-1 rounded"> Quitar </td>
+                            </tr>
+
+                        </tbody>
+                        <?php   }
+                        } ?>
+
+
+
+
                     </table>
-
-
-
-                    <?php
-                    }
-
-                    ?>
-
-
-
-
-
 
                 </div>
             </main>
@@ -188,10 +168,9 @@
                             </div>
                             <hr style="width: 100%; color: black;">
                             <div class="d-flex align-items-center justify-content-center">
+                                <form action="ver_materias_asignadas_plan.php" method="POST">
 
-                                <form action="ver_materias_correlativas_asignadas.php" method="POST">
-
-                                    <input type="text" class="input_id_materia_oculto" name="id_materias">
+                                    <input type="text" class="input_id_materia_oculto">
                                     <button type="submit" value="" name="id_planestudio"
                                         class="btn btn-success m-3  btnVerMaterias" data-toggle="tooltip"
                                         data-placement="bottom" title="Ver materias correlativas">Ver Materias
@@ -203,9 +182,9 @@
                                 <form action="asignar_materias_correlativas.php" method="POST">
                                     <input type="text" class="input_id_materia_oculto" name="id_materias">
 
-                                    <button type="submit" value="" name="id_materia" class="btn btn-primary "
-                                        data-toggle="tooltip" data-placement="bottom"
-                                        title="Asignar nueva materia">Asignar Materia
+                                    <button type="submit" value="" name="id_materia"
+                                        class="btn btn-primary btnAsignarMaterias" data-toggle="tooltip"
+                                        data-placement="bottom" title="Asignar nueva materia">Asignar Materia
                                         Correlativa
                                     </button>
                                 </form>
@@ -479,53 +458,6 @@ $(document).on("click", ".btnQuitarMateria", function() {
 
 
 }); // TERMINA AGREGAR MATERIA
-</script>
-
-<script>
-$(document).ready(function() {
-
-    var id_planestudio = $(".boton_id_plan_oculto").val();
-    console.log(id_planestudio);
-
-
-
-    $('#materias').DataTable({
-        "fnCreatedRow": function(nRow, aData, iDataIndex) {
-            $(nRow).attr('id', aData[0]);
-        },
-        'serverSide': 'true',
-        'processing': 'true',
-        'paging': 'true',
-        'order': [],
-        'ajax': {
-            'url': '../../backend/plandeestudio/buscarmaterias_asignadasaunplan.php',
-            'data': {
-                id_planestudio: id_planestudio
-            },
-            'type': 'post',
-        },
-        "aoColumnDefs": [{
-                "bSortable": false,
-                "aTargets": [4]
-            },
-
-            {
-                // hide id_number column
-                "targets": [0, 3],
-                "visible": false,
-                "searchable": false
-            }
-
-        ]
-    });
-
-
-
-
-
-
-
-});
 </script>
 
 
