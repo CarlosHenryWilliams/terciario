@@ -119,11 +119,14 @@
                         <?php
 
 
+
                             $sql = "SELECT * FROM planestudio_materia INNER JOIN materias ON planestudio_materia.id_materias = materias.id WHERE `ano_plan_materia` = $año AND `id_plan_estudio` = $id_del_plan_oculto";
                             $resultado = mysqli_query(conectame(), $sql);
 
                             while ($row = mysqli_fetch_array($resultado)) {
 
+
+                                $id_materia =  $row['id'];
                             ?>
                         <tbody>
 
@@ -132,7 +135,9 @@
                                 <td><?php echo $row['id'] ?></td>
                                 <td><?php echo $row['nombre'] ?></td>
                                 <td><?php echo $row['periodo_cursada'] ?></td>
-                                <td></td>
+                                <td> <a href="#" data-id_materia="<?php echo $row['id'] ?>"
+                                        class="btn btn-success  m-1 rounded btnVerCorrelativas" data-toggle="modal"
+                                        data-target="#modal_correlativas_ver"> Ver Correlativas </a></td>
                                 <td> <a href="#" data-id_materia="<?php echo $row['id'] ?>"
                                         class="btn btn-danger btnQuitarMateria m-1 rounded"> Quitar </a> <a href="#"
                                         data-id_materia="<?php echo $row['id'] ?>"
@@ -144,7 +149,11 @@
 
 
                         </tbody>
-                        <?php }
+
+
+
+
+                        <?php }  // FIN WHILE
                             ?>
 
                     </table>
@@ -222,6 +231,50 @@
 
 
 
+            <!--  MODAL CORRELATIVAS 2-->
+            <div class="modal fade" id="modal_correlativas_ver" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">CORRELATIVAS</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+
+
+                            <div class="d-flex align-items-center justify-content-center">
+                                <h4 class="mt-2">Materia: </h4>
+                                <h4 class="ms-1 mt-2" id="titulo_materia"> </h4>
+                            </div>
+                            <hr style="width: 100%; color: black;">
+                            <div class=" align-items-center justify-content-center">
+                                <input type="text" class="input_id_materia_oculto_correlativas" name="id_materias">
+
+
+
+                                <div id="cargarcorrelativas" class="row">
+
+                                </div>
+
+                                <?php include('../../backend/plandeestudio/materias_correlativas.php');  ?>
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- FIN MODAL CORRELATIVAS-->
+
+
 
             <!-- Footer -->
 
@@ -282,7 +335,55 @@
 
 </body>
 
+<script type="text/javascript">
 
+</script>
+
+
+<script>
+$(document).on("click", ".btnVerCorrelativas", function() {
+
+    /**
+     * MODIFICACIONES MODAL
+     */
+    var id_planestudio = $(".boton_id_plan_oculto").val();
+    console.log('id plan : ' + id_planestudio);
+
+    var id = $(this).data('id_materia');
+    console.log('id materia : ' + id);
+
+    opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
+
+    //Asi se obtiene el id de la materia porque tiene cargado en el atributo data el id el boton
+    $.ajax({
+        url: "../../backend/materias/crudmaterias.php",
+        data: {
+            opcion: opcion,
+            id: id
+        },
+        type: 'post',
+        success: function(data) {
+            var json = JSON.parse(data); //lees los datos json o sea los convertis a string
+
+            var nombremateria = json.nombre;
+            $(" #titulo_materia").text(nombremateria);
+            $(' .input_id_materia_oculto_correlativas').val(json.id)
+
+        }
+    });
+
+
+
+    $("#cargarcorrelativas").load("../../backend/plandeestudio/materias_correlativas.php", {
+        opcion: "cargarcorrelativas",
+        id: id
+    });
+
+
+
+
+});
+</script>
 
 <script>
 //DESVINCULAR MATERIA
@@ -336,26 +437,7 @@ $(document).on("click", ".btnCorrelativas", function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}); // TERMINA AGREGAR MATERIA
+});
 </script>
 
 
