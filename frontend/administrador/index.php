@@ -68,38 +68,29 @@
 
                     </div>
 
-                    <div class="container">
-                        <h1 class="display-3">Hello, world!</h1>
-                        <p>This is a template for a simple marketing or informational website. It includes a large
-                            callout called a jumbotron and three supporting pieces of content. Use it as a starting
-                            point to create something more unique.</p>
-                        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
-                    </div>
+                    <div class="container mb-3">
+                        <h1 class="display-3">Bienvenido!</h1>
+                        <p style="font-size: 20px;">En esta sección tendra accesos rapidos a las principales funcionalidades del sistema. En la barra lateral ubicada del lado izquierdo de la pantalla, se podra acceder a las funcionalidades secundarias.</p>
+                    </div><br>
 
                     <div class="container">
                         <!-- Example row of columns -->
                         <div class="row">
                             <div class="col-md-4">
-                                <h2>Heading</h2>
-                                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
-                                    commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-                                    Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                                <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                                <h2>Plan de estudio</h2>
+                                <p>En esta seccion se podra crear y administrar los planes de estudios, ademas podras asignar correlativas a las materias. </p>
+                                <p><a class="btn btn-primary" href="plandeestudio.php" role="button">Ir a plan de estudio</a></p>
                             </div>
                             <div class="col-md-4">
-                                <h2>Heading</h2>
-                                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
-                                    commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-                                    Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                                <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                                <h2>Materias</h2>
+                                <p>En esta seccion se podra agregar, editar, habilitar y deshabilitar las materias. </p>
+                                <p><a class="btn btn-primary" href="materias.php" role="button">Ir a materias</a></p>
                             </div>
                             <div class="col-md-4">
-                                <h2>Heading</h2>
-                                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                                    Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus
-                                    commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+                                <h2>Usuarios</h2>
+                                <p>En esta seccion se puede agregar un usuario, editarlo y eliminarlo, tambien posee la opcion de habilitarlo o deshabilitarlo. ademas, asignarle un rol y un plan de estudio.
                                 </p>
-                                <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                                <p><a class="btn btn-primary" href="usuarios.php" role="button">Ir a usuarios</a></p>
                             </div>
                         </div>
 
@@ -113,7 +104,6 @@
 
                 </div>
             </main>
-
 
 
 
