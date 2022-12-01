@@ -262,6 +262,7 @@
                                     <p class="nombre_materia"></p>
                                 </li>
 
+                                <div id="ulListado"></div>
 
 
 
@@ -388,6 +389,22 @@ $(document).on("click", ".btnVerCorrelativas", function() {
 
 
             alert(datos);
+
+
+            // INTENTO DE HACERLO
+            function agregarElementos() {
+                var lista = document.getElementById("ulListado");
+                datos.forEach(function(data, index) {
+                    var linew = document.createElement("li");
+                    var contenido = document.createTextNode(data.id + ' ' + data.nombre);
+                    lista.appendChild(linew);
+                    linew.appendChild(contenido);
+
+                })
+            }
+            agregarElementos();
+
+            // INTENTO DE HACERLO
 
             // var nombremateria = json.nombre;
             // var codigocorrelativa = json.codigo_correlativa;
