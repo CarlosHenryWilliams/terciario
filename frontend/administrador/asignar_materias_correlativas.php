@@ -70,7 +70,8 @@
                 <div class="container">
 
                     <div class="d-flex align-items-center ">
-                        <h1 class="mt-4 mb-4">ASIGNAR CORRELATIVA</h1>
+                        <h1 class="mt-4 mb-4">ASIGNAR CORRELATIVA A: </h1>
+                        <h2 id="titulo_materia"></h2>
                     </div>
 
                     <!-- <div class="d-flex justify-content-around w-100 my-3">
@@ -94,7 +95,7 @@
                                 </div>
                                 <div class=" bd-highlight">
                                     <div class=" flex-shrink-1 bd-highlight">
-                                        <a href="plandeestudio.php" data-id="" class="btn btn-warning  btn-sm ">
+                                        <a href="#!" data-id="" class="btn btn-warning  btn-sm ">
                                             Volver
                                         </a>
                                         <!-- btn-sm hace que el boton sea pequeño -->
@@ -370,6 +371,11 @@ $(document).on("click", ".btnAgregarMateria", function() {
 
 <script>
 $(document).ready(function() {
+
+
+
+
+
 
     var id_materias = $(".boton_id_materias_oculto").val();
     console.log(id_materias);
