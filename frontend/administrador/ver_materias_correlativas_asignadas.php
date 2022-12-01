@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Administrador - Terciario 89</title>
+    <title>Terciario 89</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -293,15 +293,6 @@ $(document).on("click", ".btnCorrelativas", function() {
             $(" #titulo_materia").text(nombremateria);
             $(' .input_id_materia_oculto').val(json.id)
 
-            // $(" .btnAsignarMaterias").val(json.id);
-            // $(" .btnVerMaterias").val(json.id);
-
-
-            // $(" .btnAsignarMaterias").attr("href", "asignarmaterias.php?id='+id+'");
-
-            // window.location.href =
-            //     "http://www.gorissen.info/Pierre/maps/googleMapLocation.php?lat=" + elemA +
-            //     "&lon=" + elemB + "&setLatLon=Set"
 
 
         }
