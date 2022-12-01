@@ -255,15 +255,29 @@
                                 <input type="text" class="input_id_materia_oculto_correlativas" name="id_materias">
 
 
+                                <?php
 
 
-
-                                <?php include('../../backend/plandeestudio/materias_correlativas.php');
-
+                                $id_materia = $_POST['id'];
 
 
+                                // $sql2 = "SELECT * from materias INNER JOIN correlativas WHERE materias.id = correlativas.codigo_correlativa AND correlativas.codigo_materia = 5";
+                                // $resultado2 = mysqli_query(conectame(), $sql2);
 
+
+                                $sql2 = "SELECT * from materias INNER JOIN correlativas WHERE materias.id = correlativas.codigo_correlativa AND correlativas.codigo_materia = 7";
+                                $resultado2 = mysqli_query(conectame(), $sql2);
+
+                                while ($row2 = mysqli_fetch_array($resultado2)) { ?>
+
+                                <li><b> Codigo: </b><?php echo $row2['id'] ?> <b>Nombre: </b>
+                                    <?php echo $row2['nombre'] ?>
+                                </li>
+                                <br>
+                                <?php }
                                 ?>
+
+
 
 
                             </div>
@@ -349,27 +363,13 @@ $(document).on("click", ".btnVerCorrelativas", function() {
     /**
      * MODIFICACIONES MODAL
      */
-    var id_planestudio = $(".boton_id_plan_oculto").val();
-    console.log('id plan : ' + id_planestudio);
 
     var id = $(this).data('id_materia');
     console.log('id materia : ' + id);
 
     opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
 
-    $.ajax({
-        url: "../../backend/plandeestudio/materias_correlativas.php",
-        data: {
-            id: id
-        },
-        type: 'post',
-        success: function(data) {
-
-        }
-    });
-
-
-    //Asi se obtiene el id de la materia porque tiene cargado en el atributo data el id el boton
+    // PARA MOSTRAR EL NOMBRE DE LA MATERIA EN EL MODAL
     $.ajax({
         url: "../../backend/materias/crudmaterias.php",
         data: {
@@ -389,8 +389,18 @@ $(document).on("click", ".btnVerCorrelativas", function() {
 
 
 
+    //PARA LAS CORRELATIVAS
+    $.ajax({
+        url: "ver_materias_asignadas_plan.php",
+        data: {
+            id: id
+        },
+        type: 'post',
+        success: function(data) {
+            // alert(data);
 
-
+        }
+    });
 
 });
 </script>

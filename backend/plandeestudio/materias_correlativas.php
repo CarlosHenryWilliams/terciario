@@ -16,9 +16,9 @@ $resultado2 = mysqli_query(conectame(), $sql2);
 
 
 
-//         // $con = conectame();
-//         // $query = "SELECT * from materias INNER JOIN correlativas WHERE materias.id = correlativas.codigo_correlativa AND correlativas.codigo_materia = $id_materia";
-//         // $respuesta = $con->query($query) or die($con->error . " error en linea");
+        // $con = conectame();
+        // $query = "SELECT * from materias INNER JOIN correlativas WHERE materias.id = correlativas.codigo_correlativa AND correlativas.codigo_materia = $id_materia";
+        // $respuesta = $con->query($query) or die($con->error . " error en linea");
 
 //         while ($row2 = $resultado2->fetch_assoc()) {
 //             echo '                            
