@@ -196,6 +196,7 @@ $(document).on("click", ".btnAgregarMateria", function() {
     id_materia = $(" .boton_id_materias_oculto").val();
     console.log('ID MATERIA', id_materia);
 
+    var fila = $(this).parent('td').parent('tr'); //con esto agarras el tr y eliminas la fila
 
 
 
@@ -215,15 +216,11 @@ $(document).on("click", ".btnAgregarMateria", function() {
              */
 
             $.ajax({
-                url: "../../backend/plandeestudio/asignar_materia_planestudio.php",
+                url: "../../backend/plandeestudio/asignar_correlativa.php",
                 type: "post",
                 data: {
-                    id_plan_de_estudio: id_plan_de_estudio,
                     id_materia: id_materia,
-                    ano_cursada: ano_cursada,
-                    periodo_cursada: periodo_cursada
-
-
+                    id_materia_correlativa: id_materia_correlativa
                 },
                 success: function(data) {
                     var json = JSON.parse(data);
@@ -235,15 +232,8 @@ $(document).on("click", ".btnAgregarMateria", function() {
                             "La Materia ha sido asignada al plan de estudio",
                             "success"
                         ).then(() => {
+                            fila.remove(); //para eliminar el tr
 
-
-
-                            $("#" + id_materia).closest('tr')
-                                .remove();
-
-                            // mytable = $('#planes')
-                            //     .DataTable();
-                            // mytable.draw();
 
                         });
                     } else {
@@ -260,19 +250,6 @@ $(document).on("click", ".btnAgregarMateria", function() {
         }
     });
 
-
-    // if (
-    //     ano_cursada == "" ||
-    //     periodo_cursada == ""
-
-    // ) {
-    //     Swal.fire({
-    //         icon: "error",
-    //         title: "Oops...",
-    //         text: "Por favor no deje ningun campo vacio",
-    //         //  footer: '<a href="">Why do I have this issue?</a>'
-    //     });
-    // } else {
 
 });
 </script>

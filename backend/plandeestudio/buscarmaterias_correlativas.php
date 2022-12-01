@@ -5,7 +5,7 @@ $id_materias = $_POST['id_materias'];
 
 $output = array();
 
-$sql = "SELECT * FROM materias WHERE materias.id NOT IN (SELECT correlativas.codigo_correlativa FROM correlativas WHERE correlativas.codigo_materia = $id_materias  );
+$sql = "SELECT * FROM materias WHERE materias.id NOT IN (SELECT correlativas.codigo_correlativa FROM correlativas WHERE correlativas.codigo_materia = $id_materias  ) AND materias.id != $id_materias ;;
 ";
 
 

@@ -389,7 +389,7 @@ $(document).on("click", ".btnQuitarMateria", function() {
                             "Buen Trabajo!",
                             "La Materia ha sido desvinculada!",
                             "success"
-                        ).then((id_materia) => {
+                        ).then(() => {
 
 
 
