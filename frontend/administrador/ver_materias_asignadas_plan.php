@@ -487,7 +487,7 @@ $(document).ready(function() {
     })
 
 });
-</script>SSSSSSSSSS
+</script>
 <!-- PARA VER SI ES PRIMER AÑO O 2DO ETC  -->
 
 

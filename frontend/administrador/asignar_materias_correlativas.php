@@ -368,14 +368,38 @@ $(document).on("click", ".btnAgregarMateria", function() {
 </script>
 
 
-
 <script>
 $(document).ready(function() {
 
+    opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
+
+    var id = $(".boton_id_materias_oculto").val();
+    console.log(id);
 
 
+    //Asi se obtiene el id del plan porque tiene cargado en el atributo data el id el boton
+    $.ajax({
+        url: "../../backend/materias/crudmaterias.php",
+        data: {
+            opcion: opcion,
+            id: id
+        },
+        type: 'post',
+        success: function(data) {
+            var json = JSON.parse(data); //lees los datos json o sea los convertis a string
+
+            var nombre_materia = json.nombre;
+            $(" #titulo_materia").text("\u00A0" +
+                nombre_materia); // EL CODIGO ESE "\u00A0" ES UN ESPACIO EN BLANCO
+        }
+    })
+
+});
+</script>
 
 
+<script>
+$(document).ready(function() {
 
     var id_materias = $(".boton_id_materias_oculto").val();
     console.log(id_materias);
