@@ -152,82 +152,7 @@
 
 
 
-    <!-- MODAL ASIGNAR MATERIAS-->
-    <div class="modal fade" id="modal_form_asignar_materias" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Agregar Materia</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Especifique los parametros de la Materia</h5>
-                    <form id="addUser" action="">
-                        <div class="mb-3 row">
 
-
-                            <input type="hidden" class="form-control" id="input_id_plan_de_estudio" name="id_plan"
-                                value="<?php echo $id_boton_plan ?>" required>
-                            <input type="hidden" class="form-control" id="input_id_materia" name="id_materia" required>
-
-                            <label for="nombre_materia" class="col-md-3 form-label">Año de cursada
-                            </label>
-
-
-                            <div class="col-md-9">
-
-                                <select class="form-select" aria-label="Default select example" id="input_ano_cursada"
-                                    name="nombre" required>
-                                    <option value="">Por favor seleccione el año de cursada</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-
-
-                                </select>
-
-                            </div>
-
-
-
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label for="input_periodo_cursada" class="col-md-3 form-label">Periodo</label>
-                            <div class="col-md-9">
-                                <!-- <input type="text" class="form-control" id="estado_m_materia" name="mobile"> -->
-
-                                <select class="form-select" aria-label="Default select example"
-                                    id="input_periodo_cursada" name="estado" required>
-                                    <option value="">Por favor seleccione el periodo de cursada</option>
-                                    <option value="1er Cuatrimestre">1er Cuatrimestre</option>
-                                    <option value="2do Cuatrimestre">2do Cuatrimestre</option>
-                                    <option value="Anual">Anual</option>
-
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="text-center">
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" id="boton_agregar_form" class="btn btn-primary">Agregar</button>
-
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 
 
@@ -264,105 +189,90 @@ $(document).on("click", ".btnAgregarMateria", function() {
 
 
 
-    var id_materia = $(this).data('id');
-    console.log('ID MATERIA', id_materia);
+    var id_materia_correlativa = $(this).data('id');
+    console.log('ID MATERIA A SER CORRELATIVA', id_materia_correlativa);
 
     // LE INSERTO EL ID DE LA MATERIA AL INPUT OCULTO
-    $(" #input_id_materia").val(id_materia);
+    id_materia = $(" .boton_id_materias_oculto").val();
+    console.log('ID MATERIA', id_materia);
 
 
 
-    //  MODAL AGREGAR
-    $("#boton_agregar_form").click(function() {
 
-        var id_plan_de_estudio = $('#input_id_plan_de_estudio').val();
-        console.log(id_plan_de_estudio);
-        var ano_cursada = $('#input_ano_cursada').val();
-        var periodo_cursada = $('#input_periodo_cursada').val();
+    Swal.fire({
+        title: "Esta seguro?",
+        text: "La Materia se asignara como Correlativa",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, estoy seguro",
+        cancelButtonText: "Cancelar",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            /**
+             * Si confirma el formulario lo envia por post mediante Jquery
+             */
 
-
-        console.log(ano_cursada, periodo_cursada);
-
-        if (
-            ano_cursada == "" ||
-            periodo_cursada == ""
-
-        ) {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Por favor no deje ningun campo vacio",
-                //  footer: '<a href="">Why do I have this issue?</a>'
-            });
-        } else {
-            Swal.fire({
-                title: "Los datos son correctos?",
-                text: "La Materia se agregara al Plan de Estudio",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Si, estoy seguro",
-                cancelButtonText: "Cancelar",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    /**
-                     * Si confirma el formulario lo envia por post mediante Jquery
-                     */
-
-                    $.ajax({
-                        url: "../../backend/plandeestudio/asignar_materia_planestudio.php",
-                        type: "post",
-                        data: {
-                            id_plan_de_estudio: id_plan_de_estudio,
-                            id_materia: id_materia,
-                            ano_cursada: ano_cursada,
-                            periodo_cursada: periodo_cursada
+            $.ajax({
+                url: "../../backend/plandeestudio/asignar_materia_planestudio.php",
+                type: "post",
+                data: {
+                    id_plan_de_estudio: id_plan_de_estudio,
+                    id_materia: id_materia,
+                    ano_cursada: ano_cursada,
+                    periodo_cursada: periodo_cursada
 
 
-                        },
-                        success: function(data) {
-                            var json = JSON.parse(data);
-                            var status = json.status;
-                            if (status == 'true') {
+                },
+                success: function(data) {
+                    var json = JSON.parse(data);
+                    var status = json.status;
+                    if (status == 'true') {
 
-                                Swal.fire(
-                                    "Buen Trabajo!",
-                                    "La Materia ha sido agregada al plan de estudio",
-                                    "success"
-                                ).then(() => {
+                        Swal.fire(
+                            "Buen Trabajo!",
+                            "La Materia ha sido asignada al plan de estudio",
+                            "success"
+                        ).then(() => {
 
-                                    $("#modal_form_asignar_materias")
-                                        .trigger(
-                                            "reset"
-                                        ); //Reiniciar el formulario
-                                    $("#modal_form_asignar_materias .close")
-                                        .click(); //Cerrar el formulario
 
-                                    $("#" + id_materia).closest('tr')
-                                        .remove();
 
-                                    // mytable = $('#planes')
-                                    //     .DataTable();
-                                    // mytable.draw();
+                            $("#" + id_materia).closest('tr')
+                                .remove();
 
-                                });
-                            } else {
-                                Swal.fire({
-                                    icon: "error",
-                                    title: "Oops...",
-                                    text: "Revisa los campos nuevamente",
-                                    //  footer: '<a href="">Why do I have this issue?</a>'
-                                });
-                            }
-                        }
-                    });
+                            // mytable = $('#planes')
+                            //     .DataTable();
+                            // mytable.draw();
 
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Revisa los campos nuevamente",
+                            //  footer: '<a href="">Why do I have this issue?</a>'
+                        });
+                    }
                 }
             });
+
         }
     });
 
+
+    // if (
+    //     ano_cursada == "" ||
+    //     periodo_cursada == ""
+
+    // ) {
+    //     Swal.fire({
+    //         icon: "error",
+    //         title: "Oops...",
+    //         text: "Por favor no deje ningun campo vacio",
+    //         //  footer: '<a href="">Why do I have this issue?</a>'
+    //     });
+    // } else {
 
 });
 </script>
@@ -374,7 +284,6 @@ $(document).ready(function() {
     opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
 
     var id = $(".boton_id_materias_oculto").val();
-    console.log(id);
 
 
     //Asi se obtiene el id del plan porque tiene cargado en el atributo data el id el boton

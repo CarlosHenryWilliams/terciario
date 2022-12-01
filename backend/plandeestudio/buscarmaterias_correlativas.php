@@ -52,7 +52,7 @@ while ($row = mysqli_fetch_assoc($query)) {
     $sub_array[] = $row['nombre'];
     $sub_array[] = $row['abreviatura'];
     $sub_array[] = $row['estado_m'];
-    $sub_array[] = ' <a href="#" data-id="' . $row['id'] . '"   class="btn btn-primary btnAgregarMateria m-1 rounded"  data-toggle="modal" data-target="#modal_form_asignar_materias"><i class="fa-solid fa-plus"></i> Agregar Materias </a>';
+    $sub_array[] = ' <a href="#" data-id="' . $row['id'] . '"   class="btn btn-primary btnAgregarMateria m-1 rounded" ><i class="fa-solid fa-plus"></i> Agregar Materias </a>';
     $data[] = $sub_array;
 }
 
