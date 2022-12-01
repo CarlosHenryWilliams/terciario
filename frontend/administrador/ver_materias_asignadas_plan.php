@@ -256,11 +256,14 @@
 
 
 
-                                <div id="cargarcorrelativas" class="row">
 
-                                </div>
 
-                                <?php include('../../backend/plandeestudio/materias_correlativas.php');  ?>
+                                <?php include('../../backend/plandeestudio/materias_correlativas.php');
+
+
+
+
+                                ?>
 
 
                             </div>
@@ -354,6 +357,18 @@ $(document).on("click", ".btnVerCorrelativas", function() {
 
     opcion = 5; //BUSCAR LOS DATOS INDIVIDUALMENTE
 
+    $.ajax({
+        url: "../../backend/plandeestudio/materias_correlativas.php",
+        data: {
+            id: id
+        },
+        type: 'post',
+        success: function(data) {
+
+        }
+    });
+
+
     //Asi se obtiene el id de la materia porque tiene cargado en el atributo data el id el boton
     $.ajax({
         url: "../../backend/materias/crudmaterias.php",
@@ -373,11 +388,6 @@ $(document).on("click", ".btnVerCorrelativas", function() {
     });
 
 
-
-    $("#cargarcorrelativas").load("../../backend/plandeestudio/materias_correlativas.php", {
-        opcion: "cargarcorrelativas",
-        id: id
-    });
 
 
 

@@ -1,15 +1,20 @@
 <?php
 // include('modulos/conexion.php');
 
-// $id_materia = $_POST['id'];
+$id_materia = $_POST['id'];
+
+
+$sql2 = "SELECT * from materias INNER JOIN correlativas WHERE materias.id = correlativas.codigo_correlativa AND correlativas.codigo_materia = 7";
+$resultado2 = mysqli_query(conectame(), $sql2);
+
+
+
 // $opcion = $_POST['opcion'];
 
 // switch ($opcion) {
 //     case "cargarcorrelativas":
 
 
-//         $sql2 = "SELECT * from materias INNER JOIN correlativas WHERE materias.id = correlativas.codigo_correlativa AND correlativas.codigo_materia = $id_materia";
-//         $resultado2 = mysqli_query(conectame(), $sql2);
 
 //         // $con = conectame();
 //         // $query = "SELECT * from materias INNER JOIN correlativas WHERE materias.id = correlativas.codigo_correlativa AND correlativas.codigo_materia = $id_materia";

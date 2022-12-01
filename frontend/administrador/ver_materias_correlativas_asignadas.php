@@ -128,7 +128,7 @@
                                 <td><?php echo $row2['id'] ?></td>
                                 <td><?php echo $row2['nombre'] ?></td>
                                 <td><?php echo $row2['abreviatura'] ?></td>
-                                <td> <a href="#" data-id_materia="<?php echo $row['id'] ?>"
+                                <td> <a href="#" data-id_materia="<?php echo $row2['id'] ?>"
                                         class="btn btn-danger btnQuitarMateria m-1 rounded"> Quitar </td>
                             </tr>
 
@@ -309,31 +309,6 @@ $(document).on("click", ".btnCorrelativas", function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }); // TERMINA AGREGAR MATERIA
 </script>
 
@@ -383,27 +358,19 @@ $(document).ready(function() {
 //DESVINCULAR MATERIA
 $(document).on("click", ".btnQuitarMateria", function() {
 
-    /**
-     * MODIFICACIONES MODAL
-     */
-    var id_planestudio = $(".boton_id_plan_oculto").val();
-    console.log('id plan : ' + id_planestudio);
-
 
     var id_materia = $(this).data('id_materia');
     console.log('id materia : ' + id_materia);
 
 
-    // $("#" + id_materia).closest('tr').remove();
-    // $(id_materia).closest('tr').remove();
 
     var fila = $(this).parent('td').parent('tr'); //con esto agarras el tr y eliminas la fila
 
 
 
     Swal.fire({
-        title: "Desvincular Materia",
-        text: "Realmente desea desvincular la Materia?",
+        title: "Desvincular Correlativa",
+        text: "Realmente desea desvincular la Materia Correlativa?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -417,10 +384,9 @@ $(document).on("click", ".btnQuitarMateria", function() {
              */
 
             $.ajax({
-                url: "../../backend/plandeestudio/desvincularmateria.php",
+                url: "../../backend/plandeestudio/desvincular_correlativa.php",
                 type: "post",
                 data: {
-                    id_planestudio: id_planestudio,
                     id_materia: id_materia
                 },
                 success: function(data) {
