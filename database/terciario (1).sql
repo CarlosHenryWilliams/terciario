@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2022 at 12:56 AM
+-- Generation Time: Dec 01, 2022 at 07:58 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `terciario`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `correlativas`
+--
+
+CREATE TABLE `correlativas` (
+  `id` int(11) NOT NULL,
+  `codigo_materia` int(11) NOT NULL,
+  `codigo_correlativa` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `correlativas`
+--
+
+INSERT INTO `correlativas` (`id`, `codigo_materia`, `codigo_correlativa`) VALUES
+(5, 5, 1),
+(6, 2, 1),
+(7, 2, 3),
+(8, 20, 26),
+(9, 5, 2),
+(10, 5, 3);
 
 -- --------------------------------------------------------
 
@@ -110,7 +134,8 @@ INSERT INTO `materias` (`id`, `nombre`, `abreviatura`, `estado_m`) VALUES
 (45, 'Trabajo Final de Grado', 'TFG', 1),
 (46, 'Electiva IIII', 'Elect4', 1),
 (47, 'Electiva IIIII a', 'Elect5a', 1),
-(48, 'Electiva IIIII b', 'Elect5b', 1);
+(48, 'Electiva IIIII b', 'Elect5b', 1),
+(49, 'Pruebam1', 'prrb', 1);
 
 -- --------------------------------------------------------
 
@@ -191,7 +216,11 @@ INSERT INTO `planestudio_materia` (`id`, `id_plan_estudio`, `id_materias`, `ano_
 (45, 1, 45, '5', '2do Cuatrimestre'),
 (46, 1, 46, '4', '2do Cuatrimestre'),
 (47, 1, 47, '5', '1er Cuatrimestre'),
-(48, 1, 48, '5', '2do Cuatrimestre');
+(48, 1, 48, '5', '2do Cuatrimestre'),
+(58, 0, 1, '', ''),
+(59, 0, 1, '', ''),
+(60, 0, 1, '', ''),
+(61, 1, 49, '3', '2do Cuatrimestre');
 
 -- --------------------------------------------------------
 
@@ -243,7 +272,7 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `nombre_rol`, `estado_r`) VALUES
-(1, 'alumno', 1),
+(1, 'alumno', 0),
 (2, 'docente', 0);
 
 -- --------------------------------------------------------
@@ -324,6 +353,12 @@ INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `sexo`, `dni`, `fecha_nacimi
 --
 
 --
+-- Indexes for table `correlativas`
+--
+ALTER TABLE `correlativas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `cursada`
 --
 ALTER TABLE `cursada`
@@ -394,6 +429,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT for table `correlativas`
+--
+ALTER TABLE `correlativas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `cursada`
 --
 ALTER TABLE `cursada`
@@ -409,7 +450,7 @@ ALTER TABLE `localidad`
 -- AUTO_INCREMENT for table `materias`
 --
 ALTER TABLE `materias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `notas`
@@ -421,7 +462,7 @@ ALTER TABLE `notas`
 -- AUTO_INCREMENT for table `planestudio_materia`
 --
 ALTER TABLE `planestudio_materia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `planestudio_usuario`
