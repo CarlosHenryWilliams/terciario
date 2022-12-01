@@ -1,13 +1,24 @@
 <?php
-// include('modulos/conexion.php');
+include('../conexion.php');
+
+
 
 $id_materia = $_POST['id'];
+$sql = "SELECT * from materias INNER JOIN correlativas WHERE materias.id = correlativas.codigo_correlativa AND correlativas.codigo_materia = $id_materia ";
+$query = mysqli_query(conectame(), $sql);
 
 
-$sql2 = "SELECT * from materias INNER JOIN correlativas WHERE materias.id = correlativas.codigo_correlativa AND correlativas.codigo_materia = 7";
-$resultado2 = mysqli_query(conectame(), $sql2);
+$data = $query->fetch_all(MYSQLI_ASSOC);
+
+echo json_encode($data);
 
 
+// foreach ($nisman as $query) {
+
+//     echo json_encode($nisman);
+// }
+
+// $row = mysqli_fetch_array($query);
 
 // $opcion = $_POST['opcion'];
 

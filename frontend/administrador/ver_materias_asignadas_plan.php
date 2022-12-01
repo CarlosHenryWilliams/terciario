@@ -255,27 +255,13 @@
                                 <input type="text" class="input_id_materia_oculto_correlativas" name="id_materias">
 
 
-                                <?php
 
-
-                                $id_materia = $_POST['id'];
-
-
-                                // $sql2 = "SELECT * from materias INNER JOIN correlativas WHERE materias.id = correlativas.codigo_correlativa AND correlativas.codigo_materia = 5";
-                                // $resultado2 = mysqli_query(conectame(), $sql2);
-
-
-                                $sql2 = "SELECT * from materias INNER JOIN correlativas WHERE materias.id = correlativas.codigo_correlativa AND correlativas.codigo_materia = 7";
-                                $resultado2 = mysqli_query(conectame(), $sql2);
-
-                                while ($row2 = mysqli_fetch_array($resultado2)) { ?>
-
-                                <li><b> Codigo: </b><?php echo $row2['id'] ?> <b>Nombre: </b>
-                                    <?php echo $row2['nombre'] ?>
+                                <li><b>Codigo: </b>
+                                    <p class="codigo_materia"></p>
+                                    <b>Nombre</b>
+                                    <p class="nombre_materia"></p>
                                 </li>
-                                <br>
-                                <?php }
-                                ?>
+
 
 
 
@@ -391,13 +377,24 @@ $(document).on("click", ".btnVerCorrelativas", function() {
 
     //PARA LAS CORRELATIVAS
     $.ajax({
-        url: "ver_materias_asignadas_plan.php",
+        url: "../../backend/plandeestudio/materias_correlativas.php",
         data: {
             id: id
         },
         type: 'post',
         success: function(data) {
-            // alert(data);
+            var datos = data
+            // var json = JSON.parse(data); //lees los datos json o sea los convertis a string
+
+
+            alert(datos);
+
+            // var nombremateria = json.nombre;
+            // var codigocorrelativa = json.codigo_correlativa;
+
+            // $(" .codigo_materia").text(codigocorrelativa);
+            // $(" .nombre_materia").text(nombremateria);
+
 
         }
     });
