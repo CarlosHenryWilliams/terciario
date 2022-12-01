@@ -200,7 +200,7 @@
 
                                 <form action="ver_materias_correlativas_asignadas.php" method="POST">
 
-                                    <input type="text" class="input_id_materia_oculto" name="id_materias">
+                                    <input type="hidden" class="input_id_materia_oculto" name="id_materias">
                                     <button type="submit" value="" name="id_planestudio"
                                         class="btn btn-success m-3  btnVerMaterias" data-toggle="tooltip"
                                         data-placement="bottom" title="Ver materias correlativas">Ver Materias
@@ -210,7 +210,7 @@
 
 
                                 <form action="asignar_materias_correlativas.php" method="POST">
-                                    <input type="text" class="input_id_materia_oculto" name="id_materias">
+                                    <input type="hidden" class="input_id_materia_oculto" name="id_materias">
 
                                     <button type="submit" value="" name="id_materia" class="btn btn-primary "
                                         data-toggle="tooltip" data-placement="bottom"
