@@ -8,38 +8,20 @@ $sql = "SELECT * from materias INNER JOIN correlativas WHERE materias.id = corre
 $query = mysqli_query(conectame(), $sql);
 
 
-$data = $query->fetch_all(MYSQLI_ASSOC);
+// Se crea un array vacio
+$Array = [];
 
-echo json_encode($data);
+// Loop through query and push results into $someArray;
+// un while normal y tiramos los datos en el array con el array push
+while ($row = mysqli_fetch_assoc($query)) {
+        array_push($Array, [
+                'nombre'   => $row['nombre'],
+                'codigo_correlativa' => $row['codigo_correlativa'],
+                'abreviatura' => $row['abreviatura']
 
+        ]);
+}
 
-// foreach ($nisman as $query) {
-
-//     echo json_encode($nisman);
-// }
-
-// $row = mysqli_fetch_array($query);
-
-// $opcion = $_POST['opcion'];
-
-// switch ($opcion) {
-//     case "cargarcorrelativas":
-
-
-
-        // $con = conectame();
-        // $query = "SELECT * from materias INNER JOIN correlativas WHERE materias.id = correlativas.codigo_correlativa AND correlativas.codigo_materia = $id_materia";
-        // $respuesta = $con->query($query) or die($con->error . " error en linea");
-
-//         while ($row2 = $resultado2->fetch_assoc()) {
-//             echo '                            
-//                             <li><b> Codigo: </b>' . $row2['id'] . ' <b>Nombre: </b> ' . $row2['nombre'] . '</li> <br>';
-//         }
-//         mysqli_data_seek($resultado2, 0);
-//         break;
-// }
-
-
-// CONSULTA PARA VER CORRELATIVAS
-
-// <p class="card-text">'.$item['descripcion'].'</p>\
+// Convertimos el array a un json string
+$variable = json_encode($Array);
+echo $variable;

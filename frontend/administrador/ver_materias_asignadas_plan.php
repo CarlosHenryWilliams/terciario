@@ -252,17 +252,27 @@
                             </div>
                             <hr style="width: 100%; color: black;">
                             <div class=" align-items-center justify-content-center">
-                                <input type="text" class="input_id_materia_oculto_correlativas" name="id_materias">
+                                <input type="hidden" class="input_id_materia_oculto_correlativas" name="id_materias">
 
 
 
-                                <li><b>Codigo: </b>
+                                <!-- <li><b>Codigo: </b>
                                     <p class="codigo_materia"></p>
                                     <b>Nombre</b>
                                     <p class="nombre_materia"></p>
-                                </li>
+                                </li> -->
 
-                                <div id="ulListado"></div>
+                                <table id="tablacorrelativas" border="1">
+                                    <thead>
+                                        <th>Codigo</th>
+
+                                        <th>Nombre</th>
+                                        <th>Abreviatura</th>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
 
 
 
@@ -335,6 +345,7 @@
 
     <script src="js/materias.js"></script>
 
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 
 
 </body>
@@ -383,26 +394,53 @@ $(document).on("click", ".btnVerCorrelativas", function() {
             id: id
         },
         type: 'post',
+        dataType: "json",
         success: function(data) {
-            var datos = data
-            // var json = JSON.parse(data); //lees los datos json o sea los convertis a string
 
 
-            alert(datos);
+            var materias = "";
+
+            // Loop through Object and create peopleHTML
+            for (var key in data) {
+                if (data.hasOwnProperty(key)) {
+                    materias += "<tr>";
+                    materias += "<td>" + data[key]["codigo_correlativa"] + "</td>";
+                    materias += "<td>" + data[key]["nombre"] + "</td>";
+                    materias += "<td>" + data[key]["abreviatura"] + "</td>";
 
 
-            // INTENTO DE HACERLO
-            function agregarElementos() {
-                var lista = document.getElementById("ulListado");
-                datos.forEach(function(data, index) {
-                    var linew = document.createElement("li");
-                    var contenido = document.createTextNode(data.id + ' ' + data.nombre);
-                    lista.appendChild(linew);
-                    linew.appendChild(contenido);
-
-                })
+                    materias += "</tr>";
+                }
             }
-            agregarElementos();
+
+            //Reemplaza el tbody de la tabla
+            // Replace table’s tbody html with peopleHTML
+            $("#tablacorrelativas tbody").html(materias);
+
+
+
+
+
+            // var datos = data
+            // // var json = JSON.parse(data); //lees los datos json o sea los convertis a string
+            // var JSONString = JSON.stringify(datos);
+            // // alert(JSONString);
+
+            // alert(JSONString);
+
+
+            // // INTENTO DE HACERLO
+            // function agregarElementos() {
+            //     var lista = document.getElementById("ulListado");
+            //     datos.forEach(function(data, index) {
+            //         var linew = document.createElement("li");
+            //         var contenido = document.createTextNode(data.id + ' ' + data.nombre);
+            //         lista.appendChild(linew);
+            //         linew.appendChild(contenido);
+
+            //     })
+            // }
+            // agregarElementos();
 
             // INTENTO DE HACERLO
 
