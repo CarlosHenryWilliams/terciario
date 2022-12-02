@@ -262,7 +262,7 @@
                                     <p class="nombre_materia"></p>
                                 </li> -->
 
-                                <table id="tablacorrelativas" border="1">
+                                <table id="tablacorrelativas" class=" col-12 text-center">
                                     <thead>
                                         <th>Codigo</th>
 
