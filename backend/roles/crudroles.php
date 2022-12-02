@@ -2,7 +2,6 @@
 @include('../conexion.php');
 
 /*RECIBE DATOS DE AGREGAR */
-// $conexion = mysqli_connect('localhost', 'root', '', 'terciario');
 
 
 @$opcion = $_POST['opcion'];
@@ -154,51 +153,4 @@ switch ($opcion) {
             echo json_encode($data);
         }
         break;
-}
-
-
-
-
-
-function mostrar_alumnos_actividad()
-{ //ID actividad
-
-    $sql = "SELECT * FROM `materias` WHERE estado_m = 1";
-    @$query = mysqli_query(conectame(), $sql);
-    if (@mysqli_num_rows($query) > 0) {
-        echo "
-       
-        <div class='table-responsive'>
-        <table id='nisman' class='table  nowrap' cellspacing='0' width='100%'>
-
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                       
-                                    </tr>
-                                </thead>
-                                <tbody>
-            ";
-        while ($vec = mysqli_fetch_row($query)) {
-            echo "<tr>
-          <td>$vec[1]</td>
-          <td>$vec[2]</td>
-          <td>$vec[0]</td>
-          <td>
-            <a href='ctacte.php?id=$vec[3]'><button class='btn btn-primary my-1'>Pagos</button></a>  <a href='carnet.php?id=$vec[3]'><button class='btn btn-primary my-1'>Carnet</button></a>  <button id='btn-borra' type='button' class='btn btn-danger my-1 btn-borra' data-nombre='" . $vec[2] . ", " . $vec[1] . "' data-id='" . $vec[3] . "' >Borrar</button>
-          </td>
-        </tr>";
-        }
-
-        echo " </tbody>
-                </table>
-                </div>
-                    
-            ";
-    } else {
-        echo "<h4>No hay alumnos cargados en esta actividad<h4>";
-    }
 }

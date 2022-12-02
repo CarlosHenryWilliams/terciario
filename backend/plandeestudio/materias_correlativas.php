@@ -11,7 +11,6 @@ $query = mysqli_query(conectame(), $sql);
 // Se crea un array vacio
 $Array = [];
 
-// Loop through query and push results into $someArray;
 // un while normal y tiramos los datos en el array con el array push
 while ($row = mysqli_fetch_assoc($query)) {
         array_push($Array, [

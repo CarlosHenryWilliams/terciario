@@ -17,6 +17,9 @@ $columns = array(
     3 => 'estado_m',
 );
 
+
+
+
 // if (isset($_POST['search']['value'])) {
 //     $search_value = $_POST['search']['value'];
 //     $sql .= " AND materias.nombre like '%" . $search_value . "%'";
