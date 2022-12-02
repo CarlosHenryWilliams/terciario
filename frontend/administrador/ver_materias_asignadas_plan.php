@@ -406,12 +406,12 @@ $(document).on("click", ".btnVerCorrelativas", function() {
 
             var materias = "";
 
-            for (var key in data) {
-                if (data.hasOwnProperty(key)) {
+            for (var column in data) {
+                if (data.hasOwnProperty(column)) {
                     materias += "<tr>";
-                    materias += "<td>" + data[key]["codigo_correlativa"] + "</td>";
-                    materias += "<td>" + data[key]["nombre"] + "</td>";
-                    materias += "<td>" + data[key]["abreviatura"] + "</td>";
+                    materias += "<td>" + data[column]["codigo_correlativa"] + "</td>";
+                    materias += "<td>" + data[column]["nombre"] + "</td>";
+                    materias += "<td>" + data[column]["abreviatura"] + "</td>";
                     materias += "</tr>";
                 }
             }
