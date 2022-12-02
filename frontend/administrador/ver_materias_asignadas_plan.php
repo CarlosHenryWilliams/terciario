@@ -238,7 +238,8 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLongTitle">CORRELATIVAS</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" id="botoncerrarmodal" class="close" data-dismiss="modal"
+                                aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -397,58 +398,28 @@ $(document).on("click", ".btnVerCorrelativas", function() {
         dataType: "json",
         success: function(data) {
 
+            if (data.length === 0) {
+                alert('No se encuentran materias correlativas');
+
+            }
+
 
             var materias = "";
 
-            // Loop through Object and create peopleHTML
             for (var key in data) {
                 if (data.hasOwnProperty(key)) {
                     materias += "<tr>";
                     materias += "<td>" + data[key]["codigo_correlativa"] + "</td>";
                     materias += "<td>" + data[key]["nombre"] + "</td>";
                     materias += "<td>" + data[key]["abreviatura"] + "</td>";
-
-
                     materias += "</tr>";
                 }
             }
 
+
             //Reemplaza el tbody de la tabla
-            // Replace table’s tbody html with peopleHTML
             $("#tablacorrelativas tbody").html(materias);
 
-
-
-
-
-            // var datos = data
-            // // var json = JSON.parse(data); //lees los datos json o sea los convertis a string
-            // var JSONString = JSON.stringify(datos);
-            // // alert(JSONString);
-
-            // alert(JSONString);
-
-
-            // // INTENTO DE HACERLO
-            // function agregarElementos() {
-            //     var lista = document.getElementById("ulListado");
-            //     datos.forEach(function(data, index) {
-            //         var linew = document.createElement("li");
-            //         var contenido = document.createTextNode(data.id + ' ' + data.nombre);
-            //         lista.appendChild(linew);
-            //         linew.appendChild(contenido);
-
-            //     })
-            // }
-            // agregarElementos();
-
-            // INTENTO DE HACERLO
-
-            // var nombremateria = json.nombre;
-            // var codigocorrelativa = json.codigo_correlativa;
-
-            // $(" .codigo_materia").text(codigocorrelativa);
-            // $(" .nombre_materia").text(nombremateria);
 
 
         }

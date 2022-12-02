@@ -95,23 +95,17 @@ while ($row = mysqli_fetch_assoc($query)) {
     $sub_array[] = $row['email'];
     $sub_array[] = $row['clave'];
     $sub_array[] = $row['fecha_inscripcion'];
-    // $sub_array[] = $row['estado_u'];
 
 
     if ($row['estado_u'] == 1) {
         $sub_array[] = 'Habilitado';
-        // $sub_array[] = 'Habilitado' .
-        // 	'<a href="javascript:void();" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm editbtn" > Baja</a>';
     } else {
         $sub_array[] = 'Deshabilitado';
     }
-    // $sub_array[] = $row['estado_m'];
-    // $sub_array[] = $row['city'];
+
 
     if ($row['estado_u'] == 1) {
         $sub_array[] = '<a href="#"  data-id="' . $row['id'] . '" data-dni="' . $row['dni'] . '"  class="btn btn-primary btn-sm btnroles"   data-toggle="modal" data-target="#modal_ver_roles" data-toggle="tooltip" data-placement="bottom" title="Ver roles"><i class="fa-solid fa-users"></i></a> <a href="#"  data-id="' . $row['id'] . '" data-dni="' . $row['dni'] . '"  class="btn btn-success btn-sm btnvincularplan"   data-toggle="modal" data-target="#modal_vincular_plan" data-toggle="tooltip" data-placement="bottom" title="Vincular plan"><i class="fa-solid fa-link"></i></a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"   data-toggle="modal" data-target="#modal_form_rol" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa-solid fa-trash-can"></i></a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-warning btn-sm btndardebaja" style="background-color: #fc8403; color: white;" data-toggle="tooltip" data-placement="bottom" title="Deshabilitar"><i class="fa-solid fa-arrow-down"></i></a>';
-        // $sub_array[] = 'Habilitado' .
-        // 	'<a href="javascript:void();" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm editbtn" > Baja</a>';
     } else {
         $sub_array[] = '<a href="#"  data-id="' . $row['id'] . '"  data-dni="' . $row['dni'] . '"  class="btn btn-primary btn-sm btnroles"   data-toggle="modal" data-target="#modal_ver_roles" data-toggle="tooltip" data-placement="bottom" title="Ver roles"><i class="fa-solid fa-users"></i></a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-info btn-sm btneditar"  data-toggle="modal" data-target="#modal_form_rol" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa-solid fa-pen-to-square"></i></a>  <a href="#" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm btneliminar" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fa-solid fa-trash-can"></i></a> <a href="#" data-id="' . $row['id'] . '"  class="btn btn-success btn-sm btndardealta" data-toggle="tooltip" data-placement="bottom" title="Habilitar"><i class="fa-solid fa-arrow-up"></i></a>';
     }

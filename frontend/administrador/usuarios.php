@@ -713,126 +713,6 @@ $(document).ready(function() {
     });
 
 
-
-
-    //AGREGAR ROL
-    // $(document).on("click", ".btnAgregar", function() {
-    //     opcion = 1;
-
-    //     console.log(opcion);
-
-    //     /**
-    //      * MODIFICACIONES MODAL
-    //      */
-
-    //     //HAGO LOS INPUTS VACIOS
-    //     $("#input_nombre_rol").val("");
-    //     $("#input_estado_r_rol").val("");
-    //     $('#input_id_rol').val("");
-
-
-
-    //     // MUESTRO EL BOTON DE AGREGAR
-    //     document.getElementById("boton_agregar_form").style.display = "block";
-    //     // OCULTO EL BOTON DE EDITAR
-
-    //     document.getElementById("boton_editar_form").style.display = "none";
-
-
-    //     /**
-    //      * CSS MODAL
-    //      */
-    //     $(".modal-header").css("background-color", "#007bff");
-    //     $(".modal-header").css("color", "white");
-    //     $("#boton_agregar_form").css("background-color", "#007bff");
-    //     $("#boton_agregar_form").css("color", "white");
-    //     $(".modal-title").text("Agregar Rol");
-
-    //     if (opcion === 1) {
-    //         //  MODAL AGREGAR
-    //         $("#boton_agregar_form").click(function() {
-
-    //             console.log('ESTA ACA EN OPCION 1 AGREGAR');
-    //             var nombre_rol = $('#input_nombre_rol').val();
-    //             var estado_r_rol = $('#input_estado_r_rol').val();
-
-    //             console.log(nombre_rol, estado_r_rol);
-
-    //             if (
-    //                 nombre_rol == "" ||
-    //                 estado_r_rol == "") {
-    //                 Swal.fire({
-    //                     icon: "error",
-    //                     title: "Oops...",
-    //                     text: "Por favor no deje ningun campo vacio",
-    //                     //  footer: '<a href="">Why do I have this issue?</a>'
-    //                 });
-    //             } else {
-    //                 Swal.fire({
-    //                     title: "Los datos son correctos?",
-    //                     text: "El Rol se cargara al sistema",
-    //                     icon: "warning",
-    //                     showCancelButton: true,
-    //                     confirmButtonColor: "#3085d6",
-    //                     cancelButtonColor: "#d33",
-    //                     confirmButtonText: "Si, estoy seguro",
-    //                     cancelButtonText: "Cancelar",
-    //                 }).then((result) => {
-    //                     if (result.isConfirmed) {
-    //                         /**
-    //                          * Si confirma el formulario lo envia por post mediante Jquery
-    //                          */
-
-    //                         $.ajax({
-    //                             url: "../../backend/roles/crudroles.php",
-    //                             type: "post",
-    //                             data: {
-    //                                 opcion: opcion,
-    //                                 nombre_rol: nombre_rol,
-    //                                 estado_r_rol: estado_r_rol
-    //                             },
-    //                             success: function(data) {
-    //                                 var json = JSON.parse(data);
-    //                                 var status = json.status;
-    //                                 if (status == 'success') {
-
-    //                                     Swal.fire(
-    //                                         "Buen Trabajo!",
-    //                                         "El Rol ha sido cargada!",
-    //                                         "success"
-    //                                     ).then(() => {
-
-    //                                         $("#modal_form_rol")
-    //                                             .trigger(
-    //                                                 "reset"
-    //                                             ); //Reiniciar el formulario
-    //                                         $("#modal_form_rol .close")
-    //                                             .click(); //Cerrar el formulario
-
-    //                                         mytable = $('#usuarios')
-    //                                             .DataTable();
-    //                                         mytable.draw();
-
-    //                                     });
-    //                                 } else {
-    //                                     Swal.fire({
-    //                                         icon: "error",
-    //                                         title: "Oops...",
-    //                                         text: "Revisa los campos nuevamente",
-    //                                         //  footer: '<a href="">Why do I have this issue?</a>'
-    //                                     });
-    //                                 }
-    //                             }
-    //                         });
-
-    //                     }
-    //                 });
-    //             }
-    //         });
-    //     }
-    // }); // TERMINA AGREGAR ROL
-
-
 });
 </script>
 
@@ -843,8 +723,6 @@ $(document).on("click", ".btnroles", function() {
 
 
     opcion = 5; //PRIMERO OPCION 5 PARA QUE AGARRE LOS DATOS
-
-
 
 
     /**
@@ -883,9 +761,6 @@ $(document).on("click", ".btnroles", function() {
 
                 document.getElementById("nombre_modal_rol").innerHTML = json.nombre;
                 document.getElementById("dni_modal_rol").innerHTML = json.dni;
-
-                // $("#nombre_modal_rol").val(json.nombre);
-                // $("#dni_modal_rol").val(json.dni);
 
 
 
@@ -992,7 +867,6 @@ $(document).on("click", ".btnroles", function() {
                                                             id +
                                                             "']"
                                                         );
-                                                    //el table es del table de arriba table = $('example').Datatable();
                                                     row.row("[id='" +
                                                             id +
                                                             "']"

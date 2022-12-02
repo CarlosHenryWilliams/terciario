@@ -31,8 +31,7 @@ switch ($opcion) {
 
 
     case 2:  //CASO 2 EDITAR
-        // $query = "UPDATE `materias` SET `nombre`= '' ,`abreviatura`= '' ,`estado_m`='' 
-        //  WHERE `id`= ";
+
 
         $id_materia = $_POST['id'];
         $nombre_materia = $_POST['nombre_materia'];

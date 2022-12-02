@@ -202,7 +202,7 @@
                                         data-placement="bottom" title="Ver materias asignadas">Ver materias asignadas
                                     </button>
                                 </form>
-
+                                <!-- 
                                 <form action="ver_materias_asignadasplan_prueba.php" method="POST">
 
                                     <input type="hidden" class="boton_id_plan_oculto">
@@ -211,7 +211,7 @@
                                         data-placement="bottom" title="Ver materias asignadas">Ver materias asignadas
                                         viejo
                                     </button>
-                                </form>
+                                </form> -->
 
                                 <form action="asignarmaterias.php" method="POST">
 
