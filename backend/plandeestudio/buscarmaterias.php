@@ -18,12 +18,21 @@ $columns = array(
 );
 
 
-
-
 if (isset($_POST['search']['value'])) {
     $search_value = $_POST['search']['value'];
-    $sql = "SELECT * FROM materias WHERE materias.id NOT IN (SELECT planestudio_materia.id_materias FROM planestudio_materia WHERE planestudio_materia.id_plan_estudio = 7 ) AND nombre like '%" . $search_value . "%'";
-    $sql .= " OR abreviatura like '%" . $search_value . "%'";
+
+    $sql .= "AND `nombre`LIKE '%" . $search_value . "%'";
+
+    //POR EL MOMENTO NO NOS SALE  FILTRAR CON ABREVIATURA
+
+    // $sql .= "OR `abreviatura`LIKE '%" . $search_value . "%'";
+
+    // $sql = "SELECT * FROM materias WHERE materias.id  NOT IN (SELECT planestudio_materia.id_materias FROM planestudio_materia WHERE planestudio_materia.id_plan_estudio = 1 ) AND `nombre` LIKE '%" . $search_value . "%' OR `abreviatura` LIKE '%" . $search_value . "%'";
+    // $sql = "SELECT * FROM materias WHERE materias.id NOT IN (SELECT planestudio_materia.id_materias FROM planestudio_materia WHERE planestudio_materia.id_plan_estudio = 1 ) AND `nombre` LIKE '%new%' OR `abreviatura` LIKE'%" . $search_value . "%'";
+    // $sql .= "OR `abreviatura`LIKE '%" . $search_value . "%'";
+
+    // $sql .= " AND nombre like '%" . $search_value . "%'";
+    // $sql .= "OR abreviatura LIKE '%" . $search_value . "%'";
     // $sql .= " OR estado_m like '%" . $search_value . "%'";
 
     //NO HABILITAMOS PARA QUE FILTRE POR ESTADO PORQUE EN LA BASE DE DATOS FIGURA 1 o 0 y entonces no iba a funcionar.
