@@ -341,9 +341,7 @@ $(document).on("click", ".btnAgregarMateria", function() {
                                     $("#" + id_materia).closest('tr')
                                         .remove();
 
-                                    // mytable = $('#planes')
-                                    //     .DataTable();
-                                    // mytable.draw();
+
 
                                 });
                             } else {
